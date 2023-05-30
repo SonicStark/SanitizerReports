@@ -5,3 +5,6 @@
 __pycache__/
 *.py[cod]
 *$py.class
+
+# lit output
+*.lit_test_times.txt
