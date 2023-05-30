@@ -6,3 +6,10 @@
 
 *SanitizerReports* is under the Apache License v2.0 with LLVM Exceptions (same as [llvm/llvm-project](https://github.com/llvm/llvm-project)).
 See `LICENSE` for more details.
+
+## Links
+
+ - [LLVM Testing Infrastructure Guide](https://llvm.org/docs/TestingGuide.html#llvm-testing-infrastructure-guide)
+ - [test-suite Guide](https://llvm.org/docs/TestSuiteGuide.html)
+ - [lit - LLVM Integrated Tester](https://llvm.org/docs/CommandGuide/lit.html#lit-llvm-integrated-tester)
+ - [FileCheck - Flexible pattern matching file verifier](https://llvm.org/docs/CommandGuide/FileCheck.html)
