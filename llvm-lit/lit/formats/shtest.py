@@ -5,6 +5,13 @@ import lit.util
 
 from .base import FileBasedTest
 
+""" SanitizerReports NOTE
+In "lit.cfg.py" around things for sanitizers
+in compiler-rt, "config.test_format" is always
+"lit.formats.ShTest(execute_external)".
+So next we should explore
+lit.TestRunner.executeShTest
+"""
 
 class ShTest(FileBasedTest):
     """ShTest is a format with one file per test.

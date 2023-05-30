@@ -85,7 +85,14 @@ def find_compiler_libdir():
 
 # Choose between lit's internal shell pipeline runner and a real shell.  If
 # LIT_USE_INTERNAL_SHELL is in the environment, we use that as an override.
-use_lit_shell = os.environ.get("LIT_USE_INTERNAL_SHELL")
+#use_lit_shell = os.environ.get("LIT_USE_INTERNAL_SHELL")
+
+""" SanitizerReports NOTE
+Force it to use lit's internal shell pipeline runner,
+so that we can use our own dummy FileCheck.py
+"""
+use_lit_shell = "1"
+
 if use_lit_shell:
     # 0 is external, "" is default, and everything else is internal.
     execute_external = (use_lit_shell == "0")
