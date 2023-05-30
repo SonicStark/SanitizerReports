@@ -126,6 +126,17 @@ class TestingConfig(object):
         cfg_globals['lit_config'] = litConfig
         cfg_globals['__file__'] = path
         try:
+            """ SanitizerReports NOTE
+            Here all damn stuffs defined a "lit.cfg" around thing are
+            loaded into `litConfig`, a `lit.LitConfig.LitConfig` object.
+            After the exec() call, it has acquired `test_format` attribute.
+            This attribute has a `execute` method, which gives stdout
+            (or/and stderr?) data.
+            Later the `lit.LitConfig.LitConfig` object, which `litConfig`
+            points to, will be used to generate `lit.TestingConfig.TestingConfig`
+            objects. It seems that `test_format` attribute will be spread
+            to them (happens in getTestSuite, locates at discovery.py).
+            """
             exec(compile(data, path, 'exec'), cfg_globals, None)
             if litConfig.debug:
                 litConfig.note('... loaded config %r' % path)

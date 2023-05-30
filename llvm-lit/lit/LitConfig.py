@@ -42,6 +42,14 @@ class LitConfig(object):
         self.params = dict(params)
         self.bashPath = None
 
+        """ SanitizerReports NOTE
+        Wtf! In https://llvm.org/docs/CommandGuide/lit.html
+        it says that 'lit.cfg' or 'lit.site.cfg' will be searched for.
+        Actually there are more valid names as default:
+         - self.config_names ['lit.cfg.py', 'lit.cfg']
+         - self.site_config_names ['lit.site.cfg.py', 'lit.site.cfg']
+         - self.local_config_names ['lit.local.cfg.py', 'lit.local.cfg']
+        """
         # Configuration files to look for when discovering test suites.
         self.config_prefix = config_prefix or 'lit'
         self.suffixes = ['cfg.py', 'cfg']

@@ -42,6 +42,10 @@ def main(builtin_params={}):
         config_prefix=opts.configPrefix,
         echo_all_commands=opts.echoAllCommands)
 
+    """ SanitizerReports NOTE
+    Add breakpoint here and step in to observe
+    how it finds those tests
+    """
     discovered_tests = lit.discovery.find_tests_for_inputs(lit_config, opts.test_paths,
                                                            opts.indirectlyRunCheck)
     if not discovered_tests:
@@ -70,6 +74,10 @@ def main(builtin_params={}):
 
     determine_order(discovered_tests, opts.order)
 
+    """ SanitizerReports NOTE
+    Add breakpoint here to observe what hell the so-called *tests* are.
+    Wtf! I can't find any decent type hints in this project!
+    """
     selected_tests = [t for t in discovered_tests if
         opts.filter.search(t.getFullName()) and not
         opts.filter_out.search(t.getFullName())]
@@ -103,6 +111,9 @@ def main(builtin_params={}):
     mark_excluded(discovered_tests, selected_tests)
 
     start = time.time()
+    """ SanitizerReports NOTE
+    Add breakpoint here to observe what's going on.
+    """
     run_tests(selected_tests, lit_config, opts, len(discovered_tests))
     elapsed = time.time() - start
 
@@ -256,6 +267,10 @@ def execute_in_tmp_dir(run, lit_config):
         for cfg in {t.config for t in run.tests}:
             cfg.environment.update(tmp_dir_envs)
     try:
+        """ SanitizerReports NOTE
+        Add breakpoint here can stop
+        before a true run.
+        """
         run.execute()
     finally:
         if tmp_dir:

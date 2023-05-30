@@ -69,6 +69,11 @@ class Run(object):
         pool = multiprocessing.Pool(self.workers, lit.worker.initialize,
                                     (self.lit_config, semaphores))
 
+        """ SanitizerReports NOTE
+        Here all tests go to the pool.
+        Each worker is actually a `lit.worker.execute`
+        function which accepts a `lit.Test.Test` object.
+        """
         async_results = [
             pool.apply_async(lit.worker.execute, args=[test],
                              callback=self.progress_callback)

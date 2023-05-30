@@ -44,6 +44,11 @@ def execute(test):
     with _get_parallelism_semaphore(test):
         result = _execute(test, _lit_config)
 
+    """ SanitizerReports NOTE
+    Here the `lit.Test.Result` object, which carries
+    `output` (a str object), is passed to the
+    `lit.Test.Test` object processed by the worker.
+    """
     test.setResult(result)
     return test
 
@@ -70,7 +75,15 @@ def _execute(test, lit_config):
     result.pid = os.getpid()
     return result
 
-
+""" SanitizerReports NOTE
+Here the `lit.Test.Result` object for each
+`lit.Test.Test` object is born. Obviously
+the method to catch and save stdout/stderr
+of each test case is defined in `lit.Test.Test`
+object itself, i.e. in `lit.Test.Test.config`,
+which is a `lit.TestingConfig.TestingConfig` object.
+We should go to `TestingConfig.py` for more details.
+"""
 def _execute_test_handle_errors(test, lit_config):
     try:
         result = test.config.test_format.execute(test, lit_config)
