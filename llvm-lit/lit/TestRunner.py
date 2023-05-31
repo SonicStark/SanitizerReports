@@ -731,21 +731,6 @@ def _executeShCmd(cmd, shenv, results, timeoutHelper):
                 os.path.dirname(os.path.abspath(__file__))
             args[1] = os.path.join(builtin_commands_dir, args[1] + ".py")
 
-        """ SanitizerReports NOTE
-        Replace FileCheck with our dummy FileCheck
-        """
-        while (True):
-            idx_tmp = None
-            arg_num = len(args)
-            for idx_tmp in range(arg_num):
-                if (args[idx_tmp] == "FileCheck"):
-                    args.insert(idx_tmp, sys.executable)
-                    args[idx_tmp] = os.path.join(os.path.dirname(
-                        os.path.abspath(__file__)), "builtin_commands/FileCheck.py")
-                    break
-            if ((idx_tmp is None) or (idx_tmp == arg_num-1)):
-                break
-
         # We had to search through the 'not' commands to find all the 'env'
         # commands and any other in-process builtin command.  We don't want to
         # reimplement 'not' and its '--crash' here, so just push all 'not'
