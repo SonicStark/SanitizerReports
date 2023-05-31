@@ -245,7 +245,7 @@ def parse_args():
     report_lst = [opts.output, opts.xunit_xml_output, opts.resultdb_output, opts.time_trace_output]
     tricky_path = os.getenv("LIT_JSON_OUTPUT")
     if (tricky_path is not None):
-        report_lst.append("%s.%d"%(lit.reports.JsonReport(tricky_path), os.getpid()))
+        report_lst.append(lit.reports.JsonReport("%s.%d"%(tricky_path, os.getpid())))
     opts.reports = filter(None, report_lst)
 
     return opts
