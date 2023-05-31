@@ -236,7 +236,17 @@ def parse_args():
     else:
         opts.shard = None
 
-    opts.reports = filter(None, [opts.output, opts.xunit_xml_output, opts.resultdb_output, opts.time_trace_output])
+    """ SanitizerReports NOTE
+    Read env vars as an alternative to --output
+    Will append ".pid" in file path in case used
+    simultaneously.
+    """
+    #opts.reports = filter(None, [opts.output, opts.xunit_xml_output, opts.resultdb_output, opts.time_trace_output])
+    report_lst = [opts.output, opts.xunit_xml_output, opts.resultdb_output, opts.time_trace_output]
+    tricky_path = os.getenv("LIT_JSON_OUTPUT")
+    if (tricky_path is not None):
+        report_lst.append("%s.%d"%(lit.reports.JsonReport(tricky_path), os.getpid()))
+    opts.reports = filter(None, report_lst)
 
     return opts
 
