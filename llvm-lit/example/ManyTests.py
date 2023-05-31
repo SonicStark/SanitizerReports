@@ -1,5 +1,6 @@
 from lit import Test
 
+import time
 
 class ManyTests(object):
     def __init__(self, N=10000):
@@ -15,4 +16,5 @@ class ManyTests(object):
         sum = 0
         for i in range(10000):
             sum += i
-        return Test.PASS, ""
+        test_output = str(int(time.time()))
+        return Test.PASS, test_output
