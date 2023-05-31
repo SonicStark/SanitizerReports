@@ -96,7 +96,7 @@ echo "HelloWorld!" | ./FileCheck
 
 `llvm-project-16.0.0.src/mybuild/bin/llvm-lit` is actually a python script, just like our pythonic `FileCheck`.
 
-You can open it and view it as plain text:
+You can open and view it as plain text:
 ```shell
 cat llvm-lit
 ```
@@ -151,15 +151,72 @@ if __name__=='__main__':
 It indicates that the true body of `lit` is located at `llvm-project-16.0.0.src/llvm/utils/lit/lit`.
 
 Go there and locate `llvm-project-16.0.0.src/llvm/utils/lit/lit/cl_arguments.py`.
-Now open and edit this file, modifed it like what 
-https://github.com/SonicStark/SanitizerReports/blob/4bb29f85a1d88a54f099d6281f6c910496d6fa3a/llvm-lit/lit/cl_arguments.py#L239-L249 
+Now open and edit this file, modified it like what 
+https://github.com/SonicStark/SanitizerReports/blob/6156709ab2ca3b82064928d660baad0b38c4cfdd/llvm-lit/lit/cl_arguments.py#L239-L249
 does, i.e., let *llvm-lit* receive file path from environment variable `LIT_JSON_OUTPUT` as an alternative to `--output` option.
 Because when running the testcases it's diffcult to 
 change the behavior of *llvm-lit* by passing command line options.
 
 ### Run Testcases
 
+Let's check what testcases is needed by us. 
+Back to `llvm-project-16.0.0.src/mybuild` and run
+```shell
+make help | grep 'check-' | less
+```
+and it will show you all regression tests and unit tests we can run.
+As for sanitizers, I have screened out the needed ones:
+ * check-lsan
+ * check-ubsan
+ * check-asan-dynamic
+ * check-asan
+ * check-dfsan
+ * check-msan
+ * check-hwasan-lam
+ * check-hwasan
+ * check-tsan-dynamic
+ * check-tsan
+ * check-ubsan-minimal
+ * check-gwp_asan
 
+Now we run `check-ubsan-minimal` as an example:
+```shell
+LIT_JSON_OUTPUT="`pwd`/ubsan_min.json" make check-ubsan-minimal
+```
+
+### Access Report
+
+After the last step done, you will get `llvm-project-16.0.0.src/mybuild/ubsan_min.json.pid`.
+It's a JSON file which contains fields like:
+```text
+{
+  "__version__": [
+    ...,
+    ...,
+    ...
+  ],
+  "elapsed": ...,
+  "tests": [
+    {
+      "code":   "...",
+      "elapsed": ...,
+      "name":   "...",
+      "output": "..."
+    },
+    {
+      ...
+    },
+    ...
+  ]
+}
+```
+
+Then you can find content of the report printed by the sanitizer tested before in `output` key.
+
+### Parse Report
+
+Text in `output` key may contain those stuffs not printed by santizer, error messages, or even multiple reports.
+So additional text processing is usually necessary to get precise content of the report.
 
 ## Links
 
