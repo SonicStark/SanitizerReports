@@ -1,0 +1,33 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: fork_multithreaded3.cpp <<HEAD<<
+
+LLVMSymbolizer: error reading file: No such file or directory
+==================
+WARNING: ThreadSanitizer: data race (pid=249888)
+  Write of size 4 at 0x7ffeb1efe4bc by thread T2:
+    #0 racer(void*) /home/llvm/compiler-rt/test/tsan/fork_multithreaded3.cpp:11:12 (fork_multithreaded3.cpp.tmp+0xeeb85)
+
+  Previous write of size 4 at 0x7ffeb1efe4bc by thread T1:
+    #0 racer(void*) /home/llvm/compiler-rt/test/tsan/fork_multithreaded3.cpp:11:12 (fork_multithreaded3.cpp.tmp+0xeeb85)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7ffeb1edf000 ([stack]+0x1f4bc)
+
+  Thread T2 (tid=249907, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (fork_multithreaded3.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/fork_multithreaded3.cpp:25:7 (fork_multithreaded3.cpp.tmp+0xeeb26)
+
+  Thread T1 (tid=249906, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (fork_multithreaded3.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/fork_multithreaded3.cpp:24:7 (fork_multithreaded3.cpp.tmp+0xeeb14)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/fork_multithreaded3.cpp:11:12 in racer(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+OK
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: fork_multithreaded3.cpp <<TAIL<<

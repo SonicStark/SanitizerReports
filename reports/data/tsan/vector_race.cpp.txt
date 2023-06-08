@@ -1,0 +1,119 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: vector_race.cpp <<HEAD<<
+
+addr0:0x563b63b9f740 0x563b63b9f740 
+==================
+WARNING: ThreadSanitizer: data race (pid=230248)
+  Write of size 8 at 0x563b63b9f740 by main thread:
+    #0 store /home/llvm/compiler-rt/test/tsan/vector_race.cpp:16:3 (vector_race.cpp.tmp+0xeecc0)
+    #1 main /home/llvm/compiler-rt/test/tsan/vector_race.cpp:32:3 (vector_race.cpp.tmp+0xeecc0)
+
+  Previous read of size 8 at 0x563b63b9f740 by thread T1:
+    #0 load /home/llvm/compiler-rt/test/tsan/vector_race.cpp:8:10 (vector_race.cpp.tmp+0xeedda)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/vector_race.cpp:62:13 (vector_race.cpp.tmp+0xeedda)
+
+  Location is global 'data' of size 320 at 0x563b63b9f740 (vector_race.cpp.tmp+0x1519740)
+
+  Thread T1 (tid=230297, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (vector_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/vector_race.cpp:27:3 (vector_race.cpp.tmp+0xeec74)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/vector_race.cpp:16:3 in store
+==================
+addr1:0x563b63b9f768 0x563b63b9f768 
+==================
+WARNING: ThreadSanitizer: data race (pid=230248)
+  Write of size 8 at 0x563b63b9f768 by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/vector_race.cpp:39:50 (vector_race.cpp.tmp+0xeecf4)
+
+  Previous read of size 8 at 0x563b63b9f768 by thread T1:
+    #0 load /home/llvm/compiler-rt/test/tsan/vector_race.cpp:8:10 (vector_race.cpp.tmp+0xeedf1)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/vector_race.cpp:63:13 (vector_race.cpp.tmp+0xeedf1)
+
+  Location is global 'data' of size 320 at 0x563b63b9f740 (vector_race.cpp.tmp+0x1519768)
+
+  Thread T1 (tid=230297, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (vector_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/vector_race.cpp:27:3 (vector_race.cpp.tmp+0xeec74)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/vector_race.cpp:39:50 in main
+==================
+addr2:0x563b63b9f78f 0x563b63b9f788 
+==================
+WARNING: ThreadSanitizer: data race (pid=230248)
+  Write of size 1 at 0x563b63b9f78f by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/vector_race.cpp:46:37 (vector_race.cpp.tmp+0xeed2b)
+
+  Previous read of size 8 at 0x563b63b9f788 by thread T1:
+    #0 load /home/llvm/compiler-rt/test/tsan/vector_race.cpp:8:10 (vector_race.cpp.tmp+0xeee09)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/vector_race.cpp:64:13 (vector_race.cpp.tmp+0xeee09)
+
+  Location is global 'data' of size 320 at 0x563b63b9f740 (vector_race.cpp.tmp+0x1519788)
+
+  Thread T1 (tid=230297, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (vector_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/vector_race.cpp:27:3 (vector_race.cpp.tmp+0xeec74)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/vector_race.cpp:46:37 in main
+==================
+addr3:0x563b63b9f800 0x563b63b9f800 
+==================
+WARNING: ThreadSanitizer: data race (pid=230248)
+  Write of size 8 at 0x563b63b9f800 by thread T1:
+    #0 store /home/llvm/compiler-rt/test/tsan/vector_race.cpp:16:3 (vector_race.cpp.tmp+0xeee9c)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/vector_race.cpp:72:3 (vector_race.cpp.tmp+0xeee9c)
+
+  Previous write of size 8 at 0x563b63b9f800 by main thread:
+    #0 store /home/llvm/compiler-rt/test/tsan/vector_race.cpp:16:3 (vector_race.cpp.tmp+0xeed3e)
+    #1 main /home/llvm/compiler-rt/test/tsan/vector_race.cpp:52:3 (vector_race.cpp.tmp+0xeed3e)
+
+  Location is global 'data' of size 320 at 0x563b63b9f740 (vector_race.cpp.tmp+0x1519800)
+
+  Thread T1 (tid=230297, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (vector_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/vector_race.cpp:27:3 (vector_race.cpp.tmp+0xeec74)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/vector_race.cpp:16:3 in store
+==================
+addr4:0x563b63b9f828 0x563b63b9f828 
+==================
+WARNING: ThreadSanitizer: data race (pid=230248)
+  Write of size 8 at 0x563b63b9f828 by thread T1:
+    #0 store /home/llvm/compiler-rt/test/tsan/vector_race.cpp:16:3 (vector_race.cpp.tmp+0xeeed0)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/vector_race.cpp:79:3 (vector_race.cpp.tmp+0xeeed0)
+
+  Previous write of size 8 at 0x563b63b9f828 by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/vector_race.cpp:53:51 (vector_race.cpp.tmp+0xeed56)
+
+  Location is global 'data' of size 320 at 0x563b63b9f740 (vector_race.cpp.tmp+0x1519828)
+
+  Thread T1 (tid=230297, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (vector_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/vector_race.cpp:27:3 (vector_race.cpp.tmp+0xeec74)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/vector_race.cpp:16:3 in store
+==================
+addr5:0x563b63b9f848 0x563b63b9f84f 
+==================
+WARNING: ThreadSanitizer: data race (pid=230248)
+  Write of size 8 at 0x563b63b9f848 by thread T1:
+    #0 store /home/llvm/compiler-rt/test/tsan/vector_race.cpp:16:3 (vector_race.cpp.tmp+0xeef08)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/vector_race.cpp:86:3 (vector_race.cpp.tmp+0xeef08)
+
+  Previous write of size 1 at 0x563b63b9f84f by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/vector_race.cpp:54:38 (vector_race.cpp.tmp+0xeed6d)
+
+  Location is global 'data' of size 320 at 0x563b63b9f740 (vector_race.cpp.tmp+0x1519848)
+
+  Thread T1 (tid=230297, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (vector_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/vector_race.cpp:27:3 (vector_race.cpp.tmp+0xeec74)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/vector_race.cpp:16:3 in store
+==================
+ThreadSanitizer: reported 6 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: vector_race.cpp <<TAIL<<

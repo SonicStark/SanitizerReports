@@ -1,0 +1,10 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: cond_cancel.c <<HEAD<<
+
+OK
+my_cleanup
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: cond_cancel.c <<TAIL<<

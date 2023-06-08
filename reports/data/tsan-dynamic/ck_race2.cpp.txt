@@ -1,0 +1,29 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: stack_race2.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=255827)
+  Write of size 4 at 0x7f36585fd6e4 by thread T2:
+    #0 Thread2(void*) /home/llvm/compiler-rt/test/tsan/stack_race2.cpp:6:12 (stack_race2.cpp.tmp+0xeec01)
+
+  Previous write of size 4 at 0x7f36585fd6e4 by thread T1:
+    #0 Thread(void*) /home/llvm/compiler-rt/test/tsan/stack_race2.cpp:14:7 (stack_race2.cpp.tmp+0xeec71)
+
+  Location is stack of thread T1.
+
+  Thread T2 (tid=255963, running) created by thread T1 at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (stack_race2.cpp.tmp+0x295e3)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/stack_race2.cpp:13:3 (stack_race2.cpp.tmp+0xeec69)
+
+  Thread T1 (tid=255962, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (stack_race2.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/stack_race2.cpp:23:3 (stack_race2.cpp.tmp+0xeecf7)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/stack_race2.cpp:6:12 in Thread2(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: stack_race2.cpp <<TAIL<<

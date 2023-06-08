@@ -1,0 +1,11 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: atexit.cpp <<HEAD<<
+
+Logger ctor
+In log_from_atexit
+Logger dtor
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: atexit.cpp <<TAIL<<

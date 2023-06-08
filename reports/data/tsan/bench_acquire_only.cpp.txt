@@ -1,0 +1,10 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: bench_acquire_only.cpp <<HEAD<<
+
+88171 ns/iter
+DONE
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: bench_acquire_only.cpp <<TAIL<<

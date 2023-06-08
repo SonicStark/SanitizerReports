@@ -1,0 +1,30 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: aligned_vs_unaligned_race.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=187045)
+  Write of size 1 at 0x564ffa008748 by thread T2:
+    #0 Thread2(void*) /home/llvm/compiler-rt/test/tsan/aligned_vs_unaligned_race.cpp:20:12 (aligned_vs_unaligned_race.cpp.tmp+0xeec5c)
+
+  Previous write of size 8 at 0x564ffa008748 by thread T1:
+    #0 Thread1(void*) /home/llvm/compiler-rt/test/tsan/aligned_vs_unaligned_race.cpp:10:12 (aligned_vs_unaligned_race.cpp.tmp+0xeec00)
+
+  Location is global 'Global' of size 16 at 0x564ffa008740 (aligned_vs_unaligned_race.cpp.tmp+0x1519748)
+
+  Thread T2 (tid=187083, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (aligned_vs_unaligned_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/aligned_vs_unaligned_race.cpp:28:3 (aligned_vs_unaligned_race.cpp.tmp+0xeeccf)
+
+  Thread T1 (tid=187079, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (aligned_vs_unaligned_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/aligned_vs_unaligned_race.cpp:27:3 (aligned_vs_unaligned_race.cpp.tmp+0xeecb7)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/aligned_vs_unaligned_race.cpp:20:12 in Thread2(void*)
+==================
+Pass
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: aligned_vs_unaligned_race.cpp <<TAIL<<

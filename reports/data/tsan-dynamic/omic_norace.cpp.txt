@@ -1,0 +1,28 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: atomic_norace.cpp <<HEAD<<
+
+Test 0
+Test 1
+Test 2
+Test 3
+Test 0 reverse
+Test 1 reverse
+Test 2 reverse
+Test 3 reverse
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: atomic_norace.cpp <<TAIL<<
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: atomic_norace.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/tsan/atomic_norace.cpp:9:14: warning: variable 'sink' set but not used [-Wunused-but-set-variable]
+  volatile T sink;
+             ^
+1 warning generated.
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: atomic_norace.cpp <<TAIL<<

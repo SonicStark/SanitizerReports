@@ -1,0 +1,9 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: thread_detach2.c <<HEAD<<
+
+PASS
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: thread_detach2.c <<TAIL<<

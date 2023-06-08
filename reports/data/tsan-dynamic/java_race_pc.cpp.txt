@@ -1,0 +1,29 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: java_race_pc.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=251100)
+  Read of size 1 at 0x7fe2fd8ff008 by thread T1:
+    #0 foobar() /home/llvm/compiler-rt/test/tsan/java_race_pc.cpp:9:1 (java_race_pc.cpp.tmp+0xeebe0)
+
+  Previous write of size 1 at 0x7fe2fd8ff008 by main thread:
+    #0 barbaz() /home/llvm/compiler-rt/test/tsan/java_race_pc.cpp:12:1 (java_race_pc.cpp.tmp+0xeebf0)
+
+  Location is heap block of size 1048584 at 0x7fe2fd8ff000 allocated by main thread:
+    #0 malloc /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:692:5 (java_race_pc.cpp.tmp+0x3f394)
+    #1 main /home/llvm/compiler-rt/test/tsan/java_race_pc.cpp:23:22 (java_race_pc.cpp.tmp+0xeec79)
+
+  Thread T1 (tid=251145, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (java_race_pc.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/java_race_pc.cpp:28:3 (java_race_pc.cpp.tmp+0xeecb0)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/java_race_pc.cpp:9:1 in foobar()
+==================
+DONE
+ThreadSanitizer: reported 1 warnings
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: java_race_pc.cpp <<TAIL<<

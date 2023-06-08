@@ -1,0 +1,87 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: simple_stack.c <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=216592)
+  Write of size 4 at 0x557f483492e0 by thread T1:
+    #0 foo1 /home/llvm/compiler-rt/test/tsan/simple_stack.c:6:10 (simple_stack.c.tmp+0xec3f6)
+    #1 bar1 /home/llvm/compiler-rt/test/tsan/simple_stack.c:11:3 (simple_stack.c.tmp+0xec444)
+    #2 Thread1 /home/llvm/compiler-rt/test/tsan/simple_stack.c:25:3 (simple_stack.c.tmp+0xec4fb)
+
+  Previous read of size 4 at 0x557f483492e0 by thread T2:
+    #0 foo2 /home/llvm/compiler-rt/test/tsan/simple_stack.c:15:20 (simple_stack.c.tmp+0xec468)
+    #1 bar2 /home/llvm/compiler-rt/test/tsan/simple_stack.c:20:3 (simple_stack.c.tmp+0xec4d4)
+    #2 Thread2 /home/llvm/compiler-rt/test/tsan/simple_stack.c:30:3 (simple_stack.c.tmp+0xec51f)
+
+  Location is global 'Global' of size 4 at 0x557f483492e0 (simple_stack.c.tmp+0x14962e0)
+
+  Thread T1 (tid=216655, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (simple_stack.c.tmp+0x295d3)
+    #1 StartThread /home/llvm/compiler-rt/test/tsan/simple_stack.c:36:3 (simple_stack.c.tmp+0xec562)
+    #2 main /home/llvm/compiler-rt/test/tsan/simple_stack.c:42:3 (simple_stack.c.tmp+0xec5a3)
+
+  Thread T2 (tid=216658, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (simple_stack.c.tmp+0x295d3)
+    #1 StartThread /home/llvm/compiler-rt/test/tsan/simple_stack.c:36:3 (simple_stack.c.tmp+0xec562)
+    #2 main /home/llvm/compiler-rt/test/tsan/simple_stack.c:43:3 (simple_stack.c.tmp+0xec5b7)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/simple_stack.c:6:10 in foo1
+==================
+ThreadSanitizer: reported 1 warnings
+==================
+WARNING: ThreadSanitizer: data race (pid=229897)
+  Write of size 4 at 0x56120a3df6ec by thread T1:
+    #0 foo1() /home/llvm/compiler-rt/test/tsan/simple_stack.c:6:10 (simple_stack.c.tmp+0xeeb9c)
+
+  Previous read of size 4 at 0x56120a3df6ec by thread T2:
+    #0 foo2() /home/llvm/compiler-rt/test/tsan/simple_stack.c:15:20 (simple_stack.c.tmp+0xeebee)
+
+  Location is global 'Global' of size 4 at 0x56120a3df6ec (simple_stack.c.tmp+0x15196ec)
+
+  Thread T1 (tid=229965, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (simple_stack.c.tmp+0x295d3)
+    #1 main /home/llvm/compiler-rt/test/tsan/simple_stack.c:42:3 (simple_stack.c.tmp+0xeecc9)
+
+  Thread T2 (tid=229969, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (simple_stack.c.tmp+0x295d3)
+    #1 main /home/llvm/compiler-rt/test/tsan/simple_stack.c:43:3 (simple_stack.c.tmp+0xeecdd)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/simple_stack.c:6:10 in foo1()
+==================
+ThreadSanitizer: reported 1 warnings
+==================
+WARNING: ThreadSanitizer: data race (pid=230407)
+  Write of size 4 at 0x5573a16416ec by thread T1:
+    #0 foo1() /home/llvm/compiler-rt/test/tsan/simple_stack.c:6:10 (simple_stack.c.tmp+0xeeb9c)
+
+  Previous read of size 4 at 0x5573a16416ec by thread T2:
+    #0 foo2() /home/llvm/compiler-rt/test/tsan/simple_stack.c:15:20 (simple_stack.c.tmp+0xeebee)
+
+  Location is global 'Global' of size 4 at 0x5573a16416ec (simple_stack.c.tmp+0x15196ec)
+
+  Thread T1 (tid=230424, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (simple_stack.c.tmp+0x295d3)
+    #1 main /home/llvm/compiler-rt/test/tsan/simple_stack.c:42:3 (simple_stack.c.tmp+0xeecc9)
+
+  Thread T2 (tid=230425, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (simple_stack.c.tmp+0x295d3)
+    #1 main /home/llvm/compiler-rt/test/tsan/simple_stack.c:43:3 (simple_stack.c.tmp+0xeecdd)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/simple_stack.c:6:10 in foo1()
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: simple_stack.c <<TAIL<<
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: simple_stack.c <<HEAD<<
+
+clang-16: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+clang-16: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: simple_stack.c <<TAIL<<

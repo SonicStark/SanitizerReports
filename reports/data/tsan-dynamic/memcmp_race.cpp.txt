@@ -1,0 +1,48 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: memcmp_race.cpp <<HEAD<<
+
+addr=0x7b0400000005 
+==================
+WARNING: ThreadSanitizer: data race (pid=252083)
+  Write of size 3 at 0x7b0400000005 by thread T2:
+    #0 __tsan_memcpy /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:3165:3 (memcmp_race.cpp.tmp+0x6ad79)
+    #1 Thread2(void*) /home/llvm/compiler-rt/test/tsan/memcmp_race.cpp:20:3 (memcmp_race.cpp.tmp+0xeed71)
+
+  Previous read of size 1 at 0x7b0400000005 by thread T1:
+    #0 memcmp /home/llvm/compiler-rt/lib/tsan/rtl/../../sanitizer_common/sanitizer_common_interceptors.inc:939:3 (memcmp_race.cpp.tmp+0x64c80)
+    #1 memcmp /home/llvm/compiler-rt/lib/tsan/rtl/../../sanitizer_common/sanitizer_common_interceptors.inc:935:1 (memcmp_race.cpp.tmp+0x64c80)
+    #2 Thread1(void*) /home/llvm/compiler-rt/test/tsan/memcmp_race.cpp:12:10 (memcmp_race.cpp.tmp+0xeecc5)
+
+  Location is heap block of size 10 at 0x7b0400000000 allocated by main thread:
+    #0 operator new[](unsigned long) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:70:3 (memcmp_race.cpp.tmp+0xed1d9)
+    #1 __cxx_global_var_init /home/llvm/compiler-rt/test/tsan/memcmp_race.cpp:5:15 (memcmp_race.cpp.tmp+0x20344)
+    #2 _GLOBAL__sub_I_memcmp_race.cpp /home/llvm/compiler-rt/test/tsan/memcmp_race.cpp (memcmp_race.cpp.tmp+0x20344)
+
+  Thread T2 (tid=252112, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (memcmp_race.cpp.tmp+0x29673)
+    #1 main /home/llvm/compiler-rt/test/tsan/memcmp_race.cpp:29:3 (memcmp_race.cpp.tmp+0xeee19)
+
+  Thread T1 (tid=252109, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (memcmp_race.cpp.tmp+0x29673)
+    #1 main /home/llvm/compiler-rt/test/tsan/memcmp_race.cpp:28:3 (memcmp_race.cpp.tmp+0xeee01)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/memcmp_race.cpp:20:3 in Thread2(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: memcmp_race.cpp <<TAIL<<
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: memcmp_race.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/tsan/memcmp_race.cpp:11:23: warning: variable 'sink' set but not used [-Wunused-but-set-variable]
+  static volatile int sink;
+                      ^
+1 warning generated.
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: memcmp_race.cpp <<TAIL<<

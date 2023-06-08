@@ -1,0 +1,29 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: ignore_sync.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=191473)
+  Write of size 4 at 0x564230a8b72c by thread T1 (mutexes: write M0):
+    #0 Thread(void*) /home/llvm/compiler-rt/test/tsan/ignore_sync.cpp:10:9 (ignore_sync.cpp.tmp+0xeec18)
+
+  Previous write of size 4 at 0x564230a8b72c by main thread (mutexes: write M0):
+    #0 main /home/llvm/compiler-rt/test/tsan/ignore_sync.cpp:20:9 (ignore_sync.cpp.tmp+0xeec9c)
+
+  Location is global 'Global' of size 4 at 0x564230a8b72c (ignore_sync.cpp.tmp+0x151972c)
+
+  Mutex M0 (0x564230a8b730) created at:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (ignore_sync.cpp.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/ignore_sync.cpp:19:3 (ignore_sync.cpp.tmp+0xeec88)
+
+  Thread T1 (tid=191508, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (ignore_sync.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/ignore_sync.cpp:18:3 (ignore_sync.cpp.tmp+0xeec79)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/ignore_sync.cpp:10:9 in Thread(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: ignore_sync.cpp <<TAIL<<

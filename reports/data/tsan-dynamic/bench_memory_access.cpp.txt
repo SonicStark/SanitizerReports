@@ -1,0 +1,10 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: bench_memory_access.cpp <<HEAD<<
+
+61209 ns/iter
+DONE
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: bench_memory_access.cpp <<TAIL<<

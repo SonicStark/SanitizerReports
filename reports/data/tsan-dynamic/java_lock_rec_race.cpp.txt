@@ -1,0 +1,32 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: java_lock_rec_race.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=250828)
+  Write of size 4 at 0x7f35531ff008 by main thread (mutexes: write M0):
+    #0 main /home/llvm/compiler-rt/test/tsan/java_lock_rec_race.cpp:40:18 (java_lock_rec_race.cpp.tmp+0xeee35)
+
+  Previous write of size 4 at 0x7f35531ff008 by thread T1 (mutexes: write M0):
+    #0 Thread(void*) /home/llvm/compiler-rt/test/tsan/java_lock_rec_race.cpp:16:18 (java_lock_rec_race.cpp.tmp+0xeec83)
+
+  Location is heap block of size 1048584 at 0x7f35531ff000 allocated by main thread:
+    #0 malloc /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:692:5 (java_lock_rec_race.cpp.tmp+0x3f3a4)
+    #1 main /home/llvm/compiler-rt/test/tsan/java_lock_rec_race.cpp:29:22 (java_lock_rec_race.cpp.tmp+0xeed88)
+
+  Mutex M0 (0x7f35531ff010) created at:
+    #0 __tsan_thread_start_func /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1038:23 (java_lock_rec_race.cpp.tmp+0x25609)
+
+  Thread T1 (tid=250877, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (java_lock_rec_race.cpp.tmp+0x295f3)
+    #1 main /home/llvm/compiler-rt/test/tsan/java_lock_rec_race.cpp:37:3 (java_lock_rec_race.cpp.tmp+0xeedf6)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/java_lock_rec_race.cpp:40:18 in main
+==================
+DONE
+ThreadSanitizer: reported 1 warnings
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: java_lock_rec_race.cpp <<TAIL<<

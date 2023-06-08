@@ -1,0 +1,10 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: bench_acquire_release.cpp <<HEAD<<
+
+72062 ns/iter
+DONE
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: bench_acquire_release.cpp <<TAIL<<

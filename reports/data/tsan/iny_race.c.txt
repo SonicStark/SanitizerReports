@@ -1,0 +1,25 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: tiny_race.c <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=230054)
+  Write of size 4 at 0x55c4b03f02e4 by thread T1:
+    #0 Thread1 /home/llvm/compiler-rt/test/tsan/tiny_race.c:8:10 (tiny_race.c.tmp+0xec405)
+
+  Previous write of size 4 at 0x55c4b03f02e4 by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/tiny_race.c:16:10 (tiny_race.c.tmp+0xec46d)
+
+  Location is global 'Global' of size 4 at 0x55c4b03f02e4 (tiny_race.c.tmp+0x14962e4)
+
+  Thread T1 (tid=230123, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (tiny_race.c.tmp+0x295d3)
+    #1 main /home/llvm/compiler-rt/test/tsan/tiny_race.c:15:3 (tiny_race.c.tmp+0xec45e)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/tiny_race.c:8:10 in Thread1
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: tiny_race.c <<TAIL<<

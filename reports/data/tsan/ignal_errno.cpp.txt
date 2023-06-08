@@ -1,0 +1,18 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: signal_errno.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: signal handler spoils errno (pid=215920)
+  Signal 27 handler invoked at:
+    #0 MyHandler(int, siginfo_t*, void*) /home/llvm/compiler-rt/test/tsan/signal_errno.cpp:14 (signal_errno.cpp.tmp+0xec4c0)
+    #1 loop() /home/llvm/compiler-rt/test/tsan/signal_errno.cpp:28:31 (signal_errno.cpp.tmp+0xec599)
+    #2 main /home/llvm/compiler-rt/test/tsan/signal_errno.cpp:43:3 (signal_errno.cpp.tmp+0xec47f)
+
+SUMMARY: ThreadSanitizer: signal handler spoils errno /home/llvm/compiler-rt/test/tsan/signal_errno.cpp:14 in MyHandler(int, siginfo_t*, void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: signal_errno.cpp <<TAIL<<

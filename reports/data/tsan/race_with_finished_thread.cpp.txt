@@ -1,0 +1,34 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: race_with_finished_thread.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=215858)
+  Write of size 4 at 0x5574480cd72c by thread T2:
+    #0 Thread2(void*) /home/llvm/compiler-rt/test/tsan/race_with_finished_thread.cpp:21:10 (race_with_finished_thread.cpp.tmp+0xeec7c)
+
+  Previous write of size 4 at 0x5574480cd72c by thread T1:
+    #0 foobar(int*) /home/llvm/compiler-rt/test/tsan/race_with_finished_thread.cpp:9:6 (race_with_finished_thread.cpp.tmp+0xeebf5)
+    #1 Thread1(void*) /home/llvm/compiler-rt/test/tsan/race_with_finished_thread.cpp:13:3 (race_with_finished_thread.cpp.tmp+0xeec26)
+
+  As if synchronized via sleep:
+    #0 sleep /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:379:3 (race_with_finished_thread.cpp.tmp+0x4ea20)
+    #1 Thread2(void*) /home/llvm/compiler-rt/test/tsan/race_with_finished_thread.cpp:20:3 (race_with_finished_thread.cpp.tmp+0xeec70)
+
+  Location is global 'g_data' of size 4 at 0x5574480cd72c (race_with_finished_thread.cpp.tmp+0x151972c)
+
+  Thread T2 (tid=215896, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (race_with_finished_thread.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/race_with_finished_thread.cpp:29:3 (race_with_finished_thread.cpp.tmp+0xeecef)
+
+  Thread T1 (tid=215895, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (race_with_finished_thread.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/race_with_finished_thread.cpp:28:3 (race_with_finished_thread.cpp.tmp+0xeecd7)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/race_with_finished_thread.cpp:21:10 in Thread2(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: race_with_finished_thread.cpp <<TAIL<<

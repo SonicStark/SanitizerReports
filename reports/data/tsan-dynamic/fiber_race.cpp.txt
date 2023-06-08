@@ -1,0 +1,26 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: fiber_race.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=249429)
+  Write of size 4 at 0x56150035ead0 by thread T1:
+    #0 func() /home/llvm/compiler-rt/test/tsan/fiber_race.cpp:15:7 (fiber_race.cpp.tmp+0xec436)
+    #1 <null> /build/glibc-SzIz7B/glibc-2.31/stdlib/../sysdeps/unix/sysv/linux/x86_64/__start_context.S:91 (libc.so.6+0x5b4df) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+
+  Previous write of size 4 at 0x56150035ead0 by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/fiber_race.cpp:28:7 (fiber_race.cpp.tmp+0xec54e)
+
+  Location is global 'var' of size 4 at 0x56150035ead0 (fiber_race.cpp.tmp+0x14a6ad0)
+
+  Thread T1 (tid=0, running) created by main thread at:
+    #0 main /home/llvm/compiler-rt/test/tsan/fiber_race.cpp:22:11 (fiber_race.cpp.tmp+0xec4bf)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/fiber_race.cpp:15:7 in func()
+==================
+PASS
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: fiber_race.cpp <<TAIL<<

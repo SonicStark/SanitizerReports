@@ -1,0 +1,9 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: ignore_lib3.cpp <<HEAD<<
+
+==250462==ThreadSanitizer: library '/home/llvm/mybuild/projects/compiler-rt/test/tsan/X86_64LinuxDynamicConfig/Output/ignore_lib3.cpp.tmp-dir/libignore_lib3.so' that was matched against called_from_lib suppression 'ignore_lib3.so' is unloaded
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: ignore_lib3.cpp <<TAIL<<

@@ -1,0 +1,34 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: Linux/mutex_robust2.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=187019)
+  Write of size 4 at 0x563e0a49b750 by main thread (mutexes: write M0):
+    #0 main /home/llvm/compiler-rt/test/tsan/Linux/mutex_robust2.cpp:29:5 (mutex_robust2.cpp.tmp+0xeeb03)
+
+  Previous write of size 4 at 0x563e0a49b750 by thread T1 (mutexes: write M0):
+    #0 thr(void*) /home/llvm/compiler-rt/test/tsan/Linux/mutex_robust2.cpp:13:5 (mutex_robust2.cpp.tmp+0xeea72)
+
+  As if synchronized via sleep:
+    #0 sleep /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:379:3 (mutex_robust2.cpp.tmp+0x4ea40)
+    #1 main /home/llvm/compiler-rt/test/tsan/Linux/mutex_robust2.cpp:24:3 (mutex_robust2.cpp.tmp+0xeeae4)
+
+  Location is global 'x' of size 4 at 0x563e0a49b750 (mutex_robust2.cpp.tmp+0x1519750)
+
+  Mutex M0 (0x563e0a49b728) created at:
+    #0 pthread_mutex_init /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1341:3 (mutex_robust2.cpp.tmp+0x62a5f)
+    #1 main /home/llvm/compiler-rt/test/tsan/Linux/mutex_robust2.cpp:21:3 (mutex_robust2.cpp.tmp+0xeeac7)
+
+  Thread T1 (tid=187048, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (mutex_robust2.cpp.tmp+0x29603)
+    #1 main /home/llvm/compiler-rt/test/tsan/Linux/mutex_robust2.cpp:23:3 (mutex_robust2.cpp.tmp+0xeeada)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/Linux/mutex_robust2.cpp:29:5 in main
+==================
+DONE
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: Linux/mutex_robust2.cpp <<TAIL<<

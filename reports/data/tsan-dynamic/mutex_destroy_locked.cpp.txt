@@ -1,0 +1,29 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: mutex_destroy_locked.cpp <<HEAD<<
+
+LLVMSymbolizer: error reading file: No such file or directory
+==================
+WARNING: ThreadSanitizer: destroy of a locked mutex (pid=252749)
+    #0 pthread_mutex_destroy /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1358:3 (mutex_destroy_locked.cpp.tmp+0x49299)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_destroy_locked.cpp:9:3 (mutex_destroy_locked.cpp.tmp+0xeea3d)
+
+  and:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_destroy_locked.cpp.tmp+0x298b2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_destroy_locked.cpp:8:3 (mutex_destroy_locked.cpp.tmp+0xeea35)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7ffc6c013000 ([stack]+0x1e9e8)
+
+  Mutex M0 (0x7ffc6c0319e8) created at:
+    #0 pthread_mutex_init /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1341:3 (mutex_destroy_locked.cpp.tmp+0x62a1f)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_destroy_locked.cpp:7:3 (mutex_destroy_locked.cpp.tmp+0xeea2d)
+
+SUMMARY: ThreadSanitizer: destroy of a locked mutex /home/llvm/compiler-rt/test/tsan/mutex_destroy_locked.cpp:9:3 in main
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: mutex_destroy_locked.cpp <<TAIL<<

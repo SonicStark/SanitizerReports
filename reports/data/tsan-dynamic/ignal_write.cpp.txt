@@ -1,0 +1,10 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: signal_write.cpp <<HEAD<<
+
+HELLO FROM SIGNAL
+DONE
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: signal_write.cpp <<TAIL<<

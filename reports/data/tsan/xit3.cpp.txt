@@ -1,0 +1,9 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: atexit3.cpp <<HEAD<<
+
+54321
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: atexit3.cpp <<TAIL<<

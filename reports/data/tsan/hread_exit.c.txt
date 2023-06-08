@@ -1,0 +1,9 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: thread_exit.c <<HEAD<<
+
+PASS
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: thread_exit.c <<TAIL<<

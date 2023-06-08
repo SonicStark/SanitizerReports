@@ -1,0 +1,32 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: inlined_memcpy_race.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=250799)
+  Write of size 8 at 0x55b5dfcb1740 by thread T2:
+    #0 __tsan_memset /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:3173:3 (inlined_memcpy_race.cpp.tmp+0x6adf9)
+    #1 MemSetThread(void*) /home/llvm/compiler-rt/test/tsan/inlined_memcpy_race.cpp:15:3 (inlined_memcpy_race.cpp.tmp+0xeec58)
+
+  Previous write of size 8 at 0x55b5dfcb1740 by thread T1:
+    #0 __tsan_memcpy /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:3165:3 (inlined_memcpy_race.cpp.tmp+0x6ace9)
+    #1 MemCpyThread(void*) /home/llvm/compiler-rt/test/tsan/inlined_memcpy_race.cpp:8:3 (inlined_memcpy_race.cpp.tmp+0xeec01)
+
+  Location is global 'x' of size 16 at 0x55b5dfcb1740 (inlined_memcpy_race.cpp.tmp+0x1519740)
+
+  Thread T2 (tid=250849, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (inlined_memcpy_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/inlined_memcpy_race.cpp:24:3 (inlined_memcpy_race.cpp.tmp+0xeecda)
+
+  Thread T1 (tid=250841, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (inlined_memcpy_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/inlined_memcpy_race.cpp:23:3 (inlined_memcpy_race.cpp.tmp+0xeecc1)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/inlined_memcpy_race.cpp:15:3 in MemSetThread(void*)
+==================
+PASS
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: inlined_memcpy_race.cpp <<TAIL<<

@@ -1,0 +1,9 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: vptr_benign_race.cpp <<HEAD<<
+
+PASS
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: vptr_benign_race.cpp <<TAIL<<

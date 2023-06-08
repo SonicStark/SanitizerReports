@@ -1,0 +1,48 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: atexit5.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=187314)
+  Write of size 8 at 0x7b0400000000 by main thread:
+    #0 operator delete(void*) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:126:3 (atexit5.cpp.tmp+0xec6a2)
+    #1 std::default_delete<long>::operator()(long*) const /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/unique_ptr.h:81:2 (atexit5.cpp.tmp+0xef0fa)
+    #2 std::unique_ptr<long, std::default_delete<long>>::~unique_ptr() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/unique_ptr.h:292:4 (atexit5.cpp.tmp+0xeee47)
+    #3 cxa_at_exit_callback_installed_at(void*) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:432:31 (atexit5.cpp.tmp+0x25d43)
+    #4 __cxx_global_var_init /home/llvm/compiler-rt/test/tsan/atexit5.cpp (atexit5.cpp.tmp+0x203a1)
+
+  Previous write of size 8 at 0x7b0400000000 by thread T1:
+    #0 thread(void*) /home/llvm/compiler-rt/test/tsan/atexit5.cpp:8:11 (atexit5.cpp.tmp+0xeecc1)
+
+  Thread T1 (tid=187343, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (atexit5.cpp.tmp+0x296a3)
+    #1 main /home/llvm/compiler-rt/test/tsan/atexit5.cpp:16:3 (atexit5.cpp.tmp+0xeed4b)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:126:3 in operator delete(void*)
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=187314)
+  Write of size 8 at 0x561d99c6a730 by main thread:
+    #0 std::unique_ptr<long, std::default_delete<long>>::~unique_ptr() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/unique_ptr.h:293:8 (atexit5.cpp.tmp+0xeee4f)
+    #1 cxa_at_exit_callback_installed_at(void*) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:432:31 (atexit5.cpp.tmp+0x25d43)
+    #2 __cxx_global_var_init /home/llvm/compiler-rt/test/tsan/atexit5.cpp (atexit5.cpp.tmp+0x203a1)
+
+  Previous read of size 8 at 0x561d99c6a730 by thread T1:
+    #0 std::__uniq_ptr_impl<long, std::default_delete<long>>::_M_ptr() const /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/unique_ptr.h:154:42 (atexit5.cpp.tmp+0xef230)
+    #1 std::unique_ptr<long, std::default_delete<long>>::get() const /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/unique_ptr.h:361:21 (atexit5.cpp.tmp+0xef1f5)
+    #2 std::unique_ptr<long, std::default_delete<long>>::operator*() const /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/unique_ptr.h:347:10 (atexit5.cpp.tmp+0xeee85)
+    #3 thread(void*) /home/llvm/compiler-rt/test/tsan/atexit5.cpp:8:3 (atexit5.cpp.tmp+0xeecb6)
+
+  Location is global 'global' of size 8 at 0x561d99c6a730 (atexit5.cpp.tmp+0x151a730)
+
+  Thread T1 (tid=187343, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (atexit5.cpp.tmp+0x296a3)
+    #1 main /home/llvm/compiler-rt/test/tsan/atexit5.cpp:16:3 (atexit5.cpp.tmp+0xeed4b)
+
+SUMMARY: ThreadSanitizer: data race /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/unique_ptr.h:293:8 in std::unique_ptr<long, std::default_delete<long>>::~unique_ptr()
+==================
+ThreadSanitizer: reported 2 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: atexit5.cpp <<TAIL<<

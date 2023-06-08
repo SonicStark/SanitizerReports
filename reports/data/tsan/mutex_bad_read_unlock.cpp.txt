@@ -1,0 +1,25 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: mutex_bad_read_unlock.cpp <<HEAD<<
+
+LLVMSymbolizer: error reading file: No such file or directory
+==================
+WARNING: ThreadSanitizer: read unlock of a write locked mutex (pid=214215)
+    #0 AnnotateRWLockReleased /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interface_ann.cpp:199:3 (mutex_bad_read_unlock.cpp.tmp+0x7c104)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_bad_read_unlock.cpp:7:3 (mutex_bad_read_unlock.cpp.tmp+0xeec34)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7ffe148d7000 ([stack]+0x1fddc)
+
+  Mutex M0 (0x7ffe148f6ddc) created at:
+    #0 AnnotateRWLockAcquired /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interface_ann.cpp:190:3 (mutex_bad_read_unlock.cpp.tmp+0x7c018)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_bad_read_unlock.cpp:6:3 (mutex_bad_read_unlock.cpp.tmp+0xeec1c)
+
+SUMMARY: ThreadSanitizer: read unlock of a write locked mutex /home/llvm/compiler-rt/test/tsan/mutex_bad_read_unlock.cpp:7:3 in main
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: mutex_bad_read_unlock.cpp <<TAIL<<

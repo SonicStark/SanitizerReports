@@ -1,0 +1,9 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: thread_leak.c <<HEAD<<
+
+PASS
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: thread_leak.c <<TAIL<<

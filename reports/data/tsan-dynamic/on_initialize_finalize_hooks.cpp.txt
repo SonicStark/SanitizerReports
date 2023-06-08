@@ -1,0 +1,11 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: on_initialize_finalize_hooks.cpp <<HEAD<<
+
+__tsan_on_initialize()
+main()
+__tsan_on_finalize()
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: on_initialize_finalize_hooks.cpp <<TAIL<<

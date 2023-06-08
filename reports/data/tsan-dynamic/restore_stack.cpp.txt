@@ -1,0 +1,27 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: restore_stack.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=254780)
+  Write of size 8 at 0x5579cad75740 by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/restore_stack.cpp:34:12 (restore_stack.cpp.tmp+0xeed5f)
+
+  Previous write of size 8 at 0x5579cad75740 by thread T51:
+    #0 foo() /home/llvm/compiler-rt/test/tsan/restore_stack.cpp:11:12 (restore_stack.cpp.tmp+0xeec0f)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/restore_stack.cpp:16:3 (restore_stack.cpp.tmp+0xeec5b)
+
+  Location is global 'data' of size 524288 at 0x5579cad75740 (restore_stack.cpp.tmp+0x1519740)
+
+  Thread T51 (tid=255317, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (restore_stack.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/restore_stack.cpp:31:3 (restore_stack.cpp.tmp+0xeed2b)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/restore_stack.cpp:34:12 in main
+==================
+DONE
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: restore_stack.cpp <<TAIL<<

@@ -1,0 +1,25 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: tls_race.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=261073)
+  Write of size 4 at 0x7f6cc70ae740 by thread T1:
+    #0 Thread(void*) /home/llvm/compiler-rt/test/tsan/tls_race.cpp:8:12 (tls_race.cpp.tmp+0xeec01)
+
+  Previous write of size 4 at 0x7f6cc70ae740 by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/tls_race.cpp:17:7 (tls_race.cpp.tmp+0xeec7d)
+
+  Location is TLS of main thread.
+
+  Thread T1 (tid=261095, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (tls_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/tls_race.cpp:16:3 (tls_race.cpp.tmp+0xeec75)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/tls_race.cpp:8:12 in Thread(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: tls_race.cpp <<TAIL<<

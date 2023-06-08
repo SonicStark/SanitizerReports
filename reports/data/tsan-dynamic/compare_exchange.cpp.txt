@@ -1,0 +1,174 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: compare_exchange.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=248118)
+  Write of size 4 at 0x7b0400000000 by thread T2:
+    #0 void f2<0>(int, std::memory_order, std::memory_order) /home/llvm/compiler-rt/test/tsan/compare_exchange.cpp:28:3 (compare_exchange.cpp.tmp+0xf05e1)
+    #1 __invoke_impl<void, void (*)(int, std::memory_order, std::memory_order), unsigned int, std::memory_order, std::memory_order> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:60:14 (compare_exchange.cpp.tmp+0xf0c1a)
+    #2 __invoke<void (*)(int, std::memory_order, std::memory_order), unsigned int, std::memory_order, std::memory_order> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:95:14 (compare_exchange.cpp.tmp+0xf0c1a)
+    #3 _M_invoke<0UL, 1UL, 2UL, 3UL> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:244:13 (compare_exchange.cpp.tmp+0xf0c1a)
+    #4 operator() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:251:11 (compare_exchange.cpp.tmp+0xf0c1a)
+    #5 std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (*)(int, std::memory_order, std::memory_order), unsigned int, std::memory_order, std::memory_order>>>::_M_run() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:195:13 (compare_exchange.cpp.tmp+0xf0c1a)
+    #6 <null> <null> (libstdc++.so.6+0xd6de3) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+  Previous write of size 8 at 0x7b0400000000 by thread T1:
+    #0 operator new(unsigned long) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:64:3 (compare_exchange.cpp.tmp+0xee089)
+    #1 f1(int) /home/llvm/compiler-rt/test/tsan/compare_exchange.cpp:16:12 (compare_exchange.cpp.tmp+0xefa89)
+    #2 __invoke_impl<void, void (*)(int), unsigned int> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:60:14 (compare_exchange.cpp.tmp+0xf08c0)
+    #3 __invoke<void (*)(int), unsigned int> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:95:14 (compare_exchange.cpp.tmp+0xf08c0)
+    #4 _M_invoke<0UL, 1UL> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:244:13 (compare_exchange.cpp.tmp+0xf08c0)
+    #5 operator() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:251:11 (compare_exchange.cpp.tmp+0xf08c0)
+    #6 std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (*)(int), unsigned int>>>::_M_run() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:195:13 (compare_exchange.cpp.tmp+0xf08c0)
+    #7 <null> <null> (libstdc++.so.6+0xd6de3) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+  Location is heap block of size 4 at 0x7b0400000000 allocated by thread T1:
+    #0 operator new(unsigned long) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:64:3 (compare_exchange.cpp.tmp+0xee089)
+    #1 f1(int) /home/llvm/compiler-rt/test/tsan/compare_exchange.cpp:16:12 (compare_exchange.cpp.tmp+0xefa89)
+    #2 __invoke_impl<void, void (*)(int), unsigned int> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:60:14 (compare_exchange.cpp.tmp+0xf08c0)
+    #3 __invoke<void (*)(int), unsigned int> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:95:14 (compare_exchange.cpp.tmp+0xf08c0)
+    #4 _M_invoke<0UL, 1UL> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:244:13 (compare_exchange.cpp.tmp+0xf08c0)
+    #5 operator() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:251:11 (compare_exchange.cpp.tmp+0xf08c0)
+    #6 std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (*)(int), unsigned int>>>::_M_run() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:195:13 (compare_exchange.cpp.tmp+0xf08c0)
+    #7 <null> <null> (libstdc++.so.6+0xd6de3) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+  Thread T2 (tid=248155, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (compare_exchange.cpp.tmp+0x2a623)
+    #1 std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State>>, void (*)()) <null> (libstdc++.so.6+0xd70a8) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+  Thread T1 (tid=248151, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (compare_exchange.cpp.tmp+0x2a623)
+    #1 std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State>>, void (*)()) <null> (libstdc++.so.6+0xd70a8) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/compare_exchange.cpp:28:3 in void f2<0>(int, std::memory_order, std::memory_order)
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=248118)
+  Write of size 4 at 0x7b0400000040 by thread T10:
+    #0 void f2<1>(int, std::memory_order, std::memory_order) /home/llvm/compiler-rt/test/tsan/compare_exchange.cpp:28:3 (compare_exchange.cpp.tmp+0xf06a1)
+    #1 __invoke_impl<void, void (*)(int, std::memory_order, std::memory_order), unsigned int, std::memory_order, std::memory_order> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:60:14 (compare_exchange.cpp.tmp+0xf0c1a)
+    #2 __invoke<void (*)(int, std::memory_order, std::memory_order), unsigned int, std::memory_order, std::memory_order> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:95:14 (compare_exchange.cpp.tmp+0xf0c1a)
+    #3 _M_invoke<0UL, 1UL, 2UL, 3UL> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:244:13 (compare_exchange.cpp.tmp+0xf0c1a)
+    #4 operator() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:251:11 (compare_exchange.cpp.tmp+0xf0c1a)
+    #5 std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (*)(int, std::memory_order, std::memory_order), unsigned int, std::memory_order, std::memory_order>>>::_M_run() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:195:13 (compare_exchange.cpp.tmp+0xf0c1a)
+    #6 <null> <null> (libstdc++.so.6+0xd6de3) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+  Previous write of size 8 at 0x7b0400000040 by thread T9:
+    #0 operator new(unsigned long) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:64:3 (compare_exchange.cpp.tmp+0xee089)
+    #1 f1(int) /home/llvm/compiler-rt/test/tsan/compare_exchange.cpp:16:12 (compare_exchange.cpp.tmp+0xefa89)
+    #2 __invoke_impl<void, void (*)(int), unsigned int> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:60:14 (compare_exchange.cpp.tmp+0xf08c0)
+    #3 __invoke<void (*)(int), unsigned int> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:95:14 (compare_exchange.cpp.tmp+0xf08c0)
+    #4 _M_invoke<0UL, 1UL> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:244:13 (compare_exchange.cpp.tmp+0xf08c0)
+    #5 operator() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:251:11 (compare_exchange.cpp.tmp+0xf08c0)
+    #6 std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (*)(int), unsigned int>>>::_M_run() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:195:13 (compare_exchange.cpp.tmp+0xf08c0)
+    #7 <null> <null> (libstdc++.so.6+0xd6de3) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+  Location is heap block of size 4 at 0x7b0400000040 allocated by thread T9:
+    #0 operator new(unsigned long) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:64:3 (compare_exchange.cpp.tmp+0xee089)
+    #1 f1(int) /home/llvm/compiler-rt/test/tsan/compare_exchange.cpp:16:12 (compare_exchange.cpp.tmp+0xefa89)
+    #2 __invoke_impl<void, void (*)(int), unsigned int> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:60:14 (compare_exchange.cpp.tmp+0xf08c0)
+    #3 __invoke<void (*)(int), unsigned int> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:95:14 (compare_exchange.cpp.tmp+0xf08c0)
+    #4 _M_invoke<0UL, 1UL> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:244:13 (compare_exchange.cpp.tmp+0xf08c0)
+    #5 operator() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:251:11 (compare_exchange.cpp.tmp+0xf08c0)
+    #6 std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (*)(int), unsigned int>>>::_M_run() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:195:13 (compare_exchange.cpp.tmp+0xf08c0)
+    #7 <null> <null> (libstdc++.so.6+0xd6de3) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+  Thread T10 (tid=248536, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (compare_exchange.cpp.tmp+0x2a623)
+    #1 std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State>>, void (*)()) <null> (libstdc++.so.6+0xd70a8) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+  Thread T9 (tid=248534, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (compare_exchange.cpp.tmp+0x2a623)
+    #1 std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State>>, void (*)()) <null> (libstdc++.so.6+0xd70a8) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/compare_exchange.cpp:28:3 in void f2<1>(int, std::memory_order, std::memory_order)
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=248118)
+  Write of size 4 at 0x7b0400000080 by thread T18:
+    #0 void f2<2>(int, std::memory_order, std::memory_order) /home/llvm/compiler-rt/test/tsan/compare_exchange.cpp:28:3 (compare_exchange.cpp.tmp+0xf0761)
+    #1 __invoke_impl<void, void (*)(int, std::memory_order, std::memory_order), unsigned int, std::memory_order, std::memory_order> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:60:14 (compare_exchange.cpp.tmp+0xf0c1a)
+    #2 __invoke<void (*)(int, std::memory_order, std::memory_order), unsigned int, std::memory_order, std::memory_order> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:95:14 (compare_exchange.cpp.tmp+0xf0c1a)
+    #3 _M_invoke<0UL, 1UL, 2UL, 3UL> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:244:13 (compare_exchange.cpp.tmp+0xf0c1a)
+    #4 operator() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:251:11 (compare_exchange.cpp.tmp+0xf0c1a)
+    #5 std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (*)(int, std::memory_order, std::memory_order), unsigned int, std::memory_order, std::memory_order>>>::_M_run() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:195:13 (compare_exchange.cpp.tmp+0xf0c1a)
+    #6 <null> <null> (libstdc++.so.6+0xd6de3) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+  Previous write of size 8 at 0x7b0400000080 by thread T17:
+    #0 operator new(unsigned long) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:64:3 (compare_exchange.cpp.tmp+0xee089)
+    #1 f1(int) /home/llvm/compiler-rt/test/tsan/compare_exchange.cpp:16:12 (compare_exchange.cpp.tmp+0xefa89)
+    #2 __invoke_impl<void, void (*)(int), unsigned int> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:60:14 (compare_exchange.cpp.tmp+0xf08c0)
+    #3 __invoke<void (*)(int), unsigned int> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:95:14 (compare_exchange.cpp.tmp+0xf08c0)
+    #4 _M_invoke<0UL, 1UL> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:244:13 (compare_exchange.cpp.tmp+0xf08c0)
+    #5 operator() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:251:11 (compare_exchange.cpp.tmp+0xf08c0)
+    #6 std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (*)(int), unsigned int>>>::_M_run() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:195:13 (compare_exchange.cpp.tmp+0xf08c0)
+    #7 <null> <null> (libstdc++.so.6+0xd6de3) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+  Location is heap block of size 4 at 0x7b0400000080 allocated by thread T17:
+    #0 operator new(unsigned long) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:64:3 (compare_exchange.cpp.tmp+0xee089)
+    #1 f1(int) /home/llvm/compiler-rt/test/tsan/compare_exchange.cpp:16:12 (compare_exchange.cpp.tmp+0xefa89)
+    #2 __invoke_impl<void, void (*)(int), unsigned int> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:60:14 (compare_exchange.cpp.tmp+0xf08c0)
+    #3 __invoke<void (*)(int), unsigned int> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:95:14 (compare_exchange.cpp.tmp+0xf08c0)
+    #4 _M_invoke<0UL, 1UL> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:244:13 (compare_exchange.cpp.tmp+0xf08c0)
+    #5 operator() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:251:11 (compare_exchange.cpp.tmp+0xf08c0)
+    #6 std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (*)(int), unsigned int>>>::_M_run() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:195:13 (compare_exchange.cpp.tmp+0xf08c0)
+    #7 <null> <null> (libstdc++.so.6+0xd6de3) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+  Thread T18 (tid=248586, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (compare_exchange.cpp.tmp+0x2a623)
+    #1 std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State>>, void (*)()) <null> (libstdc++.so.6+0xd70a8) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+  Thread T17 (tid=248584, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (compare_exchange.cpp.tmp+0x2a623)
+    #1 std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State>>, void (*)()) <null> (libstdc++.so.6+0xd70a8) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/compare_exchange.cpp:28:3 in void f2<2>(int, std::memory_order, std::memory_order)
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=248118)
+  Write of size 4 at 0x7b04000000c0 by thread T26:
+    #0 void f2<3>(int, std::memory_order, std::memory_order) /home/llvm/compiler-rt/test/tsan/compare_exchange.cpp:28:3 (compare_exchange.cpp.tmp+0xf0821)
+    #1 __invoke_impl<void, void (*)(int, std::memory_order, std::memory_order), unsigned int, std::memory_order, std::memory_order> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:60:14 (compare_exchange.cpp.tmp+0xf0c1a)
+    #2 __invoke<void (*)(int, std::memory_order, std::memory_order), unsigned int, std::memory_order, std::memory_order> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:95:14 (compare_exchange.cpp.tmp+0xf0c1a)
+    #3 _M_invoke<0UL, 1UL, 2UL, 3UL> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:244:13 (compare_exchange.cpp.tmp+0xf0c1a)
+    #4 operator() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:251:11 (compare_exchange.cpp.tmp+0xf0c1a)
+    #5 std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (*)(int, std::memory_order, std::memory_order), unsigned int, std::memory_order, std::memory_order>>>::_M_run() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:195:13 (compare_exchange.cpp.tmp+0xf0c1a)
+    #6 <null> <null> (libstdc++.so.6+0xd6de3) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+  Previous write of size 8 at 0x7b04000000c0 by thread T25:
+    #0 operator new(unsigned long) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:64:3 (compare_exchange.cpp.tmp+0xee089)
+    #1 f1(int) /home/llvm/compiler-rt/test/tsan/compare_exchange.cpp:16:12 (compare_exchange.cpp.tmp+0xefa89)
+    #2 __invoke_impl<void, void (*)(int), unsigned int> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:60:14 (compare_exchange.cpp.tmp+0xf08c0)
+    #3 __invoke<void (*)(int), unsigned int> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:95:14 (compare_exchange.cpp.tmp+0xf08c0)
+    #4 _M_invoke<0UL, 1UL> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:244:13 (compare_exchange.cpp.tmp+0xf08c0)
+    #5 operator() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:251:11 (compare_exchange.cpp.tmp+0xf08c0)
+    #6 std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (*)(int), unsigned int>>>::_M_run() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:195:13 (compare_exchange.cpp.tmp+0xf08c0)
+    #7 <null> <null> (libstdc++.so.6+0xd6de3) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+  Location is heap block of size 4 at 0x7b04000000c0 allocated by thread T25:
+    #0 operator new(unsigned long) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:64:3 (compare_exchange.cpp.tmp+0xee089)
+    #1 f1(int) /home/llvm/compiler-rt/test/tsan/compare_exchange.cpp:16:12 (compare_exchange.cpp.tmp+0xefa89)
+    #2 __invoke_impl<void, void (*)(int), unsigned int> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:60:14 (compare_exchange.cpp.tmp+0xf08c0)
+    #3 __invoke<void (*)(int), unsigned int> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:95:14 (compare_exchange.cpp.tmp+0xf08c0)
+    #4 _M_invoke<0UL, 1UL> /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:244:13 (compare_exchange.cpp.tmp+0xf08c0)
+    #5 operator() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:251:11 (compare_exchange.cpp.tmp+0xf08c0)
+    #6 std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (*)(int), unsigned int>>>::_M_run() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:195:13 (compare_exchange.cpp.tmp+0xf08c0)
+    #7 <null> <null> (libstdc++.so.6+0xd6de3) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+  Thread T26 (tid=248649, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (compare_exchange.cpp.tmp+0x2a623)
+    #1 std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State>>, void (*)()) <null> (libstdc++.so.6+0xd70a8) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+  Thread T25 (tid=248647, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (compare_exchange.cpp.tmp+0x2a623)
+    #1 std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State>>, void (*)()) <null> (libstdc++.so.6+0xd70a8) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/compare_exchange.cpp:28:3 in void f2<3>(int, std::memory_order, std::memory_order)
+==================
+DONE
+ThreadSanitizer: reported 4 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: compare_exchange.cpp <<TAIL<<

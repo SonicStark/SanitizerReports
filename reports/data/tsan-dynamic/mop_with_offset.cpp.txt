@@ -1,0 +1,33 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: mop_with_offset.cpp <<HEAD<<
+
+ptr1=0x7b0400000000 
+ptr2=0x7b0400000002 
+==================
+WARNING: ThreadSanitizer: data race (pid=252521)
+  Write of size 1 at 0x7b0400000002 by thread T2:
+    #0 Thread2(void*) /home/llvm/compiler-rt/test/tsan/mop_with_offset.cpp:14:8 (mop_with_offset.cpp.tmp+0xeec52)
+
+  Previous write of size 4 at 0x7b0400000000 by thread T1:
+    #0 Thread1(void*) /home/llvm/compiler-rt/test/tsan/mop_with_offset.cpp:6:8 (mop_with_offset.cpp.tmp+0xeebf5)
+
+  Location is heap block of size 4 at 0x7b0400000000 allocated by main thread:
+    #0 operator new(unsigned long) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:64:3 (mop_with_offset.cpp.tmp+0xed049)
+    #1 main /home/llvm/compiler-rt/test/tsan/mop_with_offset.cpp:20:15 (mop_with_offset.cpp.tmp+0xeec9d)
+
+  Thread T2 (tid=252589, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (mop_with_offset.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/mop_with_offset.cpp:25:3 (mop_with_offset.cpp.tmp+0xeed0e)
+
+  Thread T1 (tid=252588, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (mop_with_offset.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/mop_with_offset.cpp:24:3 (mop_with_offset.cpp.tmp+0xeecf5)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/mop_with_offset.cpp:14:8 in Thread2(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: mop_with_offset.cpp <<TAIL<<

@@ -1,0 +1,30 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: static_init3.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=229847)
+  Read of size 4 at 0x55dada642728 by thread T2:
+    #0 Thread2(void*) /home/llvm/compiler-rt/test/tsan/static_init3.cpp:34:10 (static_init3.cpp.tmp+0xeeb95)
+
+  Previous write of size 4 at 0x55dada642728 by thread T1:
+    #0 CreateCache /home/llvm/compiler-rt/test/tsan/static_init3.cpp:14:13 (static_init3.cpp.tmp+0xeeaff)
+    #1 Thread1(void*) /home/llvm/compiler-rt/test/tsan/static_init3.cpp:21:21 (static_init3.cpp.tmp+0xeeaff)
+
+  Location is global 'g_cache' of size 4 at 0x55dada642728 (static_init3.cpp.tmp+0x1519728)
+
+  Thread T2 (tid=229857, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (static_init3.cpp.tmp+0x295f3)
+    #1 main /home/llvm/compiler-rt/test/tsan/static_init3.cpp:42:3 (static_init3.cpp.tmp+0xeebfe)
+
+  Thread T1 (tid=229854, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (static_init3.cpp.tmp+0x295f3)
+    #1 main /home/llvm/compiler-rt/test/tsan/static_init3.cpp:41:3 (static_init3.cpp.tmp+0xeebe6)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/static_init3.cpp:34:10 in Thread2(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: static_init3.cpp <<TAIL<<

@@ -1,0 +1,33 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: print_full_thread_history.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=215178)
+  Write of size 4 at 0x55da65a6f72c by thread T2:
+    #0 Thread2(void*) /home/llvm/compiler-rt/test/tsan/print_full_thread_history.cpp:9:9 (print_full_thread_history.cpp.tmp+0xeec0a)
+
+  Previous write of size 4 at 0x55da65a6f72c by thread T3:
+    #0 Thread3(void*) /home/llvm/compiler-rt/test/tsan/print_full_thread_history.cpp:14:9 (print_full_thread_history.cpp.tmp+0xeec4e)
+
+  Location is global 'Global' of size 4 at 0x55da65a6f72c (print_full_thread_history.cpp.tmp+0x151972c)
+
+  Thread T2 (tid=215191, running) created by thread T1 at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (print_full_thread_history.cpp.tmp+0x295e3)
+    #1 Thread1(void*) /home/llvm/compiler-rt/test/tsan/print_full_thread_history.cpp:21:3 (print_full_thread_history.cpp.tmp+0xeeca6)
+
+  Thread T3 (tid=215192, running) created by thread T1 at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (print_full_thread_history.cpp.tmp+0x295e3)
+    #1 Thread1(void*) /home/llvm/compiler-rt/test/tsan/print_full_thread_history.cpp:22:3 (print_full_thread_history.cpp.tmp+0xeecbe)
+
+  Thread T1 (tid=215190, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (print_full_thread_history.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/print_full_thread_history.cpp:31:3 (print_full_thread_history.cpp.tmp+0xeed47)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/print_full_thread_history.cpp:9:9 in Thread2(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: print_full_thread_history.cpp <<TAIL<<

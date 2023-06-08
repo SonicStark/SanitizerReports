@@ -1,0 +1,25 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: mop1.c <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=252273)
+  Read of size 8 at 0x55654eb092e8 by thread T1:
+    #0 Thread1 /home/llvm/compiler-rt/test/tsan/mop1.c:17:7 (mop1.c.tmp+0xec40d)
+
+  Previous write of size 8 at 0x55654eb092e8 by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/mop1.c:31:5 (mop1.c.tmp+0xec4d6)
+
+  Location is global 'X' of size 8 at 0x55654eb092e8 (mop1.c.tmp+0x14962e8)
+
+  Thread T1 (tid=252308, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (mop1.c.tmp+0x295d3)
+    #1 main /home/llvm/compiler-rt/test/tsan/mop1.c:30:3 (mop1.c.tmp+0xec4ca)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/mop1.c:17:7 in Thread1
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: mop1.c <<TAIL<<

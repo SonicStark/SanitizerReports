@@ -1,0 +1,9 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: Linux/user_fopen.cpp <<HEAD<<
+
+user fopen
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: Linux/user_fopen.cpp <<TAIL<<

@@ -1,0 +1,14 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: cxa_guard_acquire.cpp <<HEAD<<
+
+Enter __cxa_guard_acquire
+Exit __cxa_guard_acquire
+Enter main
+Enter __cxa_guard_acquire
+Exit __cxa_guard_acquire
+Exit main
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: cxa_guard_acquire.cpp <<TAIL<<

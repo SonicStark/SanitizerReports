@@ -1,0 +1,38 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: debugging.cpp <<HEAD<<
+
+&my_global = 0x556a5deec730
+==================
+WARNING: ThreadSanitizer: data race (pid=188644)
+  Write of size 8 at 0x556a5deec730 by thread T1:
+    #0 Thread(void*) /home/llvm/compiler-rt/test/tsan/debugging.cpp:33:13 (debugging.cpp.tmp+0xeec02)
+
+  Previous write of size 8 at 0x556a5deec730 by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/debugging.cpp:43:13 (debugging.cpp.tmp+0xeec93)
+
+  Location is global 'my_global' of size 8 at 0x556a5deec730 (debugging.cpp.tmp+0x151a730)
+
+  Thread T1 (tid=188696, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (debugging.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/debugging.cpp:42:3 (debugging.cpp.tmp+0xeec8b)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/debugging.cpp:33:13 in Thread(void*)
+==================
+__tsan_on_report(0x7f40a8a029f0)
+__tsan_get_current_report() = 0x7f40a8a029f0
+report type = 'data-race', count = 0
+mop_count = 2
+tid = 1, addr = 0x556a5deec730, size = 8, write = 1, atomic = 0
+trace[0] = 0x556a5cac0c03, trace[1] = (nil)
+tid = 0, addr = 0x556a5deec730, size = 8, write = 1, atomic = 0
+trace[0] = 0x556a5cac0c94, trace[1] = (nil)
+thread_count = 2
+tid = 1
+tid = 0
+Done.
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: debugging.cpp <<TAIL<<

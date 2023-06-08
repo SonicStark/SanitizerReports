@@ -1,0 +1,13 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: thread_end_with_ignore2.cpp <<HEAD<<
+
+ThreadSanitizer: main thread finished with ignores enabled
+  One of the following ignores was not ended (in order of probability)
+  Ignore was enabled at:
+    #0 AnnotateIgnoreWritesBegin /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interface_ann.cpp:280:3 (thread_end_with_ignore2.cpp.tmp+0x7c5ab)
+    #1 main /home/llvm/compiler-rt/test/tsan/thread_end_with_ignore2.cpp:8:3 (thread_end_with_ignore2.cpp.tmp+0xeebf8)
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: thread_end_with_ignore2.cpp <<TAIL<<

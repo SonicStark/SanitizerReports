@@ -1,0 +1,31 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: free_race.c <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: heap-use-after-free (pid=249715)
+  Write of size 4 at 0x7b1c00000000 by main thread (mutexes: write M0):
+    #0 Thread2 /home/llvm/compiler-rt/test/tsan/free_race.c:21:10 (free_race.c.tmp+0xec473)
+    #1 main /home/llvm/compiler-rt/test/tsan/free_race.c:32:3 (free_race.c.tmp+0xec50a)
+
+  Previous write of size 8 at 0x7b1c00000000 by thread T1 (mutexes: write M0):
+    #0 free /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:751:3 (free_race.c.tmp+0x29437)
+    #1 Thread1 /home/llvm/compiler-rt/test/tsan/free_race.c:12:3 (free_race.c.tmp+0xec411)
+
+  Mutex M0 (0x5603d62f42e0) created at:
+    #0 pthread_mutex_init /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1341:3 (free_race.c.tmp+0x62a2f)
+    #1 main /home/llvm/compiler-rt/test/tsan/free_race.c:29:3 (free_race.c.tmp+0xec4ef)
+
+  Thread T1 (tid=249819, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (free_race.c.tmp+0x295d3)
+    #1 main /home/llvm/compiler-rt/test/tsan/free_race.c:31:3 (free_race.c.tmp+0xec505)
+
+SUMMARY: ThreadSanitizer: heap-use-after-free /home/llvm/compiler-rt/test/tsan/free_race.c:21:10 in Thread2
+==================
+ThreadSanitizer: reported 1 warnings
+ThreadSanitizer: Matched 1 suppressions (pid=249956):
+1 race:^Thread2$
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: free_race.c <<TAIL<<

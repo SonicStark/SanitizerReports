@@ -1,0 +1,29 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: thread_name2.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=260893)
+  Write of size 8 at 0x55eaee8ca730 by thread T1:
+    #0 Thread1(void*) /home/llvm/compiler-rt/test/tsan/thread_name2.cpp:20:9 (thread_name2.cpp.tmp+0xeec0c)
+
+  Previous write of size 8 at 0x55eaee8ca730 by thread T2:
+    #0 Thread2(void*) /home/llvm/compiler-rt/test/tsan/thread_name2.cpp:26:9 (thread_name2.cpp.tmp+0xeec64)
+
+  Location is global 'Global' of size 8 at 0x55eaee8ca730 (thread_name2.cpp.tmp+0x1519730)
+
+  Thread T1 'foobar1' (tid=260968, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (thread_name2.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/thread_name2.cpp:34:3 (thread_name2.cpp.tmp+0xeecd7)
+
+  Thread T2 'foobar2' (tid=260972, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (thread_name2.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/thread_name2.cpp:35:3 (thread_name2.cpp.tmp+0xeecef)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/thread_name2.cpp:20:9 in Thread1(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: thread_name2.cpp <<TAIL<<

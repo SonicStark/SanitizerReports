@@ -1,0 +1,85 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: custom_mutex5.cpp <<HEAD<<
+
+LLVMSymbolizer: error reading file: No such file or directory
+==================
+WARNING: ThreadSanitizer: destroy of a locked mutex (pid=188572)
+    #0 __tsan_mutex_destroy /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interface_ann.cpp:358:3 (custom_mutex5.cpp.tmp+0x7cc65)
+    #1 ~Mutex /home/llvm/compiler-rt/test/tsan/custom_mutex.h:18:5 (custom_mutex5.cpp.tmp+0xeed48)
+    #2 main /home/llvm/compiler-rt/test/tsan/custom_mutex5.cpp:14:8 (custom_mutex5.cpp.tmp+0xeed48)
+
+  and:
+    #0 __tsan_mutex_post_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interface_ann.cpp:377:3 (custom_mutex5.cpp.tmp+0x7ce1e)
+    #1 Lock /home/llvm/compiler-rt/test/tsan/custom_mutex.h:24:5 (custom_mutex5.cpp.tmp+0xeed3a)
+    #2 main /home/llvm/compiler-rt/test/tsan/custom_mutex5.cpp:13:8 (custom_mutex5.cpp.tmp+0xeed3a)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7ffc37582000 ([stack]+0x204e0)
+
+  Mutex M0 (0x7ffc375a24e0) created at:
+    #0 __tsan_mutex_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interface_ann.cpp:352:3 (custom_mutex5.cpp.tmp+0x7cba3)
+    #1 Mutex /home/llvm/compiler-rt/test/tsan/custom_mutex.h:14:5 (custom_mutex5.cpp.tmp+0xeecd5)
+    #2 main /home/llvm/compiler-rt/test/tsan/custom_mutex5.cpp:12:19 (custom_mutex5.cpp.tmp+0xeecd5)
+
+SUMMARY: ThreadSanitizer: destroy of a locked mutex /home/llvm/compiler-rt/test/tsan/custom_mutex.h:18:5 in ~Mutex
+==================
+==================
+WARNING: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) (pid=188572)
+    #0 __tsan_mutex_pre_unlock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interface_ann.cpp:390:3 (custom_mutex5.cpp.tmp+0x7cf44)
+    #1 Unlock /home/llvm/compiler-rt/test/tsan/custom_mutex.h:36:5 (custom_mutex5.cpp.tmp+0xeed54)
+    #2 main /home/llvm/compiler-rt/test/tsan/custom_mutex5.cpp:15:8 (custom_mutex5.cpp.tmp+0xeed54)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7ffc37582000 ([stack]+0x204e0)
+
+  Mutex M0 (0x7ffc375a24e0) created at:
+    [failed to restore the stack]
+
+SUMMARY: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) /home/llvm/compiler-rt/test/tsan/custom_mutex.h:36:5 in Unlock
+==================
+==================
+WARNING: ThreadSanitizer: destroy of a locked mutex (pid=188572)
+    #0 __tsan_mutex_destroy /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interface_ann.cpp:358:3 (custom_mutex5.cpp.tmp+0x7cc65)
+    #1 ~Mutex /home/llvm/compiler-rt/test/tsan/custom_mutex.h:18:5 (custom_mutex5.cpp.tmp+0xeedff)
+    #2 main /home/llvm/compiler-rt/test/tsan/custom_mutex5.cpp:22:8 (custom_mutex5.cpp.tmp+0xeedff)
+
+  and:
+    #0 __tsan_mutex_post_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interface_ann.cpp:377:3 (custom_mutex5.cpp.tmp+0x7ce1e)
+    #1 Lock /home/llvm/compiler-rt/test/tsan/custom_mutex.h:24:5 (custom_mutex5.cpp.tmp+0xeedf3)
+    #2 main /home/llvm/compiler-rt/test/tsan/custom_mutex5.cpp:21:8 (custom_mutex5.cpp.tmp+0xeedf3)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7ffc37582000 ([stack]+0x204d0)
+
+  Mutex M0 (0x7ffc375a24d0) created at:
+    #0 __tsan_mutex_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interface_ann.cpp:352:3 (custom_mutex5.cpp.tmp+0x7cba3)
+    #1 Mutex /home/llvm/compiler-rt/test/tsan/custom_mutex.h:14:5 (custom_mutex5.cpp.tmp+0xeed9c)
+    #2 main /home/llvm/compiler-rt/test/tsan/custom_mutex5.cpp:20:7 (custom_mutex5.cpp.tmp+0xeed9c)
+
+SUMMARY: ThreadSanitizer: destroy of a locked mutex /home/llvm/compiler-rt/test/tsan/custom_mutex.h:18:5 in ~Mutex
+==================
+==================
+WARNING: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) (pid=188572)
+    #0 __tsan_mutex_pre_unlock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interface_ann.cpp:390:3 (custom_mutex5.cpp.tmp+0x7cf44)
+    #1 Unlock /home/llvm/compiler-rt/test/tsan/custom_mutex.h:36:5 (custom_mutex5.cpp.tmp+0xeee09)
+    #2 main /home/llvm/compiler-rt/test/tsan/custom_mutex5.cpp:23:8 (custom_mutex5.cpp.tmp+0xeee09)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7ffc37582000 ([stack]+0x204d0)
+
+  Mutex M0 (0x7ffc375a24d0) created at:
+    [failed to restore the stack]
+
+SUMMARY: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) /home/llvm/compiler-rt/test/tsan/custom_mutex.h:36:5 in Unlock
+==================
+DONE
+ThreadSanitizer: reported 4 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: custom_mutex5.cpp <<TAIL<<

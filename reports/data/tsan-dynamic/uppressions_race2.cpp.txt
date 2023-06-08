@@ -1,0 +1,9 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: suppressions_race2.cpp <<HEAD<<
+
+OK
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: suppressions_race2.cpp <<TAIL<<

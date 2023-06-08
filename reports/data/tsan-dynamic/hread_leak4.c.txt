@@ -1,0 +1,9 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: thread_leak4.c <<HEAD<<
+
+DONE
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: thread_leak4.c <<TAIL<<

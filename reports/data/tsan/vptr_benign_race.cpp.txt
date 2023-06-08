@@ -1,0 +1,9 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: vptr_benign_race.cpp <<HEAD<<
+
+PASS
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: vptr_benign_race.cpp <<TAIL<<

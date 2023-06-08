@@ -1,0 +1,26 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: atomic_store.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=187596)
+  Read of size 8 at 0x564cc28ac730 by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/atomic_store.cpp:35:7 (atomic_store.cpp.tmp+0xeed6c)
+
+  Previous write of size 8 at 0x564cc28ac730 by thread T1:
+    #0 Thread1(void*) /home/llvm/compiler-rt/test/tsan/atomic_store.cpp:8:7 (atomic_store.cpp.tmp+0xeec10)
+
+  Location is global 'Data' of size 8 at 0x564cc28ac730 (atomic_store.cpp.tmp+0x1519730)
+
+  Thread T1 (tid=187616, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (atomic_store.cpp.tmp+0x295f3)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_store.cpp:29:3 (atomic_store.cpp.tmp+0xeed12)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/atomic_store.cpp:35:7 in main
+==================
+DONE
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: atomic_store.cpp <<TAIL<<

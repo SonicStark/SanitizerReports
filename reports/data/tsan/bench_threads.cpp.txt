@@ -1,0 +1,13 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: bench_threads.cpp <<HEAD<<
+
+61897759 ns/iter
+DONE
+starting transient threads...
+starting persistent threads...
+starting benchmark threads...
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: bench_threads.cpp <<TAIL<<

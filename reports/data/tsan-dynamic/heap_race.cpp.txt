@@ -1,0 +1,27 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: heap_race.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=250152)
+  Write of size 4 at 0x7b0400000000 by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/heap_race.cpp:19:7 (heap_race.cpp.tmp+0xeec94)
+
+  Previous write of size 4 at 0x7b0400000000 by thread T1:
+    #0 Thread(void*) /home/llvm/compiler-rt/test/tsan/heap_race.cpp:8:15 (heap_race.cpp.tmp+0xeebfb)
+
+  Location is heap block of size 4 at 0x7b0400000000 allocated by main thread:
+    #0 operator new(unsigned long) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:64:3 (heap_race.cpp.tmp+0xed049)
+    #1 main /home/llvm/compiler-rt/test/tsan/heap_race.cpp:15:12 (heap_race.cpp.tmp+0xeec57)
+
+  Thread T1 (tid=250163, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (heap_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/heap_race.cpp:17:3 (heap_race.cpp.tmp+0xeec7c)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/heap_race.cpp:19:7 in main
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: heap_race.cpp <<TAIL<<

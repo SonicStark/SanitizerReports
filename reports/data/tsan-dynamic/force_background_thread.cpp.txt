@@ -1,0 +1,97 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: force_background_thread.cpp <<HEAD<<
+
+==249688==Installed the sigaction for signal 11
+==249688==Installed the sigaction for signal 7
+==249688==Installed the sigaction for signal 8
+***** Running under ThreadSanitizer v3 (pid 249688) *****
+Stats: SizeClassAllocator64: 0M mapped (0M rss) in 385 allocations; remains 385
+  02 (    32): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks    1920 avail:   2048 rss:      4K releases:      0 last released:      0K region: 0x7b0800000000
+  12 (   192): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     213 avail:    341 rss:      4K releases:      0 last released:      0K region: 0x7b3000000000
+  13 (   208): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     187 avail:    315 rss:      4K releases:      0 last released:      0K region: 0x7b3400000000
+  49 ( 81920): mapped:    128K allocs:       1 frees:       0 inuse:      1 num_freed_chunks       0 avail:      1 rss:      4K releases:      0 last released:      0K region: 0x7bc400000000
+Stats: LargeMmapAllocator: allocated 0 times, remains 0 (0 K) max 0 M; by size logs: 
+==253354==Installed the sigaction for signal 11
+==253354==Installed the sigaction for signal 7
+==253354==Installed the sigaction for signal 8
+***** Running under ThreadSanitizer v3 (pid 253354) *****
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=0 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==253354==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+Stats: SizeClassAllocator64: 0M mapped (0M rss) in 513 allocations; remains 513
+  02 (    32): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks    1920 avail:   2048 rss:      4K releases:      0 last released:      0K region: 0x7b0800000000
+  12 (   192): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     213 avail:    341 rss:      4K releases:      0 last released:      0K region: 0x7b3000000000
+  13 (   208): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     187 avail:    315 rss:      4K releases:      0 last released:      0K region: 0x7b3400000000
+  17 (   320): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks      76 avail:    204 rss:      4K releases:      0 last released:      0K region: 0x7b4400000000
+  49 ( 81920): mapped:    128K allocs:       1 frees:       0 inuse:      1 num_freed_chunks       0 avail:      1 rss:      4K releases:      0 last released:      0K region: 0x7bc400000000
+Stats: LargeMmapAllocator: allocated 0 times, remains 0 (0 K) max 0 M; by size logs: 
+==260227==Installed the sigaction for signal 11
+==260227==Installed the sigaction for signal 7
+==260227==Installed the sigaction for signal 8
+***** Running under ThreadSanitizer v3 (pid 260227) *****
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=0 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+==260227==ThreadSanitizer: memory flush check RSS=18 LAST=18 LIMIT=1000
+Stats: SizeClassAllocator64: 0M mapped (0M rss) in 641 allocations; remains 513
+  02 (    32): mapped:     64K allocs:     256 frees:     128 inuse:    128 num_freed_chunks    1920 avail:   2048 rss:      8K releases:      0 last released:      0K region: 0x7b0800000000
+  12 (   192): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     213 avail:    341 rss:      4K releases:      0 last released:      0K region: 0x7b3000000000
+  13 (   208): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     187 avail:    315 rss:      4K releases:      0 last released:      0K region: 0x7b3400000000
+  17 (   320): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks      76 avail:    204 rss:      4K releases:      0 last released:      0K region: 0x7b4400000000
+  49 ( 81920): mapped:    128K allocs:       1 frees:       0 inuse:      1 num_freed_chunks       0 avail:      1 rss:      4K releases:      0 last released:      0K region: 0x7bc400000000
+Stats: LargeMmapAllocator: allocated 0 times, remains 0 (0 K) max 0 M; by size logs: 
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: force_background_thread.cpp <<TAIL<<

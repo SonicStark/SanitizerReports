@@ -1,0 +1,11 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: printf-1.c <<HEAD<<
+
+0 12 1.239 34
+0 12 1.239 34
+0 12 1.239 34
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: printf-1.c <<TAIL<<

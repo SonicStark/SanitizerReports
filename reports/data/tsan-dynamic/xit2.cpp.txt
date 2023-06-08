@@ -1,0 +1,9 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: atexit2.cpp <<HEAD<<
+
+run count: 10000
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: atexit2.cpp <<TAIL<<

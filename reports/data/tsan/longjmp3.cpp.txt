@@ -1,0 +1,35 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: longjmp3.cpp <<HEAD<<
+
+LLVMSymbolizer: error reading file: No such file or directory
+==================
+WARNING: ThreadSanitizer: destroy of a locked mutex (pid=213290)
+    #0 pthread_mutex_destroy /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1358:3 (longjmp3.cpp.tmp+0x49299)
+    #1 badguy() /home/llvm/compiler-rt/test/tsan/longjmp3.cpp:24:3 (longjmp3.cpp.tmp+0xec2dd)
+    #2 mymain() /home/llvm/compiler-rt/test/tsan/longjmp3.cpp:30:5 (longjmp3.cpp.tmp+0xec317)
+    #3 main /home/llvm/compiler-rt/test/tsan/longjmp3.cpp:39:3 (longjmp3.cpp.tmp+0xec388)
+
+  and:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (longjmp3.cpp.tmp+0x298b2)
+    #1 badguy() /home/llvm/compiler-rt/test/tsan/longjmp3.cpp:23:3 (longjmp3.cpp.tmp+0xec2d5)
+    #2 mymain() /home/llvm/compiler-rt/test/tsan/longjmp3.cpp:30:5 (longjmp3.cpp.tmp+0xec317)
+    #3 main /home/llvm/compiler-rt/test/tsan/longjmp3.cpp:39:3 (longjmp3.cpp.tmp+0xec388)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7ffc9c9ab000 ([stack]+0x20638)
+
+  Mutex M0 (0x7ffc9c9cb638) created at:
+    #0 pthread_mutex_init /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1341:3 (longjmp3.cpp.tmp+0x62a1f)
+    #1 badguy() /home/llvm/compiler-rt/test/tsan/longjmp3.cpp:22:3 (longjmp3.cpp.tmp+0xec2cd)
+    #2 mymain() /home/llvm/compiler-rt/test/tsan/longjmp3.cpp:30:5 (longjmp3.cpp.tmp+0xec317)
+    #3 main /home/llvm/compiler-rt/test/tsan/longjmp3.cpp:39:3 (longjmp3.cpp.tmp+0xec388)
+
+SUMMARY: ThreadSanitizer: destroy of a locked mutex /home/llvm/compiler-rt/test/tsan/longjmp3.cpp:24:3 in badguy()
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: longjmp3.cpp <<TAIL<<

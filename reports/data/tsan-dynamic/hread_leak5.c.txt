@@ -1,0 +1,19 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: thread_leak5.c <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: thread leak (pid=260690)
+  Thread T1 (tid=260707, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (thread_leak5.c.tmp+0x295d3)
+    #1 main /home/llvm/compiler-rt/test/tsan/thread_leak5.c:14:5 (thread_leak5.c.tmp+0xec47e)
+
+  And 4 more similar thread leaks.
+
+SUMMARY: ThreadSanitizer: thread leak /home/llvm/compiler-rt/test/tsan/thread_leak5.c:14:5 in main
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: thread_leak5.c <<TAIL<<

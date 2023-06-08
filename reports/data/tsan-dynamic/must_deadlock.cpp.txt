@@ -1,0 +1,10 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: must_deadlock.cpp <<HEAD<<
+
+This test is going to deadlock and die in 3 seconds
+error: Alarm clock
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: must_deadlock.cpp <<TAIL<<

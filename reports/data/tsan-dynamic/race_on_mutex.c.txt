@@ -1,0 +1,31 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: race_on_mutex.c <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=254142)
+  Atomic read of size 1 at 0x56347bfc62e8 by thread T2:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (race_on_mutex.c.tmp+0x298c2)
+    #1 Thread2 /home/llvm/compiler-rt/test/tsan/race_on_mutex.c:13:3 (race_on_mutex.c.tmp+0xec405)
+
+  Previous write of size 1 at 0x56347bfc62e8 by thread T1:
+    #0 pthread_mutex_init /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1341:3 (race_on_mutex.c.tmp+0x62a2f)
+    #1 Thread1 /home/llvm/compiler-rt/test/tsan/race_on_mutex.c:23:3 (race_on_mutex.c.tmp+0xec44b)
+
+  Location is global 'Mtx' of size 40 at 0x56347bfc62e8 (race_on_mutex.c.tmp+0x14962e8)
+
+  Thread T2 (tid=254154, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (race_on_mutex.c.tmp+0x295d3)
+    #1 main /home/llvm/compiler-rt/test/tsan/race_on_mutex.c:35:3 (race_on_mutex.c.tmp+0xec4df)
+
+  Thread T1 (tid=254149, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (race_on_mutex.c.tmp+0x295d3)
+    #1 main /home/llvm/compiler-rt/test/tsan/race_on_mutex.c:34:3 (race_on_mutex.c.tmp+0xec4c7)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/race_on_mutex.c:13:3 in Thread2
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: race_on_mutex.c <<TAIL<<

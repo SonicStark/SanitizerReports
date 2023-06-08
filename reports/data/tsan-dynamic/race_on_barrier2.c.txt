@@ -1,0 +1,28 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: race_on_barrier2.c <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=253905)
+  Write of size 1 at 0x55e61a1812e0 by main thread:
+    #0 pthread_barrier_destroy /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1577:3 (race_on_barrier2.c.tmp+0x42840)
+    #1 Thread2 /home/llvm/compiler-rt/test/tsan/race_on_barrier2.c:22:5 (race_on_barrier2.c.tmp+0xec2f2)
+    #2 main /home/llvm/compiler-rt/test/tsan/race_on_barrier2.c:30:3 (race_on_barrier2.c.tmp+0xec2f2)
+
+  Previous read of size 1 at 0x55e61a1812e0 by thread T1:
+    #0 pthread_barrier_wait /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1584:3 (race_on_barrier2.c.tmp+0x621e2)
+    #1 Thread1 /home/llvm/compiler-rt/test/tsan/race_on_barrier2.c:15:7 (race_on_barrier2.c.tmp+0xec236)
+
+  Location is global 'B' of size 32 at 0x55e61a1812e0 (race_on_barrier2.c.tmp+0x14962e0)
+
+  Thread T1 (tid=253922, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (race_on_barrier2.c.tmp+0x295c3)
+    #1 main /home/llvm/compiler-rt/test/tsan/race_on_barrier2.c:29:3 (race_on_barrier2.c.tmp+0xec2d9)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/race_on_barrier2.c:22:5 in Thread2
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: race_on_barrier2.c <<TAIL<<

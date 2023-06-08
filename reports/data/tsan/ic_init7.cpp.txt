@@ -1,0 +1,9 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: static_init7.cpp <<HEAD<<
+
+PASS
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: static_init7.cpp <<TAIL<<

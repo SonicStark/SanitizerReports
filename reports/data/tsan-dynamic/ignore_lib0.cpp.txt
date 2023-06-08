@@ -1,0 +1,40 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: ignore_lib0.cpp <<HEAD<<
+
+running w/o suppressions:
+==================
+WARNING: ThreadSanitizer: data race (pid=250198)
+  Write of size 8 at 0x7b0400000000 by thread T1:
+    #0 memset /home/llvm/compiler-rt/lib/tsan/rtl/../../sanitizer_common/sanitizer_common_interceptors.inc:847:3 (ignore_lib0.cpp.tmp+0x2a8c9)
+    #1 memset /home/llvm/compiler-rt/lib/tsan/rtl/../../sanitizer_common/sanitizer_common_interceptors.inc:845:1 (ignore_lib0.cpp.tmp+0x2a8c9)
+    #2 Thread(void*) /home/llvm/compiler-rt/test/tsan/ignore_lib_lib.h:13:3 (libignore_lib0.so+0x11a4)
+
+  Previous write of size 8 at 0x7b0400000000 by main thread:
+    #0 malloc /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:692:5 (ignore_lib0.cpp.tmp+0x3f394)
+    #1 libfunc /home/llvm/compiler-rt/test/tsan/ignore_lib_lib.h:21:26 (libignore_lib0.so+0x11de)
+
+  As if synchronized via sleep:
+    #0 usleep /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:386:3 (ignore_lib0.cpp.tmp+0x4e610)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/ignore_lib_lib.h:12:5 (libignore_lib0.so+0x1191)
+
+  Location is heap block of size 10 at 0x7b0400000000 allocated by main thread:
+    #0 malloc /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:692:5 (ignore_lib0.cpp.tmp+0x3f394)
+    #1 libfunc /home/llvm/compiler-rt/test/tsan/ignore_lib_lib.h:21:26 (libignore_lib0.so+0x11de)
+
+  Thread T1 (tid=250235, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (ignore_lib0.cpp.tmp+0x295e3)
+    #1 libfunc /home/llvm/compiler-rt/test/tsan/ignore_lib_lib.h:19:3 (libignore_lib0.so+0x11c9)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/ignore_lib_lib.h:13:3 in Thread(void*)
+==================
+OK
+ThreadSanitizer: reported 1 warnings
+running with suppressions:
+OK
+running with generic suppression of noninstrumented code:
+OK
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: ignore_lib0.cpp <<TAIL<<

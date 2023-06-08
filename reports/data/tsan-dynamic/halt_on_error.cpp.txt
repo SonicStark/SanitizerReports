@@ -1,0 +1,25 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: halt_on_error.cpp <<HEAD<<
+
+BEFORE
+==================
+WARNING: ThreadSanitizer: data race (pid=249931)
+  Write of size 4 at 0x555fb4a43324 by thread T1:
+    #0 Thread(void*) /home/llvm/compiler-rt/test/tsan/halt_on_error.cpp:8:5 (halt_on_error.cpp.tmp+0xec412)
+
+  Previous write of size 4 at 0x555fb4a43324 by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/halt_on_error.cpp:17:5 (halt_on_error.cpp.tmp+0xec4a8)
+
+  Location is global 'X' of size 4 at 0x555fb4a43324 (halt_on_error.cpp.tmp+0x1496324)
+
+  Thread T1 (tid=249993, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (halt_on_error.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/halt_on_error.cpp:16:3 (halt_on_error.cpp.tmp+0xec49c)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/halt_on_error.cpp:8:5 in Thread(void*)
+==================
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: halt_on_error.cpp <<TAIL<<

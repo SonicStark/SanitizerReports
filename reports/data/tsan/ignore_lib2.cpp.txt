@@ -1,0 +1,9 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: ignore_lib2.cpp <<HEAD<<
+
+==191920==ThreadSanitizer: called_from_lib suppression 'ignore_lib2' is matched against 2 libraries: '/home/llvm/mybuild/projects/compiler-rt/test/tsan/X86_64Config/Output/ignore_lib2.cpp.tmp-dir/executable' and '/home/llvm/mybuild/projects/compiler-rt/test/tsan/X86_64Config/Output/ignore_lib2.cpp.tmp-dir/libignore_lib2_0.so'
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: ignore_lib2.cpp <<TAIL<<

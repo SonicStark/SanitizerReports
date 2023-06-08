@@ -1,0 +1,32 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: custom_mutex2.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=248163)
+  Read of size 8 at 0x5578a0563748 by main thread (mutexes: write M0):
+    #0 main /home/llvm/compiler-rt/test/tsan/custom_mutex2.cpp:25:10 (custom_mutex2.cpp.tmp+0xeefef)
+
+  Previous write of size 8 at 0x5578a0563748 by thread T1:
+    #0 thr(void*) /home/llvm/compiler-rt/test/tsan/custom_mutex2.cpp:14:7 (custom_mutex2.cpp.tmp+0xeee22)
+
+  Location is global 'data' of size 8 at 0x5578a0563748 (custom_mutex2.cpp.tmp+0x151a748)
+
+  Mutex M0 (0x5578a056373c) created at:
+    #0 __tsan_mutex_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interface_ann.cpp:352:3 (custom_mutex2.cpp.tmp+0x7cc23)
+    #1 Mutex /home/llvm/compiler-rt/test/tsan/custom_mutex.h:14:5 (custom_mutex2.cpp.tmp+0x20435)
+    #2 __cxx_global_var_init.3 /home/llvm/compiler-rt/test/tsan/custom_mutex2.cpp:6:7 (custom_mutex2.cpp.tmp+0x20435)
+    #3 _GLOBAL__sub_I_custom_mutex2.cpp /home/llvm/compiler-rt/test/tsan/custom_mutex2.cpp (custom_mutex2.cpp.tmp+0x20435)
+
+  Thread T1 (tid=248201, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (custom_mutex2.cpp.tmp+0x29723)
+    #1 main /home/llvm/compiler-rt/test/tsan/custom_mutex2.cpp:22:3 (custom_mutex2.cpp.tmp+0xeef11)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/custom_mutex2.cpp:25:10 in main
+==================
+DONE
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: custom_mutex2.cpp <<TAIL<<

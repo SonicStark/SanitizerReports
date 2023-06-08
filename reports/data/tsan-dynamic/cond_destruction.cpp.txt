@@ -1,0 +1,11 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: cond_destruction.cpp <<HEAD<<
+
+DONE
+DONE
+DONE
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: cond_destruction.cpp <<TAIL<<

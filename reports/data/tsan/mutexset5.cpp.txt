@@ -1,0 +1,37 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: mutexset5.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=214556)
+  Write of size 4 at 0x555b55c7172c by thread T1 (mutexes: write M0):
+    #0 Thread1(void*) /home/llvm/compiler-rt/test/tsan/mutexset5.cpp:11:9 (mutexset5.cpp.tmp+0xeec1b)
+
+  Previous write of size 4 at 0x555b55c7172c by thread T2 (mutexes: write M1):
+    #0 Thread2(void*) /home/llvm/compiler-rt/test/tsan/mutexset5.cpp:18:9 (mutexset5.cpp.tmp+0xeec7f)
+
+  Location is global 'Global' of size 4 at 0x555b55c7172c (mutexset5.cpp.tmp+0x151972c)
+
+  Mutex M0 (0x555b55c71730) created at:
+    #0 pthread_mutex_init /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1341:3 (mutexset5.cpp.tmp+0x62a3f)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutexset5.cpp:37:3 (mutexset5.cpp.tmp+0xeecef)
+
+  Mutex M1 (0x555b55c71758) created at:
+    #0 pthread_mutex_init /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1341:3 (mutexset5.cpp.tmp+0x62a3f)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutexset5.cpp:38:3 (mutexset5.cpp.tmp+0xeecfd)
+
+  Thread T1 (tid=214589, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (mutexset5.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutexset5.cpp:40:3 (mutexset5.cpp.tmp+0xeed13)
+
+  Thread T2 (tid=214590, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (mutexset5.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutexset5.cpp:41:3 (mutexset5.cpp.tmp+0xeed2b)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/mutexset5.cpp:11:9 in Thread1(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: mutexset5.cpp <<TAIL<<

@@ -1,0 +1,73 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: mutex_cycle2.c <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=252605)
+  Cycle in lock order graph: M0 (0x7ffc689ebde8) => M1 (0x7ffc689ebdc0) => M0
+
+  Mutex M1 acquired here while holding mutex M0 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle2.c.tmp+0x298c2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle2.c:19:3 (mutex_cycle2.c.tmp+0xeea6e)
+
+    Hint: use TSAN_OPTIONS=second_deadlock_stack=1 to get more informative warning message
+
+  Mutex M0 acquired here while holding mutex M1 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle2.c.tmp+0x298c2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle2.c:25:3 (mutex_cycle2.c.tmp+0xeea92)
+
+SUMMARY: ThreadSanitizer: lock-order-inversion (potential deadlock) /home/llvm/compiler-rt/test/tsan/mutex_cycle2.c:19:3 in main
+==================
+PASS
+ThreadSanitizer: reported 1 warnings
+==================
+WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=252870)
+  Cycle in lock order graph: M0 (0x7fff1f4a7d28) => M1 (0x7fff1f4a7d00) => M0
+
+  Mutex M1 acquired here while holding mutex M0 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle2.c.tmp+0x298c2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle2.c:19:3 (mutex_cycle2.c.tmp+0xeea6e)
+
+    Hint: use TSAN_OPTIONS=second_deadlock_stack=1 to get more informative warning message
+
+  Mutex M0 acquired here while holding mutex M1 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle2.c.tmp+0x298c2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle2.c:25:3 (mutex_cycle2.c.tmp+0xeea92)
+
+SUMMARY: ThreadSanitizer: lock-order-inversion (potential deadlock) /home/llvm/compiler-rt/test/tsan/mutex_cycle2.c:19:3 in main
+==================
+PASS
+ThreadSanitizer: reported 1 warnings
+PASS
+PASS
+==================
+WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=253480)
+  Cycle in lock order graph: M0 (0x7ffea3ea4cb8) => M1 (0x7ffea3ea4c90) => M0
+
+  Mutex M1 acquired here while holding mutex M0 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle2.c.tmp+0x298c2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle2.c:19:3 (mutex_cycle2.c.tmp+0xeea6e)
+
+    Hint: use TSAN_OPTIONS=second_deadlock_stack=1 to get more informative warning message
+
+  Mutex M0 acquired here while holding mutex M1 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle2.c.tmp+0x298c2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle2.c:25:3 (mutex_cycle2.c.tmp+0xeea92)
+
+SUMMARY: ThreadSanitizer: lock-order-inversion (potential deadlock) /home/llvm/compiler-rt/test/tsan/mutex_cycle2.c:19:3 in main
+==================
+PASS
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: mutex_cycle2.c <<TAIL<<
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: mutex_cycle2.c <<HEAD<<
+
+clang-16: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: mutex_cycle2.c <<TAIL<<

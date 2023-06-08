@@ -1,0 +1,37 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: fd_tid_recycled.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=249272)
+  Write of size 8 at 0x7bb000000080 by thread T103:
+    #0 close /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1844:3 (fd_tid_recycled.cpp.tmp+0x3c645)
+    #1 ThreadClose(void*) /home/llvm/compiler-rt/test/tsan/fd_tid_recycled.cpp:24:3 (fd_tid_recycled.cpp.tmp+0xeecb4)
+
+  Previous read of size 8 at 0x7bb000000080 by thread T102:
+    #0 write /home/llvm/compiler-rt/lib/tsan/rtl/../../sanitizer_common/sanitizer_common_interceptors.inc:1186:3 (fd_tid_recycled.cpp.tmp+0x5f5cb)
+    #1 ThreadWrite(void*) /home/llvm/compiler-rt/test/tsan/fd_tid_recycled.cpp:16:3 (fd_tid_recycled.cpp.tmp+0xeec3d)
+
+  Location is file descriptor 4 created by thread T1 at:
+    #0 pipe /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1876:3 (fd_tid_recycled.cpp.tmp+0x53239)
+    #1 ThreadCreatePipe(void*) /home/llvm/compiler-rt/test/tsan/fd_tid_recycled.cpp:7:3 (fd_tid_recycled.cpp.tmp+0xeebf6)
+
+  Thread T103 (tid=249786, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (fd_tid_recycled.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/fd_tid_recycled.cpp:42:3 (fd_tid_recycled.cpp.tmp+0xeed83)
+
+  Thread T102 (tid=249785, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (fd_tid_recycled.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/fd_tid_recycled.cpp:41:3 (fd_tid_recycled.cpp.tmp+0xeed6b)
+
+  Thread T1 (tid=249312, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (fd_tid_recycled.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/fd_tid_recycled.cpp:31:3 (fd_tid_recycled.cpp.tmp+0xeed0a)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/fd_tid_recycled.cpp:24:3 in ThreadClose(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: fd_tid_recycled.cpp <<TAIL<<

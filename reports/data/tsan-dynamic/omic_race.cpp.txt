@@ -1,0 +1,173 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: atomic_race.cpp <<HEAD<<
+
+Test 0
+==================
+WARNING: ThreadSanitizer: data race (pid=246761)
+  Atomic write of size 8 at 0x559c7640e740 by main thread:
+    #0 Test /home/llvm/compiler-rt/test/tsan/atomic_race.cpp (atomic_race.cpp.tmp+0xeee91)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:53:5 (atomic_race.cpp.tmp+0xeee91)
+
+  Previous write of size 8 at 0x559c7640e740 by thread T1:
+    #0 Test /home/llvm/compiler-rt/test/tsan/atomic_race.cpp (atomic_race.cpp.tmp+0xeed1d)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:35:5 (atomic_race.cpp.tmp+0xeed1d)
+
+  Location is global 'atomics' of size 64 at 0x559c7640e740 (atomic_race.cpp.tmp+0x151a740)
+
+  Thread T1 (tid=246807, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (atomic_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:49:3 (atomic_race.cpp.tmp+0xeee2d)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/atomic_race.cpp in Test
+==================
+Test 1
+==================
+WARNING: ThreadSanitizer: data race (pid=246761)
+  Atomic write of size 8 at 0x559c7640e748 by main thread:
+    #0 Test /home/llvm/compiler-rt/test/tsan/atomic_race.cpp (atomic_race.cpp.tmp+0xeee91)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:53:5 (atomic_race.cpp.tmp+0xeee91)
+
+  Previous read of size 8 at 0x559c7640e748 by thread T1:
+    #0 Test /home/llvm/compiler-rt/test/tsan/atomic_race.cpp (atomic_race.cpp.tmp+0xeece7)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:35:5 (atomic_race.cpp.tmp+0xeece7)
+
+  Location is global 'atomics' of size 64 at 0x559c7640e740 (atomic_race.cpp.tmp+0x151a748)
+
+  Thread T1 (tid=246807, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (atomic_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:49:3 (atomic_race.cpp.tmp+0xeee2d)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/atomic_race.cpp in Test
+==================
+Test 2
+==================
+WARNING: ThreadSanitizer: data race (pid=246761)
+  Atomic read of size 8 at 0x559c7640e750 by main thread:
+    #0 Test /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:22:14 (atomic_race.cpp.tmp+0xeeeac)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:53:5 (atomic_race.cpp.tmp+0xeeeac)
+
+  Previous write of size 8 at 0x559c7640e750 by thread T1:
+    #0 Test /home/llvm/compiler-rt/test/tsan/atomic_race.cpp (atomic_race.cpp.tmp+0xeed1d)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:35:5 (atomic_race.cpp.tmp+0xeed1d)
+
+  Location is global 'atomics' of size 64 at 0x559c7640e740 (atomic_race.cpp.tmp+0x151a750)
+
+  Thread T1 (tid=246807, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (atomic_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:49:3 (atomic_race.cpp.tmp+0xeee2d)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:22:14 in Test
+==================
+Test 3
+==================
+WARNING: ThreadSanitizer: data race (pid=246761)
+  Atomic write of size 8 at 0x559c7640e758 by main thread:
+    #0 Test /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:27:7 (atomic_race.cpp.tmp+0xeeee1)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:53:5 (atomic_race.cpp.tmp+0xeeee1)
+
+  Previous read of size 8 at 0x559c7640e758 by thread T1:
+    #0 Test /home/llvm/compiler-rt/test/tsan/atomic_race.cpp (atomic_race.cpp.tmp+0xeece7)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:35:5 (atomic_race.cpp.tmp+0xeece7)
+
+  Location is global 'atomics' of size 64 at 0x559c7640e740 (atomic_race.cpp.tmp+0x151a758)
+
+  Thread T1 (tid=246807, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (atomic_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:49:3 (atomic_race.cpp.tmp+0xeee2d)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:27:7 in Test
+==================
+Test 0 reverse
+==================
+WARNING: ThreadSanitizer: data race (pid=246761)
+  Write of size 8 at 0x559c7640e760 by thread T1:
+    #0 Test /home/llvm/compiler-rt/test/tsan/atomic_race.cpp (atomic_race.cpp.tmp+0xeed90)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:41:5 (atomic_race.cpp.tmp+0xeed90)
+
+  Previous atomic write of size 8 at 0x559c7640e760 by main thread:
+    #0 Test /home/llvm/compiler-rt/test/tsan/atomic_race.cpp (atomic_race.cpp.tmp+0xeef6e)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:56:5 (atomic_race.cpp.tmp+0xeef6e)
+
+  Location is global 'atomics' of size 64 at 0x559c7640e740 (atomic_race.cpp.tmp+0x151a760)
+
+  Thread T1 (tid=246807, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (atomic_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:49:3 (atomic_race.cpp.tmp+0xeee2d)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/atomic_race.cpp in Test
+==================
+Test 1 reverse
+==================
+WARNING: ThreadSanitizer: data race (pid=246761)
+  Read of size 8 at 0x559c7640e768 by thread T1:
+    #0 Test /home/llvm/compiler-rt/test/tsan/atomic_race.cpp (atomic_race.cpp.tmp+0xeeda7)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:41:5 (atomic_race.cpp.tmp+0xeeda7)
+
+  Previous atomic write of size 8 at 0x559c7640e768 by main thread:
+    #0 Test /home/llvm/compiler-rt/test/tsan/atomic_race.cpp (atomic_race.cpp.tmp+0xeef6e)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:56:5 (atomic_race.cpp.tmp+0xeef6e)
+
+  Location is global 'atomics' of size 64 at 0x559c7640e740 (atomic_race.cpp.tmp+0x151a768)
+
+  Thread T1 (tid=246807, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (atomic_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:49:3 (atomic_race.cpp.tmp+0xeee2d)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/atomic_race.cpp in Test
+==================
+Test 2 reverse
+==================
+WARNING: ThreadSanitizer: data race (pid=246761)
+  Write of size 8 at 0x559c7640e770 by thread T1:
+    #0 Test /home/llvm/compiler-rt/test/tsan/atomic_race.cpp (atomic_race.cpp.tmp+0xeed90)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:41:5 (atomic_race.cpp.tmp+0xeed90)
+
+  Previous atomic read of size 8 at 0x559c7640e770 by main thread:
+    #0 Test /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:22:14 (atomic_race.cpp.tmp+0xeef8c)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:56:5 (atomic_race.cpp.tmp+0xeef8c)
+
+  Location is global 'atomics' of size 64 at 0x559c7640e740 (atomic_race.cpp.tmp+0x151a770)
+
+  Thread T1 (tid=246807, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (atomic_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:49:3 (atomic_race.cpp.tmp+0xeee2d)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/atomic_race.cpp in Test
+==================
+Test 3 reverse
+==================
+WARNING: ThreadSanitizer: data race (pid=246761)
+  Read of size 8 at 0x559c7640e778 by thread T1:
+    #0 Test /home/llvm/compiler-rt/test/tsan/atomic_race.cpp (atomic_race.cpp.tmp+0xeeda7)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:41:5 (atomic_race.cpp.tmp+0xeeda7)
+
+  Previous atomic write of size 8 at 0x559c7640e778 by main thread:
+    #0 Test /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:27:7 (atomic_race.cpp.tmp+0xeef31)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:56:5 (atomic_race.cpp.tmp+0xeef31)
+
+  Location is global 'atomics' of size 64 at 0x559c7640e740 (atomic_race.cpp.tmp+0x151a778)
+
+  Thread T1 (tid=246807, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (atomic_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_race.cpp:49:3 (atomic_race.cpp.tmp+0xeee2d)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/atomic_race.cpp in Test
+==================
+ThreadSanitizer: reported 8 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: atomic_race.cpp <<TAIL<<
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: atomic_race.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/tsan/atomic_race.cpp:9:14: warning: variable 'sink' set but not used [-Wunused-but-set-variable]
+  volatile T sink;
+             ^
+1 warning generated.
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: atomic_race.cpp <<TAIL<<

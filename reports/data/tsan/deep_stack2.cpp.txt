@@ -1,0 +1,25 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: deep_stack2.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=188743)
+  Write of size 8 at 0x555700d15730 by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/deep_stack2.cpp:34:5 (deep_stack2.cpp.tmp+0xeecc0)
+
+  Previous write of size 8 at 0x555700d15730 by thread T1:
+    #0 Thread(void*) /home/llvm/compiler-rt/test/tsan/deep_stack2.cpp:22:5 (deep_stack2.cpp.tmp+0xeec0b)
+
+  Location is global 'X' of size 8 at 0x555700d15730 (deep_stack2.cpp.tmp+0x1519730)
+
+  Thread T1 (tid=188792, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (deep_stack2.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/deep_stack2.cpp:32:3 (deep_stack2.cpp.tmp+0xeeca8)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/deep_stack2.cpp:34:5 in main
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: deep_stack2.cpp <<TAIL<<

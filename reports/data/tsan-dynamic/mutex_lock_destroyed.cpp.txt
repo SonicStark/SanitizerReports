@@ -1,0 +1,35 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: mutex_lock_destroyed.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: use of an invalid mutex (e.g. uninitialized or destroyed) (pid=252945)
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_lock_destroyed.cpp.tmp+0x298b2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_lock_destroyed.cpp:22:3 (mutex_lock_destroyed.cpp.tmp+0xeeac0)
+
+  Location is heap block of size 40 at 0x7b0c00000000 allocated by main thread:
+    #0 malloc /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:692:5 (mutex_lock_destroyed.cpp.tmp+0x3f374)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_lock_destroyed.cpp:13:43 (mutex_lock_destroyed.cpp.tmp+0xeea46)
+
+  Mutex M0 (0x7b0c00000000) created at:
+    [failed to restore the stack]
+
+SUMMARY: ThreadSanitizer: use of an invalid mutex (e.g. uninitialized or destroyed) /home/llvm/compiler-rt/test/tsan/mutex_lock_destroyed.cpp:22:3 in main
+==================
+ThreadSanitizer: reported 1 warnings
+==================
+WARNING: ThreadSanitizer: use of an invalid mutex (e.g. uninitialized or destroyed) (pid=253388)
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_lock_destroyed.cpp.tmp+0x298b2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_lock_destroyed.cpp:22:3 (mutex_lock_destroyed.cpp.tmp+0xeeac0)
+
+  Mutex M0 (0x7b0c00000000) created at:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_lock_destroyed.cpp.tmp+0x298b2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_lock_destroyed.cpp:22:3 (mutex_lock_destroyed.cpp.tmp+0xeeac0)
+
+SUMMARY: ThreadSanitizer: use of an invalid mutex (e.g. uninitialized or destroyed) /home/llvm/compiler-rt/test/tsan/mutex_lock_destroyed.cpp:22:3 in main
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: mutex_lock_destroyed.cpp <<TAIL<<

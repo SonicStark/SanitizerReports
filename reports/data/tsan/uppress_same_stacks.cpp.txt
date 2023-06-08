@@ -1,0 +1,28 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: suppress_same_stacks.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=229782)
+  Write of size 4 at 0x7b0400000000 by thread T1:
+    #0 Thread1(void*) /home/llvm/compiler-rt/test/tsan/suppress_same_stacks.cpp:9:16 (suppress_same_stacks.cpp.tmp+0xeea82)
+
+  Previous write of size 4 at 0x7b0400000000 by main thread:
+    #0 Thread1 /home/llvm/compiler-rt/test/tsan/suppress_same_stacks.cpp:9:16 (suppress_same_stacks.cpp.tmp+0xeec02)
+    #1 main /home/llvm/compiler-rt/test/tsan/suppress_same_stacks.cpp:20:3 (suppress_same_stacks.cpp.tmp+0xeec02)
+
+  Location is heap block of size 4 at 0x7b0400000000 allocated by main thread:
+    #0 operator new(unsigned long) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:64:3 (suppress_same_stacks.cpp.tmp+0xed039)
+    #1 main /home/llvm/compiler-rt/test/tsan/suppress_same_stacks.cpp:17:15 (suppress_same_stacks.cpp.tmp+0xeeb69)
+
+  Thread T1 (tid=229797, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (suppress_same_stacks.cpp.tmp+0x295d3)
+    #1 main /home/llvm/compiler-rt/test/tsan/suppress_same_stacks.cpp:19:3 (suppress_same_stacks.cpp.tmp+0xeebb7)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/suppress_same_stacks.cpp:9:16 in Thread1(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: suppress_same_stacks.cpp <<TAIL<<

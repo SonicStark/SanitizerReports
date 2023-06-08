@@ -1,0 +1,30 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: tls_race2.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=230120)
+  Write of size 4 at 0x7f7523dfdf00 by thread T2:
+    #0 Thread2(void*) /home/llvm/compiler-rt/test/tsan/tls_race2.cpp:8:12 (tls_race2.cpp.tmp+0xeec01)
+
+  Previous write of size 4 at 0x7f7523dfdf00 by thread T1:
+    #0 Thread(void*) /home/llvm/compiler-rt/test/tsan/tls_race2.cpp:16:7 (tls_race2.cpp.tmp+0xeec6c)
+
+  Location is TLS of thread T1.
+
+  Thread T2 (tid=230150, running) created by thread T1 at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (tls_race2.cpp.tmp+0x295e3)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/tls_race2.cpp:15:3 (tls_race2.cpp.tmp+0xeec64)
+
+  Thread T1 (tid=230148, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (tls_race2.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/tls_race2.cpp:25:3 (tls_race2.cpp.tmp+0xeecf7)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/tls_race2.cpp:8:12 in Thread2(void*)
+==================
+DONE
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: tls_race2.cpp <<TAIL<<

@@ -1,0 +1,29 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: simple_stack2.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=216834)
+  Write of size 4 at 0x5641da89a72c by thread T1:
+    #0 foo1() /home/llvm/compiler-rt/test/tsan/simple_stack2.cpp:7:10 (simple_stack2.cpp.tmp+0xeebf6)
+    #1 bar1() /home/llvm/compiler-rt/test/tsan/simple_stack2.cpp:14:3 (simple_stack2.cpp.tmp+0xeec44)
+    #2 Thread1(void*) /home/llvm/compiler-rt/test/tsan/simple_stack2.cpp:32:3 (simple_stack2.cpp.tmp+0xeecfb)
+
+  Previous read of size 4 at 0x5641da89a72c by main thread:
+    #0 foo2() /home/llvm/compiler-rt/test/tsan/simple_stack2.cpp:18:22 (simple_stack2.cpp.tmp+0xeec68)
+    #1 bar2() /home/llvm/compiler-rt/test/tsan/simple_stack2.cpp:27:3 (simple_stack2.cpp.tmp+0xeecd4)
+    #2 main /home/llvm/compiler-rt/test/tsan/simple_stack2.cpp:40:3 (simple_stack2.cpp.tmp+0xeed59)
+
+  Location is global 'Global' of size 4 at 0x5641da89a72c (simple_stack2.cpp.tmp+0x151972c)
+
+  Thread T1 (tid=216868, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (simple_stack2.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/simple_stack2.cpp:39:3 (simple_stack2.cpp.tmp+0xeed54)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/simple_stack2.cpp:7:10 in foo1()
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: simple_stack2.cpp <<TAIL<<

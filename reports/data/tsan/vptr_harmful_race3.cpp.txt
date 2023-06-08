@@ -1,0 +1,34 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: vptr_harmful_race3.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race on vptr (ctor/dtor vs virtual call) (pid=230366)
+  Write of size 8 at 0x7b0c00000000 by thread T2:
+    #0 ~A /home/llvm/compiler-rt/test/tsan/vptr_harmful_race3.cpp:14:16 (vptr_harmful_race3.cpp.tmp+0xeee82)
+    #1 B::~B() /home/llvm/compiler-rt/test/tsan/vptr_harmful_race3.cpp:24:16 (vptr_harmful_race3.cpp.tmp+0xeee82)
+    #2 Thread2(void*) /home/llvm/compiler-rt/test/tsan/vptr_harmful_race3.cpp:39:3 (vptr_harmful_race3.cpp.tmp+0xeed3f)
+
+  Previous read of size 8 at 0x7b0c00000000 by thread T1:
+    #0 Thread1(void*) /home/llvm/compiler-rt/test/tsan/vptr_harmful_race3.cpp:31:3 (vptr_harmful_race3.cpp.tmp+0xeecb5)
+
+  Location is heap block of size 40 at 0x7b0c00000000 allocated by main thread:
+    #0 operator new(unsigned long) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:64:3 (vptr_harmful_race3.cpp.tmp+0xed0f9)
+    #1 __cxx_global_var_init /home/llvm/compiler-rt/test/tsan/vptr_harmful_race3.cpp:27:17 (vptr_harmful_race3.cpp.tmp+0x20367)
+    #2 _GLOBAL__sub_I_vptr_harmful_race3.cpp /home/llvm/compiler-rt/test/tsan/vptr_harmful_race3.cpp (vptr_harmful_race3.cpp.tmp+0x20367)
+
+  Thread T2 (tid=230392, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (vptr_harmful_race3.cpp.tmp+0x29693)
+    #1 main /home/llvm/compiler-rt/test/tsan/vptr_harmful_race3.cpp:47:3 (vptr_harmful_race3.cpp.tmp+0xeedaf)
+
+  Thread T1 (tid=230389, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (vptr_harmful_race3.cpp.tmp+0x29693)
+    #1 main /home/llvm/compiler-rt/test/tsan/vptr_harmful_race3.cpp:46:3 (vptr_harmful_race3.cpp.tmp+0xeed97)
+
+SUMMARY: ThreadSanitizer: data race on vptr (ctor/dtor vs virtual call) /home/llvm/compiler-rt/test/tsan/vptr_harmful_race3.cpp:14:16 in ~A
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: vptr_harmful_race3.cpp <<TAIL<<

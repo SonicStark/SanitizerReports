@@ -1,0 +1,29 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: atomic_stack.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=187606)
+  Atomic write of size 4 at 0x5654b747f72c by thread T1:
+    #0 Thread1(void*) /home/llvm/compiler-rt/test/tsan/atomic_stack.cpp:8:3 (atomic_stack.cpp.tmp+0xeec09)
+
+  Previous write of size 4 at 0x5654b747f72c by thread T2:
+    #0 Thread2(void*) /home/llvm/compiler-rt/test/tsan/atomic_stack.cpp:13:9 (atomic_stack.cpp.tmp+0xeec4e)
+
+  Location is global 'Global' of size 4 at 0x5654b747f72c (atomic_stack.cpp.tmp+0x151972c)
+
+  Thread T1 (tid=187633, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (atomic_stack.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_stack.cpp:21:3 (atomic_stack.cpp.tmp+0xeecb7)
+
+  Thread T2 (tid=187634, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (atomic_stack.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/atomic_stack.cpp:22:3 (atomic_stack.cpp.tmp+0xeeccf)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/atomic_stack.cpp:8:3 in Thread1(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: atomic_stack.cpp <<TAIL<<

@@ -1,0 +1,8 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: atomic_free.cpp <<HEAD<<
+
+b'==================\nWARNING: ThreadSanitizer: data race (pid=187100)\n  Write of size 8 at 0x7b0400000000 by main thread:\n    #0 operator delete(void*) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:126:3 (atomic_free.cpp.tmp+0xec5e2)\n    #1 main /home/llvm/compiler-rt/test/tsan/atomic_free.cpp:25:3 (atomic_free.cpp.tmp+0xeec94)\n\n  Previous atomic write of size 4 at 0x7b0400000000 by thread T1:\n    #0 Thread(void*) /home/llvm/compiler-rt/test/tsan/atomic_free.cpp:14:3 (atomic_free.cpp.tmp+0xeebff)\n\n  Thread T1 (tid=187153, finished) created by main thread at:\n    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (atomic_free.cpp.tmp+0x295e3)\n    #1 main /home/llvm/compiler-rt/test/tsan/atomic_free.cpp:23:3 (atomic_free.cpp.tmp+0xeec80)\n\nSUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:126:3 in operator delete(void*)\n==================\nThreadSanitizer: reported 1 warnings\n\x7fELF\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00>\x00\x01\x00\x00\x000\x03\x02\x00\x00\x00\x00\x00@\x00\x00\x00\x00\x00\x00\x00\x90}\xd0\x00\x00\x00\x00\x00\x00\x00\x00\x00@\x008\x00\x0c\x00@\x00+\x00*\x00\x06\x00\x00\x00\x04\x00\x00\x00@\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00\x00\x00\x00\x00\xa0\x02\x00\x00\x00\x00\x00\x00\xa0\x02\x00\x00\x00\x00\x00\x00\x08\x00\x00\x00\x00\x00\x00\x00\x03\x00\x00\x00\x04\x00\x00\x00\xe0\x02\x00\x00\x00\x00\x00\x00\xe0\x02\x00\x00\x00\x00\x00\x00\xe0\x02\x00\x
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: atomic_free.cpp <<TAIL<<

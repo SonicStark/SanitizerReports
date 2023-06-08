@@ -1,0 +1,30 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: sleep_sync.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=216899)
+  Write of size 4 at 0x55581997572c by thread T1:
+    #0 Thread(void*) /home/llvm/compiler-rt/test/tsan/sleep_sync.cpp:13:5 (sleep_sync.cpp.tmp+0xeec37)
+
+  Previous write of size 4 at 0x55581997572c by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/sleep_sync.cpp:21:5 (sleep_sync.cpp.tmp+0xeeca0)
+
+  As if synchronized via sleep:
+    #0 sleep /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:379:3 (sleep_sync.cpp.tmp+0x4ea20)
+    #1 MySleep() /home/llvm/compiler-rt/test/tsan/sleep_sync.cpp:7:3 (sleep_sync.cpp.tmp+0xeebf4)
+    #2 Thread(void*) /home/llvm/compiler-rt/test/tsan/sleep_sync.cpp:12:3 (sleep_sync.cpp.tmp+0xeec2b)
+
+  Location is global 'X' of size 4 at 0x55581997572c (sleep_sync.cpp.tmp+0x151972c)
+
+  Thread T1 (tid=229625, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (sleep_sync.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/sleep_sync.cpp:20:3 (sleep_sync.cpp.tmp+0xeec94)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/sleep_sync.cpp:13:5 in Thread(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: sleep_sync.cpp <<TAIL<<

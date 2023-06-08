@@ -1,0 +1,14 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: debug_locate.cpp <<HEAD<<
+
+stack_var = 0x7ffec5495260
+global_var = 0x563a2a2bc6e8
+heap_var = 0x7b0400000000
+type: stack
+type: global, name = global_var, start = 0x563a2a2bc6e8, size = 8
+type: heap, start = 0x7b0400000000, size = 10
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: debug_locate.cpp <<TAIL<<

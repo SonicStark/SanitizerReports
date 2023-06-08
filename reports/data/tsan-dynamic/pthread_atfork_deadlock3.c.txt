@@ -1,0 +1,88 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: pthread_atfork_deadlock3.c <<HEAD<<
+
+in atfork
+in handler
+==================
+WARNING: ThreadSanitizer: data race (pid=253743)
+  Write of size 8 at 0x55e461184320 by main thread:
+    #0 handler /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:53:7 (pthread_atfork_deadlock3.c.tmp+0xec5d6)
+    #1 CallUserSignalHandler /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:2122:43 (pthread_atfork_deadlock3.c.tmp+0x28dc8)
+    #2 __tsan::ProcessPendingSignalsImpl(__tsan::ThreadState*) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:2158:28 (pthread_atfork_deadlock3.c.tmp+0x28dc8)
+    #3 atfork /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:33:3 (pthread_atfork_deadlock3.c.tmp+0xec4c7)
+    #4 __run_fork_handlers /build/glibc-SzIz7B/glibc-2.31/nptl/register-atfork.c:123:6 (libc.so.6+0x94acf) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #5 main /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:68:15 (pthread_atfork_deadlock3.c.tmp+0xec69b)
+
+  Previous write of size 8 at 0x55e461184320 by thread T1:
+    #0 worker /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:16:7 (pthread_atfork_deadlock3.c.tmp+0xec426)
+
+  Location is global 'glob' of size 8 at 0x55e461184320 (pthread_atfork_deadlock3.c.tmp+0x1496320)
+
+  Thread T1 (tid=253772, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (pthread_atfork_deadlock3.c.tmp+0x295f3)
+    #1 main /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:66:3 (pthread_atfork_deadlock3.c.tmp+0xec68a)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:53:7 in handler
+==================
+==================
+WARNING: ThreadSanitizer: signal handler spoils errno (pid=253743)
+  Signal 27 handler invoked at:
+    #0 handler /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:51 (pthread_atfork_deadlock3.c.tmp+0xec5a0)
+    #1 atfork /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:33:3 (pthread_atfork_deadlock3.c.tmp+0xec4c7)
+    #2 __run_fork_handlers /build/glibc-SzIz7B/glibc-2.31/nptl/register-atfork.c:123:6 (libc.so.6+0x94acf) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #3 main /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:68:15 (pthread_atfork_deadlock3.c.tmp+0xec69b)
+
+SUMMARY: ThreadSanitizer: signal handler spoils errno /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:51 in handler
+==================
+in afterfork
+in handler
+in afterfork_child
+CHILD
+ThreadSanitizer: reported 2 warnings
+PARENT
+ThreadSanitizer: reported 2 warnings
+in atfork
+in handler
+==================
+WARNING: ThreadSanitizer: data race (pid=253743)
+  Write of size 8 at 0x55e461184320 by main thread:
+    #0 handler /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:53:7 (pthread_atfork_deadlock3.c.tmp+0xec5d6)
+    #1 CallUserSignalHandler /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:2122:43 (pthread_atfork_deadlock3.c.tmp+0x28dc8)
+    #2 __tsan::ProcessPendingSignalsImpl(__tsan::ThreadState*) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:2158:28 (pthread_atfork_deadlock3.c.tmp+0x28dc8)
+    #3 atfork /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:33:3 (pthread_atfork_deadlock3.c.tmp+0xec4c7)
+    #4 __run_fork_handlers /build/glibc-SzIz7B/glibc-2.31/nptl/register-atfork.c:123:6 (libc.so.6+0x94acf) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #5 main /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:68:15 (pthread_atfork_deadlock3.c.tmp+0xec69b)
+
+  Previous write of size 8 at 0x55e461184320 by thread T1:
+    #0 worker /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:16:7 (pthread_atfork_deadlock3.c.tmp+0xec426)
+
+  Location is global 'glob' of size 8 at 0x55e461184320 (pthread_atfork_deadlock3.c.tmp+0x1496320)
+
+  Thread T1 (tid=253772, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (pthread_atfork_deadlock3.c.tmp+0x295f3)
+    #1 main /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:66:3 (pthread_atfork_deadlock3.c.tmp+0xec68a)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:53:7 in handler
+==================
+==================
+WARNING: ThreadSanitizer: signal handler spoils errno (pid=253743)
+  Signal 27 handler invoked at:
+    #0 handler /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:51 (pthread_atfork_deadlock3.c.tmp+0xec5a0)
+    #1 atfork /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:33:3 (pthread_atfork_deadlock3.c.tmp+0xec4c7)
+    #2 __run_fork_handlers /build/glibc-SzIz7B/glibc-2.31/nptl/register-atfork.c:123:6 (libc.so.6+0x94acf) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #3 main /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:68:15 (pthread_atfork_deadlock3.c.tmp+0xec69b)
+
+SUMMARY: ThreadSanitizer: signal handler spoils errno /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock3.c:51 in handler
+==================
+in afterfork
+in handler
+in afterfork_child
+CHILD
+ThreadSanitizer: reported 2 warnings
+PARENT
+ThreadSanitizer: reported 2 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: pthread_atfork_deadlock3.c <<TAIL<<

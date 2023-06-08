@@ -1,0 +1,24 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: free_race3.c <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=249813)
+  Write of size 8 at 0x7b1c00000000 by main thread:
+    #0 free /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:751:3 (free_race3.c.tmp+0x29437)
+    #1 main /home/llvm/compiler-rt/test/tsan/free_race3.c:19:3 (free_race3.c.tmp+0xec4ad)
+
+  Previous write of size 4 at 0x7b1c00000000 by thread T1:
+    #0 Thread /home/llvm/compiler-rt/test/tsan/free_race3.c:8:10 (free_race3.c.tmp+0xec405)
+
+  Thread T1 (tid=249825, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (free_race3.c.tmp+0x295d3)
+    #1 main /home/llvm/compiler-rt/test/tsan/free_race3.c:17:3 (free_race3.c.tmp+0xec491)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/free_race3.c:19:3 in main
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: free_race3.c <<TAIL<<

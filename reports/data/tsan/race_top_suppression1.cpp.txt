@@ -1,0 +1,27 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: race_top_suppression1.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=215774)
+  Write of size 4 at 0x56286e6b972c by thread T1:
+    #0 AnotherFunction /home/llvm/compiler-rt/test/tsan/race_top_suppression1.cpp:10:6 (race_top_suppression1.cpp.tmp+0xeec62)
+    #1 TopFunction /home/llvm/compiler-rt/test/tsan/race_top_suppression1.cpp:14:3 (race_top_suppression1.cpp.tmp+0xeec62)
+    #2 Thread(void*) /home/llvm/compiler-rt/test/tsan/race_top_suppression1.cpp:19:3 (race_top_suppression1.cpp.tmp+0xeec62)
+
+  Previous write of size 4 at 0x56286e6b972c by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/race_top_suppression1.cpp:27:9 (race_top_suppression1.cpp.tmp+0xeecd8)
+
+  Location is global 'Global' of size 4 at 0x56286e6b972c (race_top_suppression1.cpp.tmp+0x151972c)
+
+  Thread T1 (tid=215817, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (race_top_suppression1.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/race_top_suppression1.cpp:26:3 (race_top_suppression1.cpp.tmp+0xeecc4)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/race_top_suppression1.cpp:10:6 in AnotherFunction
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: race_top_suppression1.cpp <<TAIL<<

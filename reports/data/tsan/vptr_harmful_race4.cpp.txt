@@ -1,0 +1,25 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: vptr_harmful_race4.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: heap-use-after-free (virtual call vs free) (pid=230391)
+  Read of size 8 at 0x7b0400000000 by thread T1:
+    #0 Thread(void*) /home/llvm/compiler-rt/test/tsan/vptr_harmful_race4.cpp:19:12 (vptr_harmful_race4.cpp.tmp+0xeec01)
+
+  Previous write of size 8 at 0x7b0400000000 by main thread:
+    #0 operator delete(void*) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:126:3 (vptr_harmful_race4.cpp.tmp+0xec5e2)
+    #1 B::~B() /home/llvm/compiler-rt/test/tsan/vptr_harmful_race4.cpp:12:8 (vptr_harmful_race4.cpp.tmp+0xeed15)
+    #2 main /home/llvm/compiler-rt/test/tsan/vptr_harmful_race4.cpp:28:3 (vptr_harmful_race4.cpp.tmp+0xeec95)
+
+  Thread T1 (tid=230406, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (vptr_harmful_race4.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/vptr_harmful_race4.cpp:27:3 (vptr_harmful_race4.cpp.tmp+0xeec84)
+
+SUMMARY: ThreadSanitizer: heap-use-after-free (virtual call vs free) /home/llvm/compiler-rt/test/tsan/vptr_harmful_race4.cpp:19:12 in Thread(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: vptr_harmful_race4.cpp <<TAIL<<

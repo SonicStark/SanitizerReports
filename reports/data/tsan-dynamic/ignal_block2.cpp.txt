@@ -1,0 +1,44 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: signal_block2.cpp <<HEAD<<
+
+test 0
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+sigwait
+test 1
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+pthread_cond_wait
+test 2
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+timer_handler
+DONE
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: signal_block2.cpp <<TAIL<<

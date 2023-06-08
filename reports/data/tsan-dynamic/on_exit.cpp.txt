@@ -1,0 +1,28 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: on_exit.cpp <<HEAD<<
+
+on_exit_callback(2, 42)
+==================
+WARNING: ThreadSanitizer: data race (pid=253516)
+  Write of size 8 at 0x556de5549328 by main thread:
+    #0 on_exit_callback(int, void*) /home/llvm/compiler-rt/test/tsan/on_exit.cpp:18:9 (on_exit.cpp.tmp+0xec48d)
+    #1 on_exit_callback_installed_at(int, void*) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:498:43 (on_exit.cpp.tmp+0x25d47)
+    #2 main /home/llvm/compiler-rt/test/tsan/on_exit.cpp:22:3 (on_exit.cpp.tmp+0xec4bf)
+
+  Previous write of size 8 at 0x556de5549328 by thread T1:
+    #0 thread(void*) /home/llvm/compiler-rt/test/tsan/on_exit.cpp:11:9 (on_exit.cpp.tmp+0xec410)
+
+  Location is global 'global' of size 8 at 0x556de5549328 (on_exit.cpp.tmp+0x1496328)
+
+  Thread T1 (tid=253575, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (on_exit.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/on_exit.cpp:25:3 (on_exit.cpp.tmp+0xec4e8)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/on_exit.cpp:18:9 in on_exit_callback(int, void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: on_exit.cpp <<TAIL<<

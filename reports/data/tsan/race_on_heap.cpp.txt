@@ -1,0 +1,37 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: race_on_heap.cpp <<HEAD<<
+
+addr=0x7b1c00000000 
+==================
+WARNING: ThreadSanitizer: data race (pid=215372)
+  Write of size 4 at 0x7b1c00000010 by thread T3:
+    #0 Thread2(void*) /home/llvm/compiler-rt/test/tsan/race_on_heap.cpp:13:12 (race_on_heap.cpp.tmp+0xeec25)
+
+  Previous write of size 4 at 0x7b1c00000010 by thread T2:
+    #0 Thread1(void*) /home/llvm/compiler-rt/test/tsan/race_on_heap.cpp:8:12 (race_on_heap.cpp.tmp+0xeebf5)
+
+  Location is heap block of size 99 at 0x7b1c00000000 allocated by thread T1:
+    #0 malloc /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:692:5 (race_on_heap.cpp.tmp+0x3f394)
+    #1 alloc() /home/llvm/compiler-rt/test/tsan/race_on_heap.cpp:18:10 (race_on_heap.cpp.tmp+0xeec54)
+    #2 AllocThread(void*) /home/llvm/compiler-rt/test/tsan/race_on_heap.cpp:22:10 (race_on_heap.cpp.tmp+0xeec7f)
+
+  Thread T3 (tid=215399, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (race_on_heap.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/race_on_heap.cpp:32:3 (race_on_heap.cpp.tmp+0xeed58)
+
+  Thread T2 (tid=215398, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (race_on_heap.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/race_on_heap.cpp:31:3 (race_on_heap.cpp.tmp+0xeed31)
+
+  Thread T1 (tid=215397, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (race_on_heap.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/race_on_heap.cpp:28:3 (race_on_heap.cpp.tmp+0xeecd0)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/race_on_heap.cpp:13:12 in Thread2(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: race_on_heap.cpp <<TAIL<<

@@ -1,0 +1,9 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: benign_race.cpp <<HEAD<<
+
+OK
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: benign_race.cpp <<TAIL<<

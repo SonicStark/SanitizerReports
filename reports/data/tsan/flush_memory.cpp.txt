@@ -1,0 +1,26 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: flush_memory.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=190007)
+  Write of size 8 at 0x559b4686f738 by thread T1:
+    #0 Thread(void*) /home/llvm/compiler-rt/test/tsan/flush_memory.cpp:11:5 (flush_memory.cpp.tmp+0xeec27)
+
+  Previous write of size 8 at 0x559b4686f738 by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/flush_memory.cpp:24:5 (flush_memory.cpp.tmp+0xeecbc)
+
+  Location is global 'Y' of size 8 at 0x559b4686f738 (flush_memory.cpp.tmp+0x1519738)
+
+  Thread T1 (tid=190068, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (flush_memory.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/flush_memory.cpp:20:3 (flush_memory.cpp.tmp+0xeec9f)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/flush_memory.cpp:11:5 in Thread(void*)
+==================
+DONE
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: flush_memory.cpp <<TAIL<<

@@ -1,0 +1,47 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: ignored-interceptors-mmap.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=250390)
+  Write of size 4 at 0x7f77c5825000 by thread T1:
+    #0 WriteToMemory(void*) /home/llvm/compiler-rt/test/tsan/ignored-interceptors-mmap.cpp:32:15 (ignored-interceptors-mmap.cpp.tmp+0xeee15)
+
+  Previous write of size 8 at 0x7f77c5825000 by main thread:
+    #0 mmap /home/llvm/compiler-rt/lib/tsan/rtl/../../sanitizer_common/sanitizer_common_interceptors.inc:7594:3 (ignored-interceptors-mmap.cpp.tmp+0x34527)
+    #1 mmap /home/llvm/compiler-rt/lib/tsan/rtl/../../sanitizer_common/sanitizer_common_interceptors.inc:7587:1 (ignored-interceptors-mmap.cpp.tmp+0x34527)
+    #2 mmap_ignored(bool, unsigned long) /home/llvm/compiler-rt/test/tsan/ignored-interceptors-mmap.cpp:22:7 (ignored-interceptors-mmap.cpp.tmp+0xeed10)
+    #3 main /home/llvm/compiler-rt/test/tsan/ignored-interceptors-mmap.cpp:44:3 (ignored-interceptors-mmap.cpp.tmp+0xeef37)
+
+  Thread T1 (tid=250397, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (ignored-interceptors-mmap.cpp.tmp+0x29613)
+    #1 main /home/llvm/compiler-rt/test/tsan/ignored-interceptors-mmap.cpp:43:3 (ignored-interceptors-mmap.cpp.tmp+0xeef27)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/ignored-interceptors-mmap.cpp:32:15 in WriteToMemory(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+OK
+==================
+WARNING: ThreadSanitizer: data race (pid=250623)
+  Write of size 4 at 0x7f1fb7c20000 by thread T1:
+    #0 WriteToMemory(void*) /home/llvm/compiler-rt/test/tsan/ignored-interceptors-mmap.cpp:32:15 (ignored-interceptors-mmap.cpp.tmp+0xeee15)
+
+  Previous write of size 8 at 0x7f1fb7c20000 by main thread:
+    #0 mmap /home/llvm/compiler-rt/lib/tsan/rtl/../../sanitizer_common/sanitizer_common_interceptors.inc:7594:3 (ignored-interceptors-mmap.cpp.tmp+0x34527)
+    #1 mmap /home/llvm/compiler-rt/lib/tsan/rtl/../../sanitizer_common/sanitizer_common_interceptors.inc:7587:1 (ignored-interceptors-mmap.cpp.tmp+0x34527)
+    #2 mmap_ignored(bool, unsigned long) /home/llvm/compiler-rt/test/tsan/ignored-interceptors-mmap.cpp:22:7 (ignored-interceptors-mmap.cpp.tmp+0xeed10)
+    #3 main /home/llvm/compiler-rt/test/tsan/ignored-interceptors-mmap.cpp:44:3 (ignored-interceptors-mmap.cpp.tmp+0xeef37)
+
+  Thread T1 (tid=250644, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (ignored-interceptors-mmap.cpp.tmp+0x29613)
+    #1 main /home/llvm/compiler-rt/test/tsan/ignored-interceptors-mmap.cpp:43:3 (ignored-interceptors-mmap.cpp.tmp+0xeef27)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/ignored-interceptors-mmap.cpp:32:15 in WriteToMemory(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+OK
+OK
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: ignored-interceptors-mmap.cpp <<TAIL<<

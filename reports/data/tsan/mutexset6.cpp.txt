@@ -1,0 +1,41 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: mutexset6.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=214853)
+  Write of size 4 at 0x55744566172c by thread T1 (mutexes: write M0):
+    #0 Thread1(void*) /home/llvm/compiler-rt/test/tsan/mutexset6.cpp:12:9 (mutexset6.cpp.tmp+0xeec1b)
+
+  Previous write of size 4 at 0x55744566172c by thread T2 (mutexes: write M1, read M2):
+    #0 Thread2(void*) /home/llvm/compiler-rt/test/tsan/mutexset6.cpp:22:9 (mutexset6.cpp.tmp+0xeeca6)
+
+  Location is global 'Global' of size 4 at 0x55744566172c (mutexset6.cpp.tmp+0x151972c)
+
+  Mutex M0 (0x557445661730) created at:
+    #0 pthread_mutex_init /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1341:3 (mutexset6.cpp.tmp+0x62a3f)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutexset6.cpp:42:3 (mutexset6.cpp.tmp+0xeed1f)
+
+  Mutex M1 (0x557445661758) created at:
+    #0 pthread_mutex_init /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1341:3 (mutexset6.cpp.tmp+0x62a3f)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutexset6.cpp:43:3 (mutexset6.cpp.tmp+0xeed2d)
+
+  Mutex M2 (0x557445661780) created at:
+    #0 pthread_rwlock_init /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1484:3 (mutexset6.cpp.tmp+0x4677e)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutexset6.cpp:44:3 (mutexset6.cpp.tmp+0xeed3b)
+
+  Thread T1 (tid=214913, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (mutexset6.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutexset6.cpp:46:3 (mutexset6.cpp.tmp+0xeed51)
+
+  Thread T2 (tid=214914, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (mutexset6.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutexset6.cpp:47:3 (mutexset6.cpp.tmp+0xeed69)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/mutexset6.cpp:12:9 in Thread1(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: mutexset6.cpp <<TAIL<<

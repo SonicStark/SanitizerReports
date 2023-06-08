@@ -1,0 +1,10 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: bench_single_writer.cpp <<HEAD<<
+
+53735 ns/iter
+DONE
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: bench_single_writer.cpp <<TAIL<<

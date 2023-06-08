@@ -1,0 +1,36 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: memcpy_race.cpp <<HEAD<<
+
+addr1=0x7b0400000003 
+addr2=0x7b0400000005 
+==================
+WARNING: ThreadSanitizer: data race (pid=252269)
+  Write of size 4 at 0x7b0400000003 by thread T2:
+    #0 __tsan_memcpy /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:3165:3 (memcpy_race.cpp.tmp+0x6ad79)
+    #1 Thread2(void*) /home/llvm/compiler-rt/test/tsan/memcpy_race.cpp:19:3 (memcpy_race.cpp.tmp+0xeed61)
+
+  Previous write of size 1 at 0x7b0400000005 by thread T1:
+    #0 __tsan_memcpy /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:3165:3 (memcpy_race.cpp.tmp+0x6ad79)
+    #1 Thread1(void*) /home/llvm/compiler-rt/test/tsan/memcpy_race.cpp:11:3 (memcpy_race.cpp.tmp+0xeecc5)
+
+  Location is heap block of size 10 at 0x7b0400000000 allocated by main thread:
+    #0 operator new[](unsigned long) /home/llvm/compiler-rt/lib/tsan/rtl/tsan_new_delete.cpp:70:3 (memcpy_race.cpp.tmp+0xed1d9)
+    #1 __cxx_global_var_init /home/llvm/compiler-rt/test/tsan/memcpy_race.cpp:5:14 (memcpy_race.cpp.tmp+0x20344)
+    #2 _GLOBAL__sub_I_memcpy_race.cpp /home/llvm/compiler-rt/test/tsan/memcpy_race.cpp (memcpy_race.cpp.tmp+0x20344)
+
+  Thread T2 (tid=252303, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (memcpy_race.cpp.tmp+0x29673)
+    #1 main /home/llvm/compiler-rt/test/tsan/memcpy_race.cpp:29:3 (memcpy_race.cpp.tmp+0xeee32)
+
+  Thread T1 (tid=252296, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (memcpy_race.cpp.tmp+0x29673)
+    #1 main /home/llvm/compiler-rt/test/tsan/memcpy_race.cpp:28:3 (memcpy_race.cpp.tmp+0xeee1a)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/memcpy_race.cpp:19:3 in Thread2(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: memcpy_race.cpp <<TAIL<<

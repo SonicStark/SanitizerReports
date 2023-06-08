@@ -1,0 +1,11 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: dtls.c <<HEAD<<
+
+stack: 0x7fc8a225d6e0 dtls: 0x7fc8a195e000
+stack: 0x7fc8a225d6e0 dtls: 0x7fc8a195e000
+DONE
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: dtls.c <<TAIL<<

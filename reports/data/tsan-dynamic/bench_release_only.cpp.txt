@@ -1,0 +1,10 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: bench_release_only.cpp <<HEAD<<
+
+36630 ns/iter
+DONE
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: bench_release_only.cpp <<TAIL<<

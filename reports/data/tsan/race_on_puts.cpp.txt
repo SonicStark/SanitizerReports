@@ -1,0 +1,31 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: race_on_puts.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=215365)
+  Write of size 1 at 0x55b50fc01b8b by thread T2:
+    #0 Thread1(void*) /home/llvm/compiler-rt/test/tsan/race_on_puts.cpp:14:8 (race_on_puts.cpp.tmp+0xeec42)
+
+  Previous read of size 8 at 0x55b50fc01b88 by thread T1:
+    #0 puts /home/llvm/compiler-rt/lib/tsan/rtl/../../sanitizer_common/sanitizer_common_interceptors.inc:1329:3 (race_on_puts.cpp.tmp+0x4ae52)
+    #1 Thread0(void*) /home/llvm/compiler-rt/test/tsan/race_on_puts.cpp:7:3 (race_on_puts.cpp.tmp+0xeebf6)
+
+  Location is global 's' of size 12 at 0x55b50fc01b88 (race_on_puts.cpp.tmp+0x12db88)
+
+  Thread T2 (tid=215415, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (race_on_puts.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/race_on_puts.cpp:22:3 (race_on_puts.cpp.tmp+0xeecbf)
+
+  Thread T1 (tid=215413, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (race_on_puts.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/race_on_puts.cpp:21:3 (race_on_puts.cpp.tmp+0xeeca7)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/race_on_puts.cpp:14:8 in Thread1(void*)
+==================
+DONEThreadSanitizer: reported 1 warnings
+abracadabra
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: race_on_puts.cpp <<TAIL<<

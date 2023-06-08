@@ -1,0 +1,52 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: exceptions.cpp <<HEAD<<
+
+Hello, World!
+throws_and_catches caught exception
+OK.
+callee_throws caught exception
+OK.
+throws_catches_rethrows caught exception
+callee_rethrows caught exception
+OK.
+nested_try outer block caught exception
+OK.
+nested_try inner block caught exception
+OK.
+ClassWithDestructor
+~ClassWithDestructor
+cpp_object_with_destructor caught exception
+OK.
+multiframe_unwind caught exception
+OK.
+longjmp_unwind jumped
+OK.
+longjmp_unwind_multiple_frames jumped
+OK.
+Hello, World!
+throws_and_catches caught exception
+OK.
+callee_throws caught exception
+OK.
+throws_catches_rethrows caught exception
+callee_rethrows caught exception
+OK.
+nested_try outer block caught exception
+OK.
+nested_try inner block caught exception
+OK.
+ClassWithDestructor
+~ClassWithDestructor
+cpp_object_with_destructor caught exception
+OK.
+multiframe_unwind caught exception
+OK.
+longjmp_unwind jumped
+OK.
+longjmp_unwind_multiple_frames jumped
+OK.
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: exceptions.cpp <<TAIL<<

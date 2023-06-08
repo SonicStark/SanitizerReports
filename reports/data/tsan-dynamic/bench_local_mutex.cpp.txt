@@ -1,0 +1,10 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: bench_local_mutex.cpp <<HEAD<<
+
+6796 ns/iter
+DONE
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: bench_local_mutex.cpp <<TAIL<<

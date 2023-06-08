@@ -1,0 +1,33 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: fd_location_closed.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=249188)
+  Write of size 8 at 0x7bb000000060 by thread T2:
+    #0 close /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1844:3 (fd_location_closed.cpp.tmp+0x3c645)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/fd_location_closed.cpp:11:3 (fd_location_closed.cpp.tmp+0xeec15)
+
+  Previous read of size 8 at 0x7bb000000060 by thread T1:
+    #0 read /home/llvm/compiler-rt/lib/tsan/rtl/../../sanitizer_common/sanitizer_common_interceptors.inc:1067:3 (fd_location_closed.cpp.tmp+0x630a9)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/fd_location_closed.cpp:9:3 (fd_location_closed.cpp.tmp+0xeec02)
+
+  Location is file descriptor 3 destroyed by thread T1 at:
+    #0 close /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1844:3 (fd_location_closed.cpp.tmp+0x3c645)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/fd_location_closed.cpp:11:3 (fd_location_closed.cpp.tmp+0xeec15)
+
+  Thread T2 (tid=249216, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (fd_location_closed.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/fd_location_closed.cpp:20:3 (fd_location_closed.cpp.tmp+0xeeca7)
+
+  Thread T1 (tid=249207, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (fd_location_closed.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/fd_location_closed.cpp:19:3 (fd_location_closed.cpp.tmp+0xeec92)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/fd_location_closed.cpp:11:3 in Thread(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: fd_location_closed.cpp <<TAIL<<

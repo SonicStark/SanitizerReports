@@ -1,0 +1,259 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: mutex_cycle_long.c <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=214077)
+  Cycle in lock order graph: M0 (0x7ffd31478c80) => M1 (0x7ffd31478ca8) => M2 (0x7ffd31478cd0) => M3 (0x7ffd31478cf8) => M4 (0x7ffd31478d20) => M0
+
+  Mutex M1 acquired here while holding mutex M0 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+    Hint: use TSAN_OPTIONS=second_deadlock_stack=1 to get more informative warning message
+
+  Mutex M2 acquired here while holding mutex M1 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M3 acquired here while holding mutex M2 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M4 acquired here while holding mutex M3 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M0 acquired here while holding mutex M4 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:29:3 (mutex_cycle_long.c.tmp+0xeeb9a)
+
+SUMMARY: ThreadSanitizer: lock-order-inversion (potential deadlock) /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 in main
+==================
+PASS
+ThreadSanitizer: reported 1 warnings
+==================
+WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=214307)
+  Cycle in lock order graph: M0 (0x7ffc6cc4e240) => M1 (0x7ffc6cc4e268) => M2 (0x7ffc6cc4e290) => M3 (0x7ffc6cc4e2b8) => M4 (0x7ffc6cc4e2e0) => M5 (0x7ffc6cc4e308) => M6 (0x7ffc6cc4e330) => M7 (0x7ffc6cc4e358) => M8 (0x7ffc6cc4e380) => M9 (0x7ffc6cc4e3a8) => M0
+
+  Mutex M1 acquired here while holding mutex M0 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+    Hint: use TSAN_OPTIONS=second_deadlock_stack=1 to get more informative warning message
+
+  Mutex M2 acquired here while holding mutex M1 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M3 acquired here while holding mutex M2 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M4 acquired here while holding mutex M3 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M5 acquired here while holding mutex M4 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M6 acquired here while holding mutex M5 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M7 acquired here while holding mutex M6 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M8 acquired here while holding mutex M7 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M9 acquired here while holding mutex M8 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M0 acquired here while holding mutex M9 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:29:3 (mutex_cycle_long.c.tmp+0xeeb9a)
+
+SUMMARY: ThreadSanitizer: lock-order-inversion (potential deadlock) /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 in main
+==================
+PASS
+ThreadSanitizer: reported 1 warnings
+==================
+WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=214488)
+  Cycle in lock order graph: M0 (0x7ffea60faa20) => M1 (0x7ffea60faa48) => M2 (0x7ffea60faa70) => M3 (0x7ffea60faa98) => M4 (0x7ffea60faac0) => M5 (0x7ffea60faae8) => M6 (0x7ffea60fab10) => M7 (0x7ffea60fab38) => M8 (0x7ffea60fab60) => M9 (0x7ffea60fab88) => M10 (0x7ffea60fabb0) => M11 (0x7ffea60fabd8) => M12 (0x7ffea60fac00) => M13 (0x7ffea60fac28) => M14 (0x7ffea60fac50) => M0
+
+  Mutex M1 acquired here while holding mutex M0 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+    Hint: use TSAN_OPTIONS=second_deadlock_stack=1 to get more informative warning message
+
+  Mutex M2 acquired here while holding mutex M1 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M3 acquired here while holding mutex M2 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M4 acquired here while holding mutex M3 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M5 acquired here while holding mutex M4 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M6 acquired here while holding mutex M5 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M7 acquired here while holding mutex M6 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M8 acquired here while holding mutex M7 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M9 acquired here while holding mutex M8 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M10 acquired here while holding mutex M9 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M11 acquired here while holding mutex M10 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M12 acquired here while holding mutex M11 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M13 acquired here while holding mutex M12 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M14 acquired here while holding mutex M13 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M0 acquired here while holding mutex M14 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:29:3 (mutex_cycle_long.c.tmp+0xeeb9a)
+
+SUMMARY: ThreadSanitizer: lock-order-inversion (potential deadlock) /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 in main
+==================
+PASS
+ThreadSanitizer: reported 1 warnings
+==================
+WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=214731)
+  Cycle in lock order graph: M0 (0x7fff2045fff0) => M1 (0x7fff20460018) => M2 (0x7fff20460040) => M3 (0x7fff20460068) => M4 (0x7fff20460090) => M5 (0x7fff204600b8) => M6 (0x7fff204600e0) => M7 (0x7fff20460108) => M8 (0x7fff20460130) => M9 (0x7fff20460158) => M10 (0x7fff20460180) => M11 (0x7fff204601a8) => M12 (0x7fff204601d0) => M13 (0x7fff204601f8) => M14 (0x7fff20460220) => M15 (0x7fff20460248) => M16 (0x7fff20460270) => M17 (0x7fff20460298) => M18 (0x7fff204602c0) => M19 (0x7fff204602e8) => M0
+
+  Mutex M1 acquired here while holding mutex M0 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+    Hint: use TSAN_OPTIONS=second_deadlock_stack=1 to get more informative warning message
+
+  Mutex M2 acquired here while holding mutex M1 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M3 acquired here while holding mutex M2 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M4 acquired here while holding mutex M3 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M5 acquired here while holding mutex M4 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M6 acquired here while holding mutex M5 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M7 acquired here while holding mutex M6 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M8 acquired here while holding mutex M7 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M9 acquired here while holding mutex M8 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M10 acquired here while holding mutex M9 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M11 acquired here while holding mutex M10 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M12 acquired here while holding mutex M11 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M13 acquired here while holding mutex M12 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M14 acquired here while holding mutex M13 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M15 acquired here while holding mutex M14 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M16 acquired here while holding mutex M15 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M17 acquired here while holding mutex M16 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M18 acquired here while holding mutex M17 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M19 acquired here while holding mutex M18 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 (mutex_cycle_long.c.tmp+0xeeb3f)
+
+  Mutex M0 acquired here while holding mutex M19 in main thread:
+    #0 pthread_mutex_lock /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1367:3 (mutex_cycle_long.c.tmp+0x298d2)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:29:3 (mutex_cycle_long.c.tmp+0xeeb9a)
+
+SUMMARY: ThreadSanitizer: lock-order-inversion (potential deadlock) /home/llvm/compiler-rt/test/tsan/mutex_cycle_long.c:22:5 in main
+==================
+PASS
+ThreadSanitizer: reported 1 warnings
+WARNING: too long mutex cycle found
+PASS
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: mutex_cycle_long.c <<TAIL<<
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: mutex_cycle_long.c <<HEAD<<
+
+clang-16: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: mutex_cycle_long.c <<TAIL<<

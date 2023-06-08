@@ -1,0 +1,30 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: race_stress.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=215718)
+  Write of size 4 at 0x5653fa18072c by thread T2:
+    #0 thr(void*) /home/llvm/compiler-rt/test/tsan/race_stress.cpp:11:6 (race_stress.cpp.tmp+0xeec11)
+
+  Previous write of size 4 at 0x5653fa18072c by thread T1:
+    #0 thr(void*) /home/llvm/compiler-rt/test/tsan/race_stress.cpp:11:6 (race_stress.cpp.tmp+0xeec11)
+
+  Location is global 'X' of size 4 at 0x5653fa18072c (race_stress.cpp.tmp+0x151972c)
+
+  Thread T2 (tid=215758, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (race_stress.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/race_stress.cpp:18:5 (race_stress.cpp.tmp+0xeec6f)
+
+  Thread T1 (tid=215754, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (race_stress.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/race_stress.cpp:18:5 (race_stress.cpp.tmp+0xeec6f)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/race_stress.cpp:11:6 in thr(void*)
+==================
+DONE
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: race_stress.cpp <<TAIL<<

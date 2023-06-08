@@ -1,0 +1,11 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: fork_multithreaded.cpp <<HEAD<<
+
+==249848==ThreadSanitizer: starting new threads after multi-threaded fork is not supported. Dying (set die_after_fork=0 to override)
+OK
+OK
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: fork_multithreaded.cpp <<TAIL<<

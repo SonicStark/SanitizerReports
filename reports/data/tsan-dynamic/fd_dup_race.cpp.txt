@@ -1,0 +1,30 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: fd_dup_race.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=249186)
+  Write of size 8 at 0x7bb000000060 by thread T1:
+    #0 close /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1844:3 (fd_dup_race.cpp.tmp+0x3c655)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/fd_dup_race.cpp:13:7 (fd_dup_race.cpp.tmp+0xeec1d)
+
+  Previous read of size 8 at 0x7bb000000060 by main thread:
+    #0 dup2 /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1732:3 (fd_dup_race.cpp.tmp+0x576ae)
+    #1 main /home/llvm/compiler-rt/test/tsan/fd_dup_race.cpp:26:7 (fd_dup_race.cpp.tmp+0xeed05)
+
+  Location is file descriptor 3 created by main thread at:
+    #0 dup2 /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1732:3 (fd_dup_race.cpp.tmp+0x576ae)
+    #1 main /home/llvm/compiler-rt/test/tsan/fd_dup_race.cpp:26:7 (fd_dup_race.cpp.tmp+0xeed05)
+
+  Thread T1 (tid=249220, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (fd_dup_race.cpp.tmp+0x295f3)
+    #1 main /home/llvm/compiler-rt/test/tsan/fd_dup_race.cpp:25:3 (fd_dup_race.cpp.tmp+0xeecec)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/fd_dup_race.cpp:13:7 in Thread(void*)
+==================
+DONE
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: fd_dup_race.cpp <<TAIL<<

@@ -1,0 +1,10 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: bench_single_writer.cpp <<HEAD<<
+
+105924 ns/iter
+DONE
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: bench_single_writer.cpp <<TAIL<<

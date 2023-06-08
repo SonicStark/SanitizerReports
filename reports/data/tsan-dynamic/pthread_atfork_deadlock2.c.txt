@@ -1,0 +1,30 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: pthread_atfork_deadlock2.c <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=253717)
+  Write of size 4 at 0x559d0aafe2e0 by main thread:
+    #0 atfork /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock2.c:20:7 (pthread_atfork_deadlock2.c.tmp+0xec43e)
+    #1 __run_fork_handlers /build/glibc-SzIz7B/glibc-2.31/nptl/register-atfork.c:123:6 (libc.so.6+0x94acf) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #2 main /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock2.c:29:15 (pthread_atfork_deadlock2.c.tmp+0xec4a9)
+
+  Previous write of size 4 at 0x559d0aafe2e0 by thread T1:
+    #0 worker /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock2.c:14:7 (pthread_atfork_deadlock2.c.tmp+0xec3fe)
+
+  Location is global 'glob' of size 4 at 0x559d0aafe2e0 (pthread_atfork_deadlock2.c.tmp+0x14962e0)
+
+  Thread T1 (tid=253742, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (pthread_atfork_deadlock2.c.tmp+0x295d3)
+    #1 main /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock2.c:27:3 (pthread_atfork_deadlock2.c.tmp+0xec49c)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/pthread_atfork_deadlock2.c:20:7 in atfork
+==================
+CHILD
+ThreadSanitizer: reported 1 warnings
+PARENT
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: pthread_atfork_deadlock2.c <<TAIL<<

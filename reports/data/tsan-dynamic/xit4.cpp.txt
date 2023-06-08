@@ -1,0 +1,33 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: atexit4.cpp <<HEAD<<
+
+DONE
+LLVMSymbolizer: error reading file: No such file or directory
+==================
+WARNING: ThreadSanitizer: data race (pid=246177)
+  Write of size 4 at 0x7fff12461914 by thread T1:
+    #0 thread(void*) /home/llvm/compiler-rt/test/tsan/atexit4.cpp:6:26 (atexit4.cpp.tmp+0xec431)
+
+  Previous write of size 4 at 0x7fff12461914 by main thread:
+    #0 race() /home/llvm/compiler-rt/test/tsan/atexit4.cpp:14:8 (atexit4.cpp.tmp+0xec501)
+    #1 at_exit_callback_installed_at() /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:422:22 (atexit4.cpp.tmp+0x279be)
+    #2 X::X() /home/llvm/compiler-rt/test/tsan/atexit4.cpp:21:9 (atexit4.cpp.tmp+0xec566)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7fff12442000 ([stack]+0x1f914)
+
+  Thread T1 (tid=246181, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (atexit4.cpp.tmp+0x29603)
+    #1 race() /home/llvm/compiler-rt/test/tsan/atexit4.cpp:13:3 (atexit4.cpp.tmp+0xec4f9)
+    #2 at_exit_callback_installed_at() /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:422:22 (atexit4.cpp.tmp+0x279be)
+    #3 X::X() /home/llvm/compiler-rt/test/tsan/atexit4.cpp:21:9 (atexit4.cpp.tmp+0xec566)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/atexit4.cpp:6:26 in thread(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: atexit4.cpp <<TAIL<<

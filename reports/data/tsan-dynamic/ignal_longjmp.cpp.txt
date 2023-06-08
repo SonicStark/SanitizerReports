@@ -1,0 +1,12 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: signal_longjmp.cpp <<HEAD<<
+
+((volatile int *volatile)mem)[0] = 0 faulted ok
+((volatile int *volatile)mem)[1] = 1 faulted ok
+((volatile int *volatile)mem)[3] = 1 faulted ok
+DONE
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: signal_longjmp.cpp <<TAIL<<

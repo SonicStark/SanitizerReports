@@ -1,0 +1,10 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: dlclose.cpp <<HEAD<<
+
+HELLO FROM SO
+CLOSED SO
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: dlclose.cpp <<TAIL<<

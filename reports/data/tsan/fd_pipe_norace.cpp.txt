@@ -1,0 +1,9 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: fd_pipe_norace.cpp <<HEAD<<
+
+OK
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: fd_pipe_norace.cpp <<TAIL<<

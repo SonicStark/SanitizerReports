@@ -1,0 +1,17 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: thread_end_with_ignore3.cpp <<HEAD<<
+
+ThreadSanitizer: main thread finished with ignores enabled
+  One of the following ignores was not ended (in order of probability)
+  Ignore was enabled at:
+    #0 AnnotateIgnoreReadsBegin /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interface_ann.cpp:270:3 (thread_end_with_ignore3.cpp.tmp+0x7c44b)
+    #1 main /home/llvm/compiler-rt/test/tsan/thread_end_with_ignore3.cpp:12:3 (thread_end_with_ignore3.cpp.tmp+0xeec30)
+
+  Ignore was enabled at:
+    #0 AnnotateIgnoreReadsBegin /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interface_ann.cpp:270:3 (thread_end_with_ignore3.cpp.tmp+0x7c44b)
+    #1 main /home/llvm/compiler-rt/test/tsan/thread_end_with_ignore3.cpp:13:3 (thread_end_with_ignore3.cpp.tmp+0xeec3e)
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: thread_end_with_ignore3.cpp <<TAIL<<

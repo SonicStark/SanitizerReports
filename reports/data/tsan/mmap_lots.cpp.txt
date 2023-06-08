@@ -1,0 +1,34 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: mmap_lots.cpp <<HEAD<<
+
+allocated 3642132267008 with size 68719476736
+allocated 68719476736 with size 34359738368
+allocated 68719476736 with size 17179869184
+allocated 34359738368 with size 8589934592
+allocated 17179869184 with size 4294967296
+allocated 8589934592 with size 2147483648
+allocated 4294967296 with size 1073741824
+allocated 2684354560 with size 536870912
+allocated 805306368 with size 268435456
+allocated 268435456 with size 134217728
+allocated 201326592 with size 67108864
+allocated 167772160 with size 33554432
+allocated 50331648 with size 16777216
+allocated 25165824 with size 8388608
+allocated 4194304 with size 4194304
+allocated 8388608 with size 2097152
+allocated 9437184 with size 1048576
+allocated 1572864 with size 524288
+allocated 1572864 with size 262144
+allocated 786432 with size 131072
+allocated 327680 with size 65536
+allocated 0 with size 32768
+allocated 16384 with size 16384
+allocated 40960 with size 8192
+allocated 4096 with size 4096
+DONE
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: mmap_lots.cpp <<TAIL<<

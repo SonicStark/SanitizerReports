@@ -1,0 +1,25 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: mutex_double_lock.cpp <<HEAD<<
+
+LLVMSymbolizer: error reading file: No such file or directory
+==================
+WARNING: ThreadSanitizer: double lock of a mutex (pid=252893)
+    #0 AnnotateRWLockAcquired /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interface_ann.cpp:190:3 (mutex_double_lock.cpp.tmp+0x7c018)
+    #1 ThreadFunc(void*) /home/llvm/compiler-rt/test/tsan/mutex_double_lock.cpp:5:3 (mutex_double_lock.cpp.tmp+0xeec06)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7ffc1b7ab000 ([stack]+0x1edf4)
+
+  Mutex M0 (0x7ffc1b7c9df4) created at:
+    #0 AnnotateRWLockAcquired /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interface_ann.cpp:190:3 (mutex_double_lock.cpp.tmp+0x7c018)
+    #1 main /home/llvm/compiler-rt/test/tsan/mutex_double_lock.cpp:11:3 (mutex_double_lock.cpp.tmp+0xeec5c)
+
+SUMMARY: ThreadSanitizer: double lock of a mutex /home/llvm/compiler-rt/test/tsan/mutex_double_lock.cpp:5:3 in ThreadFunc(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: mutex_double_lock.cpp <<TAIL<<

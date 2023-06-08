@@ -1,0 +1,53 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: load_shared_lib.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=252524)
+  Write of size 4 at 0x55a9f1c8772c by thread T2:
+    #0 write_glob(void*) /home/llvm/compiler-rt/test/tsan/load_shared_lib.cpp:40:7 (load_shared_lib.cpp.tmp+0xefc8a)
+
+  Previous write of size 4 at 0x55a9f1c8772c by thread T1:
+    #0 write_glob(void*) /home/llvm/compiler-rt/test/tsan/load_shared_lib.cpp:40:7 (load_shared_lib.cpp.tmp+0xefc56)
+
+  Location is global 'GLOB' of size 4 at 0x55a9f1c8772c (load_shared_lib.cpp.tmp+0x151b72c)
+
+  Thread T2 (tid=252579, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (load_shared_lib.cpp.tmp+0x2a633)
+    #1 race_two_threads /home/llvm/compiler-rt/test/tsan/load_shared_lib.cpp:49:3 (load_shared_lib.cpp.tmp+0xf0068)
+    #2 main /home/llvm/compiler-rt/test/tsan/load_shared_lib.cpp:57:3 (load_shared_lib.cpp.tmp+0xf0068)
+
+  Thread T1 (tid=252557, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (load_shared_lib.cpp.tmp+0x2a633)
+    #1 race_two_threads /home/llvm/compiler-rt/test/tsan/load_shared_lib.cpp:48:3 (load_shared_lib.cpp.tmp+0xf0057)
+    #2 main /home/llvm/compiler-rt/test/tsan/load_shared_lib.cpp:57:3 (load_shared_lib.cpp.tmp+0xf0057)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/load_shared_lib.cpp:40:7 in write_glob(void*)
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=252524)
+  Write of size 4 at 0x7f0cc990a098 by thread T4:
+    #0 write_from_so /home/llvm/compiler-rt/test/tsan/load_shared_lib.cpp:23:14 (load_shared_lib.cpp.tmp-so.so+0x1416)
+
+  Previous write of size 4 at 0x7f0cc990a098 by thread T3:
+    #0 write_from_so /home/llvm/compiler-rt/test/tsan/load_shared_lib.cpp:23:14 (load_shared_lib.cpp.tmp-so.so+0x13e7)
+
+  Location is global 'GLOB_SHARED' of size 4 at 0x7f0cc990a098 (load_shared_lib.cpp.tmp-so.so+0x4098)
+
+  Thread T4 (tid=253031, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (load_shared_lib.cpp.tmp+0x2a633)
+    #1 race_two_threads /home/llvm/compiler-rt/test/tsan/load_shared_lib.cpp:49:3 (load_shared_lib.cpp.tmp+0xf00fe)
+    #2 main /home/llvm/compiler-rt/test/tsan/load_shared_lib.cpp:69:3 (load_shared_lib.cpp.tmp+0xf00fe)
+
+  Thread T3 (tid=253021, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (load_shared_lib.cpp.tmp+0x2a633)
+    #1 race_two_threads /home/llvm/compiler-rt/test/tsan/load_shared_lib.cpp:48:3 (load_shared_lib.cpp.tmp+0xf00ed)
+    #2 main /home/llvm/compiler-rt/test/tsan/load_shared_lib.cpp:69:3 (load_shared_lib.cpp.tmp+0xf00ed)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/load_shared_lib.cpp:23:14 in write_from_so
+==================
+ThreadSanitizer: reported 2 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: load_shared_lib.cpp <<TAIL<<

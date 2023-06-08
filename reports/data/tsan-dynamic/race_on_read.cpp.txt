@@ -1,0 +1,32 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: race_on_read.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=254431)
+  Write of size 1 at 0x5649c54c9730 by thread T1:
+    #0 read /home/llvm/compiler-rt/lib/tsan/rtl/../../sanitizer_common/sanitizer_common_interceptors.inc:1067:3 (race_on_read.cpp.tmp+0x630a9)
+    #1 Thread1(void*) /home/llvm/compiler-rt/test/tsan/race_on_read.cpp:13:3 (race_on_read.cpp.tmp+0xeec19)
+
+  Previous write of size 1 at 0x5649c54c9730 by thread T2:
+    #0 read /home/llvm/compiler-rt/lib/tsan/rtl/../../sanitizer_common/sanitizer_common_interceptors.inc:1067:3 (race_on_read.cpp.tmp+0x630a9)
+    #1 Thread2(void*) /home/llvm/compiler-rt/test/tsan/race_on_read.cpp:18:3 (race_on_read.cpp.tmp+0xeec6d)
+
+  Location is global 'buf' of size 1 at 0x5649c54c9730 (race_on_read.cpp.tmp+0x1519730)
+
+  Thread T1 (tid=254500, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (race_on_read.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/race_on_read.cpp:31:3 (race_on_read.cpp.tmp+0xeed3f)
+
+  Thread T2 (tid=254505, finished) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (race_on_read.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/race_on_read.cpp:32:3 (race_on_read.cpp.tmp+0xeed57)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/race_on_read.cpp:13:3 in Thread1(void*)
+==================
+DONE
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: race_on_read.cpp <<TAIL<<

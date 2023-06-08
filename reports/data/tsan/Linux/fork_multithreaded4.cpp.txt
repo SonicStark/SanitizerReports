@@ -1,0 +1,9 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: Linux/fork_multithreaded4.cpp <<HEAD<<
+
+DONE
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: Linux/fork_multithreaded4.cpp <<TAIL<<

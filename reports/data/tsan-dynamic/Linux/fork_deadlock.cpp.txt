@@ -1,0 +1,19 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: Linux/fork_deadlock.cpp <<HEAD<<
+
+__tsan_test_only_on_fork
+__tsan_test_only_on_fork
+__tsan_test_only_on_fork
+__tsan_test_only_on_fork
+__tsan_test_only_on_fork
+__tsan_test_only_on_fork
+__tsan_test_only_on_fork
+__tsan_test_only_on_fork
+__tsan_test_only_on_fork
+__tsan_test_only_on_fork
+DONE
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: Linux/fork_deadlock.cpp <<TAIL<<

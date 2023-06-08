@@ -1,0 +1,9 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: ignore_lib3.cpp <<HEAD<<
+
+==191596==ThreadSanitizer: library '/home/llvm/mybuild/projects/compiler-rt/test/tsan/X86_64Config/Output/ignore_lib3.cpp.tmp-dir/libignore_lib3.so' that was matched against called_from_lib suppression 'ignore_lib3.so' is unloaded
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: ignore_lib3.cpp <<TAIL<<

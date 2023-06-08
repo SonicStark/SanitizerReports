@@ -1,0 +1,26 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64-linux-dynamic :: Linux/double_race.cpp <<HEAD<<
+
+==================
+WARNING: ThreadSanitizer: data race (pid=246403)
+  Write of size 8 at 0x561bf7b65740 by thread T1:
+    #0 __tsan_memset /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:3173:3 (double_race.cpp.tmp+0x6adf9)
+    #1 Thread(void*) /home/llvm/compiler-rt/test/tsan/Linux/double_race.cpp:31:3 (double_race.cpp.tmp+0xeec4c)
+
+  Previous write of size 8 at 0x561bf7b65740 by main thread:
+    #0 __tsan_memset /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:3173:3 (double_race.cpp.tmp+0x6adf9)
+    #1 main /home/llvm/compiler-rt/test/tsan/Linux/double_race.cpp:39:3 (double_race.cpp.tmp+0xeecba)
+
+  Location is global 'buf' of size 16 at 0x561bf7b65740 (double_race.cpp.tmp+0x1519740)
+
+  Thread T1 (tid=246421, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (double_race.cpp.tmp+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/Linux/double_race.cpp:38:3 (double_race.cpp.tmp+0xeeca4)
+
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64-linux-dynamic :: Linux/double_race.cpp <<TAIL<<

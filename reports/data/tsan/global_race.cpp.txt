@@ -1,0 +1,26 @@
+
+
+>>HEAD>> ThreadSanitizer-x86_64 :: global_race.cpp <<HEAD<<
+
+addr=0x558a01406740 
+==================
+WARNING: ThreadSanitizer: data race (pid=190908)
+  Write of size 4 at 0x558a01406748 by thread T1:
+    #0 Thread(void*) /home/llvm/compiler-rt/test/tsan/global_race.cpp:21:17 (global_race.cpp.exe+0xeec02)
+
+  Previous write of size 4 at 0x558a01406748 by main thread:
+    #0 main /home/llvm/compiler-rt/test/tsan/global_race.cpp:30:17 (global_race.cpp.exe+0xeec8a)
+
+  Location is global 'GlobalData' of size 40 at 0x558a01406740 (global_race.cpp.exe+0x1519748)
+
+  Thread T1 (tid=190941, running) created by main thread at:
+    #0 pthread_create /home/llvm/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1048:3 (global_race.cpp.exe+0x295e3)
+    #1 main /home/llvm/compiler-rt/test/tsan/global_race.cpp:29:3 (global_race.cpp.exe+0xeec7e)
+
+SUMMARY: ThreadSanitizer: data race /home/llvm/compiler-rt/test/tsan/global_race.cpp:21:17 in Thread(void*)
+==================
+ThreadSanitizer: reported 1 warnings
+
+
+
+>>TAIL>> ThreadSanitizer-x86_64 :: global_race.cpp <<TAIL<<
