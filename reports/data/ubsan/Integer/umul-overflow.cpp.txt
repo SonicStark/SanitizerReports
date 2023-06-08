@@ -1,0 +1,22 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/umul-overflow.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/umul-overflow.cpp:15:31: runtime error: unsigned integer overflow: 4294967295 * 2 cannot be represented in type 'uint32_t' (aka 'unsigned int')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/umul-overflow.cpp:15:31 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/umul-overflow.cpp <<TAIL<<
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/umul-overflow.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/umul-overflow.cpp:13:27: warning: overflow in expression; result is -2147450881 with type 'int' [-Winteger-overflow]
+  (void)(uint16_t(0xffff) * uint16_t(0x8001));
+                          ^
+1 warning generated.
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/umul-overflow.cpp <<TAIL<<

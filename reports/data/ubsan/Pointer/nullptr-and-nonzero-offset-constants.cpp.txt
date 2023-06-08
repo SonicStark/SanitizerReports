@@ -1,0 +1,48 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:17:17: runtime error: applying zero offset to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:17:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:22:17: runtime error: applying non-zero offset 1 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:22:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:26:17: runtime error: applying non-zero offset to non-null pointer 0x000000000001 produced null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:26:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:17:17: runtime error: applying zero offset to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:17:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:22:17: runtime error: applying non-zero offset 1 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:22:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:26:17: runtime error: applying non-zero offset to non-null pointer 0x000000000001 produced null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:26:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:17:17: runtime error: applying zero offset to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:17:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:22:17: runtime error: applying non-zero offset 1 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:22:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:26:17: runtime error: applying non-zero offset to non-null pointer 0x000000000001 produced null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:26:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:17:17: runtime error: applying zero offset to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:17:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:22:17: runtime error: applying non-zero offset 1 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:22:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:26:17: runtime error: applying non-zero offset to non-null pointer 0x000000000001 produced null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:26:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:22:17: runtime error: applying non-zero offset 1 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:22:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:26:17: runtime error: applying non-zero offset to non-null pointer 0x000000000001 produced null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:26:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:22:17: runtime error: applying non-zero offset 1 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:22:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:26:17: runtime error: applying non-zero offset to non-null pointer 0x000000000001 produced null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:26:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:22:17: runtime error: applying non-zero offset 1 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:22:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:26:17: runtime error: applying non-zero offset to non-null pointer 0x000000000001 produced null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:26:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:22:17: runtime error: applying non-zero offset 1 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:22:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:26:17: runtime error: applying non-zero offset to non-null pointer 0x000000000001 produced null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp:26:17 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Pointer/nullptr-and-nonzero-offset-constants.cpp <<TAIL<<

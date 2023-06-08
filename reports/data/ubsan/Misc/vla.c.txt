@@ -1,0 +1,12 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/vla.c <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/vla.c:9:11: runtime error: variable length array bound evaluates to non-positive value -1
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/vla.c:9:11 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/vla.c:9:11: runtime error: variable length array bound evaluates to non-positive value 0
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/vla.c:9:11 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/vla.c <<TAIL<<

@@ -1,0 +1,21 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/TypeCheck/Linux/PR33221.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Linux/PR33221.cpp:48:19: runtime error: member access within address 0x7b0400000000 which does not point to an object of type 'Base'
+0x7b0400000000: note: object has invalid vptr
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Linux/PR33221.cpp:48:19 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/TypeCheck/Linux/PR33221.cpp <<TAIL<<
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/TypeCheck/Linux/PR33221.cpp <<HEAD<<
+
+Expected 0 lines, got 4.
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/TypeCheck/Linux/PR33221.cpp <<TAIL<<

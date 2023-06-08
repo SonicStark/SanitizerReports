@@ -1,0 +1,22 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/builtins.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/builtins.cpp:11:17: runtime error: passing zero to ctz(), which is not a valid argument
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/builtins.cpp:11:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/builtins.cpp:14:18: runtime error: passing zero to ctz(), which is not a valid argument
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/builtins.cpp:14:18 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/builtins.cpp:17:19: runtime error: passing zero to ctz(), which is not a valid argument
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/builtins.cpp:17:19 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/builtins.cpp:22:17: runtime error: passing zero to clz(), which is not a valid argument
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/builtins.cpp:22:17 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/builtins.cpp:25:18: runtime error: passing zero to clz(), which is not a valid argument
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/builtins.cpp:25:18 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/builtins.cpp:28:19: runtime error: passing zero to clz(), which is not a valid argument
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/builtins.cpp:28:19 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/builtins.cpp:11:17: runtime error: passing zero to ctz(), which is not a valid argument
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/builtins.cpp:11:17 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/builtins.cpp <<TAIL<<

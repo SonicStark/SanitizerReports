@@ -1,0 +1,48 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c <<HEAD<<
+
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c:53:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c:53:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c:53:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c:53:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c:53:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c:53:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c:53:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c:53:10 in 
+TEST
+TEST
+TEST
+TEST
+TEST
+TEST
+TEST
+TEST
+TEST
+TEST
+TEST
+TEST
+TEST
+TEST
+TEST
+TEST
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c:53:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c:53:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c:53:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c:53:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c:53:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c:53:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c:53:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c:53:10 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/ImplicitConversion/unsigned-integer-truncation-ignorelist.c <<TAIL<<

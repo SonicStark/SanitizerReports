@@ -1,0 +1,18 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/enum.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/enum.cpp:25:16: runtime error: load of value 4294967295, which is not a valid value for type 'E'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/enum.cpp:25:16 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/enum.cpp:27:16: runtime error: load of value <unknown>, which is not a valid value for type 'enum EBool'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/enum.cpp:27:16 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/enum.cpp:29:16: runtime error: load of value 2, which is not a valid value for type 'EEmpty'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/enum.cpp:29:16 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/enum.cpp:29:33: runtime error: load of value 1, which is not a valid value for type 'EMinus'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/enum.cpp:29:33 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/enum.cpp:31:16: runtime error: load of value 2, which is not a valid value for type 'EMinus'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/enum.cpp:31:16 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/enum.cpp <<TAIL<<

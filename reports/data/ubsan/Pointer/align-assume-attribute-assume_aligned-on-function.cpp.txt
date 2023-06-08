@@ -1,0 +1,48 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:20:3: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:13:22: note: alignment assumption was specified here
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:20:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:20:3: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:13:22: note: alignment assumption was specified here
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:20:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:20:3: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:13:22: note: alignment assumption was specified here
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:20:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:20:3: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:13:22: note: alignment assumption was specified here
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:20:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:20:3: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:13:22: note: alignment assumption was specified here
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:20:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:20:3: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:13:22: note: alignment assumption was specified here
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:20:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:20:3: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:13:22: note: alignment assumption was specified here
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:20:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:20:3: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:13:22: note: alignment assumption was specified here
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp:20:3 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Pointer/align-assume-attribute-assume_aligned-on-function.cpp <<TAIL<<

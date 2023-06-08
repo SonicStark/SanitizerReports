@@ -1,0 +1,13 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/monitor.cpp <<HEAD<<
+
+Issue: invalid-bool-load
+Location: /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/monitor.cpp:41:12
+Message: Load of value 3, which is not a valid value for type 'bool'
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/monitor.cpp:41:12: runtime error: load of value 3, which is not a valid value for type 'bool'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/monitor.cpp:41:12 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/monitor.cpp <<TAIL<<

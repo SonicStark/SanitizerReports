@@ -1,0 +1,38 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/TypeCheck/Function/function.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:67:3: runtime error: call to function f() through pointer to incorrect function type 'void (*)(int)'
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:53: note: f() defined here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:67:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:82:3: runtime error: call to function f2(unsigned int) through pointer to incorrect function type 'void (*)(int)'
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:71: note: f2(unsigned int) defined here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:82:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:88:3: runtime error: call to function f4(unsigned int) through pointer to incorrect function type 'void (*)(int)'
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:73: note: f4(unsigned int) defined here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:88:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:100:3: runtime error: call to function f2(unsigned int) through pointer to incorrect function type 'void (*)(int) noexcept'
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:71: note: f2(unsigned int) defined here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:100:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:106:3: runtime error: call to function f4(unsigned int) through pointer to incorrect function type 'void (*)(int) noexcept'
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:73: note: f4(unsigned int) defined here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:106:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:67:3: runtime error: call to function (unknown) through pointer to incorrect function type 'void (*)(int)'
+(/home/llvm/mybuild/projects/compiler-rt/test/ubsan/ThreadSanitizer-x86_64/TestCases/TypeCheck/Function/Output/function.cpp.tmp+0xefa50): note: (unknown) defined here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:67:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:82:3: runtime error: call to function (unknown) through pointer to incorrect function type 'void (*)(int)'
+(/home/llvm/mybuild/projects/compiler-rt/test/ubsan/ThreadSanitizer-x86_64/TestCases/TypeCheck/Function/Output/function.cpp.tmp+0xefba0): note: (unknown) defined here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:82:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:88:3: runtime error: call to function (unknown) through pointer to incorrect function type 'void (*)(int)'
+(/home/llvm/mybuild/projects/compiler-rt/test/ubsan/ThreadSanitizer-x86_64/TestCases/TypeCheck/Function/Output/function.cpp.tmp+0xefbc0): note: (unknown) defined here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:88:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:100:3: runtime error: call to function (unknown) through pointer to incorrect function type 'void (*)(int) noexcept'
+(/home/llvm/mybuild/projects/compiler-rt/test/ubsan/ThreadSanitizer-x86_64/TestCases/TypeCheck/Function/Output/function.cpp.tmp+0xefba0): note: (unknown) defined here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:100:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:106:3: runtime error: call to function (unknown) through pointer to incorrect function type 'void (*)(int) noexcept'
+(/home/llvm/mybuild/projects/compiler-rt/test/ubsan/ThreadSanitizer-x86_64/TestCases/TypeCheck/Function/Output/function.cpp.tmp+0xefbc0): note: (unknown) defined here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/Function/function.cpp:106:3 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/TypeCheck/Function/function.cpp <<TAIL<<

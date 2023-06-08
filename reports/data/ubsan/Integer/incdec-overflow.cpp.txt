@@ -1,0 +1,16 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/incdec-overflow.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/incdec-overflow.cpp:13:3: runtime error: signed integer overflow: 2147483647 + 1 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/incdec-overflow.cpp:13:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/incdec-overflow.cpp:13:3: runtime error: signed integer overflow: 2147483647 + 1 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/incdec-overflow.cpp:13:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/incdec-overflow.cpp:13:3: runtime error: signed integer overflow: -2147483648 - 1 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/incdec-overflow.cpp:13:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/incdec-overflow.cpp:13:3: runtime error: signed integer overflow: -2147483648 - 1 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/incdec-overflow.cpp:13:3 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/incdec-overflow.cpp <<TAIL<<

@@ -1,0 +1,14 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/usub-overflow.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/usub-overflow.cpp:14:22: runtime error: unsigned integer overflow: 1 - 2 cannot be represented in type 'uint32_t' (aka 'unsigned int')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/usub-overflow.cpp:14:22 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/usub-overflow.cpp:19:42: runtime error: unsigned integer overflow: 8000000000000000000 - 9000000000000000000 cannot be represented in type 'uint64_t' (aka 'unsigned long')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/usub-overflow.cpp:19:42 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/usub-overflow.cpp:25:34: runtime error: unsigned integer overflow: 0x40000000000000000000000000000000 - 0x80000000000000000000000000000000 cannot be represented in type '__uint128_t' (aka 'unsigned __int128')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/usub-overflow.cpp:25:34 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/usub-overflow.cpp <<TAIL<<

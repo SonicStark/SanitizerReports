@@ -1,0 +1,22 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/mul-overflow.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/mul-overflow.cpp:13:27: runtime error: signed integer overflow: 65535 * 32769 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/mul-overflow.cpp:13:27 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/mul-overflow.cpp <<TAIL<<
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/mul-overflow.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/mul-overflow.cpp:13:27: warning: overflow in expression; result is -2147450881 with type 'int' [-Winteger-overflow]
+  (void)(uint16_t(0xffff) * uint16_t(0x8001));
+                          ^
+1 warning generated.
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/mul-overflow.cpp <<TAIL<<

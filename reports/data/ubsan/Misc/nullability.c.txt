@@ -1,0 +1,32 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/nullability.c <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:14:41: runtime error: null pointer returned from function declared to never return null
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:14:6: note: _Nonnull return type annotation specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:14:41 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:1001:19: runtime error: null pointer passed as argument 1, which is declared to never be null
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:18:36: note: _Nonnull type annotation specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:1001:19 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:1001:22: runtime error: null pointer passed as argument 2, which is declared to never be null
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:18:56: note: _Nonnull type annotation specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:1001:22 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:1002:15: runtime error: null pointer passed as argument 1, which is declared to never be null
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:25:23: note: _Nonnull type annotation specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:1002:15 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:30:9: runtime error: _Nonnull binding to null pointer of type 'int * _Nonnull'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:30:9 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:36:10: runtime error: _Nonnull binding to null pointer of type 'int * _Nonnull'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:36:10 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:46:10: runtime error: _Nonnull binding to null pointer of type 'int * _Nonnull'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:46:10 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:50:52: runtime error: _Nonnull binding to null pointer of type 'int * _Nonnull'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:50:52 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:54:53: runtime error: _Nonnull binding to null pointer of type 'int * _Nonnull'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:54:53 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:54:56: runtime error: _Nonnull binding to null pointer of type 'int * _Nonnull'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nullability.c:54:56 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/nullability.c <<TAIL<<

@@ -1,0 +1,120 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/shift.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:31:5: runtime error: left shift of negative value -2147483648
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:31:5 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:31:5: runtime error: left shift of negative value -2147483648
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:31:5 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:37:5: runtime error: shift exponent -3 is negative
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:37:5 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:37:5: runtime error: shift exponent -3 is negative
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:37:5 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:37:5: runtime error: shift exponent -3 is negative
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:37:5 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:37:5: runtime error: shift exponent -3 is negative
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:37:5 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:43:5: runtime error: shift exponent 32 is too large for 32-bit type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:43:5 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:43:5: runtime error: shift exponent 32 is too large for 32-bit type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:43:5 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:43:5: runtime error: shift exponent 32 is too large for 32-bit type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:43:5 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:43:5: runtime error: shift exponent 32 is too large for 32-bit type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:43:5 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/shift.cpp <<TAIL<<
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/shift.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:37:5: warning: shift count is negative [-Wshift-count-negative]
+  a OP (-3);
+    ^  ~~~~
+<command line>:2:12: note: expanded from macro 'OP'
+#define OP <<
+           ^
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:37:5: warning: shift count is negative [-Wshift-count-negative]
+  a OP (-3);
+    ^  ~~~~
+<command line>:2:12: note: expanded from macro 'OP'
+#define OP >>
+           ^
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:37:5: warning: shift count is negative [-Wshift-count-negative]
+  a OP (-3);
+    ^  ~~~~
+<command line>:2:12: note: expanded from macro 'OP'
+#define OP <<=
+           ^
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:37:5: warning: shift count is negative [-Wshift-count-negative]
+  a OP (-3);
+    ^  ~~~~
+<command line>:2:12: note: expanded from macro 'OP'
+#define OP >>=
+           ^
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:43:5: warning: shift count >= width of type [-Wshift-count-overflow]
+  a OP 32;
+    ^  ~~
+<command line>:2:12: note: expanded from macro 'OP'
+#define OP <<
+           ^
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:43:5: warning: shift count >= width of type [-Wshift-count-overflow]
+  a OP 32;
+    ^  ~~
+<command line>:2:12: note: expanded from macro 'OP'
+#define OP >>
+           ^
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:43:5: warning: shift count >= width of type [-Wshift-count-overflow]
+  a OP 32;
+    ^  ~~
+<command line>:2:12: note: expanded from macro 'OP'
+#define OP <<=
+           ^
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:43:5: warning: shift count >= width of type [-Wshift-count-overflow]
+  a OP 32;
+    ^  ~~
+<command line>:2:12: note: expanded from macro 'OP'
+#define OP >>=
+           ^
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:37:5: warning: shift count is negative [-Wshift-count-negative]
+  a OP (-3);
+    ^  ~~~~
+<command line>:2:12: note: expanded from macro 'OP'
+#define OP <<
+           ^
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:37:5: warning: shift count is negative [-Wshift-count-negative]
+  a OP (-3);
+    ^  ~~~~
+<command line>:2:12: note: expanded from macro 'OP'
+#define OP >>
+           ^
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:43:5: warning: shift count >= width of type [-Wshift-count-overflow]
+  a OP 32;
+    ^  ~~
+<command line>:2:12: note: expanded from macro 'OP'
+#define OP <<
+           ^
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/shift.cpp:43:5: warning: shift count >= width of type [-Wshift-count-overflow]
+  a OP 32;
+    ^  ~~
+<command line>:2:12: note: expanded from macro 'OP'
+#define OP >>
+           ^
+1 warning generated.
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/shift.cpp <<TAIL<<

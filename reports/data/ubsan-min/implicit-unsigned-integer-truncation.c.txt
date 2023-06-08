@@ -1,0 +1,24 @@
+
+
+>>HEAD>> UBSan-Minimal-x86_64 :: TestCases/implicit-unsigned-integer-truncation.c <<HEAD<<
+
+ubsan: implicit-conversion by 0x0000560f89e02885
+
+
+
+>>TAIL>> UBSan-Minimal-x86_64 :: TestCases/implicit-unsigned-integer-truncation.c <<TAIL<<
+
+
+>>HEAD>> UBSan-Minimal-x86_64 :: TestCases/implicit-unsigned-integer-truncation.c <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan_minimal/TestCases/implicit-unsigned-integer-truncation.c:9:16: warning: implicit conversion from 'uint32_t' (aka 'unsigned int') to 'int8_t' (aka 'signed char') changes value from 4294967295 to -1 [-Wconstant-conversion]
+  int8_t n0 = (~((uint32_t)(0))); // ~0 -> -1, but do not warn.
+         ~~    ^~~~~~~~~~~~~~~~
+/home/llvm/compiler-rt/test/ubsan_minimal/TestCases/implicit-unsigned-integer-truncation.c:20:17: warning: implicit conversion from 'uint32_t' (aka 'unsigned int') to 'uint8_t' (aka 'unsigned char') changes value from 4294967295 to 255 [-Wconstant-conversion]
+  uint8_t t0 = (~((uint32_t)(0)));
+          ~~    ^~~~~~~~~~~~~~~~
+2 warnings generated.
+
+
+
+>>TAIL>> UBSan-Minimal-x86_64 :: TestCases/implicit-unsigned-integer-truncation.c <<TAIL<<

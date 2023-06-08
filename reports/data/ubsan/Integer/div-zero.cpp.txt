@@ -1,0 +1,49 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/div-zero.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/div-zero.cpp:14:12: runtime error: division by zero
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/div-zero.cpp:14:12 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/div-zero.cpp:14:12: runtime error: division by zero
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/div-zero.cpp:14:12 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/div-zero.cpp:14:12: runtime error: division by zero
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/div-zero.cpp:14:12 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/div-zero.cpp:14:12: runtime error: division by zero
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/div-zero.cpp:14:12 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/div-zero.cpp <<TAIL<<
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/div-zero.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/div-zero.cpp:14:12: warning: division by zero is undefined [-Wdivision-by-zero]
+  DIVIDEND / 0;
+           ^ ~
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/div-zero.cpp:14:12: warning: expression result unused [-Wunused-value]
+  DIVIDEND / 0;
+  ~~~~~~~~ ^ ~
+2 warnings generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/div-zero.cpp:14:12: warning: division by zero is undefined [-Wdivision-by-zero]
+  DIVIDEND / 0;
+           ^ ~
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/div-zero.cpp:14:12: warning: expression result unused [-Wunused-value]
+  DIVIDEND / 0;
+  ~~~~~~~~ ^ ~
+2 warnings generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/div-zero.cpp:14:12: warning: division by zero is undefined [-Wdivision-by-zero]
+  DIVIDEND / 0;
+           ^ ~
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/div-zero.cpp:14:12: warning: expression result unused [-Wunused-value]
+  DIVIDEND / 0;
+  ~~~~~~~~ ^ ~
+2 warnings generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/div-zero.cpp:14:12: warning: expression result unused [-Wunused-value]
+  DIVIDEND / 0;
+  ~~~~~~~~ ^ ~
+1 warning generated.
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/div-zero.cpp <<TAIL<<

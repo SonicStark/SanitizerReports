@@ -1,0 +1,48 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/ImplicitConversion/unsigned-integer-truncation.c <<HEAD<<
+
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 2147483648 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 0 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 2147483647 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10 in 
+TEST
+TEST
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967167 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 127 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 2147483776 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 128 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 2147483519 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 127 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 2147483648 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 0 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 2147483647 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10 in 
+TEST
+TEST
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967167 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 127 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 2147483776 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 128 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 2147483519 (32-bit, unsigned) to type 'uint8_t' (aka 'unsigned char') changed the value to 127 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/unsigned-integer-truncation.c:500:10 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/ImplicitConversion/unsigned-integer-truncation.c <<TAIL<<

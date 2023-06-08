@@ -1,0 +1,12 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/bool.m <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/bool.m:12:10: runtime error: load of value 123, which is not a valid value for type 'BOOL' (aka 'char')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/bool.m:12:10 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/bool.m:12:10: runtime error: load of value 123, which is not a valid value for type 'BOOL' (aka 'char')
+SUMMARY: UndefinedBehaviorSanitizer: invalid-bool-load /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/bool.m:12:10 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/bool.m <<TAIL<<

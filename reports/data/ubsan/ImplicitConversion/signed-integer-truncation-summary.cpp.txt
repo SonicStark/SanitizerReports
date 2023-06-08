@@ -1,0 +1,12 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/ImplicitConversion/signed-integer-truncation-summary.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/signed-integer-truncation-summary.cpp:8:16: runtime error: implicit conversion from type 'int32_t' (aka 'int') of value -1 (32-bit, signed) to type 'uint8_t' (aka 'unsigned char') changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/signed-integer-truncation-summary.cpp:8:16 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/signed-integer-truncation-summary.cpp:8:16: runtime error: implicit conversion from type 'int32_t' (aka 'int') of value -1 (32-bit, signed) to type 'uint8_t' (aka 'unsigned char') changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: implicit-signed-integer-truncation /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/signed-integer-truncation-summary.cpp:8:16 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/ImplicitConversion/signed-integer-truncation-summary.cpp <<TAIL<<

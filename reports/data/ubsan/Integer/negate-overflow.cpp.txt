@@ -1,0 +1,41 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/negate-overflow.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/negate-overflow.cpp:13:3: runtime error: negation of -2147483648 cannot be represented in type 'int'; cast to an unsigned type to negate this value to itself
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/negate-overflow.cpp:13:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/negate-overflow.cpp:10:3: runtime error: negation of 2147483648 cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/negate-overflow.cpp:10:3 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/negate-overflow.cpp <<TAIL<<
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/negate-overflow.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/negate-overflow.cpp:10:3: warning: expression result unused [-Wunused-value]
+  -unsigned(-0x7fffffff - 1); // ok
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/negate-overflow.cpp:13:3: warning: expression result unused [-Wunused-value]
+  -(-0x7fffffff - 1);
+  ^~~~~~~~~~~~~~~~~~
+2 warnings generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/negate-overflow.cpp:10:3: warning: expression result unused [-Wunused-value]
+  -unsigned(-0x7fffffff - 1); // ok
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/negate-overflow.cpp:13:3: warning: expression result unused [-Wunused-value]
+  -(-0x7fffffff - 1);
+  ^~~~~~~~~~~~~~~~~~
+2 warnings generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/negate-overflow.cpp:10:3: warning: expression result unused [-Wunused-value]
+  -unsigned(-0x7fffffff - 1); // ok
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/negate-overflow.cpp:13:3: warning: expression result unused [-Wunused-value]
+  -(-0x7fffffff - 1);
+  ^~~~~~~~~~~~~~~~~~
+2 warnings generated.
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/negate-overflow.cpp <<TAIL<<

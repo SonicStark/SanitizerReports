@@ -1,0 +1,24 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/ImplicitConversion/integer-sign-change-ignorelist.c <<HEAD<<
+
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-ignorelist.c:21:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'int32_t' (aka 'int') changed the value to -1 (32-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-ignorelist.c:21:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-ignorelist.c:21:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'int32_t' (aka 'int') changed the value to -1 (32-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-ignorelist.c:21:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-ignorelist.c:21:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'int32_t' (aka 'int') changed the value to -1 (32-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-ignorelist.c:21:10 in 
+TEST
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-ignorelist.c:21:10: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'int32_t' (aka 'int') changed the value to -1 (32-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-ignorelist.c:21:10 in 
+TEST
+TEST
+TEST
+TEST
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/ImplicitConversion/integer-sign-change-ignorelist.c <<TAIL<<

@@ -1,0 +1,45 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Float/cast-overflow.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:109:27: runtime error: 2.14748e+09 is outside the range of representable values of type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: float-cast-overflow /home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:109:27 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:115:27: runtime error: -2.14748e+09 is outside the range of representable values of type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:115:27 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:121:37: runtime error: -1 is outside the range of representable values of type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:121:37 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:126:37: runtime error: 4.29497e+09 is outside the range of representable values of type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:126:37 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:132:27: runtime error: inf is outside the range of representable values of type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:132:27 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:137:27: runtime error: nan is outside the range of representable values of type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:137:27 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:145:27: runtime error: 3.40282e+38 is outside the range of representable values of type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:145:27 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:167:14: runtime error: 300 is outside the range of representable values of type 'char'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:167:14 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Float/cast-overflow.cpp <<TAIL<<
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Float/cast-overflow.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:64:3: warning: expression result unused [-Wunused-value]
+  (int)MaxFloatRepresentableAsInt; // ok
+  ^    ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:65:3: warning: expression result unused [-Wunused-value]
+  (int)-MaxFloatRepresentableAsInt; // ok
+  ^    ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:68:3: warning: expression result unused [-Wunused-value]
+  (int)MinFloatRepresentableAsInt; // ok
+  ^    ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/llvm/compiler-rt/test/ubsan/TestCases/Float/cast-overflow.cpp:71:3: warning: expression result unused [-Wunused-value]
+  (unsigned int)MaxFloatRepresentableAsUInt; // ok
+  ^             ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+4 warnings generated.
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Float/cast-overflow.cpp <<TAIL<<

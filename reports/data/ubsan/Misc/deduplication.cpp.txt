@@ -1,0 +1,12 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/deduplication.cpp <<HEAD<<
+
+Start
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/deduplication.cpp:8:3: runtime error: signed integer overflow: -2147483648 - 1 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/deduplication.cpp:8:3 in 
+End
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/deduplication.cpp <<TAIL<<

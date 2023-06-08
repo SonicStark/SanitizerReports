@@ -1,0 +1,26 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/unreachable.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/unreachable.cpp:18:5: runtime error: execution reached an unreachable program point
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/unreachable.cpp:18:5 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/unreachable.cpp:11:1: runtime error: execution reached an unreachable program point
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/unreachable.cpp:11:1 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/unreachable.cpp:23:5: runtime error: execution reached an unreachable program point
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/unreachable.cpp:23:5 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/unreachable.cpp <<TAIL<<
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/unreachable.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/unreachable.cpp:11:1: warning: function declared 'noreturn' should not return [-Winvalid-noreturn]
+}
+^
+1 warning generated.
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/unreachable.cpp <<TAIL<<

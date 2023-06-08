@@ -1,0 +1,19 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/bounds.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/bounds.cpp:10:10: runtime error: index 2 out of bounds for type 'int *'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/bounds.cpp:10:10 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/bounds.cpp:15:10: runtime error: index 2 out of bounds for type 'double *'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/bounds.cpp:15:10 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/bounds.cpp:27:10: runtime error: index 2 out of bounds for type 'int[2][3][4]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/bounds.cpp:27:10 in 
+error: Illegal instruction
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/bounds.cpp:27:10: runtime error: index 3 out of bounds for type 'int[3][4]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/bounds.cpp:27:10 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/bounds.cpp:27:10: runtime error: index 4 out of bounds for type 'int[4]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/bounds.cpp:27:10 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/bounds.cpp <<TAIL<<

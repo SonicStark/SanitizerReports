@@ -1,0 +1,32 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/missing_return.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/missing_return.cpp:8:5: runtime error: execution reached the end of a value-returning function without returning a value
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/missing_return.cpp:8:5 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/missing_return.cpp:8:5: runtime error: execution reached the end of a value-returning function without returning a value
+    #0 f() /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/missing_return.cpp:8:35 (missing_return.cpp.tmp+0xeea26)
+    #1 main /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/missing_return.cpp:13:10 (missing_return.cpp.tmp+0xeea3f)
+    #2 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #3 _start <null> (missing_return.cpp.tmp+0x2033d)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/missing_return.cpp:8:5 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/missing_return.cpp <<TAIL<<
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/missing_return.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/missing_return.cpp:8:24: warning: GCC does not allow 'noinline' attribute in this position on a function definition [-Wgcc-compat]
+int f() __attribute__((noinline)) {
+                       ^
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/missing_return.cpp:10:1: warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+2 warnings generated.
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/missing_return.cpp <<TAIL<<

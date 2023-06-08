@@ -1,0 +1,80 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/coverage-levels.cpp <<HEAD<<
+
+==2687623==Installed the sigaction for signal 11
+==2687623==Installed the sigaction for signal 7
+==2687623==Installed the sigaction for signal 8
+***** Running under ThreadSanitizer v3 (pid 2687623) *****
+SANCOV_OPTIONS: <empty>
+Stats: SizeClassAllocator64: 0M mapped (0M rss) in 385 allocations; remains 385
+  02 (    32): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks    1920 avail:   2048 rss:      4K releases:      0 last released:      0K region: 0x7b0800000000
+  12 (   192): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     213 avail:    341 rss:      4K releases:      0 last released:      0K region: 0x7b3000000000
+  13 (   208): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     187 avail:    315 rss:      4K releases:      0 last released:      0K region: 0x7b3400000000
+  49 ( 81920): mapped:    128K allocs:       1 frees:       0 inuse:      1 num_freed_chunks       0 avail:      1 rss:      4K releases:      0 last released:      0K region: 0x7bc400000000
+Stats: LargeMmapAllocator: allocated 0 times, remains 0 (0 K) max 0 M; by size logs: 
+==2687908==Installed the sigaction for signal 11
+==2687908==Installed the sigaction for signal 7
+==2687908==Installed the sigaction for signal 8
+***** Running under ThreadSanitizer v3 (pid 2687908) *****
+SANCOV_OPTIONS: <empty>
+Stats: SizeClassAllocator64: 0M mapped (0M rss) in 385 allocations; remains 385
+  02 (    32): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks    1920 avail:   2048 rss:      4K releases:      0 last released:      0K region: 0x7b0800000000
+  12 (   192): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     213 avail:    341 rss:      4K releases:      0 last released:      0K region: 0x7b3000000000
+  13 (   208): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     187 avail:    315 rss:      4K releases:      0 last released:      0K region: 0x7b3400000000
+  49 ( 81920): mapped:    128K allocs:       1 frees:       0 inuse:      1 num_freed_chunks       0 avail:      1 rss:      4K releases:      0 last released:      0K region: 0x7bc400000000
+Stats: LargeMmapAllocator: allocated 0 times, remains 0 (0 K) max 0 M; by size logs: 
+==2688224==Installed the sigaction for signal 11
+==2688224==Installed the sigaction for signal 7
+==2688224==Installed the sigaction for signal 8
+***** Running under ThreadSanitizer v3 (pid 2688224) *****
+SANCOV_OPTIONS: <empty>
+Stats: SizeClassAllocator64: 0M mapped (0M rss) in 385 allocations; remains 385
+  02 (    32): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks    1920 avail:   2048 rss:      4K releases:      0 last released:      0K region: 0x7b0800000000
+  12 (   192): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     213 avail:    341 rss:      4K releases:      0 last released:      0K region: 0x7b3000000000
+  13 (   208): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     187 avail:    315 rss:      4K releases:      0 last released:      0K region: 0x7b3400000000
+  49 ( 81920): mapped:    128K allocs:       1 frees:       0 inuse:      1 num_freed_chunks       0 avail:      1 rss:      4K releases:      0 last released:      0K region: 0x7bc400000000
+Stats: LargeMmapAllocator: allocated 0 times, remains 0 (0 K) max 0 M; by size logs: 
+==2688425==Installed the sigaction for signal 11
+==2688425==Installed the sigaction for signal 7
+==2688425==Installed the sigaction for signal 8
+***** Running under ThreadSanitizer v3 (pid 2688425) *****
+SANCOV_OPTIONS: <empty>
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/coverage-levels.cpp:35:13: runtime error: shift exponent 32 is too large for 32-bit type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/coverage-levels.cpp:35:13 in 
+Stats: SizeClassAllocator64: 0M mapped (0M rss) in 385 allocations; remains 385
+  02 (    32): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks    1920 avail:   2048 rss:      4K releases:      0 last released:      0K region: 0x7b0800000000
+  12 (   192): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     213 avail:    341 rss:      4K releases:      0 last released:      0K region: 0x7b3000000000
+  13 (   208): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     187 avail:    315 rss:      4K releases:      0 last released:      0K region: 0x7b3400000000
+  49 ( 81920): mapped:    128K allocs:       1 frees:       0 inuse:      1 num_freed_chunks       0 avail:      1 rss:      4K releases:      0 last released:      0K region: 0x7bc400000000
+Stats: LargeMmapAllocator: allocated 0 times, remains 0 (0 K) max 0 M; by size logs: 
+==2688619==Installed the sigaction for signal 11
+==2688619==Installed the sigaction for signal 7
+==2688619==Installed the sigaction for signal 8
+***** Running under ThreadSanitizer v3 (pid 2688619) *****
+SANCOV_OPTIONS: <empty>
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/coverage-levels.cpp:35:13: runtime error: shift exponent 32 is too large for 32-bit type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/coverage-levels.cpp:35:13 in 
+Stats: SizeClassAllocator64: 0M mapped (0M rss) in 385 allocations; remains 385
+  02 (    32): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks    1920 avail:   2048 rss:      4K releases:      0 last released:      0K region: 0x7b0800000000
+  12 (   192): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     213 avail:    341 rss:      4K releases:      0 last released:      0K region: 0x7b3000000000
+  13 (   208): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     187 avail:    315 rss:      4K releases:      0 last released:      0K region: 0x7b3400000000
+  49 ( 81920): mapped:    128K allocs:       1 frees:       0 inuse:      1 num_freed_chunks       0 avail:      1 rss:      4K releases:      0 last released:      0K region: 0x7bc400000000
+Stats: LargeMmapAllocator: allocated 0 times, remains 0 (0 K) max 0 M; by size logs: 
+==2688795==Installed the sigaction for signal 11
+==2688795==Installed the sigaction for signal 7
+==2688795==Installed the sigaction for signal 8
+***** Running under ThreadSanitizer v3 (pid 2688795) *****
+SANCOV_OPTIONS: <empty>
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/coverage-levels.cpp:35:13: runtime error: shift exponent 32 is too large for 32-bit type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/coverage-levels.cpp:35:13 in 
+Stats: SizeClassAllocator64: 0M mapped (0M rss) in 385 allocations; remains 385
+  02 (    32): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks    1920 avail:   2048 rss:      4K releases:      0 last released:      0K region: 0x7b0800000000
+  12 (   192): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     213 avail:    341 rss:      4K releases:      0 last released:      0K region: 0x7b3000000000
+  13 (   208): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     187 avail:    315 rss:      4K releases:      0 last released:      0K region: 0x7b3400000000
+  49 ( 81920): mapped:    128K allocs:       1 frees:       0 inuse:      1 num_freed_chunks       0 avail:      1 rss:      4K releases:      0 last released:      0K region: 0x7bc400000000
+Stats: LargeMmapAllocator: allocated 0 times, remains 0 (0 K) max 0 M; by size logs: 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/coverage-levels.cpp <<TAIL<<

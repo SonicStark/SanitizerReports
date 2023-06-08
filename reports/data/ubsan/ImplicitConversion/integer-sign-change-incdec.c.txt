@@ -1,0 +1,104 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/ImplicitConversion/integer-sign-change-incdec.c <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:20:4: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned char' changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:20:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:23:3: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned char' changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:23:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:66:4: runtime error: implicit conversion from type 'int' of value -129 (32-bit, signed) to type 'signed char' changed the value to 127 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:66:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:69:3: runtime error: implicit conversion from type 'int' of value -129 (32-bit, signed) to type 'signed char' changed the value to 127 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:69:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:103:4: runtime error: implicit conversion from type 'int' of value 128 (32-bit, signed) to type 'signed char' changed the value to -128 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:103:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:106:3: runtime error: implicit conversion from type 'int' of value 128 (32-bit, signed) to type 'signed char' changed the value to -128 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:106:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:20:4: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned char' changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:20:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:23:3: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned char' changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:23:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:66:4: runtime error: implicit conversion from type 'int' of value -129 (32-bit, signed) to type 'signed char' changed the value to 127 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:66:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:69:3: runtime error: implicit conversion from type 'int' of value -129 (32-bit, signed) to type 'signed char' changed the value to 127 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:69:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:103:4: runtime error: implicit conversion from type 'int' of value 128 (32-bit, signed) to type 'signed char' changed the value to -128 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:103:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:106:3: runtime error: implicit conversion from type 'int' of value 128 (32-bit, signed) to type 'signed char' changed the value to -128 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:106:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:20:4: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned char' changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:20:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:23:3: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned char' changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:23:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:66:4: runtime error: implicit conversion from type 'int' of value -129 (32-bit, signed) to type 'signed char' changed the value to 127 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:66:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:69:3: runtime error: implicit conversion from type 'int' of value -129 (32-bit, signed) to type 'signed char' changed the value to 127 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:69:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:103:4: runtime error: implicit conversion from type 'int' of value 128 (32-bit, signed) to type 'signed char' changed the value to -128 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:103:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:106:3: runtime error: implicit conversion from type 'int' of value 128 (32-bit, signed) to type 'signed char' changed the value to -128 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:106:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:20:4: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned char' changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:20:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:23:3: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned char' changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:23:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:66:4: runtime error: implicit conversion from type 'int' of value -129 (32-bit, signed) to type 'signed char' changed the value to 127 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:66:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:69:3: runtime error: implicit conversion from type 'int' of value -129 (32-bit, signed) to type 'signed char' changed the value to 127 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:69:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:103:4: runtime error: implicit conversion from type 'int' of value 128 (32-bit, signed) to type 'signed char' changed the value to -128 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:103:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:106:3: runtime error: implicit conversion from type 'int' of value 128 (32-bit, signed) to type 'signed char' changed the value to -128 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:106:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:20:4: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned char' changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:20:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:23:3: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned char' changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:23:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:66:4: runtime error: implicit conversion from type 'int' of value -129 (32-bit, signed) to type 'signed char' changed the value to 127 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:66:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:69:3: runtime error: implicit conversion from type 'int' of value -129 (32-bit, signed) to type 'signed char' changed the value to 127 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:69:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:103:4: runtime error: implicit conversion from type 'int' of value 128 (32-bit, signed) to type 'signed char' changed the value to -128 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:103:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:106:3: runtime error: implicit conversion from type 'int' of value 128 (32-bit, signed) to type 'signed char' changed the value to -128 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:106:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:20:4: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned char' changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:20:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:23:3: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned char' changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:23:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:66:4: runtime error: implicit conversion from type 'int' of value -129 (32-bit, signed) to type 'signed char' changed the value to 127 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:66:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:69:3: runtime error: implicit conversion from type 'int' of value -129 (32-bit, signed) to type 'signed char' changed the value to 127 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:69:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:103:4: runtime error: implicit conversion from type 'int' of value 128 (32-bit, signed) to type 'signed char' changed the value to -128 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:103:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:106:3: runtime error: implicit conversion from type 'int' of value 128 (32-bit, signed) to type 'signed char' changed the value to -128 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:106:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:20:4: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned char' changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:20:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:23:3: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned char' changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:23:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:66:4: runtime error: implicit conversion from type 'int' of value -129 (32-bit, signed) to type 'signed char' changed the value to 127 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:66:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:69:3: runtime error: implicit conversion from type 'int' of value -129 (32-bit, signed) to type 'signed char' changed the value to 127 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:69:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:103:4: runtime error: implicit conversion from type 'int' of value 128 (32-bit, signed) to type 'signed char' changed the value to -128 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:103:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:106:3: runtime error: implicit conversion from type 'int' of value 128 (32-bit, signed) to type 'signed char' changed the value to -128 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:106:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:20:4: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned char' changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:20:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:23:3: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned char' changed the value to 255 (8-bit, unsigned)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:23:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:66:4: runtime error: implicit conversion from type 'int' of value -129 (32-bit, signed) to type 'signed char' changed the value to 127 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:66:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:69:3: runtime error: implicit conversion from type 'int' of value -129 (32-bit, signed) to type 'signed char' changed the value to 127 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:69:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:103:4: runtime error: implicit conversion from type 'int' of value 128 (32-bit, signed) to type 'signed char' changed the value to -128 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:103:4 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:106:3: runtime error: implicit conversion from type 'int' of value 128 (32-bit, signed) to type 'signed char' changed the value to -128 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-incdec.c:106:3 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/ImplicitConversion/integer-sign-change-incdec.c <<TAIL<<

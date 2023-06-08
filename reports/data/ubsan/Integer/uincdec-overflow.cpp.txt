@@ -1,0 +1,16 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/uincdec-overflow.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/uincdec-overflow.cpp:15:3: runtime error: unsigned integer overflow: 4294967295 + 1 cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/uincdec-overflow.cpp:15:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/uincdec-overflow.cpp:15:3: runtime error: unsigned integer overflow: 4294967295 + 1 cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/uincdec-overflow.cpp:15:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/uincdec-overflow.cpp:15:3: runtime error: unsigned integer overflow: 0 - 1 cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/uincdec-overflow.cpp:15:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/uincdec-overflow.cpp:15:3: runtime error: unsigned integer overflow: 0 - 1 cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/uincdec-overflow.cpp:15:3 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/uincdec-overflow.cpp <<TAIL<<

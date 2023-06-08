@@ -1,0 +1,9 @@
+
+
+>>HEAD>> UBSan-Minimal-x86_64 :: TestCases/implicit-integer-sign-change.c <<HEAD<<
+
+ubsan: implicit-conversion by 0x0000564205fbe865
+
+
+
+>>TAIL>> UBSan-Minimal-x86_64 :: TestCases/implicit-integer-sign-change.c <<TAIL<<

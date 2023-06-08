@@ -1,0 +1,17 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/nonnull.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull.cpp:12:3: runtime error: null pointer returned from function declared to never return null
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull.cpp:7:16: note: returns_nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull.cpp:12:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull.cpp:19:5: runtime error: null pointer returned from function declared to never return null
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull.cpp:15:16: note: returns_nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull.cpp:19:5 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull.cpp:23:5: runtime error: null pointer returned from function declared to never return null
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull.cpp:15:16: note: returns_nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull.cpp:23:5 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/nonnull.cpp <<TAIL<<

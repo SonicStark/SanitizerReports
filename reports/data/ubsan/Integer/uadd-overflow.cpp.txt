@@ -1,0 +1,14 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/uadd-overflow.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/uadd-overflow.cpp:15:5: runtime error: unsigned integer overflow: 2271560481 + 3989547399 cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/uadd-overflow.cpp:15:5 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/uadd-overflow.cpp:20:44: runtime error: unsigned integer overflow: 10000000000000000000 + 9000000000000000000 cannot be represented in type 'uint64_t' (aka 'unsigned long')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/uadd-overflow.cpp:20:44 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/uadd-overflow.cpp:26:34: runtime error: unsigned integer overflow: 0x80000000000000000000000000000000 + 0x80000000000000000000000000000000 cannot be represented in type '__uint128_t' (aka 'unsigned __int128')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/uadd-overflow.cpp:26:34 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/uadd-overflow.cpp <<TAIL<<

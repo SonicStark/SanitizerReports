@@ -1,0 +1,26 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/log-path_test.cpp <<HEAD<<
+
+-4.000000 4294967292
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/log-path_test.cpp:35:36: runtime error: -4 is outside the range of representable values of type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/log-path_test.cpp:35:36 in 
+-f /home/llvm/mybuild/projects/compiler-rt/test/ubsan/ThreadSanitizer-x86_64/TestCases/Misc/Output/log-path_test.cpp.tmp.log.*
+-4.000000 4294967292
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/log-path_test.cpp:35:36: runtime error: -4 is outside the range of representable values of type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/log-path_test.cpp:35:36 in 
+-f /home/llvm/mybuild/projects/compiler-rt/test/ubsan/ThreadSanitizer-x86_64/TestCases/Misc/Output/log-path_test.cpp.tmp.log.*
+4.000000 4
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/log-path_test.cpp <<TAIL<<
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/log-path_test.cpp <<HEAD<<
+
+cat: '/home/llvm/mybuild/projects/compiler-rt/test/ubsan/ThreadSanitizer-x86_64/TestCases/Misc/Output/log-path_test.cpp.tmp.log.*': No such file or directory
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/log-path_test.cpp <<TAIL<<

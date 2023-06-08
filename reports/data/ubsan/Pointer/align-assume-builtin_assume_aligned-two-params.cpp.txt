@@ -1,0 +1,80 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:32: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:32 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:32: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:32 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:32: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:32 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:32: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:32 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:32: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:32 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:32: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:32 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:32: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:32 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:32: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:32 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp <<TAIL<<
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:3: warning: ignoring return value of function declared with const attribute [-Wunused-value]
+  __builtin_assume_aligned(ptr + 1, 0x8000);
+  ^~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:3: warning: ignoring return value of function declared with const attribute [-Wunused-value]
+  __builtin_assume_aligned(ptr + 1, 0x8000);
+  ^~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:3: warning: ignoring return value of function declared with const attribute [-Wunused-value]
+  __builtin_assume_aligned(ptr + 1, 0x8000);
+  ^~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:3: warning: ignoring return value of function declared with const attribute [-Wunused-value]
+  __builtin_assume_aligned(ptr + 1, 0x8000);
+  ^~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:3: warning: ignoring return value of function declared with const attribute [-Wunused-value]
+  __builtin_assume_aligned(ptr + 1, 0x8000);
+  ^~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:3: warning: ignoring return value of function declared with const attribute [-Wunused-value]
+  __builtin_assume_aligned(ptr + 1, 0x8000);
+  ^~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:3: warning: ignoring return value of function declared with const attribute [-Wunused-value]
+  __builtin_assume_aligned(ptr + 1, 0x8000);
+  ^~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp:16:3: warning: ignoring return value of function declared with const attribute [-Wunused-value]
+  __builtin_assume_aligned(ptr + 1, 0x8000);
+  ^~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~
+1 warning generated.
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Pointer/align-assume-builtin_assume_aligned-two-params.cpp <<TAIL<<

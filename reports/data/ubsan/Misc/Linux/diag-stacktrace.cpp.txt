@@ -1,0 +1,57 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/Linux/diag-stacktrace.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:14:31: runtime error: execution reached the end of a value-returning function without returning a value
+    #0 f() /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:14:35 (diag-stacktrace.cpp.tmp+0xeea28)
+    #1 g() /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:17:38 (diag-stacktrace.cpp.tmp+0xeea41)
+    #2 h() /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:20:38 (diag-stacktrace.cpp.tmp+0xeea61)
+    #3 main /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:23:14 (diag-stacktrace.cpp.tmp+0xeea81)
+    #4 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #5 _start <null> (diag-stacktrace.cpp.tmp+0x2033d)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:14:31 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:14:31: runtime error: execution reached the end of a value-returning function without returning a value
+    #0 f() /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:14:35 (diag-stacktrace.cpp.tmp+0xeea28)
+    #1 g() /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:17:38 (diag-stacktrace.cpp.tmp+0xeea41)
+    #2 h() /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:20:38 (diag-stacktrace.cpp.tmp+0xeea61)
+    #3 main /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:23:14 (diag-stacktrace.cpp.tmp+0xeea81)
+    #4 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:14:31 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:14:31: runtime error: execution reached the end of a value-returning function without returning a value
+    #0 f() /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:14:35 (diag-stacktrace.cpp.tmp+0xeea28)
+    #1 g() /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:17:38 (diag-stacktrace.cpp.tmp+0xeea41)
+    #2 h() /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:20:38 (diag-stacktrace.cpp.tmp+0xeea61)
+    #3 main /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:23:14 (diag-stacktrace.cpp.tmp+0xeea81)
+    #4 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:14:31 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:14:31: runtime error: execution reached the end of a value-returning function without returning a value
+    #0 f() /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:14:35 (diag-stacktrace.cpp.tmp+0xeea28)
+    #1 g() /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:17:38 (diag-stacktrace.cpp.tmp+0xeea41)
+    #2 h() /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:20:38 (diag-stacktrace.cpp.tmp+0xeea61)
+    #3 main /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:23:14 (diag-stacktrace.cpp.tmp+0xeea81)
+    #4 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:14:31 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/Linux/diag-stacktrace.cpp <<TAIL<<
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/Linux/diag-stacktrace.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:14:36: warning: non-void function does not return a value [-Wreturn-type]
+__attribute__((noinline)) int f() {}
+                                   ^
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/diag-stacktrace.cpp:14:36: warning: non-void function does not return a value [-Wreturn-type]
+__attribute__((noinline)) int f() {}
+                                   ^
+1 warning generated.
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/Linux/diag-stacktrace.cpp <<TAIL<<

@@ -1,0 +1,12 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/ImplicitConversion/integer-sign-change-summary.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-summary.cpp:8:16: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'int32_t' (aka 'int') changed the value to -1 (32-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-summary.cpp:8:16 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-summary.cpp:8:16: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'int32_t' (aka 'int') changed the value to -1 (32-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: implicit-integer-sign-change /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/integer-sign-change-summary.cpp:8:16 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/ImplicitConversion/integer-sign-change-summary.cpp <<TAIL<<

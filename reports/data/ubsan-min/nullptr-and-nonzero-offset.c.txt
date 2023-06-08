@@ -1,0 +1,13 @@
+
+
+>>HEAD>> UBSan-Minimal-x86_64 :: TestCases/nullptr-and-nonzero-offset.c <<HEAD<<
+
+ubsan: pointer-overflow by 0x000056297e283880
+ubsan: pointer-overflow by 0x000056297e2838c3
+ubsan: pointer-overflow by 0x000056297e283906
+ubsan: pointer-overflow by 0x0000561c10ee48a3
+ubsan: pointer-overflow by 0x0000561c10ee48e8
+
+
+
+>>TAIL>> UBSan-Minimal-x86_64 :: TestCases/nullptr-and-nonzero-offset.c <<TAIL<<

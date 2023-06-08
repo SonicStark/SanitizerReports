@@ -1,0 +1,9 @@
+
+
+>>HEAD>> UBSan-Minimal-x86_64 :: TestCases/alignment-assumption.c <<HEAD<<
+
+ubsan: alignment-assumption by 0x5664fff1
+
+
+
+>>TAIL>> UBSan-Minimal-x86_64 :: TestCases/alignment-assumption.c <<TAIL<<

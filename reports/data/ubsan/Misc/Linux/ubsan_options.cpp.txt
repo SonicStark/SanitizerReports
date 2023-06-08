@@ -1,0 +1,10 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/Linux/ubsan_options.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/ubsan_options.cpp:14:44: runtime error: unsigned integer overflow: 10000000000000000000 + 9000000000000000000 cannot be represented in type 'uint64_t' (aka 'unsigned long')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/Linux/ubsan_options.cpp:14:44 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/Linux/ubsan_options.cpp <<TAIL<<

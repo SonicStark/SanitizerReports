@@ -1,0 +1,11 @@
+
+
+>>HEAD>> UBSan-Minimal-x86_64 :: TestCases/uadd-overflow.cpp <<HEAD<<
+
+ubsan: add-overflow by 0x56620fc4
+ubsan: add-overflow by 0x56598fbd
+error: Aborted
+
+
+
+>>TAIL>> UBSan-Minimal-x86_64 :: TestCases/uadd-overflow.cpp <<TAIL<<

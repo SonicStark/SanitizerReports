@@ -1,0 +1,14 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/TypeCheck/vptr-virtual-base.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr-virtual-base.cpp:18:10: runtime error: cast to virtual base of address 0x7fff3ba645c0 which does not point to an object of type 'T'
+0x7fff3ba645c0: note: object is of type 'Foo'
+ 28 56 00 00  a0 6c fa 5b 28 56 00 00  e0 eb f6 5b 28 56 00 00  20 03 ea 5b 28 56 00 00  e0 46 a6 3b
+              ^~~~~~~~~~~~~~~~~~~~~~~
+              vptr for 'Foo'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr-virtual-base.cpp:18:10 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/TypeCheck/vptr-virtual-base.cpp <<TAIL<<

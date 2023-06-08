@@ -1,0 +1,140 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/unsigned-shift.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:15:3: runtime error: left shift of 2 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:15:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:16:3: runtime error: left shift of 4 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:16:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:17:3: runtime error: left shift of 8 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:17:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:18:3: runtime error: left shift of 16 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:18:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:19:3: runtime error: left shift of 32 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:19:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:20:3: runtime error: left shift of 64 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:20:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:21:3: runtime error: left shift of 128 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:21:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:22:3: runtime error: left shift of 256 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:22:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:23:3: runtime error: left shift of 512 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:23:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:24:3: runtime error: left shift of 1024 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:24:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:25:3: runtime error: left shift of 2048 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:25:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:26:3: runtime error: left shift of 4096 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:26:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:27:3: runtime error: left shift of 8192 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:27:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:28:3: runtime error: left shift of 16384 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:28:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:29:3: runtime error: left shift of 32768 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:29:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:30:3: runtime error: left shift of 65536 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:30:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:31:3: runtime error: left shift of 131072 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:31:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:32:3: runtime error: left shift of 262144 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:32:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:33:3: runtime error: left shift of 524288 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:33:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:34:3: runtime error: left shift of 1048576 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:34:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:35:3: runtime error: left shift of 2097152 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:35:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:36:3: runtime error: left shift of 4194304 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:36:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:37:3: runtime error: left shift of 8388608 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:37:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:38:3: runtime error: left shift of 16777216 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:38:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:39:3: runtime error: left shift of 33554432 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:39:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:40:3: runtime error: left shift of 67108864 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:40:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:41:3: runtime error: left shift of 134217728 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:41:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:42:3: runtime error: left shift of 268435456 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:42:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:43:3: runtime error: left shift of 536870912 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:43:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:44:3: runtime error: left shift of 1073741824 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:44:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:45:3: runtime error: left shift of 2147483648 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:45:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:48:3: runtime error: left shift of 2147483648 by 1 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:48:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:51:3: runtime error: left shift of 4294967295 by 1 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:51:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:15:3: runtime error: left shift of 2 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:15:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:16:3: runtime error: left shift of 4 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:16:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:17:3: runtime error: left shift of 8 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:17:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:18:3: runtime error: left shift of 16 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:18:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:19:3: runtime error: left shift of 32 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:19:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:20:3: runtime error: left shift of 64 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:20:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:21:3: runtime error: left shift of 128 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:21:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:22:3: runtime error: left shift of 256 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:22:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:23:3: runtime error: left shift of 512 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:23:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:24:3: runtime error: left shift of 1024 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:24:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:25:3: runtime error: left shift of 2048 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:25:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:26:3: runtime error: left shift of 4096 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:26:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:27:3: runtime error: left shift of 8192 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:27:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:28:3: runtime error: left shift of 16384 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:28:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:29:3: runtime error: left shift of 32768 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:29:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:30:3: runtime error: left shift of 65536 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:30:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:31:3: runtime error: left shift of 131072 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:31:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:32:3: runtime error: left shift of 262144 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:32:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:33:3: runtime error: left shift of 524288 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:33:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:34:3: runtime error: left shift of 1048576 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:34:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:35:3: runtime error: left shift of 2097152 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:35:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:36:3: runtime error: left shift of 4194304 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:36:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:37:3: runtime error: left shift of 8388608 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:37:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:38:3: runtime error: left shift of 16777216 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:38:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:39:3: runtime error: left shift of 33554432 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:39:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:40:3: runtime error: left shift of 67108864 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:40:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:41:3: runtime error: left shift of 134217728 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:41:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:42:3: runtime error: left shift of 268435456 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:42:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:43:3: runtime error: left shift of 536870912 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:43:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:44:3: runtime error: left shift of 1073741824 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:44:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:45:3: runtime error: left shift of 2147483648 by 31 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:45:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:48:3: runtime error: left shift of 2147483648 by 1 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:48:3 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:51:3: runtime error: left shift of 4294967295 by 1 places cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/unsigned-shift.cpp:51:3 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/unsigned-shift.cpp <<TAIL<<

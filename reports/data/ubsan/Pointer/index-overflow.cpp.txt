@@ -1,0 +1,26 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Pointer/index-overflow.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/index-overflow.cpp:21:20: runtime error: pointer index expression with base 0xffffffffffffffff overflowed to 0x000000000001
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/index-overflow.cpp:21:20 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/index-overflow.cpp:25:20: runtime error: pointer index expression with base 0xffffffffffffffff overflowed to 0x000000000001
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/index-overflow.cpp:25:20 in 
+0x1
+0x1
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/index-overflow.cpp:21:20: runtime error: applying non-zero offset to non-null pointer 0xffffffffffffffff produced null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/index-overflow.cpp:21:20 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/index-overflow.cpp:25:20: runtime error: applying non-zero offset to non-null pointer 0xffffffffffffffff produced null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/index-overflow.cpp:25:20 in 
+(nil)
+(nil)
+0xffffffffffffffff
+0xffffffffffffffff
+0xfffffffffffffffe
+0xfffffffffffffffe
+0xfffffffffffffffd
+0xfffffffffffffffd
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Pointer/index-overflow.cpp <<TAIL<<

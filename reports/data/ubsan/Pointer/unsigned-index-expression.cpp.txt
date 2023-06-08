@@ -1,0 +1,14 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Pointer/unsigned-index-expression.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/unsigned-index-expression.cpp:10:15: runtime error: addition of unsigned offset to 0x7ffc4de6544f overflowed to 0x7ffc4de6544e
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/unsigned-index-expression.cpp:10:15 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/unsigned-index-expression.cpp:13:16: runtime error: subtraction of unsigned offset from 0x7ffc4de6544f overflowed to 0x7ffc4de65450
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/unsigned-index-expression.cpp:13:16 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/unsigned-index-expression.cpp:17:16: runtime error: applying non-zero offset 18446744073709551615 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/unsigned-index-expression.cpp:17:16 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Pointer/unsigned-index-expression.cpp <<TAIL<<

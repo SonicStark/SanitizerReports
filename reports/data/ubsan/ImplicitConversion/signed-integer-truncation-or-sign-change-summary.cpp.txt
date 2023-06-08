@@ -1,0 +1,24 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/ImplicitConversion/signed-integer-truncation-or-sign-change-summary.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/signed-integer-truncation-or-sign-change-summary.cpp:8:15: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'int8_t' (aka 'signed char') changed the value to -1 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/signed-integer-truncation-or-sign-change-summary.cpp:8:15 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/signed-integer-truncation-or-sign-change-summary.cpp:8:15: runtime error: implicit conversion from type 'uint32_t' (aka 'unsigned int') of value 4294967295 (32-bit, unsigned) to type 'int8_t' (aka 'signed char') changed the value to -1 (8-bit, signed)
+SUMMARY: UndefinedBehaviorSanitizer: implicit-signed-integer-truncation-or-sign-change /home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/signed-integer-truncation-or-sign-change-summary.cpp:8:15 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/ImplicitConversion/signed-integer-truncation-or-sign-change-summary.cpp <<TAIL<<
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/ImplicitConversion/signed-integer-truncation-or-sign-change-summary.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/ImplicitConversion/signed-integer-truncation-or-sign-change-summary.cpp:8:16: warning: implicit conversion from 'uint32_t' (aka 'unsigned int') to 'int8_t' (aka 'signed char') changes value from 4294967295 to -1 [-Wconstant-conversion]
+  int8_t t0 = (~(uint32_t(0)));
+         ~~    ^~~~~~~~~~~~~~
+1 warning generated.
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/ImplicitConversion/signed-integer-truncation-or-sign-change-summary.cpp <<TAIL<<

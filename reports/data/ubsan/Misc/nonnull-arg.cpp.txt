@@ -1,0 +1,20 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/nonnull-arg.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull-arg.cpp:44:21: runtime error: null pointer passed as argument 2, which is declared to never be null
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull-arg.cpp:19:31: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull-arg.cpp:44:21 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull-arg.cpp:48:36: runtime error: null pointer passed as argument 1, which is declared to never be null
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull-arg.cpp:22:54: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull-arg.cpp:48:36 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull-arg.cpp:52:19: runtime error: null pointer passed as argument 1, which is declared to never be null
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull-arg.cpp:27:16: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull-arg.cpp:52:19 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull-arg.cpp:56:27: runtime error: null pointer passed as argument 2, which is declared to never be null
+/home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull-arg.cpp:30:16: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Misc/nonnull-arg.cpp:56:27 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Misc/nonnull-arg.cpp <<TAIL<<

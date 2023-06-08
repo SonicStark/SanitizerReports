@@ -1,0 +1,40 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Pointer/align-assume-openmp.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-openmp.cpp:19:30: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-openmp.cpp:19:30 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-openmp.cpp:19:30: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-openmp.cpp:19:30 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-openmp.cpp:19:30: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-openmp.cpp:19:30 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-openmp.cpp:19:30: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-openmp.cpp:19:30 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-openmp.cpp:19:30: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-openmp.cpp:19:30 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-openmp.cpp:19:30: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-openmp.cpp:19:30 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-openmp.cpp:19:30: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-openmp.cpp:19:30 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-openmp.cpp:19:30: runtime error: assumption of 32768 byte alignment for pointer of type 'char *' failed
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-openmp.cpp:19:30 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Pointer/align-assume-openmp.cpp <<TAIL<<

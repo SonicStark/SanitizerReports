@@ -1,0 +1,30 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/add-overflow.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/add-overflow.cpp:15:5: runtime error: signed integer overflow: 305419896 + 2023406814 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/add-overflow.cpp:15:5 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/add-overflow.cpp:20:41: runtime error: signed integer overflow: 8000000000000000000 + 2000000000000000000 cannot be represented in type 'int64_t' (aka 'long')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/add-overflow.cpp:20:41 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/add-overflow.cpp:26:33: runtime error: signed integer overflow: 0x40000000000000000000000000000000 + 0x40000000000000000000000000000000 cannot be represented in type '__int128_t' (aka '__int128')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/add-overflow.cpp:26:33 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/add-overflow.cpp <<TAIL<<
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/add-overflow.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/add-overflow.cpp:20:41: warning: overflow in expression; result is -8446744073709551616 with type 'int64_t' (aka 'long') [-Winteger-overflow]
+  (void)(int64_t(8000000000000000000ll) + int64_t(2000000000000000000ll));
+                                        ^
+1 warning generated.
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/add-overflow.cpp:26:33: warning: overflow in expression; result is -170141183460469231731687303715884105728 with type '__int128_t' (aka '__int128') [-Winteger-overflow]
+  (void)((__int128_t(1) << 126) + (__int128_t(1) << 126));
+                                ^
+1 warning generated.
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/add-overflow.cpp <<TAIL<<

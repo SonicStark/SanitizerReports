@@ -1,0 +1,228 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/TypeCheck/vptr.cpp <<HEAD<<
+
+Test case: mS
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:169:15: runtime error: member access within address 0x7ffc1381dda0 which does not point to an object of type 'T'
+0x7ffc1381dda0: note: object is of type 'S'
+ fc 7f 00 00  a8 cb b7 8f 9a 55 00 00  00 00 00 00 25 7f 00 00  00 00 00 00 00 00 00 00  00 00 00 00
+              ^~~~~~~~~~~~~~~~~~~~~~~
+              vptr for 'S'
+    #0 access_p(T*, char) /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:169:15 (vptr.cpp.tmp+0xf0324)
+    #1 main /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:138:3 (vptr.cpp.tmp+0xf0bb5)
+    #2 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #3 _start <null> (vptr.cpp.tmp+0x213ad)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:169:15 in 
+Test case: fS
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:185:15: runtime error: member call on address 0x7ffc1c4e9a50 which does not point to an object of type 'T'
+0x7ffc1c4e9a50: note: object is of type 'S'
+ fc 7f 00 00  a8 2b 03 03 1a 56 00 00  00 00 00 00 17 7f 00 00  00 00 00 00 00 00 00 00  00 00 00 00
+              ^~~~~~~~~~~~~~~~~~~~~~~
+              vptr for 'S'
+    #0 access_p(T*, char) /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:185:15 (vptr.cpp.tmp+0xefbcb)
+    #1 main /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:138:3 (vptr.cpp.tmp+0xf0bb5)
+    #2 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #3 _start <null> (vptr.cpp.tmp+0x213ad)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:185:15 in 
+Test case: cS
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:203:11: runtime error: downcast of address 0x7ffe98805ce0 which does not point to an object of type 'T'
+0x7ffe98805ce0: note: object is of type 'S'
+ fe 7f 00 00  a8 fb 8f 90 f7 55 00 00  00 00 00 00 09 7f 00 00  00 00 00 00 00 00 00 00  00 00 00 00
+              ^~~~~~~~~~~~~~~~~~~~~~~
+              vptr for 'S'
+    #0 access_p(T*, char) /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:203:11 (vptr.cpp.tmp+0xefb40)
+    #1 main /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:138:3 (vptr.cpp.tmp+0xf0bb5)
+    #2 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #3 _start <null> (vptr.cpp.tmp+0x213ad)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:203:11 in 
+Test case: mV
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:169:15: runtime error: member access within address 0x7b0800000040 which does not point to an object of type 'T'
+0x7b0800000040: note: object is of type 'U'
+ 00 00 00 00  60 7c 93 09 c8 55 00 00  00 00 00 00 00 00 00 00  78 7c 93 09 c8 55 00 00  00 00 00 00
+              ^~~~~~~~~~~~~~~~~~~~~~~
+              vptr for 'U'
+    #0 access_p(T*, char) /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:169:15 (vptr.cpp.tmp+0xf0324)
+    #1 main /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:138:3 (vptr.cpp.tmp+0xf0bb5)
+    #2 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #3 _start <null> (vptr.cpp.tmp+0x213ad)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:169:15 in 
+Test case: fV
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:185:15: runtime error: member call on address 0x7b0800000040 which does not point to an object of type 'T'
+0x7b0800000040: note: object is of type 'U'
+ 00 00 00 00  60 0c f3 cb 43 56 00 00  00 00 00 00 00 00 00 00  78 0c f3 cb 43 56 00 00  00 00 00 00
+              ^~~~~~~~~~~~~~~~~~~~~~~
+              vptr for 'U'
+    #0 access_p(T*, char) /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:185:15 (vptr.cpp.tmp+0xefbcb)
+    #1 main /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:138:3 (vptr.cpp.tmp+0xf0bb5)
+    #2 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #3 _start <null> (vptr.cpp.tmp+0x213ad)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:185:15 in 
+Test case: cV
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:203:11: runtime error: downcast of address 0x7b0800000040 which does not point to an object of type 'T'
+0x7b0800000040: note: object is of type 'U'
+ 00 00 00 00  60 2c f8 c6 71 55 00 00  00 00 00 00 00 00 00 00  78 2c f8 c6 71 55 00 00  00 00 00 00
+              ^~~~~~~~~~~~~~~~~~~~~~~
+              vptr for 'U'
+    #0 access_p(T*, char) /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:203:11 (vptr.cpp.tmp+0xefb40)
+    #1 main /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:138:3 (vptr.cpp.tmp+0xf0bb5)
+    #2 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #3 _start <null> (vptr.cpp.tmp+0x213ad)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:203:11 in 
+Test case: oU
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:194:37: runtime error: member call on address 0x7b0800000050 which does not point to an object of type 'U'
+0x7b0800000040: note: object is base class subobject at offset 16 within object of type 'U'
+ 00 00 00 00  60 7c f8 08 9b 55 00 00  00 00 00 00 00 00 00 00  78 7c f8 08 9b 55 00 00  00 00 00 00
+              ^                                                 ~~~~~~~~~~~~~~~~~~~~~~~
+                                                                vptr for 'T' base class of 'U'
+    #0 access_p(T*, char) /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:194:37 (vptr.cpp.tmp+0xf02f6)
+    #1 main /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:138:3 (vptr.cpp.tmp+0xf0bb5)
+    #2 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #3 _start <null> (vptr.cpp.tmp+0x213ad)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:194:37 in 
+Test case: m0
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:169:15: runtime error: member access within address 0x7fffda382460 which does not point to an object of type 'T'
+0x7fffda382460: note: object has invalid vptr
+ 4e 7f 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00
+              ^~~~~~~~~~~~~~~~~~~~~~~
+              invalid vptr
+    #0 access_p(T*, char) /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:169:15 (vptr.cpp.tmp+0xf0324)
+    #1 main /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:138:3 (vptr.cpp.tmp+0xf0bb5)
+    #2 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #3 _start <null> (vptr.cpp.tmp+0x213ad)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:169:15 in 
+Test case: m0
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:169:15: runtime error: member access within address 0x7ffe63c30800 which does not point to an object of type 'T'
+0x7ffe63c30800: note: object has invalid vptr
+ 36 7f 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00
+              ^~~~~~~~~~~~~~~~~~~~~~~
+              invalid vptr
+    #0 access_p(T*, char) /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:169:15 (vptr.cpp.tmp+0xf0324)
+    #1 main /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:138:3 (vptr.cpp.tmp+0xf0bb5)
+    #2 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #3 _start <null> (vptr.cpp.tmp+0x213ad)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:169:15 in 
+Test case: nN
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:208:15: runtime error: member call on null pointer of type 'T'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:208:15 in 
+Test case: dT
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:222:11: runtime error: dynamic operation on address 0x7b0400000020 which does not point to an object of type 'T'
+0x7b0400000020: note: object is of type 'S'
+ 00 00 00 00  a8 eb bc 28 3b 56 00 00  00 00 00 00 00 00 00 00  53 00 00 00 00 00 00 00  00 00 00 00
+              ^~~~~~~~~~~~~~~~~~~~~~~
+              vptr for 'S'
+    #0 access_p(T*, char) /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:222:11 (vptr.cpp.tmp+0xf03b1)
+    #1 S::~S() /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:85:5 (vptr.cpp.tmp+0xefd0f)
+    #2 access_p(T*, char) /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:212:5 (vptr.cpp.tmp+0xefd0f)
+    #3 main /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:138:3 (vptr.cpp.tmp+0xf0bb5)
+    #4 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #5 _start <null> (vptr.cpp.tmp+0x213ad)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:222:11 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:229:11: runtime error: dynamic operation on address 0x7b0400000020 which does not point to an object of type 'T'
+0x7b0400000020: note: object is of type 'S'
+ 00 00 00 00  a8 eb bc 28 3b 56 00 00  00 00 00 00 00 00 00 00  53 00 00 00 00 00 00 00  00 00 00 00
+              ^~~~~~~~~~~~~~~~~~~~~~~
+              vptr for 'S'
+    #0 access_p(T*, char) /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:229:11 (vptr.cpp.tmp+0xf03c8)
+    #1 S::~S() /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:85:5 (vptr.cpp.tmp+0xefd0f)
+    #2 access_p(T*, char) /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:212:5 (vptr.cpp.tmp+0xefd0f)
+    #3 main /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:138:3 (vptr.cpp.tmp+0xf0bb5)
+    #4 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #5 _start <null> (vptr.cpp.tmp+0x213ad)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:229:11 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:237:13: runtime error: dynamic operation on address 0x7b0400000020 which does not point to an object of type 'T'
+0x7b0400000020: note: object is of type 'S'
+ 00 00 00 00  a8 eb bc 28 3b 56 00 00  00 00 00 00 00 00 00 00  53 00 00 00 00 00 00 00  00 00 00 00
+              ^~~~~~~~~~~~~~~~~~~~~~~
+              vptr for 'S'
+    #0 access_p(T*, char) /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:237:13 (vptr.cpp.tmp+0xf03df)
+    #1 S::~S() /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:85:5 (vptr.cpp.tmp+0xefd0f)
+    #2 access_p(T*, char) /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:212:5 (vptr.cpp.tmp+0xefd0f)
+    #3 main /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:138:3 (vptr.cpp.tmp+0xf0bb5)
+    #4 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #5 _start <null> (vptr.cpp.tmp+0x213ad)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:237:13 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:245:18: runtime error: dynamic operation on address 0x7b0400000020 which does not point to an object of type 'T'
+0x7b0400000020: note: object is of type 'S'
+ 00 00 00 00  a8 eb bc 28 3b 56 00 00  00 00 00 00 00 00 00 00  53 00 00 00 00 00 00 00  00 00 00 00
+              ^~~~~~~~~~~~~~~~~~~~~~~
+              vptr for 'S'
+    #0 access_p(T*, char) /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:245:11 (vptr.cpp.tmp+0xf0188)
+    #1 S::~S() /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:85:5 (vptr.cpp.tmp+0xefd0f)
+    #2 access_p(T*, char) /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:212:5 (vptr.cpp.tmp+0xefd0f)
+    #3 main /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:138:3 (vptr.cpp.tmp+0xf0bb5)
+    #4 __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16 (libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #5 _start <null> (vptr.cpp.tmp+0x213ad)
+
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:245:18 in 
+Test case: x-
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:158:10: runtime error: member call on address 0x7b0400000030 which does not point to an object of type 'T'
+0x7b0400000030: note: object is of type 'V'
+ 00 00 00 00  90 0c 99 db 94 55 00 00  00 00 00 00 00 00 00 00  56 00 00 00 00 00 00 00  00 00 00 00
+              ^~~~~~~~~~~~~~~~~~~~~~~
+              vptr for 'V'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:158:10 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/TypeCheck/vptr.cpp <<TAIL<<
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/TypeCheck/vptr.cpp <<HEAD<<
+
+clang-16: warning: argument unused during compilation: '-fno-sanitize-memory-param-retval' [-Wunused-command-line-argument]
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:67:12: warning: direct base 'S' is inaccessible due to ambiguity:
+    struct U -> S
+    struct U -> T -> S [-Winaccessible-base]
+struct U : S, T { virtual int v() { return 2; } };
+           ^
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:131:9: warning: 'reinterpret_cast' from class 'U *' to its base at non-zero offset 'T *' behaves differently from 'static_cast' [-Wreinterpret-base-class]
+    p = reinterpret_cast<T*>(new U);
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:131:9: note: use 'static_cast' to adjust the pointer correctly while upcasting
+    p = reinterpret_cast<T*>(new U);
+        ^~~~~~~~~~~~~~~~
+        static_cast
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:194:12: warning: 'reinterpret_cast' to class 'U *' from its base at non-zero offset 'T *' behaves differently from 'static_cast' [-Wreinterpret-base-class]
+    return reinterpret_cast<U*>(p)->v() - 2;
+           ^~~~~~~~~~~~~~~~~~~~~~~
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr.cpp:194:12: note: use 'static_cast' to adjust the pointer correctly while downcasting
+    return reinterpret_cast<U*>(p)->v() - 2;
+           ^~~~~~~~~~~~~~~~
+           static_cast
+3 warnings generated.
+Test case: rT
+Test case: mT
+Test case: fT
+Test case: cT
+Test case: rU
+Test case: mU
+Test case: fU
+Test case: cU
+Test case: rS
+Test case: rV
+Test case: oV
+Test case: zN
+Test case: mS
+Test case: fS
+Test case: cS
+Test case: mV
+Test case: fV
+Test case: cV
+Test case: oU
+Test case: dT
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/TypeCheck/vptr.cpp <<TAIL<<

@@ -1,0 +1,48 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:20:13: runtime error: assumption of 32768 byte alignment for pointer of type 'aligned_char' (aka 'char *') failed
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:13:30: note: alignment assumption was specified here
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:20:13 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:20:13: runtime error: assumption of 32768 byte alignment for pointer of type 'aligned_char' (aka 'char *') failed
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:13:30: note: alignment assumption was specified here
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:20:13 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:20:13: runtime error: assumption of 32768 byte alignment for pointer of type 'aligned_char' (aka 'char *') failed
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:13:30: note: alignment assumption was specified here
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:20:13 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:20:13: runtime error: assumption of 32768 byte alignment for pointer of type 'aligned_char' (aka 'char *') failed
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:13:30: note: alignment assumption was specified here
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:20:13 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:20:13: runtime error: assumption of 32768 byte alignment for pointer of type 'aligned_char' (aka 'char *') failed
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:13:30: note: alignment assumption was specified here
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:20:13 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:20:13: runtime error: assumption of 32768 byte alignment for pointer of type 'aligned_char' (aka 'char *') failed
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:13:30: note: alignment assumption was specified here
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:20:13 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:20:13: runtime error: assumption of 32768 byte alignment for pointer of type 'aligned_char' (aka 'char *') failed
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:13:30: note: alignment assumption was specified here
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:20:13 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:20:13: runtime error: assumption of 32768 byte alignment for pointer of type 'aligned_char' (aka 'char *') failed
+/home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:13:30: note: alignment assumption was specified here
+0x7b0400000001: note: address is 1 aligned, misalignment offset is 1 bytes
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp:20:13 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Pointer/align-assume-attribute-align_value-on-lvalue.cpp <<TAIL<<

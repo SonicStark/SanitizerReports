@@ -1,0 +1,14 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/TypeCheck/vptr-corrupted-vtable-itanium.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr-corrupted-vtable-itanium.cpp:51:16: runtime error: member call on address 0x7ffeb8880d98 which does not point to an object of type 'S'
+0x7ffeb8880d98: note: object has a possibly invalid vptr: abs(offset to top) too big
+ 00 00 00 00  b0 0d 88 b8 fe 7f 00 00  00 00 20 00 00 00 00 00  98 8c e7 4b 74 55 00 00  00 00 00 00
+              ^~~~~~~~~~~~~~~~~~~~~~~
+              possibly invalid vptr
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/TypeCheck/vptr-corrupted-vtable-itanium.cpp:51:16 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/TypeCheck/vptr-corrupted-vtable-itanium.cpp <<TAIL<<

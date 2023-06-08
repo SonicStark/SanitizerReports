@@ -1,0 +1,20 @@
+
+
+>>HEAD>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/no-recover.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/no-recover.cpp:18:5: runtime error: unsigned integer overflow: 2271560481 + 3989547399 cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/no-recover.cpp:18:5 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/no-recover.cpp:22:44: runtime error: unsigned integer overflow: 10000000000000000000 + 9000000000000000000 cannot be represented in type 'uint64_t' (aka 'unsigned long')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/no-recover.cpp:22:44 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/no-recover.cpp:18:5: runtime error: unsigned integer overflow: 2271560481 + 3989547399 cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/no-recover.cpp:18:5 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/no-recover.cpp:22:44: runtime error: unsigned integer overflow: 10000000000000000000 + 9000000000000000000 cannot be represented in type 'uint64_t' (aka 'unsigned long')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/no-recover.cpp:22:44 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/no-recover.cpp:18:5: runtime error: unsigned integer overflow: 2271560481 + 3989547399 cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/no-recover.cpp:18:5 in 
+/home/llvm/compiler-rt/test/ubsan/TestCases/Integer/no-recover.cpp:18:5: runtime error: unsigned integer overflow: 2271560481 + 3989547399 cannot be represented in type 'unsigned int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /home/llvm/compiler-rt/test/ubsan/TestCases/Integer/no-recover.cpp:18:5 in 
+
+
+
+>>TAIL>> UBSan-ThreadSanitizer-x86_64 :: TestCases/Integer/no-recover.cpp <<TAIL<<
