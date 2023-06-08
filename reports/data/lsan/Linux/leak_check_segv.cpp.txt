@@ -1,0 +1,12 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/leak_check_segv.cpp <<HEAD<<
+
+Tracer caught signal 11: addr=0x55764ccfc000 pc=0x55764c39bc38 sp=0x7f49006febc0
+==151433==LeakSanitizer has encountered a fatal error.
+==151433==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1
+==151433==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/leak_check_segv.cpp <<TAIL<<

@@ -1,0 +1,9 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/ignore_object_errors.cpp <<HEAD<<
+
+Test alloc: 0x61a000000000.
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/ignore_object_errors.cpp <<TAIL<<

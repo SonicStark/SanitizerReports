@@ -1,0 +1,26 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/dso-unknown.cpp <<HEAD<<
+
+
+=================================================================
+==152363==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 4951 byte(s) in 100 object(s) allocated from:
+    #0 0x5593b13c66b4 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x7fad5682e124  (<unknown module>)
+    #2 0x5593b13f804d in main /home/llvm/compiler-rt/test/lsan/TestCases/Linux/dso-unknown.cpp:40:5
+    #3 0x7fad56a0e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: LeakSanitizer: 4951 byte(s) leaked in 100 allocation(s).
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/dso-unknown.cpp <<TAIL<<
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/dso-unknown.cpp <<HEAD<<
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/dso-unknown.cpp <<TAIL<<

@@ -1,0 +1,31 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/use_globals_initialized.cpp <<HEAD<<
+
+Test alloc: 0x61a000000000 
+
+=================================================================
+==154947==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 72704 byte(s) in 1 object(s) allocated from:
+    #0 0x55a88a963514 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x7f94393e6a99  (/lib/x86_64-linux-gnu/libstdc++.so.6+0xa6a99) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+Objects leaked above:
+0x631000000000 (72704 bytes)
+
+Direct leak of 1337 byte(s) in 1 object(s) allocated from:
+    #0 0x55a88a963514 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x55a88a994f08 in main /home/llvm/compiler-rt/test/lsan/TestCases/use_globals_initialized.cpp:14:14
+    #2 0x7f9438fb7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Objects leaked above:
+0x61a000000000 (1337 bytes)
+
+SUMMARY: LeakSanitizer: 74041 byte(s) leaked in 2 allocation(s).
+Test alloc: 0x61a000000000 
+Test alloc: 0x61a000000000 
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/use_globals_initialized.cpp <<TAIL<<

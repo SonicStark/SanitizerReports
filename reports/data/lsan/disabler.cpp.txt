@@ -1,0 +1,23 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/disabler.cpp <<HEAD<<
+
+Test alloc p: 0x601000000000.
+Test alloc q: 0x61a000000000.
+
+=================================================================
+==151906==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1337 byte(s) in 1 object(s) allocated from:
+    #0 0x565354c64544 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x565354c95e2a in main /home/llvm/compiler-rt/test/lsan/TestCases/disabler.cpp:18:13
+    #2 0x7f0daa992082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Objects leaked above:
+0x61a000000000 (1337 bytes)
+
+SUMMARY: LeakSanitizer: 1337 byte(s) leaked in 1 allocation(s).
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/disabler.cpp <<TAIL<<

@@ -1,0 +1,9 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/new_array_with_dtor_0.cpp <<HEAD<<
+
+OK
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/new_array_with_dtor_0.cpp <<TAIL<<

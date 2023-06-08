@@ -1,0 +1,10 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/use_globals_unused.cpp <<HEAD<<
+
+0x601000000000 hello
+0x601000000000 hello
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/use_globals_unused.cpp <<TAIL<<

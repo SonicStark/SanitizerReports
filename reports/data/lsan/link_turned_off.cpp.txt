@@ -1,0 +1,18 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/link_turned_off.cpp <<HEAD<<
+
+
+=================================================================
+==152751==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 4 byte(s) in 1 object(s) allocated from:
+    #0 0x55662fd6d0c4 in operator new(unsigned long) /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:248:35
+    #1 0x55662fd9fdaf in main /home/llvm/compiler-rt/test/lsan/TestCases/link_turned_off.cpp:19:21
+    #2 0x7f7bec170082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: LeakSanitizer: 4 byte(s) leaked in 1 allocation(s).
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/link_turned_off.cpp <<TAIL<<

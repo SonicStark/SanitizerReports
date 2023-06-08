@@ -1,0 +1,31 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/cleanup_in_tsd_destructor.c <<HEAD<<
+
+Test alloc: 0x61a000000000 
+
+=================================================================
+==151337==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1337 byte(s) in 1 object(s) allocated from:
+    #0 0x55a5f07f4524 in __interceptor_malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x55a5f0825f35 in thread_func /home/llvm/compiler-rt/test/lsan/TestCases/Linux/cleanup_in_tsd_destructor.c:30:7
+    #2 0x7fcb1a172608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Objects leaked above:
+0x61a000000000 (1337 bytes)
+
+SUMMARY: LeakSanitizer: 1337 byte(s) leaked in 1 allocation(s).
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/cleanup_in_tsd_destructor.c <<TAIL<<
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/cleanup_in_tsd_destructor.c <<HEAD<<
+
+Test alloc: 0x61a000000000 
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/cleanup_in_tsd_destructor.c <<TAIL<<

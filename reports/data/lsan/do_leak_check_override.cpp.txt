@@ -1,0 +1,35 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/do_leak_check_override.cpp <<HEAD<<
+
+
+=================================================================
+==151738==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1337 byte(s) in 1 object(s) allocated from:
+    #0 0x55c5a37be554 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x55c5a37efe4d in LeakyGlobal::LeakyGlobal() /home/llvm/compiler-rt/test/lsan/TestCases/do_leak_check_override.cpp:17:9
+    #2 0x55c5a37b635f in __cxx_global_var_init /home/llvm/compiler-rt/test/lsan/TestCases/do_leak_check_override.cpp:25:13
+    #3 0x55c5a37b6388 in _GLOBAL__sub_I_do_leak_check_override.cpp /home/llvm/compiler-rt/test/lsan/TestCases/do_leak_check_override.cpp
+    #4 0x55c5a37efecc in __libc_csu_init (/home/llvm/mybuild/projects/compiler-rt/test/lsan/X86_64LsanConfig/TestCases/Output/do_leak_check_override.cpp.tmp+0x3decc)
+
+Direct leak of 666 byte(s) in 1 object(s) allocated from:
+    #0 0x55c5a37be554 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x55c5a37efdf5 in main /home/llvm/compiler-rt/test/lsan/TestCases/do_leak_check_override.cpp:31:13
+    #2 0x7f6aec39e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: LeakSanitizer: 2003 byte(s) leaked in 2 allocation(s).
+
+=================================================================
+==152250==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 666 byte(s) in 1 object(s) allocated from:
+    #0 0x555b9303d554 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x555b9306edf5 in main /home/llvm/compiler-rt/test/lsan/TestCases/do_leak_check_override.cpp:31:13
+    #2 0x7fa89c03f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: LeakSanitizer: 666 byte(s) leaked in 1 allocation(s).
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/do_leak_check_override.cpp <<TAIL<<

@@ -1,0 +1,60 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/recoverable_leak_check.cpp <<HEAD<<
+
+Test alloc: 0x61a000000000.
+
+=================================================================
+==153847==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1337 byte(s) in 1 object(s) allocated from:
+    #0 0x557b51529524 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x557b5155ae00 in main /home/llvm/compiler-rt/test/lsan/TestCases/recoverable_leak_check.cpp:21:40
+    #2 0x7f617cce7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: LeakSanitizer: 1337 byte(s) leaked in 1 allocation(s).
+
+=================================================================
+==153847==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1337 byte(s) in 1 object(s) allocated from:
+    #0 0x557b51529524 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x557b5155ae00 in main /home/llvm/compiler-rt/test/lsan/TestCases/recoverable_leak_check.cpp:21:40
+    #2 0x7f617cce7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Direct leak of 23 byte(s) in 1 object(s) allocated from:
+    #0 0x557b51529524 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x557b5155adaf in main /home/llvm/compiler-rt/test/lsan/TestCases/recoverable_leak_check.cpp:17:7
+    #2 0x7f617cce7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: LeakSanitizer: 1360 byte(s) leaked in 2 allocation(s).
+Test alloc: 0x61a000000000.
+
+=================================================================
+==154831==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1337 byte(s) in 1 object(s) allocated from:
+    #0 0x55d097284524 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x55d0972b5e00 in main /home/llvm/compiler-rt/test/lsan/TestCases/recoverable_leak_check.cpp:21:40
+    #2 0x7f0f41139082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: LeakSanitizer: 1337 byte(s) leaked in 1 allocation(s).
+
+=================================================================
+==154831==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1337 byte(s) in 1 object(s) allocated from:
+    #0 0x55d097284524 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x55d0972b5e00 in main /home/llvm/compiler-rt/test/lsan/TestCases/recoverable_leak_check.cpp:21:40
+    #2 0x7f0f41139082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Direct leak of 23 byte(s) in 1 object(s) allocated from:
+    #0 0x55d097284524 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x55d0972b5daf in main /home/llvm/compiler-rt/test/lsan/TestCases/recoverable_leak_check.cpp:17:7
+    #2 0x7f0f41139082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: LeakSanitizer: 1360 byte(s) leaked in 2 allocation(s).
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/recoverable_leak_check.cpp <<TAIL<<

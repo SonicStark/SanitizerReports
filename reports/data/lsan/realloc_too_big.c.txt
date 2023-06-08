@@ -1,0 +1,20 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/realloc_too_big.c <<HEAD<<
+
+nine: 0x601000000000
+==152882==WARNING: LeakSanitizer failed to allocate 0x100001 bytes
+
+=================================================================
+==152882==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 9 byte(s) in 1 object(s) allocated from:
+    #0 0x55bbf0d0b524 in __interceptor_malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x55bbf0d3cda1 in main /home/llvm/compiler-rt/test/lsan/TestCases/realloc_too_big.c:17:13
+    #2 0x7f87e0078082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: LeakSanitizer: 9 byte(s) leaked in 1 allocation(s).
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/realloc_too_big.c <<TAIL<<

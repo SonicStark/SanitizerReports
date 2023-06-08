@@ -1,0 +1,9 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/high_allocator_contention.cpp <<HEAD<<
+
+5 threads, 200000 allocations in each
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/high_allocator_contention.cpp <<TAIL<<

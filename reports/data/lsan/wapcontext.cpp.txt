@@ -1,0 +1,21 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/swapcontext.cpp <<HEAD<<
+
+Child stack: 0x7f540fbff000
+Child: 0x7f540fc7efdc
+
+=================================================================
+==155200==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 2664 byte(s) in 1 object(s) allocated from:
+    #0 0x55e3ffac4234 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:250:37
+    #1 0x55e3ffaf6de3 in Child() /home/llvm/compiler-rt/test/lsan/TestCases/swapcontext.cpp:19:17
+    #2 0x7ff88c3044df  /build/glibc-SzIz7B/glibc-2.31/stdlib/../sysdeps/unix/sysv/linux/x86_64/__start_context.S:91
+    #3 0x7ff88c2cd082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: LeakSanitizer: 2664 byte(s) leaked in 1 allocation(s).
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/swapcontext.cpp <<TAIL<<

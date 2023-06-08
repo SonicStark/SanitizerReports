@@ -1,0 +1,24 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/use_registers.cpp <<HEAD<<
+
+Test alloc: 0x61a000000000 
+
+=================================================================
+==155723==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1337 byte(s) in 1 object(s) allocated from:
+    #0 0x558d348e6534 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x558d34917f2d in registers_thread_func /home/llvm/compiler-rt/test/lsan/TestCases/use_registers.cpp:16:13
+    #2 0x7f1d61f13608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Objects leaked above:
+0x61a000000000 (1337 bytes)
+
+SUMMARY: LeakSanitizer: 1337 byte(s) leaked in 1 allocation(s).
+Test alloc: 0x61a000000000 
+Test alloc: 0x61a000000000 
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/use_registers.cpp <<TAIL<<

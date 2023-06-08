@@ -1,0 +1,18 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/fork_and_leak.cpp <<HEAD<<
+
+
+=================================================================
+==151351==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 13370 byte(s) in 10 object(s) allocated from:
+    #0 0x55c879c99534 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x55c879ccae64 in main /home/llvm/compiler-rt/test/lsan/TestCases/Linux/fork_and_leak.cpp:22:7
+    #2 0x7fb245ac5082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: LeakSanitizer: 13370 byte(s) leaked in 10 allocation(s).
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/fork_and_leak.cpp <<TAIL<<

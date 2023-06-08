@@ -1,0 +1,31 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/use_tls_pthread_specific_dynamic.cpp <<HEAD<<
+
+Test alloc: 0x61a000000000 
+
+=================================================================
+==151413==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 512 byte(s) in 1 object(s) allocated from:
+    #0 0x56154e1db629 in __interceptor_calloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:90:3
+    #1 0x7fc1878afe23 in __pthread_setspecific /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_setspecific.c:70:36
+
+Objects leaked above:
+0x614000000000 (512 bytes)
+
+Indirect leak of 1337 byte(s) in 1 object(s) allocated from:
+    #0 0x56154e1db524 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x56154e20d00b in main /home/llvm/compiler-rt/test/lsan/TestCases/Linux/use_tls_pthread_specific_dynamic.cpp:31:14
+    #2 0x7fc187688082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Objects leaked above:
+0x61a000000000 (1337 bytes)
+
+SUMMARY: LeakSanitizer: 1849 byte(s) leaked in 2 allocation(s).
+Test alloc: 0x61a000000000 
+Test alloc: 0x61a000000000 
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/use_tls_pthread_specific_dynamic.cpp <<TAIL<<

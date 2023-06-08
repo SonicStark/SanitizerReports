@@ -1,0 +1,11 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/strace_test.cpp <<HEAD<<
+
+==153754==LeakSanitizer has encountered a fatal error.
+==153754==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1
+==153754==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/strace_test.cpp <<TAIL<<

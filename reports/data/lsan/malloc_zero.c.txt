@@ -1,0 +1,19 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/malloc_zero.c <<HEAD<<
+
+zero: 0x601000000000
+
+=================================================================
+==152344==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1 byte(s) in 1 object(s) allocated from:
+    #0 0x55f519f35514 in __interceptor_malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x55f519f66d90 in main /home/llvm/compiler-rt/test/lsan/TestCases/malloc_zero.c:15:13
+    #2 0x7fd4e8192082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: LeakSanitizer: 1 byte(s) leaked in 1 allocation(s).
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/malloc_zero.c <<TAIL<<

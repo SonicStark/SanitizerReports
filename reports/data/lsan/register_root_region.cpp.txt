@@ -1,0 +1,39 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/register_root_region.cpp <<HEAD<<
+
+Test alloc: 0x7f24f8d2d000.
+
+=================================================================
+==153929==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1337 byte(s) in 1 object(s) allocated from:
+    #0 0x557620f48554 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x557620f79e9c in main /home/llvm/compiler-rt/test/lsan/TestCases/register_root_region.cpp:24:19
+    #2 0x7f24f8f0b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: LeakSanitizer: 1337 byte(s) leaked in 1 allocation(s).
+Test alloc: 0x7f8b71578000.
+
+=================================================================
+==155199==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1337 byte(s) in 1 object(s) allocated from:
+    #0 0x5607fce3c554 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x5607fce6de9c in main /home/llvm/compiler-rt/test/lsan/TestCases/register_root_region.cpp:24:19
+    #2 0x7f8b71756082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: LeakSanitizer: 1337 byte(s) leaked in 1 allocation(s).
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/register_root_region.cpp <<TAIL<<
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/register_root_region.cpp <<HEAD<<
+
+Test alloc: 0x7f64085c1000.
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/register_root_region.cpp <<TAIL<<

@@ -1,0 +1,103 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/many_tls_keys_thread.cpp <<HEAD<<
+
+
+=================================================================
+==153222==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 55550 byte(s) in 10 object(s) allocated from:
+    #0 0x5652df5a9554 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x5652df5dae4d in alloc() /home/llvm/compiler-rt/test/lsan/TestCases/many_tls_keys_thread.cpp:33:10
+    #2 0x5652df5dae80 in thread_start(void*) /home/llvm/compiler-rt/test/lsan/TestCases/many_tls_keys_thread.cpp:37:3
+    #3 0x7fe846c10608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Objects leaked above:
+0x622000000000 (5555 bytes)
+0x62200000f000 (5555 bytes)
+0x62200001f800 (5555 bytes)
+0x622000030000 (5555 bytes)
+0x62200003f000 (5555 bytes)
+0x62200004f800 (5555 bytes)
+0x622000060000 (5555 bytes)
+0x62200006f000 (5555 bytes)
+0x62200007f800 (5555 bytes)
+0x622000090000 (5555 bytes)
+
+Direct leak of 44440 byte(s) in 10 object(s) allocated from:
+    #0 0x5652df5a9554 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x5652df5dae2d in alloc() /home/llvm/compiler-rt/test/lsan/TestCases/many_tls_keys_thread.cpp:32:10
+    #2 0x5652df5dae80 in thread_start(void*) /home/llvm/compiler-rt/test/lsan/TestCases/many_tls_keys_thread.cpp:37:3
+    #3 0x7fe846c10608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Objects leaked above:
+0x621000000000 (4444 bytes)
+0x62100000f000 (4444 bytes)
+0x62100001f400 (4444 bytes)
+0x62100002f800 (4444 bytes)
+0x62100003fc00 (4444 bytes)
+0x621000050000 (4444 bytes)
+0x62100005f000 (4444 bytes)
+0x62100006f400 (4444 bytes)
+0x62100007f800 (4444 bytes)
+0x62100008fc00 (4444 bytes)
+
+Direct leak of 33330 byte(s) in 10 object(s) allocated from:
+    #0 0x5652df5a9554 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x5652df5dae0d in alloc() /home/llvm/compiler-rt/test/lsan/TestCases/many_tls_keys_thread.cpp:31:10
+    #2 0x5652df5dae80 in thread_start(void*) /home/llvm/compiler-rt/test/lsan/TestCases/many_tls_keys_thread.cpp:37:3
+    #3 0x7fe846c10608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Objects leaked above:
+0x61f000000000 (3333 bytes)
+0x61f00000fc00 (3333 bytes)
+0x61f00001f800 (3333 bytes)
+0x61f00002f400 (3333 bytes)
+0x61f00003fe00 (3333 bytes)
+0x61f00004fa00 (3333 bytes)
+0x61f00005f600 (3333 bytes)
+0x61f000070000 (3333 bytes)
+0x61f00007fc00 (3333 bytes)
+0x61f00008f800 (3333 bytes)
+
+Direct leak of 22220 byte(s) in 10 object(s) allocated from:
+    #0 0x5652df5a9554 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x5652df5daded in alloc() /home/llvm/compiler-rt/test/lsan/TestCases/many_tls_keys_thread.cpp:30:10
+    #2 0x5652df5dae80 in thread_start(void*) /home/llvm/compiler-rt/test/lsan/TestCases/many_tls_keys_thread.cpp:37:3
+    #3 0x7fe846c10608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Objects leaked above:
+0x61d000000000 (2222 bytes)
+0x61d00000fa00 (2222 bytes)
+0x61d00001fe00 (2222 bytes)
+0x61d00002f800 (2222 bytes)
+0x61d00003fc00 (2222 bytes)
+0x61d000050000 (2222 bytes)
+0x61d00005fa00 (2222 bytes)
+0x61d00006fe00 (2222 bytes)
+0x61d00007f800 (2222 bytes)
+0x61d00008fc00 (2222 bytes)
+
+Direct leak of 11110 byte(s) in 10 object(s) allocated from:
+    #0 0x5652df5a9554 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x5652df5dadcd in alloc() /home/llvm/compiler-rt/test/lsan/TestCases/many_tls_keys_thread.cpp:29:10
+    #2 0x5652df5dae80 in thread_start(void*) /home/llvm/compiler-rt/test/lsan/TestCases/many_tls_keys_thread.cpp:37:3
+    #3 0x7fe846c10608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Objects leaked above:
+0x619000000000 (1111 bytes)
+0x61900000ff00 (1111 bytes)
+0x61900001fe00 (1111 bytes)
+0x61900002fd00 (1111 bytes)
+0x61900003fc00 (1111 bytes)
+0x619000050000 (1111 bytes)
+0x61900005ff00 (1111 bytes)
+0x61900006fe00 (1111 bytes)
+0x61900007fd00 (1111 bytes)
+0x61900008fc00 (1111 bytes)
+
+SUMMARY: LeakSanitizer: 166650 byte(s) leaked in 50 allocation(s).
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/many_tls_keys_thread.cpp <<TAIL<<

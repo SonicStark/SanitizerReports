@@ -1,0 +1,8 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/use_tls_dynamic.cpp <<HEAD<<
+
+Test alloc: 0x61a000000600 
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/use_tls_dynamic.cpp <<TAIL<<

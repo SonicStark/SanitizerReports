@@ -1,0 +1,30 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/log-path_test.cpp <<HEAD<<
+
+Test alloc: 0x61a000000000 
+
+=================================================================
+==151438==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1337 byte(s) in 1 object(s) allocated from:
+    #0 0x55add5714524 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x55add5745f18 in main /home/llvm/compiler-rt/test/lsan/TestCases/Linux/log-path_test.cpp:22:21
+    #2 0x7febe3288082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: LeakSanitizer: 1337 byte(s) leaked in 1 allocation(s).
+rm -f /home/llvm/mybuild/projects/compiler-rt/test/lsan/X86_64LsanConfig/TestCases/Linux/Output/log-path_test.cpp.tmp.log.*
+
+=================================================================
+==152070==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1337 byte(s) in 1 object(s) allocated from:
+    #0 0x55571d698524 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x55571d6c9f18 in main /home/llvm/compiler-rt/test/lsan/TestCases/Linux/log-path_test.cpp:22:21
+    #2 0x7f7ad1c54082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: LeakSanitizer: 1337 byte(s) leaked in 1 allocation(s).
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/Linux/log-path_test.cpp <<TAIL<<

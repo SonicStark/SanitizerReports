@@ -1,0 +1,12 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/print_suppressions.cpp <<HEAD<<
+
+print for nonempty output
+print for nonempty output
+Test alloc: 0x616000000000.
+print for nonempty output
+Test alloc: 0x616000000000.
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/print_suppressions.cpp <<TAIL<<

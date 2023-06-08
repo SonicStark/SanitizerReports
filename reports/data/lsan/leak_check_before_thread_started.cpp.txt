@@ -1,0 +1,47 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/leak_check_before_thread_started.cpp <<HEAD<<
+
+entered func()
+==152473==Ignored: chunk 0x611000000000-0x611000000130 of size 304.
+==152473==Scanning GLOBAL range 0x55c395feb8d0-0x55c395feea60.
+==152473==Scanning GLOBAL range 0x55c395feed38-0x55c39692ff88.
+==152473==Scanning GLOBAL range 0x7ff4455e6978-0x7ff4455f6800.
+==152473==0x7ff4455f3268: found 0x631000000000 pointing into chunk 0x631000000000-0x631000011c00 of size 72704.
+==152473==Scanning GLOBAL range 0x7ff445413d80-0x7ff445414110.
+==152473==Scanning GLOBAL range 0x7ff4452c0c08-0x7ff4452c5478.
+==152473==Scanning GLOBAL range 0x7ff4452a1d90-0x7ff4452a2be0.
+==152473==Scanning GLOBAL range 0x7ff445297d70-0x7ff445298110.
+==152473==Scanning GLOBAL range 0x7ff44528f610-0x7ff445292a80.
+==152473==Scanning GLOBAL range 0x7ff445273dc8-0x7ff445274448.
+==152473==Scanning GLOBAL range 0x7ff445250788-0x7ff445259660.
+==152473==Scanning GLOBAL range 0x7ff445632520-0x7ff445634190.
+==152473==Processing thread 152440.
+==152473==Scanning REGISTERS range 0x7ff444ea8000-0x7ff444ea8b60.
+==152473==Stack at 0x7ffdd3d17000-0x7ffdd4517000 (SP = 0x7ffdd45160e0).
+==152473==Scanning STACK range 0x7ffdd45160e0-0x7ffdd4517000.
+==152473==TLS at 0x7ff445056000-0x7ff445064c00.
+==152473==Scanning TLS range 0x7ff445056000-0x7ff445056758.
+==152473==Scanning TLS range 0x7ff4450642d8-0x7ff445064c00.
+==152473==Processing thread 152472.
+==152473==Scanning REGISTERS range 0x7ff444ea8000-0x7ff444ea8b60.
+==152473==Stack at 0x7ff442900000-0x7ff4430f1400 (SP = 0x7ff4430f12f8).
+==152473==Scanning STACK range 0x7ff4430f12f8-0x7ff4430f1400.
+==152473==0x7ff4430f1328: found 0x61a000000000 pointing into chunk 0x61a000000000-0x61a000000539 of size 1337.
+==152473==TLS at 0x7ff4430f1400-0x7ff443100000.
+==152473==Scanning TLS range 0x7ff4430f1400-0x7ff4430f1b58.
+==152473==Scanning TLS range 0x7ff4430ff6d8-0x7ff443100000.
+==152473==Root region 0x7ff444500780-0x7ff4445007a0 intersects with mapped region 0x7ff444500000-0x7ff444600000 (readable)
+==152473==Scanning ROOT range 0x7ff444500780-0x7ff4445007a0.
+==152473==Root region 0x7ff443b03560-0x7ff443b03640 intersects with mapped region 0x7ff443b00000-0x7ff443c00000 (readable)
+==152473==Scanning ROOT range 0x7ff443b03560-0x7ff443b03640.
+==152473==Scanning HEAP range 0x61a000000000-0x61a000000539.
+==152473==Scanning HEAP range 0x631000000000-0x631000011c00.
+==152473==Scanning HEAP range 0x611000000000-0x611000000130.
+==152473==Processing platform-specific allocations.
+==152473==Scanning leaked chunks.
+==152473==Scanning HEAP range 0x611000000000-0x611000000130.
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/leak_check_before_thread_started.cpp <<TAIL<<

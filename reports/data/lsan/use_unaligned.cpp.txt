@@ -1,0 +1,23 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/use_unaligned.cpp <<HEAD<<
+
+Test alloc: 0x61a000000000 
+
+=================================================================
+==155692==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1337 byte(s) in 1 object(s) allocated from:
+    #0 0x561035687514 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x5610356b8f08 in main /home/llvm/compiler-rt/test/lsan/TestCases/use_unaligned.cpp:14:13
+    #2 0x7fae1e772082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Objects leaked above:
+0x61a000000000 (1337 bytes)
+
+SUMMARY: LeakSanitizer: 1337 byte(s) leaked in 1 allocation(s).
+Test alloc: 0x61a000000000 
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/use_unaligned.cpp <<TAIL<<

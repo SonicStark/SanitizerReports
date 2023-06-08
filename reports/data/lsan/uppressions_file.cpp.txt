@@ -1,0 +1,57 @@
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/suppressions_file.cpp <<HEAD<<
+
+/home/llvm/mybuild/projects/compiler-rt/test/lsan/X86_64LsanConfig/TestCases/Output/suppressions_file.cpp.tmp.supp /home/llvm/mybuild/projects/compiler-rt/test/lsan/X86_64LsanConfig/TestCases/Output/suppressions_file.cpp.tmp.supp
+Test alloc: 0x616000000000.
+Test alloc: 0x617000000000.
+Test alloc: 0x61a000000000.
+
+=================================================================
+==154456==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1337 byte(s) in 1 object(s) allocated from:
+    #0 0x564895c4a514 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x564895c7be2d in main /home/llvm/compiler-rt/test/lsan/TestCases/suppressions_file.cpp:33:13
+    #2 0x7f2451344082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Direct leak of 666 byte(s) in 1 object(s) allocated from:
+    #0 0x564895c4a514 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x564895c7bd91 in LSanTestLeakingFunc() /home/llvm/compiler-rt/test/lsan/TestCases/suppressions_file.cpp:20:13
+    #2 0x564895c7bdcc in LSanTestUnsuppressedLeakingFunc() /home/llvm/compiler-rt/test/lsan/TestCases/suppressions_file.cpp:26:23
+    #3 0x564895c7be23 in main /home/llvm/compiler-rt/test/lsan/TestCases/suppressions_file.cpp:32:3
+    #4 0x7f2451344082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Indirect leak of 777 byte(s) in 1 object(s) allocated from:
+    #0 0x564895c4a514 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x564895c7bdda in LSanTestUnsuppressedLeakingFunc() /home/llvm/compiler-rt/test/lsan/TestCases/suppressions_file.cpp:27:8
+    #2 0x564895c7be23 in main /home/llvm/compiler-rt/test/lsan/TestCases/suppressions_file.cpp:32:3
+    #3 0x7f2451344082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: LeakSanitizer: 2780 byte(s) leaked in 3 allocation(s).
+/home/llvm/mybuild/projects/compiler-rt/test/lsan/X86_64LsanConfig/TestCases/Output/suppressions_file.cpp.tmp.supp /home/llvm/mybuild/projects/compiler-rt/test/lsan/X86_64LsanConfig/TestCases/Output/suppressions_file.cpp.tmp.supp
+Test alloc: 0x616000000000.
+Test alloc: 0x617000000000.
+Test alloc: 0x61a000000000.
+
+=================================================================
+==155536==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1337 byte(s) in 1 object(s) allocated from:
+    #0 0x55c2ab499514 in malloc /home/llvm/compiler-rt/lib/lsan/lsan_interceptors.cpp:75:3
+    #1 0x55c2ab4cae2d in main /home/llvm/compiler-rt/test/lsan/TestCases/suppressions_file.cpp:33:13
+    #2 0x7f60c56ac082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/suppressions_file.cpp <<TAIL<<
+
+
+>>HEAD>> LeakSanitizer-Standalone-x86_64 :: TestCases/suppressions_file.cpp <<HEAD<<
+
+Test alloc: 0x616000000000.
+Test alloc: 0x617000000000.
+Test alloc: 0x61a000000000.
+
+
+>>TAIL>> LeakSanitizer-Standalone-x86_64 :: TestCases/suppressions_file.cpp <<TAIL<<
