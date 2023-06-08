@@ -1,0 +1,512 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/load_and_store_n.cpp <<HEAD<<
+
+=================================================================
+==2735852==ERROR: AddressSanitizer: global-buffer-overflow on address 0x559b86cfe108 at pc 0x559b86cfa625 bp 0x7ffeceb84bf0 sp 0x7ffeceb84bd8
+READ of size 2 at 0x559b86cfe108 thread T0
+    #0 0x559b86cfa624 in UNALIGNED_LOAD /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:37:3
+    #1 0x559b86cfa624 in main /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:51:11
+    #2 0x7f92004e5082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x559b86cf918d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/load_and_store_n.cpp.tmp+0x118d)
+
+0x559b86cfe108 is located 0 bytes after global variable 'mem' defined in '/home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp' (0x559b86cfe100) of size 8
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:37:3 in UNALIGNED_LOAD
+Shadow bytes around the buggy address:
+  0x559b86cfde80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559b86cfdf00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559b86cfdf80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559b86cfe000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559b86cfe080: 00 00 00 00 00 00 00 00 00 00 00 00 00 f9 f9 f9
+=>0x559b86cfe100: 00[f9]f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x559b86cfe180: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559b86cfe200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559b86cfe280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559b86cfe300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559b86cfe380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2735852==ABORTING
+=================================================================
+==2736247==ERROR: AddressSanitizer: global-buffer-overflow on address 0x56017ef75108 at pc 0x56017ef71640 bp 0x7ffe6eff52d0 sp 0x7ffe6eff52b8
+WRITE of size 2 at 0x56017ef75108 thread T0
+    #0 0x56017ef7163f in UNALIGNED_STORE /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:42:3
+    #1 0x56017ef7163f in main /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:54:5
+    #2 0x7fb5d93b1082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x56017ef7018d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/load_and_store_n.cpp.tmp+0x118d)
+
+0x56017ef75108 is located 0 bytes after global variable 'mem' defined in '/home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp' (0x56017ef75100) of size 8
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:42:3 in UNALIGNED_STORE
+Shadow bytes around the buggy address:
+  0x56017ef74e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56017ef74f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56017ef74f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56017ef75000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56017ef75080: 00 00 00 00 00 00 00 00 00 00 00 00 00 f9 f9 f9
+=>0x56017ef75100: 00[f9]f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x56017ef75180: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56017ef75200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56017ef75280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56017ef75300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56017ef75380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2736247==ABORTING
+=================================================================
+==2736552==ERROR: AddressSanitizer: global-buffer-overflow on address 0x5623ea386109 at pc 0x5623ea38265e bp 0x7ffee73a9c70 sp 0x7ffee73a9c58
+READ of size 2 at 0x5623ea386109 thread T0
+    #0 0x5623ea38265d in UNALIGNED_LOAD /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:37:3
+    #1 0x5623ea38265d in main /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:57:11
+    #2 0x7fc86e05e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5623ea38118d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/load_and_store_n.cpp.tmp+0x118d)
+
+0x5623ea386109 is located 1 bytes after global variable 'mem' defined in '/home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp' (0x5623ea386100) of size 8
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:37:3 in UNALIGNED_LOAD
+Shadow bytes around the buggy address:
+  0x5623ea385e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5623ea385f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5623ea385f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5623ea386000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5623ea386080: 00 00 00 00 00 00 00 00 00 00 00 00 00 f9 f9 f9
+=>0x5623ea386100: 00[f9]f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x5623ea386180: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5623ea386200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5623ea386280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5623ea386300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5623ea386380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2736552==ABORTING
+=================================================================
+==2736838==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55a209cfe109 at pc 0x55a209cfa679 bp 0x7ffd5597cd80 sp 0x7ffd5597cd68
+WRITE of size 2 at 0x55a209cfe109 thread T0
+    #0 0x55a209cfa678 in UNALIGNED_STORE /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:42:3
+    #1 0x55a209cfa678 in main /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:60:5
+    #2 0x7fb8c5bc2082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55a209cf918d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/load_and_store_n.cpp.tmp+0x118d)
+
+0x55a209cfe109 is located 1 bytes after global variable 'mem' defined in '/home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp' (0x55a209cfe100) of size 8
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:42:3 in UNALIGNED_STORE
+Shadow bytes around the buggy address:
+  0x55a209cfde80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55a209cfdf00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55a209cfdf80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55a209cfe000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55a209cfe080: 00 00 00 00 00 00 00 00 00 00 00 00 00 f9 f9 f9
+=>0x55a209cfe100: 00[f9]f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x55a209cfe180: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55a209cfe200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55a209cfe280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55a209cfe300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55a209cfe380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2736838==ABORTING
+=================================================================
+==2737703==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55ad68072108 at pc 0x55ad6806e625 bp 0x7fffabd058a0 sp 0x7fffabd05888
+READ of size 2 at 0x55ad68072108 thread T0
+    #0 0x55ad6806e624 in UNALIGNED_LOAD /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:37:3
+    #1 0x55ad6806e624 in main /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:51:11
+    #2 0x7f75cac43082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55ad6806d18d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/load_and_store_n.cpp.tmp+0x118d)
+
+0x55ad68072108 is located 0 bytes after global variable 'mem' defined in '/home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp' (0x55ad68072100) of size 8
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:37:3 in UNALIGNED_LOAD
+Shadow bytes around the buggy address:
+  0x55ad68071e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ad68071f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ad68071f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ad68072000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ad68072080: 00 00 00 00 00 00 00 00 00 00 00 00 00 f9 f9 f9
+=>0x55ad68072100: 00[f9]f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x55ad68072180: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ad68072200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ad68072280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ad68072300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ad68072380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2737703==ABORTING
+=================================================================
+==2738064==ERROR: AddressSanitizer: global-buffer-overflow on address 0x5617ed48c108 at pc 0x5617ed488640 bp 0x7fff31d8c890 sp 0x7fff31d8c878
+WRITE of size 2 at 0x5617ed48c108 thread T0
+    #0 0x5617ed48863f in UNALIGNED_STORE /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:42:3
+    #1 0x5617ed48863f in main /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:54:5
+    #2 0x7f727d44c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5617ed48718d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/load_and_store_n.cpp.tmp+0x118d)
+
+0x5617ed48c108 is located 0 bytes after global variable 'mem' defined in '/home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp' (0x5617ed48c100) of size 8
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:42:3 in UNALIGNED_STORE
+Shadow bytes around the buggy address:
+  0x5617ed48be80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5617ed48bf00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5617ed48bf80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5617ed48c000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5617ed48c080: 00 00 00 00 00 00 00 00 00 00 00 00 00 f9 f9 f9
+=>0x5617ed48c100: 00[f9]f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x5617ed48c180: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5617ed48c200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5617ed48c280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5617ed48c300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5617ed48c380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2738064==ABORTING
+=================================================================
+==2738292==ERROR: AddressSanitizer: global-buffer-overflow on address 0x5555ac405109 at pc 0x5555ac40165e bp 0x7fff0b588850 sp 0x7fff0b588838
+READ of size 2 at 0x5555ac405109 thread T0
+    #0 0x5555ac40165d in UNALIGNED_LOAD /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:37:3
+    #1 0x5555ac40165d in main /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:57:11
+    #2 0x7f611ccc7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5555ac40018d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/load_and_store_n.cpp.tmp+0x118d)
+
+0x5555ac405109 is located 1 bytes after global variable 'mem' defined in '/home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp' (0x5555ac405100) of size 8
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:37:3 in UNALIGNED_LOAD
+Shadow bytes around the buggy address:
+  0x5555ac404e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5555ac404f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5555ac404f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5555ac405000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5555ac405080: 00 00 00 00 00 00 00 00 00 00 00 00 00 f9 f9 f9
+=>0x5555ac405100: 00[f9]f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x5555ac405180: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5555ac405200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5555ac405280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5555ac405300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5555ac405380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2738292==ABORTING
+=================================================================
+==2738447==ERROR: AddressSanitizer: global-buffer-overflow on address 0x557d6ad2c109 at pc 0x557d6ad28679 bp 0x7fff5ee32b00 sp 0x7fff5ee32ae8
+WRITE of size 2 at 0x557d6ad2c109 thread T0
+    #0 0x557d6ad28678 in UNALIGNED_STORE /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:42:3
+    #1 0x557d6ad28678 in main /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:60:5
+    #2 0x7fcc6378b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x557d6ad2718d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/load_and_store_n.cpp.tmp+0x118d)
+
+0x557d6ad2c109 is located 1 bytes after global variable 'mem' defined in '/home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp' (0x557d6ad2c100) of size 8
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:42:3 in UNALIGNED_STORE
+Shadow bytes around the buggy address:
+  0x557d6ad2be80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557d6ad2bf00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557d6ad2bf80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557d6ad2c000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557d6ad2c080: 00 00 00 00 00 00 00 00 00 00 00 00 00 f9 f9 f9
+=>0x557d6ad2c100: 00[f9]f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x557d6ad2c180: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557d6ad2c200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557d6ad2c280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557d6ad2c300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557d6ad2c380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2738447==ABORTING
+=================================================================
+==2738926==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55a22615f108 at pc 0x55a22615b634 bp 0x7ffe66047060 sp 0x7ffe66047048
+READ of size 2 at 0x55a22615f108 thread T0
+    #0 0x55a22615b633 in UNALIGNED_LOAD /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:37:3
+    #1 0x55a22615b633 in main /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:51:11
+    #2 0x7f9cd8974082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55a22615a18d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/load_and_store_n.cpp.tmp+0x118d)
+
+0x55a22615f108 is located 0 bytes after global variable 'mem' defined in '/home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp' (0x55a22615f100) of size 8
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:37:3 in UNALIGNED_LOAD
+Shadow bytes around the buggy address:
+  0x55a22615ee80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55a22615ef00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55a22615ef80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55a22615f000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55a22615f080: 00 00 00 00 00 00 00 00 00 00 00 00 00 f9 f9 f9
+=>0x55a22615f100: 00[f9]f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x55a22615f180: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55a22615f200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55a22615f280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55a22615f300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55a22615f380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2738926==ABORTING
+=================================================================
+==2739118==ERROR: AddressSanitizer: global-buffer-overflow on address 0x556e79de8108 at pc 0x556e79de4654 bp 0x7ffe0cd878d0 sp 0x7ffe0cd878b8
+WRITE of size 2 at 0x556e79de8108 thread T0
+    #0 0x556e79de4653 in UNALIGNED_STORE /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:42:3
+    #1 0x556e79de4653 in main /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:54:5
+    #2 0x7f5d60f35082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e79de318d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/load_and_store_n.cpp.tmp+0x118d)
+
+0x556e79de8108 is located 0 bytes after global variable 'mem' defined in '/home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp' (0x556e79de8100) of size 8
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:42:3 in UNALIGNED_STORE
+Shadow bytes around the buggy address:
+  0x556e79de7e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x556e79de7f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x556e79de7f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x556e79de8000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x556e79de8080: 00 00 00 00 00 00 00 00 00 00 00 00 00 f9 f9 f9
+=>0x556e79de8100: 00[f9]f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x556e79de8180: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x556e79de8200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x556e79de8280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x556e79de8300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x556e79de8380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2739118==ABORTING
+=================================================================
+==2739286==ERROR: AddressSanitizer: global-buffer-overflow on address 0x559789ed5109 at pc 0x559789ed1677 bp 0x7ffc260f3380 sp 0x7ffc260f3368
+READ of size 2 at 0x559789ed5109 thread T0
+    #0 0x559789ed1676 in UNALIGNED_LOAD /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:37:3
+    #1 0x559789ed1676 in main /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:57:11
+    #2 0x7f529a579082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x559789ed018d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/load_and_store_n.cpp.tmp+0x118d)
+
+0x559789ed5109 is located 1 bytes after global variable 'mem' defined in '/home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp' (0x559789ed5100) of size 8
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:37:3 in UNALIGNED_LOAD
+Shadow bytes around the buggy address:
+  0x559789ed4e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559789ed4f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559789ed4f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559789ed5000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559789ed5080: 00 00 00 00 00 00 00 00 00 00 00 00 00 f9 f9 f9
+=>0x559789ed5100: 00[f9]f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x559789ed5180: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559789ed5200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559789ed5280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559789ed5300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559789ed5380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2739286==ABORTING
+=================================================================
+==2739450==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55893d5a5109 at pc 0x55893d5a1697 bp 0x7ffcae25c870 sp 0x7ffcae25c858
+WRITE of size 2 at 0x55893d5a5109 thread T0
+    #0 0x55893d5a1696 in UNALIGNED_STORE /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:42:3
+    #1 0x55893d5a1696 in main /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:60:5
+    #2 0x7fbf9c085082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55893d5a018d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/load_and_store_n.cpp.tmp+0x118d)
+
+0x55893d5a5109 is located 1 bytes after global variable 'mem' defined in '/home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp' (0x55893d5a5100) of size 8
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/load_and_store_n.cpp:42:3 in UNALIGNED_STORE
+Shadow bytes around the buggy address:
+  0x55893d5a4e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55893d5a4f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55893d5a4f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55893d5a5000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55893d5a5080: 00 00 00 00 00 00 00 00 00 00 00 00 00 f9 f9 f9
+=>0x55893d5a5100: 00[f9]f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x55893d5a5180: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55893d5a5200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55893d5a5280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55893d5a5300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55893d5a5380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2739450==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/load_and_store_n.cpp <<TAIL<<

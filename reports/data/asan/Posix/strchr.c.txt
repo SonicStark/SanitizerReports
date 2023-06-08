@@ -1,0 +1,21 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/strchr.c <<HEAD<<
+
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2799012==ERROR: AddressSanitizer: SEGV on unknown address 0x7f842d5a7000 (pc 0x562a8f4c3ba4 bp 0x7ffc217911d0 sp 0x7ffc21790958 T0)
+==2799012==The signal is caused by a READ memory access.
+    #0 0x562a8f4c3ba4 in __sanitizer::internal_strlen(char const*) /home/llvm/compiler-rt/lib/sanitizer_common/sanitizer_libc.cpp:167:13
+    #1 0x562a8f4047d7 in __interceptor_strchr.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:756:5
+    #2 0x562a8f4ee965 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/strchr.c:29:13
+    #3 0x7f842d97d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x562a8f3c22ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/strchr.c.tmp+0x1d2ed)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/lib/sanitizer_common/sanitizer_libc.cpp:167:13 in __sanitizer::internal_strlen(char const*)
+==2799012==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/strchr.c <<TAIL<<

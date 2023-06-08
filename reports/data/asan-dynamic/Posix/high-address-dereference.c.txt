@@ -1,0 +1,72 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/high-address-dereference.c <<HEAD<<
+
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2725843==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55aa16e1b5f3 bp 0x7ffc6c8b57f0 sp 0x7ffc6c8b57b0 T0)
+==2725843==The signal is caused by a READ memory access.
+==2725843==Hint: address points to the zero page.
+SCARINESS: 10 (null-deref)
+    #0 0x55aa16e1b5f3 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/high-address-dereference.c:21:16
+    #1 0x7fd76018a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55aa16e1a13d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/high-address-dereference.c.tmp+0x113d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/test/asan/TestCases/Posix/high-address-dereference.c:21:16 in main
+==2725843==ABORTING
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2726337==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000fff (pc 0x55e26f8655f3 bp 0x7fffc36f5cc0 sp 0x7fffc36f5c80 T0)
+==2726337==The signal is caused by a READ memory access.
+==2726337==Hint: address points to the zero page.
+SCARINESS: 10 (null-deref)
+    #0 0x55e26f8655f3 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/high-address-dereference.c:21:16
+    #1 0x7f4f83a07082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55e26f86413d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/high-address-dereference.c.tmp+0x113d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/test/asan/TestCases/Posix/high-address-dereference.c:21:16 in main
+==2726337==ABORTING
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2726987==ERROR: AddressSanitizer: SEGV on unknown address 0x000000001000 (pc 0x55b8005475f3 bp 0x7ffdba33a250 sp 0x7ffdba33a210 T0)
+==2726987==The signal is caused by a READ memory access.
+SCARINESS: 20 (wild-addr-read)
+    #0 0x55b8005475f3 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/high-address-dereference.c:21:16
+    #1 0x7f31bb306082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55b80054613d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/high-address-dereference.c.tmp+0x113d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/test/asan/TestCases/Posix/high-address-dereference.c:21:16 in main
+==2726987==ABORTING
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2727578==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x564f10cd55d9 bp 0x7ffebc0c9400 sp 0x7ffebc0c93c0 T0)
+==2727578==The signal is caused by a READ memory access.
+==2727578==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+SCARINESS: 20 (wild-addr-read)
+    #0 0x564f10cd55d9 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/high-address-dereference.c:21:16
+    #1 0x7fc43c007082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x564f10cd413d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/high-address-dereference.c.tmp+0x113d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/test/asan/TestCases/Posix/high-address-dereference.c:21:16 in main
+==2727578==ABORTING
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2727967==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x55964541e5d9 bp 0x7ffda7d54850 sp 0x7ffda7d54810 T0)
+==2727967==The signal is caused by a READ memory access.
+==2727967==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+SCARINESS: 20 (wild-addr-read)
+    #0 0x55964541e5d9 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/high-address-dereference.c:21:16
+    #1 0x7fea52b0c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55964541d13d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/high-address-dereference.c.tmp+0x113d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/test/asan/TestCases/Posix/high-address-dereference.c:21:16 in main
+==2727967==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/high-address-dereference.c <<TAIL<<

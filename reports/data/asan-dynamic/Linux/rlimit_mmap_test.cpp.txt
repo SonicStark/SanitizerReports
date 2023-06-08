@@ -1,0 +1,10 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/rlimit_mmap_test.cpp <<HEAD<<
+
+=================================================================
+ERROR: Failed to mmap
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/rlimit_mmap_test.cpp <<TAIL<<

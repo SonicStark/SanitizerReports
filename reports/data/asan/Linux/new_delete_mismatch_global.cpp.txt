@@ -1,0 +1,19 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/new_delete_mismatch_global.cpp <<HEAD<<
+
+=================================================================
+==2791547==ERROR: AddressSanitizer: attempting free on address which was not malloc()-ed: 0x5640cefe3b00 in thread T0
+    #0 0x5640ce5d3247 in operator delete(void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:152:3
+    #1 0x5640ce5d55ba in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/new_delete_mismatch_global.cpp:12:3
+    #2 0x7f0bb4ac5082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5640ce4a62dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/new_delete_mismatch_global.cpp.tmp+0x1e2dd)
+
+0x5640cefe3b00 is located 32 bytes before global variable 'x' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Linux/new_delete_mismatch_global.cpp:7' (0x5640cefe3b20) of size 8
+0x5640cefe3b00 is located 0 bytes inside of global variable 'a' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Linux/new_delete_mismatch_global.cpp:8' (0x5640cefe3b00) of size 10
+SUMMARY: AddressSanitizer: bad-free /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:152:3 in operator delete(void*)
+==2791547==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/new_delete_mismatch_global.cpp <<TAIL<<

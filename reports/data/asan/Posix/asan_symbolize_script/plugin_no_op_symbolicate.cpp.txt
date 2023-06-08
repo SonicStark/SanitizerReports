@@ -1,0 +1,75 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/asan_symbolize_script/plugin_no_op_symbolicate.cpp <<HEAD<<
+
+INFO: Loading plugins from "/home/llvm/compiler-rt/test/asan/TestCases/Posix/asan_symbolize_script/plugin_no_op.py"
+INFO: Registering plugin NoOpPlugin
+INFO: Adding --unlikely-option-name-XXX option
+INFO: GOT --unlikely-option-name-XXX=15
+INFO: filter_binary_path called in NoOpPlugin
+INFO: filter_binary_path called in NoOpPlugin
+INFO: filter_binary_path called in NoOpPlugin
+INFO: filter_binary_path called in NoOpPlugin
+INFO: filter_binary_path called in NoOpPlugin
+INFO: filter_binary_path called in NoOpPlugin
+INFO: filter_binary_path called in NoOpPlugin
+INFO: filter_binary_path called in NoOpPlugin
+INFO: filter_binary_path called in NoOpPlugin
+INFO: filter_binary_path called in NoOpPlugin
+INFO: destroy() called on NoOpPlugin
+=================================================================
+==2794894==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000010 at pc 0x5645261bd5c9 bp 0x7ffeef4d82c0 sp 0x7ffeef4d82b8
+WRITE of size 4 at 0x602000000010 thread T0
+    #0 0x5645261bd5c8 in foo /home/llvm/compiler-rt/test/asan/TestCases/Posix/asan_symbolize_script/plugin_no_op_symbolicate.cpp:14:6
+    #1 0x5645261bd62c in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/asan_symbolize_script/plugin_no_op_symbolicate.cpp:22:3
+    #2 0x7fbb5f276082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x56452608e2dd in _start ??:0:0
+
+0x602000000010 is located 0 bytes inside of 4-byte region [0x602000000010,0x602000000014)
+freed by thread T0 here:
+    #0 0x564526172147 in __interceptor_cfree.part.0 _asan_rtl_:3
+    #1 0x5645261bd623 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/asan_symbolize_script/plugin_no_op_symbolicate.cpp:21:3
+    #2 0x7fbb5f276082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x564526172f67 in malloc _asan_rtl_:3
+    #1 0x5645261bd5f8 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/asan_symbolize_script/plugin_no_op_symbolicate.cpp:18:19
+    #2 0x7fbb5f276082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/asan_symbolize_script/Output/plugin_no_op_symbolicate.cpp.tmp.executable+0x14d5c8)
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2794894==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/asan_symbolize_script/plugin_no_op_symbolicate.cpp <<TAIL<<

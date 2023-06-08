@@ -1,0 +1,36 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/invalid-pointer-pairs-threads.cpp <<HEAD<<
+
+=================================================================
+==2797892==ERROR: AddressSanitizer: invalid-pointer-pair: 0x7f0fe7900040 0x7f0fe51fe020
+    #0 0x561deae99999 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/invalid-pointer-pairs-threads.cpp:48:33
+    #1 0x7f0fe9e50082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x561dead6a31d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/invalid-pointer-pairs-threads.cpp.tmp+0x1e31d)
+
+Address 0x7f0fe7900040 is located in stack of thread T0 at offset 64 in frame
+    #0 0x561deae9974f in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/invalid-pointer-pairs-threads.cpp:28
+
+  This frame has 2 object(s):
+    [32, 48) 'threads' (line 33)
+    [64, 65) 'local' (line 43) <== Memory access at offset 64 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Address 0x7f0fe51fe020 is located in stack of thread T1 at offset 32 in frame
+    #0 0x561deae995cf in thread_main(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/invalid-pointer-pairs-threads.cpp:17
+
+  This frame has 1 object(s):
+    [32, 33) 'local' (line 18) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Thread T1 created by T0 here:
+    #0 0x561dead86066 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x561deae99901 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/invalid-pointer-pairs-threads.cpp:35:3
+    #2 0x7f0fe9e50082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/Posix/invalid-pointer-pairs-threads.cpp:48:33 in main
+==2797892==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/invalid-pointer-pairs-threads.cpp <<TAIL<<

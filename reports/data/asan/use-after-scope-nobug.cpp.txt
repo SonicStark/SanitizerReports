@@ -1,0 +1,9 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/use-after-scope-nobug.cpp <<HEAD<<
+
+PASSED
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/use-after-scope-nobug.cpp <<TAIL<<

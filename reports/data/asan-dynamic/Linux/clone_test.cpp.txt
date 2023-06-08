@@ -1,0 +1,20 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/clone_test.cpp <<HEAD<<
+
+Parent: 0x7ffe6dffc380
+Child:  0x7fbcd0c00020
+PASSED
+Parent: 0x7ffe34493460
+Child:  0x7f8f66900020
+PASSED
+Parent: 0x7ffd0775f1a0
+Child:  0x7f5451000020
+PASSED
+Parent: 0x7fff647052a0
+Child:  0x7f35d2500020
+PASSED
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/clone_test.cpp <<TAIL<<

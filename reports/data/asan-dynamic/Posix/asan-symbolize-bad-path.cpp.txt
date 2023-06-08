@@ -1,0 +1,20 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/asan-symbolize-bad-path.cpp <<HEAD<<
+
+    #0 0xabcdabcd in ?? ??:0
+    #0 0xabcdabcd in _end ??:0:0
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/asan-symbolize-bad-path.cpp <<TAIL<<
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/asan-symbolize-bad-path.cpp <<HEAD<<
+
+LLVMSymbolizer: error reading file: No such file or directory
+addr2line: '/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/asan-symbolize-bad-path.cpp.tmp/bad/path': No such file
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/asan-symbolize-bad-path.cpp <<TAIL<<

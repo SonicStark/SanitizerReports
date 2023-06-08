@@ -1,0 +1,254 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/heap-overflow.cpp <<HEAD<<
+
+=================================================================
+==2810507==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200000001a at pc 0x55c2d7b885f7 bp 0x7ffec7d92fe0 sp 0x7ffec7d92fd8
+READ of size 1 at 0x60200000001a thread T0
+    #0 0x55c2d7b885f6 in main /home/llvm/compiler-rt/test/asan/TestCases/heap-overflow.cpp:15:13
+    #1 0x7f7f99162082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55c2d7a592dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/heap-overflow.cpp.tmp+0x1e2dd)
+
+0x60200000001a is located 0 bytes after 10-byte region [0x602000000010,0x60200000001a)
+allocated by thread T0 here:
+    #0 0x55c2d7b3df67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55c2d7b8859f in main /home/llvm/compiler-rt/test/asan/TestCases/heap-overflow.cpp:13:20
+    #2 0x7f7f99162082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/heap-overflow.cpp:15:13 in main
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa 00[02]fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2810507==ABORTING
+=================================================================
+==2811037==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200000001a at pc 0x5611050b85e7 bp 0x7ffd0753e9c0 sp 0x7ffd0753e9b8
+READ of size 1 at 0x60200000001a thread T0
+    #0 0x5611050b85e6 in main /home/llvm/compiler-rt/test/asan/TestCases/heap-overflow.cpp:15:13
+    #1 0x7f57ba0d0082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x561104f892dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/heap-overflow.cpp.tmp+0x1e2dd)
+
+0x60200000001a is located 0 bytes after 10-byte region [0x602000000010,0x60200000001a)
+allocated by thread T0 here:
+    #0 0x56110506df67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x5611050b8593 in main /home/llvm/compiler-rt/test/asan/TestCases/heap-overflow.cpp:13:20
+    #2 0x7f57ba0d0082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/heap-overflow.cpp:15:13 in main
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa 00[02]fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2811037==ABORTING
+=================================================================
+==2811448==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200000001a at pc 0x55a3e1f455e7 bp 0x7ffcbf1df800 sp 0x7ffcbf1df7f8
+READ of size 1 at 0x60200000001a thread T0
+    #0 0x55a3e1f455e6 in main /home/llvm/compiler-rt/test/asan/TestCases/heap-overflow.cpp:15:13
+    #1 0x7f1a8e773082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55a3e1e162dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/heap-overflow.cpp.tmp+0x1e2dd)
+
+0x60200000001a is located 0 bytes after 10-byte region [0x602000000010,0x60200000001a)
+allocated by thread T0 here:
+    #0 0x55a3e1efaf67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55a3e1f45593 in main /home/llvm/compiler-rt/test/asan/TestCases/heap-overflow.cpp:13:20
+    #2 0x7f1a8e773082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/heap-overflow.cpp:15:13 in main
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa 00[02]fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2811448==ABORTING
+=================================================================
+==2812012==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200000001a at pc 0x55d55db0f5e7 bp 0x7ffcb15c54e0 sp 0x7ffcb15c54d8
+READ of size 1 at 0x60200000001a thread T0
+    #0 0x55d55db0f5e6 in main /home/llvm/compiler-rt/test/asan/TestCases/heap-overflow.cpp:15:13
+    #1 0x7f42a4f4c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55d55d9e02dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/heap-overflow.cpp.tmp+0x1e2dd)
+
+0x60200000001a is located 0 bytes after 10-byte region [0x602000000010,0x60200000001a)
+allocated by thread T0 here:
+    #0 0x55d55dac4f67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55d55db0f593 in main /home/llvm/compiler-rt/test/asan/TestCases/heap-overflow.cpp:13:20
+    #2 0x7f42a4f4c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/heap-overflow.cpp:15:13 in main
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa 00[02]fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812012==ABORTING
+=================================================================
+==2812109==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200000001a at pc 0x563b4b5745e7 bp 0x7ffc149e8240 sp 0x7ffc149e8238
+READ of size 1 at 0x60200000001a thread T0
+    #0 0x563b4b5745e6 in main /home/llvm/compiler-rt/test/asan/TestCases/heap-overflow.cpp:15:13
+    #1 0x7f4777726082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x563b4b4452dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/heap-overflow.cpp.tmp+0x1e2dd)
+
+0x60200000001a is located 0 bytes after 10-byte region [0x602000000010,0x60200000001a)
+allocated by thread T0 here:
+    #0 0x563b4b529f67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x563b4b574593 in main /home/llvm/compiler-rt/test/asan/TestCases/heap-overflow.cpp:13:20
+    #2 0x7f4777726082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/heap-overflow.cpp:15:13 in main
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa 00[02]fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+Stats: 0M malloced (0M for red zones) by 4 calls
+Stats: 0M realloced by 0 calls
+Stats: 0M freed by 1 calls
+Stats: 0M really freed by 0 calls
+Stats: 0M (0M-0M) mmaped; 9 maps, 0 unmaps
+  mallocs by size class: 2:1; 16:2; 49:1; 
+Stats: malloc large: 0
+Stats: StackDepot: 5 ids; 9M allocated
+Stats: SizeClassAllocator64: 0M mapped (0M rss) in 265 allocations; remains 265
+  02 (    32): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks    1920 avail:   2048 rss:      4K releases:      0 last released:      0K region: 0x602000000000
+  16 (   256): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     128 avail:    256 rss:      4K releases:      0 last released:      0K region: 0x610000000000
+  36 (  8192): mapped:     64K allocs:       8 frees:       0 inuse:      8 num_freed_chunks       0 avail:      8 rss:      4K releases:      0 last released:      0K region: 0x624000000000
+  49 ( 81920): mapped:    128K allocs:       1 frees:       0 inuse:      1 num_freed_chunks       0 avail:      1 rss:      8K releases:      0 last released:      0K region: 0x631000000000
+Stats: LargeMmapAllocator: allocated 0 times, remains 0 (0 K) max 0 M; by size logs: 
+Quarantine limits: global: 256Mb; thread local: 1024Kb
+Global quarantine stats: batches: 0; bytes: 0 (user: 0); chunks: 0 (capacity: 0); 0% chunks used; 0% memory overhead
+==2812109==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/heap-overflow.cpp <<TAIL<<

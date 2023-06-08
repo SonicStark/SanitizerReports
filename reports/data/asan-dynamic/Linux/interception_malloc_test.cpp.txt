@@ -1,0 +1,304 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/interception_malloc_test.cpp <<HEAD<<
+
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+=================================================================
+==2720212==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000010 at pc 0x7f867fdbe7b2 bp 0x7ffeb2bf9d50 sp 0x7ffeb2bf9510
+READ of size 1 at 0x602000000010 thread T0
+    #0 0x7f867fdbe7b1 in StrtolFixAndCheck(void*, char const*, char**, char*, int) /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:3634:3
+    #1 0x7f867fdbee5d in __interceptor_strtol /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:499:20
+    #2 0x562d5c2a5687 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_malloc_test.cpp:20:15
+    #3 0x7f867f806082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x562d5c2a41bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_malloc_test.cpp.tmp+0x11bd)
+
+0x602000000010 is located 0 bytes inside of 10-byte region [0x602000000010,0x60200000001a)
+freed by thread T0 here:
+    #0 0x7f867fe6a6c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x562d5c2a5675 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_malloc_test.cpp:19:3
+    #2 0x7f867f806082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x7f867fe6b427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x562d5c2a561f in malloc /home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_malloc_test.cpp:14:10
+    #2 0x562d5c2a5668 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_malloc_test.cpp:18:20
+    #3 0x7f867f806082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:3634:3 in StrtolFixAndCheck(void*, char const*, char**, char*, int)
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fd fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2720212==ABORTING
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+=================================================================
+==2720894==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000010 at pc 0x7f38877b37b2 bp 0x7fff1223bdd0 sp 0x7fff1223b590
+READ of size 1 at 0x602000000010 thread T0
+    #0 0x7f38877b37b1 in StrtolFixAndCheck(void*, char const*, char**, char*, int) /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:3634:3
+    #1 0x7f38877b3e5d in __interceptor_strtol /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:499:20
+    #2 0x5644043ab66f in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_malloc_test.cpp:20:15
+    #3 0x7f38871fb082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x5644043aa1bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_malloc_test.cpp.tmp+0x11bd)
+
+0x602000000010 is located 0 bytes inside of 10-byte region [0x602000000010,0x60200000001a)
+freed by thread T0 here:
+    #0 0x7f388785f6c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x5644043ab660 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_malloc_test.cpp:19:3
+    #2 0x7f38871fb082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x7f3887860427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x5644043ab655 in malloc /home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_malloc_test.cpp:14:10
+    #2 0x5644043ab655 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_malloc_test.cpp:18:20
+    #3 0x7f38871fb082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:3634:3 in StrtolFixAndCheck(void*, char const*, char**, char*, int)
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fd fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2720894==ABORTING
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+=================================================================
+==2721624==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000010 at pc 0x7f2b3e4317b2 bp 0x7ffd0254fd30 sp 0x7ffd0254f4f0
+READ of size 1 at 0x602000000010 thread T0
+    #0 0x7f2b3e4317b1 in StrtolFixAndCheck(void*, char const*, char**, char*, int) /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:3634:3
+    #1 0x7f2b3e431e5d in __interceptor_strtol /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:499:20
+    #2 0x5607a031966f in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_malloc_test.cpp:20:15
+    #3 0x7f2b3de79082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x5607a03181bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_malloc_test.cpp.tmp+0x11bd)
+
+0x602000000010 is located 0 bytes inside of 10-byte region [0x602000000010,0x60200000001a)
+freed by thread T0 here:
+    #0 0x7f2b3e4dd6c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x5607a0319660 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_malloc_test.cpp:19:3
+    #2 0x7f2b3de79082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x7f2b3e4de427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x5607a0319655 in malloc /home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_malloc_test.cpp:14:10
+    #2 0x5607a0319655 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_malloc_test.cpp:18:20
+    #3 0x7f2b3de79082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:3634:3 in StrtolFixAndCheck(void*, char const*, char**, char*, int)
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fd fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2721624==ABORTING
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+malloc call
+=================================================================
+==2722223==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000010 at pc 0x7fbb619b07b2 bp 0x7ffd5a80fcc0 sp 0x7ffd5a80f480
+READ of size 1 at 0x602000000010 thread T0
+    #0 0x7fbb619b07b1 in StrtolFixAndCheck(void*, char const*, char**, char*, int) /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:3634:3
+    #1 0x7fbb619b0e5d in __interceptor_strtol /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:499:20
+    #2 0x561271dec66f in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_malloc_test.cpp:20:15
+    #3 0x7fbb613f8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x561271deb1bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_malloc_test.cpp.tmp+0x11bd)
+
+0x602000000010 is located 0 bytes inside of 10-byte region [0x602000000010,0x60200000001a)
+freed by thread T0 here:
+    #0 0x7fbb61a5c6c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x561271dec660 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_malloc_test.cpp:19:3
+    #2 0x7fbb613f8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x7fbb61a5d427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x561271dec655 in malloc /home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_malloc_test.cpp:14:10
+    #2 0x561271dec655 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_malloc_test.cpp:18:20
+    #3 0x7fbb613f8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:3634:3 in StrtolFixAndCheck(void*, char const*, char**, char*, int)
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fd fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2722223==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/interception_malloc_test.cpp <<TAIL<<

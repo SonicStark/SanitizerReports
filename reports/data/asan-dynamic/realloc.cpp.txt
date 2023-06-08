@@ -1,0 +1,11 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/realloc.cpp <<HEAD<<
+
+realloc(p, 0) returned nullptr
+realloc(p, 0) returned nullptr
+Allocated something on realloc(p, 0)
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/realloc.cpp <<TAIL<<

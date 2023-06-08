@@ -1,0 +1,59 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/release_to_os_test.cpp <<HEAD<<
+
+Stats: 384M malloced (61M for red zones) by 503687 calls
+Stats: 0M realloced by 0 calls
+Stats: 384M freed by 503685 calls
+Stats: 153M really freed by 201127 calls
+Stats: 337M (337M-0M) mmaped; 5401 maps, 0 unmaps
+  mallocs by size class: 14:1; 15:1; 24:503684; 49:1; 
+Stats: malloc large: 0
+Stats: StackDepot: 8 ids; 9M allocated
+Stats: SizeClassAllocator64: 337M mapped (314M rss) in 504561 allocations; remains 303385
+  14 (   224): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     164 avail:    292 rss:      4K releases:      0 last released:      0K region: 0x60e000000000
+  15 (   240): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     145 avail:    273 rss:      4K releases:      0 last released:      0K region: 0x60f000000000
+  24 (  1024): mapped: 340800K allocs:  503552 frees:  200896 inuse: 302656 num_freed_chunks   38144 avail: 340800 rss: 319012K releases: 2112525 last released:  21788K region: 0x618000000000
+  36 (  8192): mapped:   4160K allocs:     752 frees:     280 inuse:    472 num_freed_chunks      48 avail:    520 rss:   2816K releases:     35 last released:    384K region: 0x624000000000
+  49 ( 81920): mapped:    128K allocs:       1 frees:       0 inuse:      1 num_freed_chunks       0 avail:      1 rss:      8K releases:      0 last released:      0K region: 0x631000000000
+Stats: LargeMmapAllocator: allocated 0 times, remains 0 (0 K) max 0 M; by size logs: 
+Quarantine limits: global: 256Mb; thread local: 1024Kb
+Global quarantine stats: batches: 469; bytes: 245733248 (user: 241891200); chunks: 302364 (capacity: 478849); 63% chunks used; 1% memory overhead
+Stats: 384M malloced (61M for red zones) by 503687 calls
+Stats: 0M realloced by 0 calls
+Stats: 384M freed by 503685 calls
+Stats: 153M really freed by 201127 calls
+Stats: 337M (337M-0M) mmaped; 5401 maps, 0 unmaps
+  mallocs by size class: 14:1; 15:1; 24:503684; 49:1; 
+Stats: malloc large: 0
+Stats: StackDepot: 8 ids; 9M allocated
+Stats: SizeClassAllocator64: 337M mapped (335M rss) in 504561 allocations; remains 303385
+  14 (   224): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     164 avail:    292 rss:      4K releases:      0 last released:      0K region: 0x60e000000000
+  15 (   240): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     145 avail:    273 rss:      4K releases:      0 last released:      0K region: 0x60f000000000
+  24 (  1024): mapped: 340800K allocs:  503552 frees:  200896 inuse: 302656 num_freed_chunks   38144 avail: 340800 rss: 340800K releases:      0 last released:      0K region: 0x618000000000
+  36 (  8192): mapped:   4160K allocs:     752 frees:     280 inuse:    472 num_freed_chunks      48 avail:    520 rss:   3120K releases:      0 last released:      0K region: 0x624000000000
+  49 ( 81920): mapped:    128K allocs:       1 frees:       0 inuse:      1 num_freed_chunks       0 avail:      1 rss:      8K releases:      0 last released:      0K region: 0x631000000000
+Stats: LargeMmapAllocator: allocated 0 times, remains 0 (0 K) max 0 M; by size logs: 
+Quarantine limits: global: 256Mb; thread local: 1024Kb
+Global quarantine stats: batches: 469; bytes: 245733248 (user: 241891200); chunks: 302364 (capacity: 478849); 63% chunks used; 1% memory overhead
+Stats: 384M malloced (61M for red zones) by 503687 calls
+Stats: 0M realloced by 0 calls
+Stats: 384M freed by 503685 calls
+Stats: 384M really freed by 503685 calls
+Stats: 338M (338M-0M) mmaped; 5419 maps, 0 unmaps
+  mallocs by size class: 14:1; 15:1; 24:503684; 49:1; 
+Stats: malloc large: 0
+Stats: StackDepot: 8 ids; 9M allocated
+Stats: SizeClassAllocator64: 337M mapped (0M rss) in 504561 allocations; remains 401
+  14 (   224): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     164 avail:    292 rss:      4K releases:      0 last released:      0K region: 0x60e000000000
+  15 (   240): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     145 avail:    273 rss:      4K releases:      0 last released:      0K region: 0x60f000000000
+  24 (  1024): mapped: 340800K allocs:  503552 frees:  503424 inuse:    128 num_freed_chunks  340672 avail: 340800 rss:    512K releases:    126 last released: 340288K region: 0x618000000000
+  36 (  8192): mapped:   4160K allocs:     752 frees:     736 inuse:     16 num_freed_chunks     504 avail:    520 rss:     96K releases:      5 last released:   4032K region: 0x624000000000
+  49 ( 81920): mapped:    128K allocs:       1 frees:       0 inuse:      1 num_freed_chunks       0 avail:      1 rss:      8K releases:      0 last released:      0K region: 0x631000000000
+Stats: LargeMmapAllocator: allocated 0 times, remains 0 (0 K) max 0 M; by size logs: 
+Quarantine limits: global: 256Mb; thread local: 1024Kb
+Global quarantine stats: batches: 0; bytes: 0 (user: 0); chunks: 0 (capacity: 0); 0% chunks used; 0% memory overhead
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/release_to_os_test.cpp <<TAIL<<

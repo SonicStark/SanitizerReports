@@ -1,0 +1,176 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/global-overflow.cpp <<HEAD<<
+
+=================================================================
+==2734143==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55d58318d1aa at pc 0x55d583189625 bp 0x7ffe0cb96840 sp 0x7ffe0cb96838
+READ of size 1 at 0x55d58318d1aa thread T0
+    #0 0x55d583189624 in main /home/llvm/compiler-rt/test/asan/TestCases/global-overflow.cpp:14:13
+    #1 0x7fd3812c6082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55d58318815d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/global-overflow.cpp.tmp+0x115d)
+
+0x55d58318d1aa is located 22 bytes before global variable 'main::ZZZ' defined in '/home/llvm/compiler-rt/test/asan/TestCases/global-overflow.cpp' (0x55d58318d1c0) of size 10
+0x55d58318d1aa is located 0 bytes after global variable 'main::YYY' defined in '/home/llvm/compiler-rt/test/asan/TestCases/global-overflow.cpp' (0x55d58318d1a0) of size 10
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/global-overflow.cpp:14:13 in main
+Shadow bytes around the buggy address:
+  0x55d58318cf00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d58318cf80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d58318d000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d58318d080: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x55d58318d100: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+=>0x55d58318d180: 00 02 f9 f9 00[02]f9 f9 00 02 f9 f9 00 00 00 00
+  0x55d58318d200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d58318d280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d58318d300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d58318d380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d58318d400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2734143==ABORTING
+=================================================================
+==2735178==ERROR: AddressSanitizer: global-buffer-overflow on address 0x5650520bd1aa at pc 0x5650520b9653 bp 0x7ffec605d8c0 sp 0x7ffec605d8b8
+READ of size 1 at 0x5650520bd1aa thread T0
+    #0 0x5650520b9652 in main /home/llvm/compiler-rt/test/asan/TestCases/global-overflow.cpp:14:13
+    #1 0x7fc748747082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5650520b815d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/global-overflow.cpp.tmp+0x115d)
+
+0x5650520bd1aa is located 22 bytes before global variable 'main::ZZZ' defined in '/home/llvm/compiler-rt/test/asan/TestCases/global-overflow.cpp' (0x5650520bd1c0) of size 10
+0x5650520bd1aa is located 0 bytes after global variable 'main::YYY' defined in '/home/llvm/compiler-rt/test/asan/TestCases/global-overflow.cpp' (0x5650520bd1a0) of size 10
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/global-overflow.cpp:14:13 in main
+Shadow bytes around the buggy address:
+  0x5650520bcf00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5650520bcf80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5650520bd000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5650520bd080: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x5650520bd100: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+=>0x5650520bd180: 00 02 f9 f9 00[02]f9 f9 00 02 f9 f9 00 00 00 00
+  0x5650520bd200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5650520bd280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5650520bd300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5650520bd380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5650520bd400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2735178==ABORTING
+=================================================================
+==2735837==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55bf015e41aa at pc 0x55bf015e0653 bp 0x7fffaf5b65e0 sp 0x7fffaf5b65d8
+READ of size 1 at 0x55bf015e41aa thread T0
+    #0 0x55bf015e0652 in main /home/llvm/compiler-rt/test/asan/TestCases/global-overflow.cpp:14:13
+    #1 0x7f11fb155082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55bf015df15d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/global-overflow.cpp.tmp+0x115d)
+
+0x55bf015e41aa is located 22 bytes before global variable 'main::ZZZ' defined in '/home/llvm/compiler-rt/test/asan/TestCases/global-overflow.cpp' (0x55bf015e41c0) of size 10
+0x55bf015e41aa is located 0 bytes after global variable 'main::YYY' defined in '/home/llvm/compiler-rt/test/asan/TestCases/global-overflow.cpp' (0x55bf015e41a0) of size 10
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/global-overflow.cpp:14:13 in main
+Shadow bytes around the buggy address:
+  0x55bf015e3f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bf015e3f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bf015e4000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bf015e4080: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x55bf015e4100: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+=>0x55bf015e4180: 00 02 f9 f9 00[02]f9 f9 00 02 f9 f9 00 00 00 00
+  0x55bf015e4200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bf015e4280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bf015e4300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bf015e4380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bf015e4400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2735837==ABORTING
+=================================================================
+==2736631==ERROR: AddressSanitizer: global-buffer-overflow on address 0x555a985801aa at pc 0x555a9857c653 bp 0x7fff0b085680 sp 0x7fff0b085678
+READ of size 1 at 0x555a985801aa thread T0
+    #0 0x555a9857c652 in main /home/llvm/compiler-rt/test/asan/TestCases/global-overflow.cpp:14:13
+    #1 0x7fd3edae3082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x555a9857b15d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/global-overflow.cpp.tmp+0x115d)
+
+0x555a985801aa is located 22 bytes before global variable 'main::ZZZ' defined in '/home/llvm/compiler-rt/test/asan/TestCases/global-overflow.cpp' (0x555a985801c0) of size 10
+0x555a985801aa is located 0 bytes after global variable 'main::YYY' defined in '/home/llvm/compiler-rt/test/asan/TestCases/global-overflow.cpp' (0x555a985801a0) of size 10
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/global-overflow.cpp:14:13 in main
+Shadow bytes around the buggy address:
+  0x555a9857ff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x555a9857ff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x555a98580000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x555a98580080: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x555a98580100: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+=>0x555a98580180: 00 02 f9 f9 00[02]f9 f9 00 02 f9 f9 00 00 00 00
+  0x555a98580200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x555a98580280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x555a98580300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x555a98580380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x555a98580400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2736631==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/global-overflow.cpp <<TAIL<<

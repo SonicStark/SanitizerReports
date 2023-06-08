@@ -1,0 +1,188 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/deep_tail_call.cpp <<HEAD<<
+
+=================================================================
+==2733057==ERROR: AddressSanitizer: global-buffer-overflow on address 0x558fe3d8a12c at pc 0x558fe3d865db bp 0x7ffe215952b0 sp 0x7ffe215952a8
+READ of size 4 at 0x558fe3d8a12c thread T0
+    #0 0x558fe3d865da in call4(int) /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:9:59
+    #1 0x558fe3d86602 in call3(int) /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:11:47
+    #2 0x558fe3d86622 in call2(int) /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:13:47
+    #3 0x558fe3d86642 in call1(int) /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:15:47
+    #4 0x558fe3d8666d in main /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:18:3
+    #5 0x7fc61e021082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #6 0x558fe3d8514d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/deep_tail_call.cpp.tmp+0x114d)
+
+0x558fe3d8a12c is located 4 bytes after global variable 'global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp' (0x558fe3d8a100) of size 40
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:9:59 in call4(int)
+Shadow bytes around the buggy address:
+  0x558fe3d89e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x558fe3d89f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x558fe3d89f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x558fe3d8a000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x558fe3d8a080: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+=>0x558fe3d8a100: 00 00 00 00 00[f9]f9 f9 f9 f9 f9 f9 00 00 00 00
+  0x558fe3d8a180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x558fe3d8a200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x558fe3d8a280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x558fe3d8a300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x558fe3d8a380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2733057==ABORTING
+=================================================================
+==2733905==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55bb084a712c at pc 0x55bb084a35bd bp 0x7ffdda066690 sp 0x7ffdda066688
+READ of size 4 at 0x55bb084a712c thread T0
+    #0 0x55bb084a35bc in call4(int) /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:9:59
+    #1 0x55bb084a35c8 in call3(int) /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:11:47
+    #2 0x55bb084a35d8 in call2(int) /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:13:47
+    #3 0x55bb084a35e8 in call1(int) /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:15:47
+    #4 0x55bb084a35f8 in main /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:18:3
+    #5 0x7fa4c2a1e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #6 0x55bb084a214d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/deep_tail_call.cpp.tmp+0x114d)
+
+0x55bb084a712c is located 4 bytes after global variable 'global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp' (0x55bb084a7100) of size 40
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:9:59 in call4(int)
+Shadow bytes around the buggy address:
+  0x55bb084a6e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bb084a6f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bb084a6f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bb084a7000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bb084a7080: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+=>0x55bb084a7100: 00 00 00 00 00[f9]f9 f9 f9 f9 f9 f9 00 00 00 00
+  0x55bb084a7180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bb084a7200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bb084a7280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bb084a7300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bb084a7380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2733905==ABORTING
+=================================================================
+==2734644==ERROR: AddressSanitizer: global-buffer-overflow on address 0x559c99a7b12c at pc 0x559c99a775bd bp 0x7fffda070e60 sp 0x7fffda070e58
+READ of size 4 at 0x559c99a7b12c thread T0
+    #0 0x559c99a775bc in call4(int) /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:9:59
+    #1 0x559c99a775c8 in call3(int) /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:11:47
+    #2 0x559c99a775d8 in call2(int) /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:13:47
+    #3 0x559c99a775e8 in call1(int) /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:15:47
+    #4 0x559c99a775f8 in main /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:18:3
+    #5 0x7fbcc9719082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #6 0x559c99a7614d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/deep_tail_call.cpp.tmp+0x114d)
+
+0x559c99a7b12c is located 4 bytes after global variable 'global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp' (0x559c99a7b100) of size 40
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:9:59 in call4(int)
+Shadow bytes around the buggy address:
+  0x559c99a7ae80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559c99a7af00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559c99a7af80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559c99a7b000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559c99a7b080: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+=>0x559c99a7b100: 00 00 00 00 00[f9]f9 f9 f9 f9 f9 f9 00 00 00 00
+  0x559c99a7b180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559c99a7b200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559c99a7b280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559c99a7b300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x559c99a7b380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2734644==ABORTING
+=================================================================
+==2735373==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55e5fac4812c at pc 0x55e5fac445bd bp 0x7ffd2fb08390 sp 0x7ffd2fb08388
+READ of size 4 at 0x55e5fac4812c thread T0
+    #0 0x55e5fac445bc in call4(int) /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:9:59
+    #1 0x55e5fac445c8 in call3(int) /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:11:47
+    #2 0x55e5fac445d8 in call2(int) /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:13:47
+    #3 0x55e5fac445e8 in call1(int) /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:15:47
+    #4 0x55e5fac445f8 in main /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:18:3
+    #5 0x7f901f389082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #6 0x55e5fac4314d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/deep_tail_call.cpp.tmp+0x114d)
+
+0x55e5fac4812c is located 4 bytes after global variable 'global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp' (0x55e5fac48100) of size 40
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/deep_tail_call.cpp:9:59 in call4(int)
+Shadow bytes around the buggy address:
+  0x55e5fac47e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55e5fac47f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55e5fac47f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55e5fac48000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55e5fac48080: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+=>0x55e5fac48100: 00 00 00 00 00[f9]f9 f9 f9 f9 f9 f9 00 00 00 00
+  0x55e5fac48180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55e5fac48200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55e5fac48280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55e5fac48300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55e5fac48380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2735373==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/deep_tail_call.cpp <<TAIL<<

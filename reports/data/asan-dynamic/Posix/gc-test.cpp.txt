@@ -1,0 +1,16 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/gc-test.cpp <<HEAD<<
+
+fake stack found: 0x7f776def5000; var: 0x7f776e0fe020
+fake stack found: 0x7f776def5000; var: 0x7f776e0fe020
+no fake stack
+no fake stack
+fake stack found: 0x7f27b2df5000; var: 0x7f27b2ffe020
+fake stack found: 0x7f27b2df5000; var: 0x7f27b2ffe020
+no fake stack
+no fake stack
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/gc-test.cpp <<TAIL<<

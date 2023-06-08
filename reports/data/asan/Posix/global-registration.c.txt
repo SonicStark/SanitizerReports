@@ -1,0 +1,136 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/global-registration.c <<HEAD<<
+
+=================================================================
+==2797144==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55f2314d8822 at pc 0x55f230b4b84b bp 0x7fff8574d3c0 sp 0x7fff8574d3b8
+WRITE of size 1 at 0x55f2314d8822 thread T0
+    #0 0x55f230b4b84a in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/global-registration.c:30:19
+    #1 0x7f9509e90082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55f230a1f2ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/global-registration.c.tmp+0x1e2ed)
+
+0x55f2314d8822 is located 62 bytes before global variable 'buffer2' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/global-registration.c' (0x55f2314d8860) of size 1
+  'buffer2' is ascii string ''
+0x55f2314d8822 is located 1 bytes after global variable 'buffer1' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/global-registration.c' (0x55f2314d8820) of size 1
+  'buffer1' is ascii string ''
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Posix/global-registration.c:30:19 in main
+Shadow bytes around the buggy address:
+  0x55f2314d8580: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55f2314d8600: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55f2314d8680: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55f2314d8700: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55f2314d8780: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x55f2314d8800: 00 00 00 00[01]f9 f9 f9 00 00 00 00 01 f9 f9 f9
+  0x55f2314d8880: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55f2314d8900: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55f2314d8980: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55f2314d8a00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55f2314d8a80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2797144==ABORTING
+=================================================================
+==2797320==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55ab8708f862 at pc 0x55ab867028a4 bp 0x7ffd9e652ee0 sp 0x7ffd9e652ed8
+WRITE of size 1 at 0x55ab8708f862 thread T0
+    #0 0x55ab867028a3 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/global-registration.c:33:19
+    #1 0x7fcdbde50082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55ab865d62ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/global-registration.c.tmp+0x1e2ed)
+
+0x55ab8708f862 is located 1 bytes after global variable 'buffer2' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/global-registration.c' (0x55ab8708f860) of size 1
+  'buffer2' is ascii string ''
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Posix/global-registration.c:33:19 in main
+Shadow bytes around the buggy address:
+  0x55ab8708f580: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ab8708f600: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ab8708f680: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ab8708f700: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ab8708f780: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x55ab8708f800: 00 00 00 00 01 f9 f9 f9 00 00 00 00[01]f9 f9 f9
+  0x55ab8708f880: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ab8708f900: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ab8708f980: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ab8708fa00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ab8708fa80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2797320==ABORTING
+=================================================================
+==2797633==ERROR: AddressSanitizer: global-buffer-overflow on address 0x7f38f2eb5102 at pc 0x55b18f7c1ab6 bp 0x7ffd9270ce20 sp 0x7ffd9270ce18
+WRITE of size 1 at 0x7f38f2eb5102 thread T0
+    #0 0x55b18f7c1ab5 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/global-registration.c:52:18
+    #1 0x7f38f328b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55b18f6952ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/global-registration.c.tmp+0x1e2ed)
+
+0x7f38f2eb5102 is located 1 bytes after global variable 'buffer3' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/global-registration.c' (0x7f38f2eb5100) of size 1
+  'buffer3' is ascii string ''
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Posix/global-registration.c:52:18 in main
+Shadow bytes around the buggy address:
+  0x7f38f2eb4e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f38f2eb4f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f38f2eb4f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f38f2eb5000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f38f2eb5080: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+=>0x7f38f2eb5100:[01]f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f38f2eb5180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f38f2eb5200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f38f2eb5280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f38f2eb5300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f38f2eb5380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2797633==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/global-registration.c <<TAIL<<

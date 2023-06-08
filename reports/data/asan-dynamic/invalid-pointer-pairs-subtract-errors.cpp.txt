@@ -1,0 +1,116 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/invalid-pointer-pairs-subtract-errors.cpp <<HEAD<<
+
+=================================================================
+==2735584==ERROR: AddressSanitizer: invalid-pointer-pair: 0x604000000010 0x604000000050
+    #0 0x555750cf55e4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:9:12
+    #1 0x555750cf56f3 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:21:3
+    #2 0x7f6a535a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x555750cf418d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/invalid-pointer-pairs-subtract-errors.cpp.tmp+0x118d)
+
+0x604000000010 is located 0 bytes inside of 42-byte region [0x604000000010,0x60400000003a)
+allocated by thread T0 here:
+    #0 0x7f6a53c0c427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x555750cf56d4 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:16:25
+    #2 0x7f6a535a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+0x604000000050 is located 0 bytes inside of 42-byte region [0x604000000050,0x60400000007a)
+allocated by thread T0 here:
+    #0 0x7f6a53c0c427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x555750cf56e2 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:17:25
+    #2 0x7f6a535a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2735584==ERROR: AddressSanitizer: invalid-pointer-pair: 0x555750cf9160 0x555750cf920a
+    #0 0x555750cf55e4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:9:12
+    #1 0x555750cf570a in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:26:3
+    #2 0x7f6a535a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x555750cf418d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/invalid-pointer-pairs-subtract-errors.cpp.tmp+0x118d)
+
+0x555750cf9160 is located 0 bytes inside of global variable 'global1' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp' (0x555750cf9160) of size 100
+0x555750cf920a is located 10 bytes inside of global variable 'global2' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp' (0x555750cf9200) of size 100
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2735584==ERROR: AddressSanitizer: invalid-pointer-pair: 0x7f6a50f00020 0x7f6a50f00030
+    #0 0x555750cf55e4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:9:12
+    #1 0x555750cf5729 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:32:3
+    #2 0x7f6a535a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x555750cf418d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/invalid-pointer-pairs-subtract-errors.cpp.tmp+0x118d)
+
+Address 0x7f6a50f00020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x555750cf560f in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:14
+
+  This frame has 2 object(s):
+    [32, 33) 'stack1' (line 29) <== Memory access at offset 32 is inside this variable
+    [48, 49) 'stack2' (line 29)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Address 0x7f6a50f00030 is located in stack of thread T0 at offset 48 in frame
+    #0 0x555750cf560f in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:14
+
+  This frame has 2 object(s):
+    [32, 33) 'stack1' (line 29)
+    [48, 49) 'stack2' (line 29) <== Memory access at offset 48 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2735584==ERROR: AddressSanitizer: invalid-pointer-pair: 0x604000000010 0x7f6a50f00020
+    #0 0x555750cf55e4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:9:12
+    #1 0x555750cf5736 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:37:3
+    #2 0x7f6a535a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x555750cf418d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/invalid-pointer-pairs-subtract-errors.cpp.tmp+0x118d)
+
+0x604000000010 is located 0 bytes inside of 42-byte region [0x604000000010,0x60400000003a)
+allocated by thread T0 here:
+    #0 0x7f6a53c0c427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x555750cf56d4 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:16:25
+    #2 0x7f6a535a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Address 0x7f6a50f00020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x555750cf560f in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:14
+
+  This frame has 2 object(s):
+    [32, 33) 'stack1' (line 29) <== Memory access at offset 32 is inside this variable
+    [48, 49) 'stack2' (line 29)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2735584==ERROR: AddressSanitizer: invalid-pointer-pair: 0x604000000010 0x555750cf9160
+    #0 0x555750cf55e4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:9:12
+    #1 0x555750cf5746 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:40:3
+    #2 0x7f6a535a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x555750cf418d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/invalid-pointer-pairs-subtract-errors.cpp.tmp+0x118d)
+
+0x604000000010 is located 0 bytes inside of 42-byte region [0x604000000010,0x60400000003a)
+allocated by thread T0 here:
+    #0 0x7f6a53c0c427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x555750cf56d4 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:16:25
+    #2 0x7f6a535a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+0x555750cf9160 is located 0 bytes inside of global variable 'global1' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp' (0x555750cf9160) of size 100
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2735584==ERROR: AddressSanitizer: invalid-pointer-pair: 0x7f6a50f00020 0x555750cf9160
+    #0 0x555750cf55e4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:9:12
+    #1 0x555750cf5756 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:43:3
+    #2 0x7f6a535a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x555750cf418d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/invalid-pointer-pairs-subtract-errors.cpp.tmp+0x118d)
+
+Address 0x7f6a50f00020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x555750cf560f in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:14
+
+  This frame has 2 object(s):
+    [32, 33) 'stack1' (line 29) <== Memory access at offset 32 is inside this variable
+    [48, 49) 'stack2' (line 29)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+0x555750cf9160 is located 0 bytes inside of global variable 'global1' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp' (0x555750cf9160) of size 100
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-subtract-errors.cpp:9:12 in foo(char*, char*)
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/invalid-pointer-pairs-subtract-errors.cpp <<TAIL<<

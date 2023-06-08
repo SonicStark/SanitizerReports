@@ -1,0 +1,9 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/shmctl.cpp <<HEAD<<
+
+shm_segsz: 4096
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/shmctl.cpp <<TAIL<<

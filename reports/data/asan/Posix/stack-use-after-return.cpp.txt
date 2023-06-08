@@ -1,0 +1,1100 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/stack-use-after-return.cpp <<HEAD<<
+
+1: 0x7ffa3ff00020
+2: 0x7ffa3ff00020
+=================================================================
+==2798958==ERROR: AddressSanitizer: stack-use-after-return on address 0x7ffa3ff00020 at pc 0x5636d376f795 bp 0x7ffe4361f140 sp 0x7ffe4361f138
+WRITE of size 1 at 0x7ffa3ff00020 thread T0
+    #0 0x5636d376f794 in Func2(char*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6
+    #1 0x5636d376f802 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:127:3
+    #2 0x7ffa42729082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5636d36402dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/stack-use-after-return.cpp.tmp+0x1e2dd)
+
+Address 0x7ffa3ff00020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x5636d376f5ef in Func1() /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:65
+
+  This frame has 1 object(s):
+    [32, 33) 'local' (line 66) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6 in Func2(char*)
+Shadow bytes around the buggy address:
+  0x7ffa3feffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffa3feffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffa3feffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffa3fefff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffa3fefff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7ffa3ff00000: f5 f5 f5 f5[f5]f5 f5 f5 00 00 00 00 00 00 00 00
+  0x7ffa3ff00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffa3ff00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffa3ff00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffa3ff00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffa3ff00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2798958==ABORTING
+1: 0x7f7124300020
+2: 0x7f7124300020
+=================================================================
+==2800551==ERROR: AddressSanitizer: stack-use-after-return on address 0x7f7124300020 at pc 0x564f60146721 bp 0x7ffe44e6be10 sp 0x7ffe44e6be08
+WRITE of size 1 at 0x7f7124300020 thread T0
+    #0 0x564f60146720 in Func2(char*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6
+    #1 0x564f60146760 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:127:3
+    #2 0x7f7126b1c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x564f600172dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/stack-use-after-return.cpp.tmp+0x1e2dd)
+
+Address 0x7f7124300020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x564f601465df in Func1() /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:65
+
+  This frame has 1 object(s):
+    [32, 33) 'local' (line 66) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6 in Func2(char*)
+Shadow bytes around the buggy address:
+  0x7f71242ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f71242ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f71242ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f71242fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f71242fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f7124300000: f5 f5 f5 f5[f5]f5 f5 f5 00 00 00 00 00 00 00 00
+  0x7f7124300080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7124300100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7124300180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7124300200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7124300280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2800551==ABORTING
+1: 0x7f353e200020
+2: 0x7f353e200020
+=================================================================
+==2804101==ERROR: AddressSanitizer: stack-use-after-return on address 0x7f353e200020 at pc 0x55d40ee2d721 bp 0x7ffc2c36d390 sp 0x7ffc2c36d388
+WRITE of size 1 at 0x7f353e200020 thread T0
+    #0 0x55d40ee2d720 in Func2(char*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6
+    #1 0x55d40ee2d760 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:127:3
+    #2 0x7f3540a91082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55d40ecfe2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/stack-use-after-return.cpp.tmp+0x1e2dd)
+
+Address 0x7f353e200020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x55d40ee2d5df in Func1() /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:65
+
+  This frame has 1 object(s):
+    [32, 33) 'local' (line 66) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6 in Func2(char*)
+Shadow bytes around the buggy address:
+  0x7f353e1ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f353e1ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f353e1ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f353e1fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f353e1fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f353e200000: f5 f5 f5 f5[f5]f5 f5 f5 00 00 00 00 00 00 00 00
+  0x7f353e200080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f353e200100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f353e200180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f353e200200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f353e200280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2804101==ABORTING
+1: 0x7f7754300020
+2: 0x7f7754300020
+=================================================================
+==2804816==ERROR: AddressSanitizer: stack-use-after-return on address 0x7f7754300020 at pc 0x5621dcdac731 bp 0x7ffd3c97caf0 sp 0x7ffd3c97cae8
+WRITE of size 1 at 0x7f7754300020 thread T0
+    #0 0x5621dcdac730 in Func2(char*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6
+    #1 0x5621dcdac770 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:127:3
+    #2 0x7f7756aef082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5621dcc7d2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/stack-use-after-return.cpp.tmp+0x1e2dd)
+
+Address 0x7f7754300020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x5621dcdac5df in Func1() /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:65
+
+  This frame has 1 object(s):
+    [32, 33) 'local' (line 66) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6 in Func2(char*)
+Shadow bytes around the buggy address:
+  0x7f77542ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f77542ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f77542ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f77542fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f77542fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f7754300000: f5 f5 f5 f5[f5]f5 f5 f5 00 00 00 00 00 00 00 00
+  0x7f7754300080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7754300100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7754300180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7754300200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7754300280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2804816==ABORTING
+1: 0x7ffb09800020
+2: 0x7ffb09800020
+=================================================================
+==2810553==ERROR: AddressSanitizer: stack-use-after-return on address 0x7ffb09800020 at pc 0x55f197ba3775 bp 0x7fffcfc613f0 sp 0x7fffcfc613e8
+WRITE of size 1 at 0x7ffb09800020 thread T0
+    #0 0x55f197ba3774 in Func2(char*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6
+    #1 0x55f197ba37e2 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:127:3
+    #2 0x7ffb0bfe4082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55f197a742dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/stack-use-after-return.cpp.tmp+0x1e2dd)
+
+Address 0x7ffb09800020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x55f197ba35ef in Func1() /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:65
+
+  This frame has 1 object(s):
+    [32, 33) 'local' (line 66) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6 in Func2(char*)
+Shadow bytes around the buggy address:
+  0x7ffb097ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffb097ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffb097ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffb097fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffb097fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7ffb09800000: f5 f5 f5 f5[f5]f5 f5 f5 00 00 00 00 00 00 00 00
+  0x7ffb09800080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffb09800100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffb09800180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffb09800200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffb09800280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2810553==ABORTING
+1: 0x7f08b2200020
+2: 0x7f08b2200020
+=================================================================
+==2811005==ERROR: AddressSanitizer: stack-use-after-return on address 0x7f08b2200020 at pc 0x559a98ba3711 bp 0x7ffe5ab76f30 sp 0x7ffe5ab76f28
+WRITE of size 1 at 0x7f08b2200020 thread T0
+    #0 0x559a98ba3710 in Func2(char*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6
+    #1 0x559a98ba3750 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:127:3
+    #2 0x7f08b4a5a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x559a98a742dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/stack-use-after-return.cpp.tmp+0x1e2dd)
+
+Address 0x7f08b2200020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x559a98ba35df in Func1() /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:65
+
+  This frame has 1 object(s):
+    [32, 33) 'local' (line 66) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6 in Func2(char*)
+Shadow bytes around the buggy address:
+  0x7f08b21ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f08b21ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f08b21ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f08b21fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f08b21fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f08b2200000: f5 f5 f5 f5[f5]f5 f5 f5 00 00 00 00 00 00 00 00
+  0x7f08b2200080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f08b2200100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f08b2200180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f08b2200200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f08b2200280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2811005==ABORTING
+1: 0x7fb7e5100020
+2: 0x7fb7e5100020
+=================================================================
+==2811432==ERROR: AddressSanitizer: stack-use-after-return on address 0x7fb7e5100020 at pc 0x55e3f330b711 bp 0x7fff2a1ec5b0 sp 0x7fff2a1ec5a8
+WRITE of size 1 at 0x7fb7e5100020 thread T0
+    #0 0x55e3f330b710 in Func2(char*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6
+    #1 0x55e3f330b750 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:127:3
+    #2 0x7fb7e7979082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55e3f31dc2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/stack-use-after-return.cpp.tmp+0x1e2dd)
+
+Address 0x7fb7e5100020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x55e3f330b5df in Func1() /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:65
+
+  This frame has 1 object(s):
+    [32, 33) 'local' (line 66) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6 in Func2(char*)
+Shadow bytes around the buggy address:
+  0x7fb7e50ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fb7e50ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fb7e50ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fb7e50fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fb7e50fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fb7e5100000: f5 f5 f5 f5[f5]f5 f5 f5 00 00 00 00 00 00 00 00
+  0x7fb7e5100080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fb7e5100100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fb7e5100180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fb7e5100200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fb7e5100280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2811432==ABORTING
+1: 0x7f46d4100020
+2: 0x7f46d4100020
+=================================================================
+==2811832==ERROR: AddressSanitizer: stack-use-after-return on address 0x7f46d4100020 at pc 0x55ee85a32711 bp 0x7ffcd9d0a4e0 sp 0x7ffcd9d0a4d8
+WRITE of size 1 at 0x7f46d4100020 thread T0
+    #0 0x55ee85a32710 in Func2(char*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6
+    #1 0x55ee85a32750 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:127:3
+    #2 0x7f46d697f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55ee859032dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/stack-use-after-return.cpp.tmp+0x1e2dd)
+
+Address 0x7f46d4100020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x55ee85a325df in Func1() /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:65
+
+  This frame has 1 object(s):
+    [32, 33) 'local' (line 66) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6 in Func2(char*)
+Shadow bytes around the buggy address:
+  0x7f46d40ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f46d40ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f46d40ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f46d40fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f46d40fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f46d4100000: f5 f5 f5 f5[f5]f5 f5 f5 00 00 00 00 00 00 00 00
+  0x7f46d4100080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f46d4100100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f46d4100180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f46d4100200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f46d4100280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2811832==ABORTING
+1: 0x7fc0ea5a0020
+2: 0x7fc0ea5a0020
+=================================================================
+==2812784==ERROR: AddressSanitizer: stack-use-after-return on address 0x7fc0ea5a0020 at pc 0x55b01e507791 bp 0x7fc0ed3e2e40 sp 0x7fc0ed3e2e38
+WRITE of size 1 at 0x7fc0ea5a0020 thread T1
+    #0 0x55b01e507790 in Func2(char*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6
+    #1 0x55b01e5077b0 in Thread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:87:3
+    #2 0x7fc0edae7608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+    #3 0x7fc0ed9c3132 in __clone /build/glibc-SzIz7B/glibc-2.31/misc/../sysdeps/unix/sysv/linux/x86_64/clone.S:95
+
+Address 0x7fc0ea5a0020 is located in stack of thread T1 at offset 32 in frame
+    #0 0x55b01e5075df in Func1() /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:65
+
+  This frame has 1 object(s):
+    [32, 10032) 'local' (line 66) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Thread T1 created by T0 here:
+    #0 0x55b01e3f4026 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55b01e507917 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:123:3
+    #2 0x7fc0ed8c8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6 in Func2(char*)
+Shadow bytes around the buggy address:
+  0x7fc0ea59fd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc0ea59fe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc0ea59fe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc0ea59ff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc0ea59ff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fc0ea5a0000: f5 f5 f5 f5[f5]f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fc0ea5a0080: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fc0ea5a0100: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fc0ea5a0180: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fc0ea5a0200: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fc0ea5a0280: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812784==ABORTING
+1: 0x7f6903ba0020
+2: 0x7f6903ba0020
+=================================================================
+==2813307==ERROR: AddressSanitizer: stack-use-after-return on address 0x7f6903ba0020 at pc 0x564315e68761 bp 0x7f6906b61e40 sp 0x7f6906b61e38
+WRITE of size 1 at 0x7f6903ba0020 thread T1
+    #0 0x564315e68760 in Func2(char*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6
+    #1 0x564315e68780 in Thread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:87:3
+    #2 0x7f6907166608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+    #3 0x7f6907042132 in __clone /build/glibc-SzIz7B/glibc-2.31/misc/../sysdeps/unix/sysv/linux/x86_64/clone.S:95
+
+Address 0x7f6903ba0020 is located in stack of thread T1 at offset 32 in frame
+    #0 0x564315e685df in Func1() /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:65
+
+  This frame has 1 object(s):
+    [32, 10032) 'local' (line 66) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Thread T1 created by T0 here:
+    #0 0x564315d55026 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x564315e688d7 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:123:3
+    #2 0x7f6906f47082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6 in Func2(char*)
+Shadow bytes around the buggy address:
+  0x7f6903b9fd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6903b9fe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6903b9fe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6903b9ff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6903b9ff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f6903ba0000: f5 f5 f5 f5[f5]f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f6903ba0080: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f6903ba0100: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f6903ba0180: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f6903ba0200: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f6903ba0280: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2813307==ABORTING
+1: 0x7f3af91ff020
+2: 0x7f3af91ff020
+=================================================================
+==2813898==ERROR: AddressSanitizer: stack-use-after-return on address 0x7f3af91ff020 at pc 0x55ad4b45b721 bp 0x7f3afa4fee40 sp 0x7f3afa4fee38
+WRITE of size 1 at 0x7f3af91ff020 thread T1
+    #0 0x55ad4b45b720 in Func2(char*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6
+    #1 0x55ad4b45b740 in Thread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:87:3
+    #2 0x7f3afda95608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+    #3 0x7f3afd971132 in __clone /build/glibc-SzIz7B/glibc-2.31/misc/../sysdeps/unix/sysv/linux/x86_64/clone.S:95
+
+Address 0x7f3af91ff020 is located in stack of thread T1 at offset 32 in frame
+    #0 0x55ad4b45b5df in Func1() /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:65
+
+  This frame has 1 object(s):
+    [32, 33) 'local' (line 66) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Thread T1 created by T0 here:
+    #0 0x55ad4b348026 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55ad4b45b83f in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:123:3
+    #2 0x7f3afd876082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6 in Func2(char*)
+Shadow bytes around the buggy address:
+  0x7f3af91fed80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f3af91fee00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f3af91fee80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f3af91fef00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f3af91fef80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f3af91ff000: f5 f5 f5 f5[f5]f5 f5 f5 00 00 00 00 00 00 00 00
+  0x7f3af91ff080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f3af91ff100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f3af91ff180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f3af91ff200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f3af91ff280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2813898==ABORTING
+==2813980==Registered root region at 0x7fcffd5007a0 of size 32
+==2813980==Registered root region at 0x7fcffd103190 of size 208
+==2813980==Unregistered root region at 0x7fcffd103190 of size 208
+==2813980==AddressSanitizer: failed to intercept '__isoc99_printf'
+==2813980==Registered root region at 0x7fcffd103190 of size 208
+==2813980==Unregistered root region at 0x7fcffd103190 of size 208
+==2813980==AddressSanitizer: failed to intercept '__isoc99_sprintf'
+==2813980==Registered root region at 0x7fcffd103190 of size 208
+==2813980==Unregistered root region at 0x7fcffd103190 of size 208
+==2813980==AddressSanitizer: failed to intercept '__isoc99_snprintf'
+==2813980==Registered root region at 0x7fcffd103190 of size 208
+==2813980==Unregistered root region at 0x7fcffd103190 of size 208
+==2813980==AddressSanitizer: failed to intercept '__isoc99_fprintf'
+==2813980==Registered root region at 0x7fcffd103190 of size 208
+==2813980==Unregistered root region at 0x7fcffd103190 of size 208
+==2813980==AddressSanitizer: failed to intercept '__isoc99_vprintf'
+==2813980==Registered root region at 0x7fcffd103190 of size 208
+==2813980==Unregistered root region at 0x7fcffd103190 of size 208
+==2813980==AddressSanitizer: failed to intercept '__isoc99_vsprintf'
+==2813980==Registered root region at 0x7fcffd103190 of size 208
+==2813980==Unregistered root region at 0x7fcffd103190 of size 208
+==2813980==AddressSanitizer: failed to intercept '__isoc99_vsnprintf'
+==2813980==Registered root region at 0x7fcffd103190 of size 208
+==2813980==Unregistered root region at 0x7fcffd103190 of size 208
+==2813980==AddressSanitizer: failed to intercept '__isoc99_vfprintf'
+==2813980==Registered root region at 0x7fcffcf02dc0 of size 192
+==2813980==Unregistered root region at 0x7fcffcf02dc0 of size 192
+==2813980==AddressSanitizer: failed to intercept 'xdr_destroy'
+==2813980==Registered root region at 0x7fcffcf02dc0 of size 192
+==2813980==Unregistered root region at 0x7fcffcf02dc0 of size 192
+==2813980==AddressSanitizer: failed to intercept 'crypt'
+==2813980==Registered root region at 0x7fcffcf02dc0 of size 192
+==2813980==Unregistered root region at 0x7fcffcf02dc0 of size 192
+==2813980==AddressSanitizer: failed to intercept 'crypt_r'
+==2813980==Registered root region at 0x7fcffcd03560 of size 224
+==2813980==Unregistered root region at 0x7fcffcd03560 of size 224
+==2813980==AddressSanitizer: failed to intercept '__cxa_rethrow_primary_exception'
+==2813980==AddressSanitizer: libc interceptors initialized
+|| `[0x10007fff8000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x02008fff7000, 0x10007fff7fff]` || HighShadow ||
+|| `[0x00008fff7000, 0x02008fff6fff]` || ShadowGap  ||
+|| `[0x00007fff8000, 0x00008fff6fff]` || LowShadow  ||
+|| `[0x000000000000, 0x00007fff7fff]` || LowMem     ||
+MemToShadow(shadow): 0x00008fff7000 0x000091ff6dff 0x004091ff6e00 0x02008fff6fff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=256M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x7fff8000
+==2813980==Installed the sigaction for signal 11
+==2813980==Installed the sigaction for signal 7
+==2813980==Installed the sigaction for signal 8
+==2813980==T0: FakeStack created: 0x7fcffb1f7000 -- 0x7fcffbd00000 stack_size_log: 20; mmapped 11300K, noreserve=0 
+==2813980==T0: stack [0x7ffd6c6bb000,0x7ffd6cebb000) size 0x800000; local=0x7ffd6ceb8cdc
+==2813980==AddressSanitizer Init done
+==2813980==T1: FakeStack created: 0x7fcff93f6000 -- 0x7fcff9eff000 stack_size_log: 20; mmapped 11300K, noreserve=0 
+==2813980==T1: stack [0x7fcff9f00000,0x7fcffa6fef40) size 0x7fef40; local=0x7fcffa6fee3c
+1: 0x7fcff93ff020
+2: 0x7fcff93ff020
+=================================================================
+==2813980==ERROR: AddressSanitizer: stack-use-after-return on address 0x7fcff93ff020 at pc 0x559cfc3c9721 bp 0x7fcffa6fee40 sp 0x7fcffa6fee38
+WRITE of size 1 at 0x7fcff93ff020 thread T1
+    #0 0x559cfc3c9720 in Func2(char*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6
+    #1 0x559cfc3c9740 in Thread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:87:3
+    #2 0x7fcffdcb6608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+    #3 0x7fcffdb92132 in __clone /build/glibc-SzIz7B/glibc-2.31/misc/../sysdeps/unix/sysv/linux/x86_64/clone.S:95
+
+Address 0x7fcff93ff020 is located in stack of thread T1 at offset 32 in frame
+    #0 0x559cfc3c95df in Func1() /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:65
+
+  This frame has 1 object(s):
+    [32, 33) 'local' (line 66) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Thread T1 created by T0 here:
+    #0 0x559cfc2b6026 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x559cfc3c983f in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:123:3
+    #2 0x7fcffda97082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6 in Func2(char*)
+Shadow bytes around the buggy address:
+  0x7fcff93fed80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcff93fee00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcff93fee80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcff93fef00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcff93fef80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fcff93ff000: f5 f5 f5 f5[f5]f5 f5 f5 00 00 00 00 00 00 00 00
+  0x7fcff93ff080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcff93ff100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcff93ff180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcff93ff200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcff93ff280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2813980==ABORTING
+==2814124==Registered root region at 0x7f875f3007a0 of size 32
+==2814124==Registered root region at 0x7f875ef03190 of size 208
+==2814124==Unregistered root region at 0x7f875ef03190 of size 208
+==2814124==AddressSanitizer: failed to intercept '__isoc99_printf'
+==2814124==Registered root region at 0x7f875ef03190 of size 208
+==2814124==Unregistered root region at 0x7f875ef03190 of size 208
+==2814124==AddressSanitizer: failed to intercept '__isoc99_sprintf'
+==2814124==Registered root region at 0x7f875ef03190 of size 208
+==2814124==Unregistered root region at 0x7f875ef03190 of size 208
+==2814124==AddressSanitizer: failed to intercept '__isoc99_snprintf'
+==2814124==Registered root region at 0x7f875ef03190 of size 208
+==2814124==Unregistered root region at 0x7f875ef03190 of size 208
+==2814124==AddressSanitizer: failed to intercept '__isoc99_fprintf'
+==2814124==Registered root region at 0x7f875ef03190 of size 208
+==2814124==Unregistered root region at 0x7f875ef03190 of size 208
+==2814124==AddressSanitizer: failed to intercept '__isoc99_vprintf'
+==2814124==Registered root region at 0x7f875ef03190 of size 208
+==2814124==Unregistered root region at 0x7f875ef03190 of size 208
+==2814124==AddressSanitizer: failed to intercept '__isoc99_vsprintf'
+==2814124==Registered root region at 0x7f875ef03190 of size 208
+==2814124==Unregistered root region at 0x7f875ef03190 of size 208
+==2814124==AddressSanitizer: failed to intercept '__isoc99_vsnprintf'
+==2814124==Registered root region at 0x7f875ef03190 of size 208
+==2814124==Unregistered root region at 0x7f875ef03190 of size 208
+==2814124==AddressSanitizer: failed to intercept '__isoc99_vfprintf'
+==2814124==Registered root region at 0x7f875ed02dc0 of size 192
+==2814124==Unregistered root region at 0x7f875ed02dc0 of size 192
+==2814124==AddressSanitizer: failed to intercept 'xdr_destroy'
+==2814124==Registered root region at 0x7f875ed02dc0 of size 192
+==2814124==Unregistered root region at 0x7f875ed02dc0 of size 192
+==2814124==AddressSanitizer: failed to intercept 'crypt'
+==2814124==Registered root region at 0x7f875ed02dc0 of size 192
+==2814124==Unregistered root region at 0x7f875ed02dc0 of size 192
+==2814124==AddressSanitizer: failed to intercept 'crypt_r'
+==2814124==Registered root region at 0x7f875eb03560 of size 224
+==2814124==Unregistered root region at 0x7f875eb03560 of size 224
+==2814124==AddressSanitizer: failed to intercept '__cxa_rethrow_primary_exception'
+==2814124==AddressSanitizer: libc interceptors initialized
+|| `[0x10007fff8000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x02008fff7000, 0x10007fff7fff]` || HighShadow ||
+|| `[0x00008fff7000, 0x02008fff6fff]` || ShadowGap  ||
+|| `[0x00007fff8000, 0x00008fff6fff]` || LowShadow  ||
+|| `[0x000000000000, 0x00007fff7fff]` || LowMem     ||
+MemToShadow(shadow): 0x00008fff7000 0x000091ff6dff 0x004091ff6e00 0x02008fff6fff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=256M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x7fff8000
+==2814124==Installed the sigaction for signal 11
+==2814124==Installed the sigaction for signal 7
+==2814124==Installed the sigaction for signal 8
+==2814124==T0: FakeStack created: 0x7f8752a7f000 -- 0x7f875db00000 stack_size_log: 24; mmapped 180740K, noreserve=0 
+==2814124==T0: stack [0x7ffe0647d000,0x7ffe06c7d000) size 0x800000; local=0x7ffe06c7aa0c
+==2814124==AddressSanitizer Init done
+==2814124==T1: FakeStack created: 0x7f874667e000 -- 0x7f87516ff000 stack_size_log: 24; mmapped 180740K, noreserve=0 
+==2814124==T1: stack [0x7f8751700000,0x7f8751efef40) size 0x7fef40; local=0x7f8751efee3c
+1: 0x7f87466ff020
+2: 0x7f87466ff020
+=================================================================
+==2814124==ERROR: AddressSanitizer: stack-use-after-return on address 0x7f87466ff020 at pc 0x55b655d0e721 bp 0x7f8751efee40 sp 0x7f8751efee38
+WRITE of size 1 at 0x7f87466ff020 thread T1
+    #0 0x55b655d0e720 in Func2(char*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6
+    #1 0x55b655d0e740 in Thread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:87:3
+    #2 0x7f875fa73608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+    #3 0x7f875f94f132 in __clone /build/glibc-SzIz7B/glibc-2.31/misc/../sysdeps/unix/sysv/linux/x86_64/clone.S:95
+
+Address 0x7f87466ff020 is located in stack of thread T1 at offset 32 in frame
+    #0 0x55b655d0e5df in Func1() /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:65
+
+  This frame has 1 object(s):
+    [32, 33) 'local' (line 66) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Thread T1 created by T0 here:
+    #0 0x55b655bfb026 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55b655d0e83f in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:123:3
+    #2 0x7f875f854082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6 in Func2(char*)
+Shadow bytes around the buggy address:
+  0x7f87466fed80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f87466fee00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f87466fee80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f87466fef00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f87466fef80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f87466ff000: f5 f5 f5 f5[f5]f5 f5 f5 00 00 00 00 00 00 00 00
+  0x7f87466ff080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f87466ff100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f87466ff180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f87466ff200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f87466ff280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2814124==ABORTING
+1: 0x7f43828ff020
+2: 0x7f43828ff020
+=================================================================
+==2814576==ERROR: AddressSanitizer: stack-use-after-return on address 0x7f43828ff020 at pc 0x55e7901d1711 bp 0x7f4383bfee40 sp 0x7f4383bfee38
+WRITE of size 1 at 0x7f43828ff020 thread T1
+    #0 0x55e7901d1710 in Func2(char*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6
+    #1 0x55e7901d1730 in Thread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:87:3
+    #2 0x7f4387175608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+    #3 0x7f4387051132 in __clone /build/glibc-SzIz7B/glibc-2.31/misc/../sysdeps/unix/sysv/linux/x86_64/clone.S:95
+
+Address 0x7f43828ff020 is located in stack of thread T1 at offset 32 in frame
+    #0 0x55e7901d15df in Func1() /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:65
+
+  This frame has 1 object(s):
+    [32, 33) 'local' (line 66) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Thread T1 created by T0 here:
+    #0 0x55e7900be026 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55e7901d181f in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:123:3
+    #2 0x7f4386f56082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6 in Func2(char*)
+Shadow bytes around the buggy address:
+  0x7f43828fed80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f43828fee00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f43828fee80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f43828fef00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f43828fef80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f43828ff000: f5 f5 f5 f5[f5]f5 f5 f5 00 00 00 00 00 00 00 00
+  0x7f43828ff080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f43828ff100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f43828ff180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f43828ff200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f43828ff280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2814576==ABORTING
+==2814618==Registered root region at 0x7fc5326007a0 of size 32
+==2814618==Registered root region at 0x7fc532203190 of size 208
+==2814618==Unregistered root region at 0x7fc532203190 of size 208
+==2814618==AddressSanitizer: failed to intercept '__isoc99_printf'
+==2814618==Registered root region at 0x7fc532203190 of size 208
+==2814618==Unregistered root region at 0x7fc532203190 of size 208
+==2814618==AddressSanitizer: failed to intercept '__isoc99_sprintf'
+==2814618==Registered root region at 0x7fc532203190 of size 208
+==2814618==Unregistered root region at 0x7fc532203190 of size 208
+==2814618==AddressSanitizer: failed to intercept '__isoc99_snprintf'
+==2814618==Registered root region at 0x7fc532203190 of size 208
+==2814618==Unregistered root region at 0x7fc532203190 of size 208
+==2814618==AddressSanitizer: failed to intercept '__isoc99_fprintf'
+==2814618==Registered root region at 0x7fc532203190 of size 208
+==2814618==Unregistered root region at 0x7fc532203190 of size 208
+==2814618==AddressSanitizer: failed to intercept '__isoc99_vprintf'
+==2814618==Registered root region at 0x7fc532203190 of size 208
+==2814618==Unregistered root region at 0x7fc532203190 of size 208
+==2814618==AddressSanitizer: failed to intercept '__isoc99_vsprintf'
+==2814618==Registered root region at 0x7fc532203190 of size 208
+==2814618==Unregistered root region at 0x7fc532203190 of size 208
+==2814618==AddressSanitizer: failed to intercept '__isoc99_vsnprintf'
+==2814618==Registered root region at 0x7fc532203190 of size 208
+==2814618==Unregistered root region at 0x7fc532203190 of size 208
+==2814618==AddressSanitizer: failed to intercept '__isoc99_vfprintf'
+==2814618==Registered root region at 0x7fc532002dc0 of size 192
+==2814618==Unregistered root region at 0x7fc532002dc0 of size 192
+==2814618==AddressSanitizer: failed to intercept 'xdr_destroy'
+==2814618==Registered root region at 0x7fc532002dc0 of size 192
+==2814618==Unregistered root region at 0x7fc532002dc0 of size 192
+==2814618==AddressSanitizer: failed to intercept 'crypt'
+==2814618==Registered root region at 0x7fc532002dc0 of size 192
+==2814618==Unregistered root region at 0x7fc532002dc0 of size 192
+==2814618==AddressSanitizer: failed to intercept 'crypt_r'
+==2814618==Registered root region at 0x7fc531e03560 of size 224
+==2814618==Unregistered root region at 0x7fc531e03560 of size 224
+==2814618==AddressSanitizer: failed to intercept '__cxa_rethrow_primary_exception'
+==2814618==AddressSanitizer: libc interceptors initialized
+|| `[0x10007fff8000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x02008fff7000, 0x10007fff7fff]` || HighShadow ||
+|| `[0x00008fff7000, 0x02008fff6fff]` || ShadowGap  ||
+|| `[0x00007fff8000, 0x00008fff6fff]` || LowShadow  ||
+|| `[0x000000000000, 0x00007fff7fff]` || LowMem     ||
+MemToShadow(shadow): 0x00008fff7000 0x000091ff6dff 0x004091ff6e00 0x02008fff6fff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=256M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x7fff8000
+==2814618==Installed the sigaction for signal 11
+==2814618==Installed the sigaction for signal 7
+==2814618==Installed the sigaction for signal 8
+==2814618==T0: FakeStack created: 0x7fc5302f7000 -- 0x7fc530e00000 stack_size_log: 20; mmapped 11300K, noreserve=0 
+==2814618==T0: stack [0x7ffd2f23f000,0x7ffd2fa3f000) size 0x800000; local=0x7ffd2fa3cbbc
+==2814618==AddressSanitizer Init done
+==2814618==T1: FakeStack created: 0x7fc52e4f6000 -- 0x7fc52efff000 stack_size_log: 20; mmapped 11300K, noreserve=0 
+==2814618==T1: stack [0x7fc52f000000,0x7fc52f7fef40) size 0x7fef40; local=0x7fc52f7fee3c
+1: 0x7fc52e4ff020
+2: 0x7fc52e4ff020
+=================================================================
+==2814618==ERROR: AddressSanitizer: stack-use-after-return on address 0x7fc52e4ff020 at pc 0x55a713813711 bp 0x7fc52f7fee40 sp 0x7fc52f7fee38
+WRITE of size 1 at 0x7fc52e4ff020 thread T1
+    #0 0x55a713813710 in Func2(char*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6
+    #1 0x55a713813730 in Thread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:87:3
+    #2 0x7fc532d53608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+    #3 0x7fc532c2f132 in __clone /build/glibc-SzIz7B/glibc-2.31/misc/../sysdeps/unix/sysv/linux/x86_64/clone.S:95
+
+Address 0x7fc52e4ff020 is located in stack of thread T1 at offset 32 in frame
+    #0 0x55a7138135df in Func1() /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:65
+
+  This frame has 1 object(s):
+    [32, 33) 'local' (line 66) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Thread T1 created by T0 here:
+    #0 0x55a713700026 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55a71381381f in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:123:3
+    #2 0x7fc532b34082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6 in Func2(char*)
+Shadow bytes around the buggy address:
+  0x7fc52e4fed80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc52e4fee00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc52e4fee80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc52e4fef00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc52e4fef80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fc52e4ff000: f5 f5 f5 f5[f5]f5 f5 f5 00 00 00 00 00 00 00 00
+  0x7fc52e4ff080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc52e4ff100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc52e4ff180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc52e4ff200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc52e4ff280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2814618==ABORTING
+==2814646==Registered root region at 0x7fa8f36007a0 of size 32
+==2814646==Registered root region at 0x7fa8f3203190 of size 208
+==2814646==Unregistered root region at 0x7fa8f3203190 of size 208
+==2814646==AddressSanitizer: failed to intercept '__isoc99_printf'
+==2814646==Registered root region at 0x7fa8f3203190 of size 208
+==2814646==Unregistered root region at 0x7fa8f3203190 of size 208
+==2814646==AddressSanitizer: failed to intercept '__isoc99_sprintf'
+==2814646==Registered root region at 0x7fa8f3203190 of size 208
+==2814646==Unregistered root region at 0x7fa8f3203190 of size 208
+==2814646==AddressSanitizer: failed to intercept '__isoc99_snprintf'
+==2814646==Registered root region at 0x7fa8f3203190 of size 208
+==2814646==Unregistered root region at 0x7fa8f3203190 of size 208
+==2814646==AddressSanitizer: failed to intercept '__isoc99_fprintf'
+==2814646==Registered root region at 0x7fa8f3203190 of size 208
+==2814646==Unregistered root region at 0x7fa8f3203190 of size 208
+==2814646==AddressSanitizer: failed to intercept '__isoc99_vprintf'
+==2814646==Registered root region at 0x7fa8f3203190 of size 208
+==2814646==Unregistered root region at 0x7fa8f3203190 of size 208
+==2814646==AddressSanitizer: failed to intercept '__isoc99_vsprintf'
+==2814646==Registered root region at 0x7fa8f3203190 of size 208
+==2814646==Unregistered root region at 0x7fa8f3203190 of size 208
+==2814646==AddressSanitizer: failed to intercept '__isoc99_vsnprintf'
+==2814646==Registered root region at 0x7fa8f3203190 of size 208
+==2814646==Unregistered root region at 0x7fa8f3203190 of size 208
+==2814646==AddressSanitizer: failed to intercept '__isoc99_vfprintf'
+==2814646==Registered root region at 0x7fa8f3002dc0 of size 192
+==2814646==Unregistered root region at 0x7fa8f3002dc0 of size 192
+==2814646==AddressSanitizer: failed to intercept 'xdr_destroy'
+==2814646==Registered root region at 0x7fa8f3002dc0 of size 192
+==2814646==Unregistered root region at 0x7fa8f3002dc0 of size 192
+==2814646==AddressSanitizer: failed to intercept 'crypt'
+==2814646==Registered root region at 0x7fa8f3002dc0 of size 192
+==2814646==Unregistered root region at 0x7fa8f3002dc0 of size 192
+==2814646==AddressSanitizer: failed to intercept 'crypt_r'
+==2814646==Registered root region at 0x7fa8f2e03560 of size 224
+==2814646==Unregistered root region at 0x7fa8f2e03560 of size 224
+==2814646==AddressSanitizer: failed to intercept '__cxa_rethrow_primary_exception'
+==2814646==AddressSanitizer: libc interceptors initialized
+|| `[0x10007fff8000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x02008fff7000, 0x10007fff7fff]` || HighShadow ||
+|| `[0x00008fff7000, 0x02008fff6fff]` || ShadowGap  ||
+|| `[0x00007fff8000, 0x00008fff6fff]` || LowShadow  ||
+|| `[0x000000000000, 0x00007fff7fff]` || LowMem     ||
+MemToShadow(shadow): 0x00008fff7000 0x000091ff6dff 0x004091ff6e00 0x02008fff6fff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=256M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x7fff8000
+==2814646==Installed the sigaction for signal 11
+==2814646==Installed the sigaction for signal 7
+==2814646==Installed the sigaction for signal 8
+==2814646==T0: FakeStack created: 0x7fa8e6d7f000 -- 0x7fa8f1e00000 stack_size_log: 24; mmapped 180740K, noreserve=0 
+==2814646==T0: stack [0x7fff3f9f9000,0x7fff401f9000) size 0x800000; local=0x7fff401f6d8c
+==2814646==AddressSanitizer Init done
+==2814646==T1: FakeStack created: 0x7fa8da97e000 -- 0x7fa8e59ff000 stack_size_log: 24; mmapped 180740K, noreserve=0 
+==2814646==T1: stack [0x7fa8e5a00000,0x7fa8e61fef40) size 0x7fef40; local=0x7fa8e61fee3c
+1: 0x7fa8da9ff020
+2: 0x7fa8da9ff020
+=================================================================
+==2814646==ERROR: AddressSanitizer: stack-use-after-return on address 0x7fa8da9ff020 at pc 0x557034eef711 bp 0x7fa8e61fee40 sp 0x7fa8e61fee38
+WRITE of size 1 at 0x7fa8da9ff020 thread T1
+    #0 0x557034eef710 in Func2(char*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6
+    #1 0x557034eef730 in Thread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:87:3
+    #2 0x7fa8f3dd0608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+    #3 0x7fa8f3cac132 in __clone /build/glibc-SzIz7B/glibc-2.31/misc/../sysdeps/unix/sysv/linux/x86_64/clone.S:95
+
+Address 0x7fa8da9ff020 is located in stack of thread T1 at offset 32 in frame
+    #0 0x557034eef5df in Func1() /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:65
+
+  This frame has 1 object(s):
+    [32, 33) 'local' (line 66) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Thread T1 created by T0 here:
+    #0 0x557034ddc026 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x557034eef81f in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:123:3
+    #2 0x7fa8f3bb1082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/Posix/stack-use-after-return.cpp:73:6 in Func2(char*)
+Shadow bytes around the buggy address:
+  0x7fa8da9fed80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa8da9fee00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa8da9fee80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa8da9fef00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa8da9fef80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fa8da9ff000: f5 f5 f5 f5[f5]f5 f5 f5 00 00 00 00 00 00 00 00
+  0x7fa8da9ff080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa8da9ff100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa8da9ff180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa8da9ff200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa8da9ff280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2814646==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/stack-use-after-return.cpp <<TAIL<<
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/stack-use-after-return.cpp <<HEAD<<
+
+1: 0x7fffc0ab4f60
+2: 0x7fffc0ab4f60
+1: 0x7ffcee5fe020
+2: 0x7ffcee5fe020
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/stack-use-after-return.cpp <<TAIL<<

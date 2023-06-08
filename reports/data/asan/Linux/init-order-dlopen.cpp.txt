@@ -1,0 +1,11 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/init-order-dlopen.cpp <<HEAD<<
+
+Foo::Foo()
+Bar::Bar(42)
+42
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/init-order-dlopen.cpp <<TAIL<<

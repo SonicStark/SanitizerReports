@@ -1,0 +1,55 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/use-after-scope.cpp <<HEAD<<
+
+=================================================================
+==2814495==ERROR: AddressSanitizer: stack-use-after-scope on address 0x7f34e9500020 at pc 0x560c26fd36a3 bp 0x7ffd086c1850 sp 0x7ffd086c1848
+WRITE of size 4 at 0x7f34e9500020 thread T0
+    #0 0x560c26fd36a2 in main /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope.cpp:10:6
+    #1 0x7f34ebcd1082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x560c26ea42dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/use-after-scope.cpp.tmp+0x1e2dd)
+
+Address 0x7f34e9500020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x560c26fd358f in main /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope.cpp:5
+
+  This frame has 1 object(s):
+    [32, 36) 'x' (line 7) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-scope /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope.cpp:10:6 in main
+Shadow bytes around the buggy address:
+  0x7f34e94ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f34e94ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f34e94ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f34e94fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f34e94fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f34e9500000: f1 f1 f1 f1[f8]f3 f3 f3 00 00 00 00 00 00 00 00
+  0x7f34e9500080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f34e9500100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f34e9500180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f34e9500200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f34e9500280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2814495==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/use-after-scope.cpp <<TAIL<<

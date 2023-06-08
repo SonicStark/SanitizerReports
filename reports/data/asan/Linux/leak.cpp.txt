@@ -1,0 +1,29 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/leak.cpp <<HEAD<<
+
+
+=================================================================
+==2791372==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1 byte(s) in 1 object(s) allocated from:
+    #0 0x5636e06af9a7 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x5636e06b25b7 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/leak.cpp:12:7
+    #2 0x7f2d1474c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: 1 byte(s) leaked in 1 allocation(s).
+
+=================================================================
+==2791440==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 1 byte(s) in 1 object(s) allocated from:
+    #0 0x55b17a6bf9a7 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x55b17a6c25b7 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/leak.cpp:12:7
+    #2 0x7fb5f126d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: 1 byte(s) leaked in 1 allocation(s).
+t: 0x601ffff9e590
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/leak.cpp <<TAIL<<

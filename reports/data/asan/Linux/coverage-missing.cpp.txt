@@ -1,0 +1,41 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/coverage-missing.cpp <<HEAD<<
+
+SanitizerCoverage: /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/coverage-missing.cpp.tmp-dir/coverage-missing.cpp.tmp.2791142.sancov: 1 PCs written
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: read 1 64-bit PCs from coverage-missing.cpp.tmp.2791142.sancov
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: 1 file merged; 1 PCs total
+foo1
+foo2
+SanitizerCoverage: /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/coverage-missing.cpp.tmp-dir/coverage-missing.cpp.tmp.2791210.sancov: 3 PCs written
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: read 3 64-bit PCs from coverage-missing.cpp.tmp.2791210.sancov
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: 1 file merged; 3 PCs total
+bar1
+bar2
+bar3
+SanitizerCoverage: /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/coverage-missing.cpp.tmp-dir/coverage-missing.cpp.tmp.2791255.sancov: 4 PCs written
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: read 4 64-bit PCs from coverage-missing.cpp.tmp.2791255.sancov
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: 1 file merged; 4 PCs total
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: found 6 instrumented PCs in /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/coverage-missing.cpp.tmp
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: read 3 PCs from stdin
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: 3 PCs missing from coverage
+foo1
+foo2
+SanitizerCoverage: /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/coverage-missing.cpp.tmp-dir/coverage-missing.cpp.tmp.2791923.sancov: 1 PCs written
+SanitizerCoverage: /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/coverage-missing.cpp.tmp-dir/libcoverage-missing.cpp.dynamic.so.2791923.sancov: 2 PCs written
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: read 2 64-bit PCs from libcoverage-missing.cpp.dynamic.so.2791923.sancov
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: 1 file merged; 2 PCs total
+bar1
+bar2
+bar3
+SanitizerCoverage: /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/coverage-missing.cpp.tmp-dir/coverage-missing.cpp.tmp.2791964.sancov: 1 PCs written
+SanitizerCoverage: /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/coverage-missing.cpp.tmp-dir/libcoverage-missing.cpp.dynamic.so.2791964.sancov: 3 PCs written
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: read 3 64-bit PCs from libcoverage-missing.cpp.dynamic.so.2791964.sancov
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: 1 file merged; 3 PCs total
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: found 5 instrumented PCs in /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/libcoverage-missing.cpp.dynamic.so
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: read 2 PCs from stdin
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: 3 PCs missing from coverage
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/coverage-missing.cpp <<TAIL<<

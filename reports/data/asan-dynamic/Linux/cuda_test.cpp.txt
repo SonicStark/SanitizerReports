@@ -1,0 +1,60 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/cuda_test.cpp <<HEAD<<
+
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2720106==ERROR: AddressSanitizer: SEGV on unknown address 0x0000bfff8000 (pc 0x5557b20fb676 bp 0x7ffee505e550 sp 0x7ffee505e500 T0)
+==2720106==The signal is caused by a READ memory access.
+    #0 0x5557b20fb676 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/cuda_test.cpp:27:18
+    #1 0x7faf8605f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5557b20fa18d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/cuda_test.cpp.tmp+0x118d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/test/asan/TestCases/Linux/cuda_test.cpp:27:18 in main
+==2720106==ABORTING
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2720331==ERROR: AddressSanitizer: SEGV on unknown address 0x0000bfff8000 (pc 0x557518aca676 bp 0x7ffe5c82b9f0 sp 0x7ffe5c82b9a0 T0)
+==2720331==The signal is caused by a READ memory access.
+    #0 0x557518aca676 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/cuda_test.cpp:27:18
+    #1 0x7f056958f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x557518ac918d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/cuda_test.cpp.tmp+0x118d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/test/asan/TestCases/Linux/cuda_test.cpp:27:18 in main
+==2720331==ABORTING
+=================================================================
+==2720527==ERROR: AddressSanitizer: use-after-poison on address 0x0002000004d2 at pc 0x5574d88d2712 bp 0x7ffe3daf0920 sp 0x7ffe3daf0918
+WRITE of size 1 at 0x0002000004d2 thread T0
+    #0 0x5574d88d2711 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/cuda_test.cpp:33:25
+    #1 0x7f0563d05082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5574d88d118d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/cuda_test.cpp.tmp+0x118d)
+
+Address 0x0002000004d2 is a wild pointer inside of access range of size 0x000000000001.
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/test/asan/TestCases/Linux/cuda_test.cpp:33:25 in main
+Shadow bytes around the buggy address:
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2720527==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/cuda_test.cpp <<TAIL<<

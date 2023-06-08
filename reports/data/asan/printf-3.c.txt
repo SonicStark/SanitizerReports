@@ -1,0 +1,115 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/printf-3.c <<HEAD<<
+
+=================================================================
+==2811889==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f8ab8a00064 at pc 0x557be6ad0398 bp 0x7ffc4298cf00 sp 0x7ffc4298c6c0
+WRITE of size 4 at 0x7f8ab8a00064 thread T0
+    #0 0x557be6ad0397 in printf_common(void*, char const*, __va_list_tag*) /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors_format.inc:538:7
+    #1 0x557be6ad0966 in printf /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1772:1
+    #2 0x557be6b8c94f in main /home/llvm/compiler-rt/test/asan/TestCases/printf-3.c:24:3
+    #3 0x7f8abaf4a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x557be6a602dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/printf-3.c.tmp+0x1d2dd)
+
+Address 0x7f8ab8a00064 is located in stack of thread T0 at offset 100 in frame
+    #0 0x557be6b8c7af in main /home/llvm/compiler-rt/test/asan/TestCases/printf-3.c:14
+
+  This frame has 5 object(s):
+    [32, 33) 'c' (line 19)
+    [48, 52) 'x' (line 20)
+    [64, 68) 'f' (line 21)
+    [80, 83) 's' (line 22)
+    [96, 100) 'n' (line 23) <== Memory access at offset 100 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors_format.inc:538:7 in printf_common(void*, char const*, __va_list_tag*)
+Shadow bytes around the buggy address:
+  0x7f8ab89ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8ab89ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8ab89ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8ab89fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8ab89fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f8ab8a00000: f1 f1 f1 f1 01 f2 04 f2 04 f2 03 f2[04]f3 f3 f3
+  0x7f8ab8a00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8ab8a00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8ab8a00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8ab8a00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8ab8a00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2811889==ABORTING
+0 12 1.239 34
+=================================================================
+==2812067==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f5aa3d00064 at pc 0x55abe175d398 bp 0x7ffc14a48300 sp 0x7ffc14a47ac0
+WRITE of size 4 at 0x7f5aa3d00064 thread T0
+    #0 0x55abe175d397 in printf_common(void*, char const*, __va_list_tag*) /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors_format.inc:538:7
+    #1 0x55abe175d966 in printf /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1772:1
+    #2 0x55abe181994f in main /home/llvm/compiler-rt/test/asan/TestCases/printf-3.c:24:3
+    #3 0x7f5aa629e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55abe16ed2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/printf-3.c.tmp+0x1d2dd)
+
+Address 0x7f5aa3d00064 is located in stack of thread T0 at offset 100 in frame
+    #0 0x55abe18197af in main /home/llvm/compiler-rt/test/asan/TestCases/printf-3.c:14
+
+  This frame has 5 object(s):
+    [32, 33) 'c' (line 19)
+    [48, 52) 'x' (line 20)
+    [64, 68) 'f' (line 21)
+    [80, 83) 's' (line 22)
+    [96, 100) 'n' (line 23) <== Memory access at offset 100 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors_format.inc:538:7 in printf_common(void*, char const*, __va_list_tag*)
+Shadow bytes around the buggy address:
+  0x7f5aa3cffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f5aa3cffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f5aa3cffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f5aa3cfff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f5aa3cfff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f5aa3d00000: f1 f1 f1 f1 01 f2 04 f2 04 f2 03 f2[04]f3 f3 f3
+  0x7f5aa3d00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f5aa3d00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f5aa3d00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f5aa3d00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f5aa3d00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812067==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/printf-3.c <<TAIL<<

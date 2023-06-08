@@ -1,0 +1,68 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/exitcode.cpp <<HEAD<<
+
+got expected 42 exit code
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/exitcode.cpp <<TAIL<<
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/exitcode.cpp <<HEAD<<
+
+=================================================================
+==2804992==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000010 at pc 0x5602ad3e6a59 bp 0x7fffa7b8d440 sp 0x7fffa7b8d438
+READ of size 4 at 0x602000000010 thread T0
+    #0 0x5602ad3e6a58 in main /home/llvm/compiler-rt/test/asan/TestCases/exitcode.cpp:121:9
+    #1 0x7fcff21b5082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5602ad2b730d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/exitcode.cpp.tmp+0x1e30d)
+
+0x602000000010 is located 0 bytes inside of 4-byte region [0x602000000010,0x602000000014)
+freed by thread T0 here:
+    #0 0x5602ad3e4277 in operator delete(void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:152:3
+    #1 0x5602ad3e6a1b in main /home/llvm/compiler-rt/test/asan/TestCases/exitcode.cpp:120:5
+    #2 0x7fcff21b5082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x5602ad3e3877 in operator new(unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:95:3
+    #1 0x5602ad3e69fc in main /home/llvm/compiler-rt/test/asan/TestCases/exitcode.cpp:119:14
+    #2 0x7fcff21b5082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/test/asan/TestCases/exitcode.cpp:121:9 in main
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2804992==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/exitcode.cpp <<TAIL<<

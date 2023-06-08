@@ -1,0 +1,117 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/printf-2.c <<HEAD<<
+
+==2737578==WARNING: strchr* interceptors are enabled even though replace_str=0. Use intercept_strchr=0 to disable them.==2737578==WARNING: strndup* interceptors are enabled even though replace_str=0. Use intercept_strndup=0 to disable them.=================================================================
+==2737578==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000010 at pc 0x7fa377003135 bp 0x7ffd0719ff60 sp 0x7ffd0719f720
+READ of size 2 at 0x602000000010 thread T0
+    #0 0x7fa377003134 in printf_common(void*, char const*, __va_list_tag*) /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors_format.inc:553:9
+    #1 0x7fa377003cfa in __interceptor_vprintf /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1714:1
+    #2 0x7fa377003dd6 in __interceptor_printf /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1772:1
+    #3 0x56543c15e77e in main /home/llvm/compiler-rt/test/asan/TestCases/printf-2.c:21:3
+    #4 0x7fa376d5f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #5 0x56543c15d19d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/printf-2.c.tmp+0x119d)
+
+0x602000000010 is located 0 bytes inside of 3-byte region [0x602000000010,0x602000000013)
+freed by thread T0 here:
+    #0 0x7fa3770776c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x56543c15e71f in main /home/llvm/compiler-rt/test/asan/TestCases/printf-2.c:20:3
+    #2 0x7fa376d5f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x7fa376ffa31f in __interceptor_strdup /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:454:3
+    #1 0x56543c15e714 in main /home/llvm/compiler-rt/test/asan/TestCases/printf-2.c:19:13
+    #2 0x7fa376d5f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors_format.inc:553:9 in printf_common(void*, char const*, __va_list_tag*)
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2737578==ABORTING
+==2738081==WARNING: strchr* interceptors are enabled even though replace_str=0. Use intercept_strchr=0 to disable them.==2738081==WARNING: strndup* interceptors are enabled even though replace_str=0. Use intercept_strndup=0 to disable them.0 12 1.239 
+==2738161==WARNING: strchr* interceptors are enabled even though replace_str=0. Use intercept_strchr=0 to disable them.==2738161==WARNING: strndup* interceptors are enabled even though replace_str=0. Use intercept_strndup=0 to disable them.=================================================================
+==2738161==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000010 at pc 0x7f0a50e5c135 bp 0x7ffc7dfe5940 sp 0x7ffc7dfe5100
+READ of size 2 at 0x602000000010 thread T0
+    #0 0x7f0a50e5c134 in printf_common(void*, char const*, __va_list_tag*) /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors_format.inc:553:9
+    #1 0x7f0a50e5ccfa in __interceptor_vprintf /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1714:1
+    #2 0x7f0a50e5cdd6 in __interceptor_printf /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1772:1
+    #3 0x55d6ccee277e in main /home/llvm/compiler-rt/test/asan/TestCases/printf-2.c:21:3
+    #4 0x7f0a50bb8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #5 0x55d6ccee119d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/printf-2.c.tmp+0x119d)
+
+0x602000000010 is located 0 bytes inside of 3-byte region [0x602000000010,0x602000000013)
+freed by thread T0 here:
+    #0 0x7f0a50ed06c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x55d6ccee271f in main /home/llvm/compiler-rt/test/asan/TestCases/printf-2.c:20:3
+    #2 0x7f0a50bb8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x7f0a50e5331f in __interceptor_strdup /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:454:3
+    #1 0x55d6ccee2714 in main /home/llvm/compiler-rt/test/asan/TestCases/printf-2.c:19:13
+    #2 0x7f0a50bb8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors_format.inc:553:9 in printf_common(void*, char const*, __va_list_tag*)
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2738161==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/printf-2.c <<TAIL<<

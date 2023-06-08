@@ -1,0 +1,10 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/init-order-atexit.cpp <<HEAD<<
+
+C value: 0
+PASSED
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/init-order-atexit.cpp <<TAIL<<

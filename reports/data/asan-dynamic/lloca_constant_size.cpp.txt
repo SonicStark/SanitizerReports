@@ -1,0 +1,12 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/alloca_constant_size.cpp <<HEAD<<
+
+dynamic_buffer = 0x7feaada00020
+Done.
+dynamic_buffer = 0x7f3a2c000020
+Done.
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/alloca_constant_size.cpp <<TAIL<<

@@ -1,0 +1,28 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/mmap_limit_mb.cpp <<HEAD<<
+
+total_mb: 500 allocation_size: 16
+(total_mmaped >> 20) < common_flags()->mmap_limit_mb
+total_mb: 500 allocation_size: 1000000
+(total_mmaped >> 20) < common_flags()->mmap_limit_mb
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/mmap_limit_mb.cpp <<TAIL<<
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/mmap_limit_mb.cpp <<HEAD<<
+
+total_mb: 20 allocation_size: 16
+PASS
+total_mb: 30 allocation_size: 1000000
+PASS
+total_mb: 20 allocation_size: 16
+PASS
+total_mb: 20 allocation_size: 1000000
+PASS
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/mmap_limit_mb.cpp <<TAIL<<

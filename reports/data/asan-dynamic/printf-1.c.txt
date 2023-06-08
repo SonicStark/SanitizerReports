@@ -1,0 +1,26 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/printf-1.c <<HEAD<<
+
+0 12 1.239 34
+qwe
+0 12 1.239 34
+qwe
+0 12 1.239 34
+qwe
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/printf-1.c <<TAIL<<
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/printf-1.c <<HEAD<<
+
+/home/llvm/compiler-rt/test/asan/TestCases/printf-1.c:21:3: warning: 'snprintf' size argument is too large; destination buffer has size 4, but size argument is 1000 [-Wfortify-source]
+  snprintf(buf, 1000, "qwe");
+  ^
+1 warning generated.
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/printf-1.c <<TAIL<<

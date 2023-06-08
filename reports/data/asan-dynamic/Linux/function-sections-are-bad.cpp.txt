@@ -1,0 +1,9 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/function-sections-are-bad.cpp <<HEAD<<
+
+(null)
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/function-sections-are-bad.cpp <<TAIL<<

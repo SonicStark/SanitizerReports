@@ -1,0 +1,9 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/coverage-trace-pc.cpp <<HEAD<<
+
+foo
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/coverage-trace-pc.cpp <<TAIL<<

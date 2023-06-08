@@ -1,0 +1,39 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/print_memory_profile_test.cpp <<HEAD<<
+
+Live Heap Allocations: 2971860 bytes in 47 chunks; quarantined: 167 bytes in 1 chunks; 572 other chunks; total chunks: 620; showing top 100% (at most 10 unique contexts)
+2227000 byte(s) (74%) in 17 allocation(s)
+    #0 0x7f4d44a57f17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x556d078b0602 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/print_memory_profile_test.cpp:22:19
+    #2 0x7f4d443e2082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+672000 byte(s) (22%) in 28 allocation(s)
+    #0 0x7f4d44a57f17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x556d078b0679 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/print_memory_profile_test.cpp:24:19
+    #2 0x7f4d443e2082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+72704 byte(s) (2%) in 1 allocation(s)
+    #0 0x7f4d44a47427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x7f4d447c0a99  (/lib/x86_64-linux-gnu/libstdc++.so.6+0xa6a99) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+156 byte(s) (0%) in 1 allocation(s)
+    #0 0x7f4d44a47427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x7f4d45484eb8 in _dl_exception_create_format /build/glibc-SzIz7B/glibc-2.31/elf/dl-exception.c:146:21
+
+Live Heap Allocations: 2971860 bytes in 47 chunks; quarantined: 167 bytes in 1 chunks; 572 other chunks; total chunks: 620; showing top 100% (at most 1 unique contexts)
+2227000 byte(s) (74%) in 17 allocation(s)
+    #0 0x7f1fb75daf17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x5639c4d98602 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/print_memory_profile_test.cpp:22:19
+    #2 0x7f1fb6f65082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Live Heap Allocations: 2971860 bytes in 47 chunks; quarantined: 167 bytes in 1 chunks; 572 other chunks; total chunks: 620; showing top 50% (at most 10 unique contexts)
+2227000 byte(s) (74%) in 17 allocation(s)
+    #0 0x7f0f4444af17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x560ef59b5602 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/print_memory_profile_test.cpp:22:19
+    #2 0x7f0f43dd5082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/print_memory_profile_test.cpp <<TAIL<<

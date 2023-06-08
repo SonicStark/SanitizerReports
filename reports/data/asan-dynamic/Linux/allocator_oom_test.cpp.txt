@@ -1,0 +1,66 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/allocator_oom_test.cpp <<HEAD<<
+
+malloc:
+=================================================================
+==2719782==ERROR: AddressSanitizer: out of memory: allocator is trying to allocate 0xffc0000000 bytes
+    #0 0x7f5649afc427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x560fbe9ad6f7 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/allocator_oom_test.cpp:59:9
+    #2 0x7f5649497082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+==2719782==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: out-of-memory /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3 in malloc
+==2719782==ABORTING
+malloc:
+=================================================================
+==2720006==ERROR: AddressSanitizer: out of memory: allocator is trying to allocate 0xffc0000000 bytes
+    #0 0x7f4b34ea3427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x556f7bf2c6f7 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/allocator_oom_test.cpp:59:9
+    #2 0x7f4b3483e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+==2720006==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: out-of-memory /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3 in malloc
+==2720006==ABORTING
+malloc:
+x: 0
+calloc:
+=================================================================
+==2720318==ERROR: AddressSanitizer: out of memory: allocator is trying to allocate 0xffc0000000 bytes
+    #0 0x7f93420949a7 in __interceptor_calloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:77:3
+    #1 0x5621addc672d in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/allocator_oom_test.cpp:61:9
+    #2 0x7f9341a2f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+==2720318==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: out-of-memory /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:77:3 in __interceptor_calloc
+==2720318==ABORTING
+calloc:
+x: 0
+realloc:
+=================================================================
+==2720655==ERROR: AddressSanitizer: out of memory: allocator is trying to allocate 0xffc0000000 bytes
+    #0 0x7face55da7ef in __interceptor_realloc.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:85:3
+    #1 0x55706a8f1762 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/allocator_oom_test.cpp:63:9
+    #2 0x7face4f76082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+==2720655==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: out-of-memory /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:85:3 in __interceptor_realloc.part.0
+==2720655==ABORTING
+realloc:
+x: 0
+realloc-after-malloc:
+=================================================================
+==2720905==ERROR: AddressSanitizer: out of memory: allocator is trying to allocate 0xffc0000000 bytes
+    #0 0x7f934042a7ef in __interceptor_realloc.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:85:3
+    #1 0x557770acf7e5 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/allocator_oom_test.cpp:67:9
+    #2 0x7f933fdc6082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+==2720905==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: out-of-memory /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:85:3 in __interceptor_realloc.part.0
+==2720905==ABORTING
+realloc-after-malloc:
+x: 0
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/allocator_oom_test.cpp <<TAIL<<

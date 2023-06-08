@@ -1,0 +1,16 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/zero_page_pc.cpp <<HEAD<<
+
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2741538==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000004 (pc 0x000000000004 bp 0x7ffc983c9a00 sp 0x7ffc983c99e8 T0)
+==2741538==Hint: pc points to the zero page.
+==2741538==The signal is caused by a READ memory access.
+==2741538==Hint: address points to the zero page.
+AddressSanitizer:DEADLYSIGNAL
+AddressSanitizer: nested bug in the same thread, aborting.
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/zero_page_pc.cpp <<TAIL<<

@@ -1,0 +1,106 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/strcmp.c <<HEAD<<
+
+=================================================================
+==2738814==ERROR: AddressSanitizer: stack-buffer-underflow on address 0x7f376550001f at pc 0x7f376809ba69 bp 0x7ffe3f95e4f0 sp 0x7ffe3f95dcb0
+READ of size 1 at 0x7f376550001f thread T0
+    #0 0x7f376809ba68 in __interceptor_strcmp.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:514:5
+    #1 0x55943329d733 in main /home/llvm/compiler-rt/test/asan/TestCases/strcmp.c:14:3
+    #2 0x7f3767db1082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55943329c19d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/strcmp.c.tmp+0x119d)
+
+Address 0x7f376550001f is located in stack of thread T0 at offset 31 in frame
+    #0 0x55943329d5df in main /home/llvm/compiler-rt/test/asan/TestCases/strcmp.c:10
+
+  This frame has 2 object(s):
+    [32, 37) 's1' (line 11) <== Memory access at offset 31 underflows this variable
+    [64, 69) 's2' (line 12)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-underflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:514:5 in __interceptor_strcmp.part.0
+Shadow bytes around the buggy address:
+  0x7f37654ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f37654ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f37654ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f37654fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f37654fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f3765500000: f1 f1 f1[f1]05 f2 f2 f2 05 f3 f3 f3 00 00 00 00
+  0x7f3765500080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f3765500100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f3765500180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f3765500200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f3765500280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2738814==ABORTING
+=================================================================
+==2739065==ERROR: AddressSanitizer: stack-buffer-underflow on address 0x7fdb5910001f at pc 0x7fdb5bc6da69 bp 0x7ffd00a62af0 sp 0x7ffd00a622b0
+READ of size 1 at 0x7fdb5910001f thread T0
+    #0 0x7fdb5bc6da68 in __interceptor_strcmp.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:514:5
+    #1 0x5628beff2733 in main /home/llvm/compiler-rt/test/asan/TestCases/strcmp.c:14:3
+    #2 0x7fdb5b983082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5628beff119d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/strcmp.c.tmp+0x119d)
+
+Address 0x7fdb5910001f is located in stack of thread T0 at offset 31 in frame
+    #0 0x5628beff25df in main /home/llvm/compiler-rt/test/asan/TestCases/strcmp.c:10
+
+  This frame has 2 object(s):
+    [32, 37) 's1' (line 11) <== Memory access at offset 31 underflows this variable
+    [64, 69) 's2' (line 12)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-underflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:514:5 in __interceptor_strcmp.part.0
+Shadow bytes around the buggy address:
+  0x7fdb590ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdb590ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdb590ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdb590fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdb590fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fdb59100000: f1 f1 f1[f1]05 f2 f2 f2 05 f3 f3 f3 00 00 00 00
+  0x7fdb59100080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdb59100100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdb59100180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdb59100200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdb59100280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2739065==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/strcmp.c <<TAIL<<

@@ -1,0 +1,160 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/print_summary.cpp <<HEAD<<
+
+=================================================================
+==2811804==ERROR: AddressSanitizer: heap-use-after-free on address 0x603000000010 at pc 0x5608bc65d5f1 bp 0x7ffd8cdca5f0 sp 0x7ffd8cdca5e8
+READ of size 1 at 0x603000000010 thread T0
+    #0 0x5608bc65d5f0 in main /home/llvm/compiler-rt/test/asan/TestCases/print_summary.cpp:9:10
+    #1 0x7f9d46899082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5608bc52e2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/print_summary.cpp.tmp+0x1e2dd)
+
+0x603000000010 is located 0 bytes inside of 20-byte region [0x603000000010,0x603000000024)
+freed by thread T0 here:
+    #0 0x5608bc65b367 in operator delete[](void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:155:3
+    #1 0x5608bc65d5b7 in main /home/llvm/compiler-rt/test/asan/TestCases/print_summary.cpp:8:3
+    #2 0x7f9d46899082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x5608bc65a9a7 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x5608bc65d598 in main /home/llvm/compiler-rt/test/asan/TestCases/print_summary.cpp:7:13
+    #2 0x7f9d46899082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/test/asan/TestCases/print_summary.cpp:9:10 in main
+Shadow bytes around the buggy address:
+  0x602ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x603000000000: fa fa[fd]fd fd fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2811804==ABORTING
+=================================================================
+==2811936==ERROR: AddressSanitizer: heap-use-after-free on address 0x603000000010 at pc 0x556fcd9525f1 bp 0x7ffcee6584c0 sp 0x7ffcee6584b8
+READ of size 1 at 0x603000000010 thread T0
+    #0 0x556fcd9525f0  (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/print_summary.cpp.tmp+0x14d5f0)
+    #1 0x7f8856f5e082  (/lib/x86_64-linux-gnu/libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #2 0x556fcd8232dd  (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/print_summary.cpp.tmp+0x1e2dd)
+
+0x603000000010 is located 0 bytes inside of 20-byte region [0x603000000010,0x603000000024)
+freed by thread T0 here:
+    #0 0x556fcd950367  (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/print_summary.cpp.tmp+0x14b367)
+    #1 0x556fcd9525b7  (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/print_summary.cpp.tmp+0x14d5b7)
+    #2 0x7f8856f5e082  (/lib/x86_64-linux-gnu/libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+
+previously allocated by thread T0 here:
+    #0 0x556fcd94f9a7  (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/print_summary.cpp.tmp+0x14a9a7)
+    #1 0x556fcd952598  (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/print_summary.cpp.tmp+0x14d598)
+    #2 0x7f8856f5e082  (/lib/x86_64-linux-gnu/libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+
+SUMMARY: AddressSanitizer: heap-use-after-free (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/print_summary.cpp.tmp+0x14d5f0) 
+Shadow bytes around the buggy address:
+  0x602ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x603000000000: fa fa[fd]fd fd fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2811936==ABORTING
+=================================================================
+==2811975==ERROR: AddressSanitizer: heap-use-after-free on address 0x603000000010 at pc 0x55d8ae8565f1 bp 0x7fff7dd9cfe0 sp 0x7fff7dd9cfd8
+READ of size 1 at 0x603000000010 thread T0
+    #0 0x55d8ae8565f0 in main /home/llvm/compiler-rt/test/asan/TestCases/print_summary.cpp:9:10
+    #1 0x7fa644104082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55d8ae7272dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/print_summary.cpp.tmp+0x1e2dd)
+
+0x603000000010 is located 0 bytes inside of 20-byte region [0x603000000010,0x603000000024)
+freed by thread T0 here:
+    #0 0x55d8ae854367 in operator delete[](void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:155:3
+    #1 0x55d8ae8565b7 in main /home/llvm/compiler-rt/test/asan/TestCases/print_summary.cpp:8:3
+    #2 0x7fa644104082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x55d8ae8539a7 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x55d8ae856598 in main /home/llvm/compiler-rt/test/asan/TestCases/print_summary.cpp:7:13
+    #2 0x7fa644104082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow bytes around the buggy address:
+  0x602ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x603000000000: fa fa[fd]fd fd fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2811975==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/print_summary.cpp <<TAIL<<

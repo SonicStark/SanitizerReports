@@ -1,0 +1,75 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/leaks.cpp <<HEAD<<
+
+
+=================================================================
+==2736769==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 10 byte(s) in 10 object(s) allocated from:
+    #0 0x7fefb1916f17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x5584362af5f5 in leak(int) /home/llvm/compiler-rt/test/asan/TestCases/leaks.cpp:28:9
+    #2 0x5584362af687 in main /home/llvm/compiler-rt/test/asan/TestCases/leaks.cpp:35:3
+    #3 0x7fefb12a1082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: 10 byte(s) leaked in 10 allocation(s).
+
+=================================================================
+==2737157==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 40 byte(s) in 10 object(s) allocated from:
+    #0 0x7faedd458f17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x56004255e5f5 in leak(int) /home/llvm/compiler-rt/test/asan/TestCases/leaks.cpp:28:9
+    #2 0x56004255e687 in main /home/llvm/compiler-rt/test/asan/TestCases/leaks.cpp:35:3
+    #3 0x7faedcde3082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: 40 byte(s) leaked in 10 allocation(s).
+
+=================================================================
+==2737436==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 40000 byte(s) in 10 object(s) allocated from:
+    #0 0x7f0280ffff17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x5634200255f5 in leak(int) /home/llvm/compiler-rt/test/asan/TestCases/leaks.cpp:28:9
+    #2 0x563420025687 in main /home/llvm/compiler-rt/test/asan/TestCases/leaks.cpp:35:3
+    #3 0x7f028098a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: 40000 byte(s) leaked in 10 allocation(s).
+
+=================================================================
+==2737812==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 40000000 byte(s) in 10 object(s) allocated from:
+    #0 0x7fed70807f17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x55d6d66535f5 in leak(int) /home/llvm/compiler-rt/test/asan/TestCases/leaks.cpp:28:9
+    #2 0x55d6d6653687 in main /home/llvm/compiler-rt/test/asan/TestCases/leaks.cpp:35:3
+    #3 0x7fed70192082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: 40000000 byte(s) leaked in 10 allocation(s).
+
+=================================================================
+==2738194==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 400000000 byte(s) in 10 object(s) allocated from:
+    #0 0x7f15f34c1f17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x55e5e6ab15f5 in leak(int) /home/llvm/compiler-rt/test/asan/TestCases/leaks.cpp:28:9
+    #2 0x55e5e6ab1687 in main /home/llvm/compiler-rt/test/asan/TestCases/leaks.cpp:35:3
+    #3 0x7f15f2e4c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: 400000000 byte(s) leaked in 10 allocation(s).
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/leaks.cpp <<TAIL<<
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/leaks.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/asan/TestCases/leaks.cpp:16:16: warning: unknown attribute 'noopt' ignored [-Wunknown-attributes]
+__attribute__((noopt)) void leak(int n) {
+               ^~~~~
+1 warning generated.
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/leaks.cpp <<TAIL<<

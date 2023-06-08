@@ -1,0 +1,90 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/PR52382.c <<HEAD<<
+
+=================================================================
+==2722098==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55bcbab3525c at pc 0x55bcbab315e4 bp 0x7fffd01523d0 sp 0x7fffd01523c8
+READ of size 4 at 0x55bcbab3525c thread T0
+    #0 0x55bcbab315e3 in main /home/llvm/compiler-rt/test/asan/TestCases/PR52382.c:9:25
+    #1 0x7fd632c26082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55bcbab3014d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/PR52382.c.tmp+0x114d)
+
+0x55bcbab3525c is located 12 bytes after global variable 'global_array' defined in '/home/llvm/compiler-rt/test/asan/TestCases/PR52382.c' (0x55bcbab350c0) of size 400
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/PR52382.c:9:25 in main
+Shadow bytes around the buggy address:
+  0x55bcbab34f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bcbab35000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bcbab35080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bcbab35100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bcbab35180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x55bcbab35200: 00 00 00 00 00 00 00 00 00 00 f9[f9]f9 f9 f9 f9
+  0x55bcbab35280: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x55bcbab35300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bcbab35380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bcbab35400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55bcbab35480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2722098==ABORTING
+=================================================================
+==2723220==ERROR: AddressSanitizer: global-buffer-overflow on address 0x56051dba725c at pc 0x56051dba35c2 bp 0x7ffd32a642d0 sp 0x7ffd32a642c8
+READ of size 4 at 0x56051dba725c thread T0
+    #0 0x56051dba35c1 in main /home/llvm/compiler-rt/test/asan/TestCases/PR52382.c:9:25
+    #1 0x7f6d2d8f2082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x56051dba214d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/PR52382.c.tmp+0x114d)
+
+0x56051dba725c is located 12 bytes after global variable 'global_array' defined in '/home/llvm/compiler-rt/test/asan/TestCases/PR52382.c' (0x56051dba70c0) of size 400
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/PR52382.c:9:25 in main
+Shadow bytes around the buggy address:
+  0x56051dba6f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56051dba7000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56051dba7080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56051dba7100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56051dba7180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x56051dba7200: 00 00 00 00 00 00 00 00 00 00 f9[f9]f9 f9 f9 f9
+  0x56051dba7280: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x56051dba7300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56051dba7380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56051dba7400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56051dba7480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2723220==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/PR52382.c <<TAIL<<

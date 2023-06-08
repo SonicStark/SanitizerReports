@@ -1,0 +1,12 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/interception_failure_test.cpp <<HEAD<<
+
+my_strtol_interceptor
+my_strtol_interceptor
+my_strtol_interceptor
+my_strtol_interceptor
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/interception_failure_test.cpp <<TAIL<<

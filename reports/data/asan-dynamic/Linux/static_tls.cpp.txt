@@ -1,0 +1,91 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/static_tls.cpp <<HEAD<<
+
+==2722393==info->dlpi_name = 	info->dlpi_addr = 0x55598462c000
+==2722393==info->dlpi_name = linux-vdso.so.1	info->dlpi_addr = 0x7ffeb9b2f000
+==2722393==info->dlpi_name = /home/llvm/mybuild/./lib/clang/16/lib/x86_64-unknown-linux-gnu/libclang_rt.asan.so	info->dlpi_addr = 0x7f76bd349000
+==2722393==Registered root region at 0x7f76bc9007a0 of size 32
+==2722393==Registered root region at 0x7f76bc502620 of size 160
+==2722393==Unregistered root region at 0x7f76bc502620 of size 160
+==2722393==AddressSanitizer: failed to intercept '__isoc99_printf'
+==2722393==Registered root region at 0x7f76bc502620 of size 160
+==2722393==Unregistered root region at 0x7f76bc502620 of size 160
+==2722393==AddressSanitizer: failed to intercept '__isoc99_sprintf'
+==2722393==Registered root region at 0x7f76bc502620 of size 160
+==2722393==Unregistered root region at 0x7f76bc502620 of size 160
+==2722393==AddressSanitizer: failed to intercept '__isoc99_snprintf'
+==2722393==Registered root region at 0x7f76bc502620 of size 160
+==2722393==Unregistered root region at 0x7f76bc502620 of size 160
+==2722393==AddressSanitizer: failed to intercept '__isoc99_fprintf'
+==2722393==Registered root region at 0x7f76bc502620 of size 160
+==2722393==Unregistered root region at 0x7f76bc502620 of size 160
+==2722393==AddressSanitizer: failed to intercept '__isoc99_vprintf'
+==2722393==Registered root region at 0x7f76bc502620 of size 160
+==2722393==Unregistered root region at 0x7f76bc502620 of size 160
+==2722393==AddressSanitizer: failed to intercept '__isoc99_vsprintf'
+==2722393==Registered root region at 0x7f76bc502620 of size 160
+==2722393==Unregistered root region at 0x7f76bc502620 of size 160
+==2722393==AddressSanitizer: failed to intercept '__isoc99_vsnprintf'
+==2722393==Registered root region at 0x7f76bc502620 of size 160
+==2722393==Unregistered root region at 0x7f76bc502620 of size 160
+==2722393==AddressSanitizer: failed to intercept '__isoc99_vfprintf'
+==2722393==Registered root region at 0x7f76bc502620 of size 160
+==2722393==Unregistered root region at 0x7f76bc502620 of size 160
+==2722393==AddressSanitizer: failed to intercept '__b64_ntop'
+==2722393==Registered root region at 0x7f76bc502620 of size 160
+==2722393==Unregistered root region at 0x7f76bc502620 of size 160
+==2722393==AddressSanitizer: failed to intercept '__b64_pton'
+==2722393==Registered root region at 0x7f76bc502620 of size 160
+==2722393==Unregistered root region at 0x7f76bc502620 of size 160
+==2722393==AddressSanitizer: failed to intercept '__dn_comp'
+==2722393==Registered root region at 0x7f76bc502620 of size 160
+==2722393==Unregistered root region at 0x7f76bc502620 of size 160
+==2722393==AddressSanitizer: failed to intercept '__dn_expand'
+==2722393==Registered root region at 0x7f76bc502620 of size 160
+==2722393==Unregistered root region at 0x7f76bc502620 of size 160
+==2722393==AddressSanitizer: failed to intercept 'xdr_destroy'
+==2722393==Registered root region at 0x7f76bc502620 of size 160
+==2722393==Unregistered root region at 0x7f76bc502620 of size 160
+==2722393==AddressSanitizer: failed to intercept 'crypt'
+==2722393==Registered root region at 0x7f76bc502620 of size 160
+==2722393==Unregistered root region at 0x7f76bc502620 of size 160
+==2722393==AddressSanitizer: failed to intercept 'crypt_r'
+==2722393==Registered root region at 0x7f76bc3029f0 of size 176
+==2722393==Unregistered root region at 0x7f76bc3029f0 of size 176
+==2722393==AddressSanitizer: failed to intercept '__cxa_rethrow_primary_exception'
+==2722393==AddressSanitizer: libc interceptors initialized
+|| `[0x10007fff8000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x02008fff7000, 0x10007fff7fff]` || HighShadow ||
+|| `[0x00008fff7000, 0x02008fff6fff]` || ShadowGap  ||
+|| `[0x00007fff8000, 0x00008fff6fff]` || LowShadow  ||
+|| `[0x000000000000, 0x00007fff7fff]` || LowMem     ||
+MemToShadow(shadow): 0x00008fff7000 0x000091ff6dff 0x004091ff6e00 0x02008fff6fff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=256M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x7fff8000
+==2722393==Installed the sigaction for signal 11
+==2722393==Installed the sigaction for signal 7
+==2722393==Installed the sigaction for signal 8
+==2722393==SetCurrentThread: 0x7f76bd33f000 for thread 0x7f76bcdcc240
+==2722393==T0: FakeStack created: 0x7f76ba7f7000 -- 0x7f76bb300000 stack_size_log: 20; mmapped 11300K, noreserve=0 
+==2722393==T0: stack [0x7ffeb9255000,0x7ffeb9a55000) size 0x800000; local=0x7ffeb9a52d3c
+==2722393==Using llvm-symbolizer found at: /home/llvm/mybuild/./bin/llvm-symbolizer
+==2722393==AddressSanitizer Init done
+before
+==2722393==__tls_get_addr: DTLS_Find 0x7f76bcdcc1e8 2
+==2722393==__tls_get_addr: DTLS_NextBlock 0x7f76bcdcc1e8 0
+==2722393==__tls_get_addr: 0x7f76bd335fd0 {0x2,0x0} => 0x7f76bcdcc1e4; tls_beg: 0x7f76bcdcc1e4; sp: 0x7ffeb9a52cb8 num_live_dtls 1
+==2722393==__tls_get_addr: static tls: 0x7f76bcdcc1e4
+after
+==2722393==LeakSanitizer: checking for leaks==2722451==Attached to thread 2722393.
+==2722451==Detached from thread 2722393.
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/static_tls.cpp <<TAIL<<

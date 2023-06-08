@@ -1,0 +1,308 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/small_memcpy_test.cpp <<HEAD<<
+
+8 16
+=================================================================
+==2812297==ERROR: AddressSanitizer: use-after-poison on address 0x7fd087300028 at pc 0x557029da31ba bp 0x7ffece3039b0 sp 0x7ffece303170
+WRITE of size 64 at 0x7fd087300028 thread T0
+    #0 0x557029da31b9 in __asan_memcpy /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3
+    #1 0x557029def7f5 in main /home/llvm/compiler-rt/test/asan/TestCases/small_memcpy_test.cpp:26:3
+    #2 0x7fd089912082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x557029cc02ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/small_memcpy_test.cpp.tmp+0x1e2ed)
+
+Address 0x7fd087300028 is located in stack of thread T0 at offset 40 in frame
+    #0 0x557029def59f in main /home/llvm/compiler-rt/test/asan/TestCases/small_memcpy_test.cpp:18
+
+  This frame has 2 object(s):
+    [32, 96) 'A1' (line 23) <== Memory access at offset 40 partially overflows this variable
+    [128, 192) 'A2' (line 23)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3 in __asan_memcpy
+Shadow bytes around the buggy address:
+  0x7fd0872ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd0872ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd0872ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd0872fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd0872fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fd087300000: f1 f1 f1 f1 00[f7]f7 00 00 00 00 00 f2 f2 f2 f2
+  0x7fd087300080: 00 00 00 00 00 00 00 00 f3 f3 f3 f3 00 00 00 00
+  0x7fd087300100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd087300180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd087300200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd087300280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812297==ABORTING
+16 16
+=================================================================
+==2812438==ERROR: AddressSanitizer: use-after-poison on address 0x7fec61700030 at pc 0x56168807a1ba bp 0x7ffc7f8b88b0 sp 0x7ffc7f8b8070
+WRITE of size 64 at 0x7fec61700030 thread T0
+    #0 0x56168807a1b9 in __asan_memcpy /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3
+    #1 0x5616880c67f5 in main /home/llvm/compiler-rt/test/asan/TestCases/small_memcpy_test.cpp:26:3
+    #2 0x7fec63d02082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x561687f972ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/small_memcpy_test.cpp.tmp+0x1e2ed)
+
+Address 0x7fec61700030 is located in stack of thread T0 at offset 48 in frame
+    #0 0x5616880c659f in main /home/llvm/compiler-rt/test/asan/TestCases/small_memcpy_test.cpp:18
+
+  This frame has 2 object(s):
+    [32, 96) 'A1' (line 23) <== Memory access at offset 48 partially overflows this variable
+    [128, 192) 'A2' (line 23)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3 in __asan_memcpy
+Shadow bytes around the buggy address:
+  0x7fec616ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fec616ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fec616ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fec616fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fec616fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fec61700000: f1 f1 f1 f1 00 00[f7]f7 00 00 00 00 f2 f2 f2 f2
+  0x7fec61700080: 00 00 00 00 00 00 00 00 f3 f3 f3 f3 00 00 00 00
+  0x7fec61700100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fec61700180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fec61700200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fec61700280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812438==ABORTING
+24 16
+=================================================================
+==2812595==ERROR: AddressSanitizer: use-after-poison on address 0x7f37f3100038 at pc 0x558bf3bc71ba bp 0x7ffca9844cb0 sp 0x7ffca9844470
+WRITE of size 64 at 0x7f37f3100038 thread T0
+    #0 0x558bf3bc71b9 in __asan_memcpy /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3
+    #1 0x558bf3c137f5 in main /home/llvm/compiler-rt/test/asan/TestCases/small_memcpy_test.cpp:26:3
+    #2 0x7f37f578c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x558bf3ae42ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/small_memcpy_test.cpp.tmp+0x1e2ed)
+
+Address 0x7f37f3100038 is located in stack of thread T0 at offset 56 in frame
+    #0 0x558bf3c1359f in main /home/llvm/compiler-rt/test/asan/TestCases/small_memcpy_test.cpp:18
+
+  This frame has 2 object(s):
+    [32, 96) 'A1' (line 23) <== Memory access at offset 56 partially overflows this variable
+    [128, 192) 'A2' (line 23)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3 in __asan_memcpy
+Shadow bytes around the buggy address:
+  0x7f37f30ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f37f30ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f37f30ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f37f30fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f37f30fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f37f3100000: f1 f1 f1 f1 00 00 00[f7]f7 00 00 00 f2 f2 f2 f2
+  0x7f37f3100080: 00 00 00 00 00 00 00 00 f3 f3 f3 f3 00 00 00 00
+  0x7f37f3100100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f37f3100180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f37f3100200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f37f3100280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812595==ABORTING
+32 16
+=================================================================
+==2812725==ERROR: AddressSanitizer: use-after-poison on address 0x7fc535200040 at pc 0x55f9d0ec21ba bp 0x7fff3f4d9550 sp 0x7fff3f4d8d10
+WRITE of size 64 at 0x7fc535200040 thread T0
+    #0 0x55f9d0ec21b9 in __asan_memcpy /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3
+    #1 0x55f9d0f0e7f5 in main /home/llvm/compiler-rt/test/asan/TestCases/small_memcpy_test.cpp:26:3
+    #2 0x7fc5377f5082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55f9d0ddf2ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/small_memcpy_test.cpp.tmp+0x1e2ed)
+
+Address 0x7fc535200040 is located in stack of thread T0 at offset 64 in frame
+    #0 0x55f9d0f0e59f in main /home/llvm/compiler-rt/test/asan/TestCases/small_memcpy_test.cpp:18
+
+  This frame has 2 object(s):
+    [32, 96) 'A1' (line 23) <== Memory access at offset 64 partially overflows this variable
+    [128, 192) 'A2' (line 23)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3 in __asan_memcpy
+Shadow bytes around the buggy address:
+  0x7fc5351ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc5351ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc5351ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc5351fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc5351fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fc535200000: f1 f1 f1 f1 00 00 00 00[f7]f7 00 00 f2 f2 f2 f2
+  0x7fc535200080: 00 00 00 00 00 00 00 00 f3 f3 f3 f3 00 00 00 00
+  0x7fc535200100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc535200180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc535200200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc535200280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812725==ABORTING
+40 16
+=================================================================
+==2812847==ERROR: AddressSanitizer: use-after-poison on address 0x7f56d9c00048 at pc 0x560cff4a71ba bp 0x7ffc5b784150 sp 0x7ffc5b783910
+WRITE of size 64 at 0x7f56d9c00048 thread T0
+    #0 0x560cff4a71b9 in __asan_memcpy /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3
+    #1 0x560cff4f37f5 in main /home/llvm/compiler-rt/test/asan/TestCases/small_memcpy_test.cpp:26:3
+    #2 0x7f56dc2a1082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x560cff3c42ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/small_memcpy_test.cpp.tmp+0x1e2ed)
+
+Address 0x7f56d9c00048 is located in stack of thread T0 at offset 72 in frame
+    #0 0x560cff4f359f in main /home/llvm/compiler-rt/test/asan/TestCases/small_memcpy_test.cpp:18
+
+  This frame has 2 object(s):
+    [32, 96) 'A1' (line 23) <== Memory access at offset 72 partially overflows this variable
+    [128, 192) 'A2' (line 23) <== Memory access at offset 72 partially underflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3 in __asan_memcpy
+Shadow bytes around the buggy address:
+  0x7f56d9bffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f56d9bffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f56d9bffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f56d9bfff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f56d9bfff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f56d9c00000: f1 f1 f1 f1 00 00 00 00 00[f7]f7 00 f2 f2 f2 f2
+  0x7f56d9c00080: 00 00 00 00 00 00 00 00 f3 f3 f3 f3 00 00 00 00
+  0x7f56d9c00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f56d9c00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f56d9c00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f56d9c00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812847==ABORTING
+48 16
+=================================================================
+==2813073==ERROR: AddressSanitizer: use-after-poison on address 0x7f4595d00050 at pc 0x55d687f201ba bp 0x7ffcb38e5870 sp 0x7ffcb38e5030
+WRITE of size 64 at 0x7f4595d00050 thread T0
+    #0 0x55d687f201b9 in __asan_memcpy /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3
+    #1 0x55d687f6c7f5 in main /home/llvm/compiler-rt/test/asan/TestCases/small_memcpy_test.cpp:26:3
+    #2 0x7f459835a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55d687e3d2ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/small_memcpy_test.cpp.tmp+0x1e2ed)
+
+Address 0x7f4595d00050 is located in stack of thread T0 at offset 80 in frame
+    #0 0x55d687f6c59f in main /home/llvm/compiler-rt/test/asan/TestCases/small_memcpy_test.cpp:18
+
+  This frame has 2 object(s):
+    [32, 96) 'A1' (line 23) <== Memory access at offset 80 partially overflows this variable
+    [128, 192) 'A2' (line 23) <== Memory access at offset 80 partially underflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3 in __asan_memcpy
+Shadow bytes around the buggy address:
+  0x7f4595cffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4595cffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4595cffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4595cfff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4595cfff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f4595d00000: f1 f1 f1 f1 00 00 00 00 00 00[f7]f7 f2 f2 f2 f2
+  0x7f4595d00080: 00 00 00 00 00 00 00 00 f3 f3 f3 f3 00 00 00 00
+  0x7f4595d00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4595d00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4595d00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4595d00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2813073==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/small_memcpy_test.cpp <<TAIL<<

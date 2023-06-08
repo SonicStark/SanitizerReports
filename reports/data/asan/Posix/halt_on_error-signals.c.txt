@@ -1,0 +1,75 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/halt_on_error-signals.c <<HEAD<<
+
+=================================================================
+==2797258==ERROR: AddressSanitizer: use-after-poison on address 0x562e1ac6db80 at pc 0x562e1ac32bd5 bp 0x7f217b8fed70 sp 0x7f217b8fed68
+WRITE of size 1 at 0x562e1ac6db80 thread T1
+    #0 0x562e1ac32bd4 in error /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error-signals.c:32:12
+    #1 0x562e1ac32fa0 in receiver /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error-signals.c:66:5
+    #2 0x7f217efa9608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+    #3 0x7f217ed36132 in __clone /build/glibc-SzIz7B/glibc-2.31/misc/../sysdeps/unix/sysv/linux/x86_64/clone.S:95
+
+0x562e1ac6db80 is located 32 bytes before global variable 'niter' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error-signals.c' (0x562e1ac6dba0) of size 8
+0x562e1ac6db80 is located 0 bytes inside of global variable 'bad' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error-signals.c' (0x562e1ac6db80) of size 2
+  'bad' is ascii string ''
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error-signals.c:32:12 in error
+Shadow bytes around the buggy address:
+  0x562e1ac6d900: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x562e1ac6d980: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x562e1ac6da00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x562e1ac6da80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x562e1ac6db00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x562e1ac6db80:[f7]f9 f9 f9 00 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x562e1ac6dc00: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x562e1ac6dc80: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x562e1ac6dd00: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x562e1ac6dd80: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x562e1ac6de00: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+Thread T1 created by T0 here:
+    #0 0x562e1ab22086 in pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x562e1ac33401 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error-signals.c:90:3
+    #2 0x7f217ec3b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+=================================================================
+==2797258==ERROR: AddressSanitizer: use-after-poison on address 0x562e1ac6db80 at pc 0x562e1ac32bd5 bp 0x7f217b8fdef0 sp 0x7f217b8fdee8
+WRITE of size 1 at 0x562e1ac6db80 thread T1
+AddressSanitizer: nested bug in the same thread, aborting.
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/halt_on_error-signals.c <<TAIL<<
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/halt_on_error-signals.c <<HEAD<<
+
+In file included from /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error-signals.c:11:
+In file included from /usr/include/stdio.h:27:
+In file included from /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:33:
+/usr/include/features.h:187:3: warning: "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE" [-W#warnings]
+# warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE"
+  ^
+1 warning generated.
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/halt_on_error-signals.c <<TAIL<<

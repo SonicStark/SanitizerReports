@@ -1,0 +1,12 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/current_allocated_bytes.cpp <<HEAD<<
+
+Before: 72900
+Success after 1000 iterations
+Before: 72900
+Success after 1000 iterations
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/current_allocated_bytes.cpp <<TAIL<<

@@ -1,0 +1,27 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/non-executable-pc.cpp <<HEAD<<
+
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2811285==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000004 (pc 0x000000000004 bp 0x7ffc937ce8c0 sp 0x7ffc937ce868 T0)
+==2811285==Hint: pc points to the zero page.
+==2811285==The signal is caused by a READ memory access.
+==2811285==Hint: address points to the zero page.
+AddressSanitizer:DEADLYSIGNAL
+AddressSanitizer: nested bug in the same thread, aborting.
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2811320==ERROR: AddressSanitizer: SEGV on unknown address 0x604000000010 (pc 0x604000000010 bp 0x7ffefdc932f0 sp 0x7ffefdc93298 T0)
+==2811320==The signal is caused by a READ memory access.
+==2811320==Hint: PC is at a non-executable region. Maybe a wild jump?
+    #0 0x604000000010  (<unknown module>)
+    #1 0x7f867e9f4082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (<unknown module>) 
+==2811320==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/non-executable-pc.cpp <<TAIL<<

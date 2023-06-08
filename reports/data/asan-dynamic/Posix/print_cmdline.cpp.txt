@@ -1,0 +1,152 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/print_cmdline.cpp <<HEAD<<
+
+=================================================================
+==2727314==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7eff5fd0002a at pc 0x5585ded02693 bp 0x7ffe1bb94590 sp 0x7ffe1bb94588
+WRITE of size 1 at 0x7eff5fd0002a thread T0
+    #0 0x5585ded02692 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/print_cmdline.cpp:15:10
+    #1 0x7eff62711082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5585ded0115d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/print_cmdline.cpp.tmp-exe+0x115d)
+
+Address 0x7eff5fd0002a is located in stack of thread T0 at offset 42 in frame
+    #0 0x5585ded0259f in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/print_cmdline.cpp:11
+
+  This frame has 1 object(s):
+    [32, 42) 'x' (line 12) <== Memory access at offset 42 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Posix/print_cmdline.cpp:15:10 in main
+Shadow bytes around the buggy address:
+  0x7eff5fcffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7eff5fcffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7eff5fcffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7eff5fcfff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7eff5fcfff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7eff5fd00000: f1 f1 f1 f1 00[02]f3 f3 00 00 00 00 00 00 00 00
+  0x7eff5fd00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7eff5fd00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7eff5fd00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7eff5fd00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7eff5fd00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2727314==ABORTING
+=================================================================
+==2727806==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f528180002a at pc 0x55db1e92f693 bp 0x7fffe0362370 sp 0x7fffe0362368
+WRITE of size 1 at 0x7f528180002a thread T0
+    #0 0x55db1e92f692 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/print_cmdline.cpp:15:10
+    #1 0x7f52841c1082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55db1e92e15d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/print_cmdline.cpp.tmp-exe+0x115d)
+
+Address 0x7f528180002a is located in stack of thread T0 at offset 42 in frame
+    #0 0x55db1e92f59f in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/print_cmdline.cpp:11
+
+  This frame has 1 object(s):
+    [32, 42) 'x' (line 12) <== Memory access at offset 42 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Posix/print_cmdline.cpp:15:10 in main
+Shadow bytes around the buggy address:
+  0x7f52817ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f52817ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f52817ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f52817fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f52817fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f5281800000: f1 f1 f1 f1 00[02]f3 f3 00 00 00 00 00 00 00 00
+  0x7f5281800080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f5281800100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f5281800180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f5281800200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f5281800280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2727806==ABORTING
+=================================================================
+==2728027==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f7e3530002a at pc 0x562f6c56a693 bp 0x7ffd6c1e5050 sp 0x7ffd6c1e5048
+WRITE of size 1 at 0x7f7e3530002a thread T0
+    #0 0x562f6c56a692 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/print_cmdline.cpp:15:10
+    #1 0x7f7e37d04082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x562f6c56915d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/print_cmdline.cpp.tmp-exe+0x115d)
+
+Address 0x7f7e3530002a is located in stack of thread T0 at offset 42 in frame
+    #0 0x562f6c56a59f in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/print_cmdline.cpp:11
+
+  This frame has 1 object(s):
+    [32, 42) 'x' (line 12) <== Memory access at offset 42 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Posix/print_cmdline.cpp:15:10 in main
+Shadow bytes around the buggy address:
+  0x7f7e352ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7e352ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7e352ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7e352fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7e352fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f7e35300000: f1 f1 f1 f1 00[02]f3 f3 00 00 00 00 00 00 00 00
+  0x7f7e35300080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7e35300100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7e35300180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7e35300200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7e35300280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+
+Command: /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/print_cmdline.cpp.tmp-exe first second/third [fourth] 
+
+==2728027==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/print_cmdline.cpp <<TAIL<<

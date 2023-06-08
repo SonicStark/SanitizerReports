@@ -1,0 +1,22 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/describe_address.cpp <<HEAD<<
+
+0x614000000040 is located 0 bytes inside of 400-byte region [0x614000000040,0x6140000001d0)
+allocated by thread T0 here:
+    #0 0x55a376c8d9a7 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x55a376c90654 in main /home/llvm/compiler-rt/test/asan/TestCases/describe_address.cpp:9:15
+    #2 0x7f1d0ad6a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Address 0x7f1d08500020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x55a376c9058f in main /home/llvm/compiler-rt/test/asan/TestCases/describe_address.cpp:7
+
+  This frame has 1 object(s):
+    [32, 36) 'stack' (line 8) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+0x55a37769eac0 is located 0 bytes inside of global variable 'global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/describe_address.cpp' (0x55a37769eac0) of size 4
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/describe_address.cpp <<TAIL<<

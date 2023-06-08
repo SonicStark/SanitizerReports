@@ -1,0 +1,196 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/stack-buffer-overflow.cpp <<HEAD<<
+
+=================================================================
+==2738602==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ff27720002a at pc 0x5574940f86a5 bp 0x7ffc49ebe5d0 sp 0x7ffc49ebe5c8
+READ of size 1 at 0x7ff27720002a thread T0
+    #0 0x5574940f86a4 in main /home/llvm/compiler-rt/test/asan/TestCases/stack-buffer-overflow.cpp:10:13
+    #1 0x7ff279805082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5574940f714d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/stack-buffer-overflow.cpp.tmp+0x114d)
+
+Address 0x7ff27720002a is located in stack of thread T0 at offset 42 in frame
+    #0 0x5574940f858f in main /home/llvm/compiler-rt/test/asan/TestCases/stack-buffer-overflow.cpp:7
+
+  This frame has 1 object(s):
+    [32, 42) 'x' (line 8) <== Memory access at offset 42 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/stack-buffer-overflow.cpp:10:13 in main
+Shadow bytes around the buggy address:
+  0x7ff2771ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ff2771ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ff2771ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ff2771fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ff2771fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7ff277200000: f1 f1 f1 f1 00[02]f3 f3 00 00 00 00 00 00 00 00
+  0x7ff277200080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ff277200100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ff277200180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ff277200200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ff277200280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2738602==ABORTING
+=================================================================
+==2739115==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f071c60002a at pc 0x5628f17046a5 bp 0x7ffe367f5d30 sp 0x7ffe367f5d28
+READ of size 1 at 0x7f071c60002a thread T0
+    #0 0x5628f17046a4 in main /home/llvm/compiler-rt/test/asan/TestCases/stack-buffer-overflow.cpp:10:13
+    #1 0x7f071ec4c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5628f170314d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/stack-buffer-overflow.cpp.tmp+0x114d)
+
+Address 0x7f071c60002a is located in stack of thread T0 at offset 42 in frame
+    #0 0x5628f170458f in main /home/llvm/compiler-rt/test/asan/TestCases/stack-buffer-overflow.cpp:7
+
+  This frame has 1 object(s):
+    [32, 42) 'x' (line 8) <== Memory access at offset 42 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/stack-buffer-overflow.cpp:10:13 in main
+Shadow bytes around the buggy address:
+  0x7f071c5ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f071c5ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f071c5ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f071c5fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f071c5fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f071c600000: f1 f1 f1 f1 00[02]f3 f3 00 00 00 00 00 00 00 00
+  0x7f071c600080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f071c600100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f071c600180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f071c600200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f071c600280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2739115==ABORTING
+=================================================================
+==2739517==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f0ad2b0002a at pc 0x55b3255fe6a5 bp 0x7ffc5ee32730 sp 0x7ffc5ee32728
+READ of size 1 at 0x7f0ad2b0002a thread T0
+    #0 0x55b3255fe6a4 in main /home/llvm/compiler-rt/test/asan/TestCases/stack-buffer-overflow.cpp:10:13
+    #1 0x7f0ad50f2082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55b3255fd14d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/stack-buffer-overflow.cpp.tmp+0x114d)
+
+Address 0x7f0ad2b0002a is located in stack of thread T0 at offset 42 in frame
+    #0 0x55b3255fe58f in main /home/llvm/compiler-rt/test/asan/TestCases/stack-buffer-overflow.cpp:7
+
+  This frame has 1 object(s):
+    [32, 42) 'x' (line 8) <== Memory access at offset 42 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/stack-buffer-overflow.cpp:10:13 in main
+Shadow bytes around the buggy address:
+  0x7f0ad2affd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0ad2affe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0ad2affe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0ad2afff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0ad2afff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f0ad2b00000: f1 f1 f1 f1 00[02]f3 f3 00 00 00 00 00 00 00 00
+  0x7f0ad2b00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0ad2b00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0ad2b00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0ad2b00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0ad2b00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2739517==ABORTING
+=================================================================
+==2739894==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f2ffa40002a at pc 0x55fb42e7e6b8 bp 0x7ffcadc9fc10 sp 0x7ffcadc9fc08
+READ of size 1 at 0x7f2ffa40002a thread T0
+    #0 0x55fb42e7e6b7 in main /home/llvm/compiler-rt/test/asan/TestCases/stack-buffer-overflow.cpp:10:13
+    #1 0x7f2ffca89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55fb42e7d14d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/stack-buffer-overflow.cpp.tmp+0x114d)
+
+Address 0x7f2ffa40002a is located in stack of thread T0 at offset 42 in frame
+    #0 0x55fb42e7e58f in main /home/llvm/compiler-rt/test/asan/TestCases/stack-buffer-overflow.cpp:7
+
+  This frame has 1 object(s):
+    [32, 42) 'x' (line 8) <== Memory access at offset 42 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/stack-buffer-overflow.cpp:10:13 in main
+Shadow bytes around the buggy address:
+  0x7f2ffa3ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f2ffa3ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f2ffa3ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f2ffa3fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f2ffa3fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f2ffa400000: f1 f1 f1 f1 00[02]f3 f3 00 00 00 00 00 00 00 00
+  0x7f2ffa400080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f2ffa400100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f2ffa400180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f2ffa400200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f2ffa400280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2739894==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/stack-buffer-overflow.cpp <<TAIL<<

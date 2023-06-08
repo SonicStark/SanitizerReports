@@ -1,0 +1,296 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/strcat_strict.c <<HEAD<<
+
+=================================================================
+==2812494==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60b0000000a4 at pc 0x55a8a2970f26 bp 0x7fff7b271e40 sp 0x7fff7b271600
+WRITE of size 20 at 0x60b0000000a4 thread T0
+    #0 0x55a8a2970f25 in strcat /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:392:7
+    #1 0x55a8a29fa7c6 in test1 /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:16:13
+    #2 0x55a8a29fa92e in main /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:33:34
+    #3 0x7fb96ea3f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55a8a28ce2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/strcat_strict.c.tmp+0x1d2dd)
+
+0x60b0000000a4 is located 0 bytes after 100-byte region [0x60b000000040,0x60b0000000a4)
+allocated by thread T0 here:
+    #0 0x55a8a29b2f67 in __interceptor_malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55a8a29fa846 in main /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:27:21
+    #2 0x7fb96ea3f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:392:7 in strcat
+Shadow bytes around the buggy address:
+  0x60affffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60affffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60afffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60afffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60b000000000: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+=>0x60b000000080: 00 00 00 00[04]fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000300: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812494==ABORTING
+=================================================================
+==2812594==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60b0000000a4 at pc 0x5608607bef26 bp 0x7fff379dc4b0 sp 0x7fff379dbc70
+WRITE of size 20 at 0x60b0000000a4 thread T0
+    #0 0x5608607bef25 in strcat /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:392:7
+    #1 0x5608608487c6 in test1 /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:16:13
+    #2 0x56086084892e in main /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:33:34
+    #3 0x7f742ad94082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x56086071c2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/strcat_strict.c.tmp+0x1d2dd)
+
+0x60b0000000a4 is located 0 bytes after 100-byte region [0x60b000000040,0x60b0000000a4)
+allocated by thread T0 here:
+    #0 0x560860800f67 in __interceptor_malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x560860848846 in main /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:27:21
+    #2 0x7f742ad94082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:392:7 in strcat
+Shadow bytes around the buggy address:
+  0x60affffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60affffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60afffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60afffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60b000000000: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+=>0x60b000000080: 00 00 00 00[04]fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000300: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812594==ABORTING
+=================================================================
+==2812660==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60b0000000a4 at pc 0x55fe4281ec80 bp 0x7ffcb5ef0dd0 sp 0x7ffcb5ef0590
+READ of size 1 at 0x60b0000000a4 thread T0
+    #0 0x55fe4281ec7f in strcat /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:391:7
+    #1 0x55fe428a87c6 in test1 /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:16:13
+    #2 0x55fe428a892e in main /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:33:34
+    #3 0x7fa38a1c6082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55fe4277c2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/strcat_strict.c.tmp+0x1d2dd)
+
+0x60b0000000a4 is located 0 bytes after 100-byte region [0x60b000000040,0x60b0000000a4)
+allocated by thread T0 here:
+    #0 0x55fe42860f67 in __interceptor_malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55fe428a8846 in main /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:27:21
+    #2 0x7fa38a1c6082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:391:7 in strcat
+Shadow bytes around the buggy address:
+  0x60affffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60affffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60afffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60afffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60b000000000: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+=>0x60b000000080: 00 00 00 00[04]fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000300: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812660==ABORTING
+=================================================================
+==2812699==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60b0000000a4 at pc 0x55df2e54ef26 bp 0x7fff2799f270 sp 0x7fff2799ea30
+WRITE of size 20 at 0x60b0000000a4 thread T0
+    #0 0x55df2e54ef25 in strcat /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:392:7
+    #1 0x55df2e5d8811 in test2 /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:22:13
+    #2 0x55df2e5d8983 in main /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:37:34
+    #3 0x7f58e9168082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55df2e4ac2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/strcat_strict.c.tmp+0x1d2dd)
+
+0x60b0000000a4 is located 0 bytes after 100-byte region [0x60b000000040,0x60b0000000a4)
+allocated by thread T0 here:
+    #0 0x55df2e590f67 in __interceptor_malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55df2e5d8846 in main /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:27:21
+    #2 0x7f58e9168082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:392:7 in strcat
+Shadow bytes around the buggy address:
+  0x60affffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60affffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60afffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60afffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60b000000000: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+=>0x60b000000080: 00 00 00 00[04]fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000300: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812699==ABORTING
+=================================================================
+==2812755==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60b0000000a4 at pc 0x55828bcacf26 bp 0x7fffddf8edb0 sp 0x7fffddf8e570
+WRITE of size 20 at 0x60b0000000a4 thread T0
+    #0 0x55828bcacf25 in strcat /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:392:7
+    #1 0x55828bd36811 in test2 /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:22:13
+    #2 0x55828bd36983 in main /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:37:34
+    #3 0x7f45725b7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55828bc0a2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/strcat_strict.c.tmp+0x1d2dd)
+
+0x60b0000000a4 is located 0 bytes after 100-byte region [0x60b000000040,0x60b0000000a4)
+allocated by thread T0 here:
+    #0 0x55828bceef67 in __interceptor_malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55828bd36846 in main /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:27:21
+    #2 0x7f45725b7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:392:7 in strcat
+Shadow bytes around the buggy address:
+  0x60affffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60affffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60afffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60afffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60b000000000: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+=>0x60b000000080: 00 00 00 00[04]fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000300: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812755==ABORTING
+=================================================================
+==2812875==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60b0000000a4 at pc 0x562959064c80 bp 0x7ffd0b5138e0 sp 0x7ffd0b5130a0
+READ of size 101 at 0x60b0000000a4 thread T0
+    #0 0x562959064c7f in strcat /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:391:7
+    #1 0x5629590ee811 in test2 /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:22:13
+    #2 0x5629590ee983 in main /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:37:34
+    #3 0x7f8bb6e28082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x562958fc22dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/strcat_strict.c.tmp+0x1d2dd)
+
+0x60b0000000a4 is located 0 bytes after 100-byte region [0x60b000000040,0x60b0000000a4)
+allocated by thread T0 here:
+    #0 0x5629590a6f67 in __interceptor_malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x5629590ee846 in main /home/llvm/compiler-rt/test/asan/TestCases/strcat_strict.c:27:21
+    #2 0x7f8bb6e28082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:391:7 in strcat
+Shadow bytes around the buggy address:
+  0x60affffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60affffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60afffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60afffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60b000000000: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+=>0x60b000000080: 00 00 00 00[04]fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000300: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812875==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/strcat_strict.c <<TAIL<<

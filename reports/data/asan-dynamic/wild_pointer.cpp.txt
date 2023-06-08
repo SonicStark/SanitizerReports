@@ -1,0 +1,20 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/wild_pointer.cpp <<HEAD<<
+
+Expected bad addr: 0x4567e92123456799
+=================================================================
+==2741605==ERROR: AddressSanitizer: unknown-crash on address 0x4567e92123456799 at pc 0x7fa838211dfa bp 0x7ffec6c28920 sp 0x7ffec6c280e0
+READ of size 5001116549197948809 at 0x4567e92123456799 thread T0
+    #0 0x7fa838211df9 in __asan_memmove /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:30:3
+    #1 0x5561ee9cb68c in main /home/llvm/compiler-rt/test/asan/TestCases/wild_pointer.cpp:26:3
+    #2 0x7fa837bae082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5561ee9ca18d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/wild_pointer.cpp.tmp+0x118d)
+
+Address 0x4567e92123456799 is a wild pointer inside of access range of size 0x4567890123456789.
+SUMMARY: AddressSanitizer: unknown-crash /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:30:3 in __asan_memmove
+==2741605==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/wild_pointer.cpp <<TAIL<<

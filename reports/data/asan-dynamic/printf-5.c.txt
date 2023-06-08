@@ -1,0 +1,128 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/printf-5.c <<HEAD<<
+
+=================================================================
+==2737894==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fad23700062 at pc 0x7fad262815b4 bp 0x7ffced7f0220 sp 0x7ffced7ef9e0
+READ of size 3 at 0x7fad23700062 thread T0
+    #0 0x7fad262815b3 in printf_common(void*, char const*, __va_list_tag*) /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors_format.inc:496:3
+    #1 0x7fad26281cfa in __interceptor_vprintf /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1714:1
+    #2 0x7fad26281dd6 in __interceptor_printf /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1772:1
+    #3 0x5621b54b7778 in main /home/llvm/compiler-rt/test/asan/TestCases/printf-5.c:18:3
+    #4 0x7fad25fdd082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #5 0x5621b54b617d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/printf-5.c.tmp+0x117d)
+
+Address 0x7fad23700062 is located in stack of thread T0 at offset 98 in frame
+    #0 0x5621b54b75bf in main /home/llvm/compiler-rt/test/asan/TestCases/printf-5.c:12
+
+  This frame has 5 object(s):
+    [32, 33) 'c' (line 13)
+    [48, 52) 'x' (line 14)
+    [64, 68) 'f' (line 15)
+    [80, 83) 's' (line 16)
+    [96, 98) 'fmt' (line 17) <== Memory access at offset 98 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors_format.inc:496:3 in printf_common(void*, char const*, __va_list_tag*)
+Shadow bytes around the buggy address:
+  0x7fad236ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fad236ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fad236ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fad236fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fad236fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fad23700000: f1 f1 f1 f1 01 f2 04 f2 04 f2 03 f2[02]f3 f3 f3
+  0x7fad23700080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fad23700100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fad23700180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fad23700200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fad23700280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2737894==ABORTING
+0=================================================================
+==2738333==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f9a7fd00062 at pc 0x7f9a828ce5b4 bp 0x7ffc6f804320 sp 0x7ffc6f803ae0
+READ of size 3 at 0x7f9a7fd00062 thread T0
+    #0 0x7f9a828ce5b3 in printf_common(void*, char const*, __va_list_tag*) /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors_format.inc:496:3
+    #1 0x7f9a828cecfa in __interceptor_vprintf /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1714:1
+    #2 0x7f9a828cedd6 in __interceptor_printf /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1772:1
+    #3 0x5628cf173778 in main /home/llvm/compiler-rt/test/asan/TestCases/printf-5.c:18:3
+    #4 0x7f9a8262a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #5 0x5628cf17217d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/printf-5.c.tmp+0x117d)
+
+Address 0x7f9a7fd00062 is located in stack of thread T0 at offset 98 in frame
+    #0 0x5628cf1735bf in main /home/llvm/compiler-rt/test/asan/TestCases/printf-5.c:12
+
+  This frame has 5 object(s):
+    [32, 33) 'c' (line 13)
+    [48, 52) 'x' (line 14)
+    [64, 68) 'f' (line 15)
+    [80, 83) 's' (line 16)
+    [96, 98) 'fmt' (line 17) <== Memory access at offset 98 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors_format.inc:496:3 in printf_common(void*, char const*, __va_list_tag*)
+Shadow bytes around the buggy address:
+  0x7f9a7fcffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9a7fcffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9a7fcffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9a7fcfff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9a7fcfff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f9a7fd00000: f1 f1 f1 f1 01 f2 04 f2 04 f2 03 f2[02]f3 f3 f3
+  0x7f9a7fd00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9a7fd00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9a7fd00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9a7fd00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9a7fd00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2738333==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/printf-5.c <<TAIL<<
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/printf-5.c <<HEAD<<
+
+/home/llvm/compiler-rt/test/asan/TestCases/printf-5.c:17:26: warning: initializer-string for char array is too long [-Wexcess-initializers]
+  volatile char fmt[2] = "%c %d %f %s\n";
+                         ^~~~~~~~~~~~~~~
+1 warning generated.
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/printf-5.c <<TAIL<<

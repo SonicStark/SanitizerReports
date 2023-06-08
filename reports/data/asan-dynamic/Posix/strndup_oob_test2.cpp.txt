@@ -1,0 +1,218 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/strndup_oob_test2.cpp <<HEAD<<
+
+=================================================================
+==2728147==ERROR: AddressSanitizer: global-buffer-overflow on address 0x5609e16520c3 at pc 0x7fdf6a0b5e6f bp 0x7ffc3eb69cd0 sp 0x7ffc3eb69490
+READ of size 4 at 0x5609e16520c3 thread T0
+    #0 0x7fdf6a0b5e6e in __interceptor___strndup.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:462:3
+    #1 0x5609e164e5cb in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/strndup_oob_test2.cpp:18:10
+    #2 0x7fdf69e3d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5609e164d15d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/strndup_oob_test2.cpp.tmp+0x115d)
+
+0x5609e16520c3 is located 0 bytes after global variable 'kChars' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/strndup_oob_test2.cpp' (0x5609e16520c0) of size 3
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:462:3 in __interceptor___strndup.part.0
+Shadow bytes around the buggy address:
+  0x5609e1651e00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5609e1651e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5609e1651f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5609e1651f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5609e1652000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x5609e1652080: 00 00 00 00 00 00 00 00[03]f9 f9 f9 f9 f9 f9 f9
+  0x5609e1652100: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5609e1652180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5609e1652200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5609e1652280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x5609e1652300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2728147==ABORTING
+=================================================================
+==2729378==ERROR: AddressSanitizer: global-buffer-overflow on address 0x557fd57230c3 at pc 0x7f3a868cee6f bp 0x7fff2398f440 sp 0x7fff2398ec00
+READ of size 4 at 0x557fd57230c3 thread T0
+    #0 0x7f3a868cee6e in __interceptor___strndup.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:462:3
+    #1 0x557fd571f5a4 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/strndup_oob_test2.cpp:18:10
+    #2 0x7f3a86656082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x557fd571e15d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/strndup_oob_test2.cpp.tmp+0x115d)
+
+0x557fd57230c3 is located 0 bytes after global variable 'kChars' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/strndup_oob_test2.cpp' (0x557fd57230c0) of size 3
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:462:3 in __interceptor___strndup.part.0
+Shadow bytes around the buggy address:
+  0x557fd5722e00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557fd5722e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557fd5722f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557fd5722f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557fd5723000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x557fd5723080: 00 00 00 00 00 00 00 00[03]f9 f9 f9 f9 f9 f9 f9
+  0x557fd5723100: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557fd5723180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557fd5723200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557fd5723280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557fd5723300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2729378==ABORTING
+=================================================================
+==2731079==ERROR: AddressSanitizer: global-buffer-overflow on address 0x56057471c0c3 at pc 0x7fa56a340e6f bp 0x7fff254ec130 sp 0x7fff254eb8f0
+READ of size 4 at 0x56057471c0c3 thread T0
+    #0 0x7fa56a340e6e in __interceptor___strndup.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:462:3
+    #1 0x5605747185a4 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/strndup_oob_test2.cpp:18:10
+    #2 0x7fa56a0c8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x56057471715d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/strndup_oob_test2.cpp.tmp+0x115d)
+
+0x56057471c0c3 is located 0 bytes after global variable 'kChars' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/strndup_oob_test2.cpp' (0x56057471c0c0) of size 3
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:462:3 in __interceptor___strndup.part.0
+Shadow bytes around the buggy address:
+  0x56057471be00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56057471be80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56057471bf00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56057471bf80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56057471c000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x56057471c080: 00 00 00 00 00 00 00 00[03]f9 f9 f9 f9 f9 f9 f9
+  0x56057471c100: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56057471c180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56057471c200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56057471c280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x56057471c300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2731079==ABORTING
+=================================================================
+==2732204==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55e495e060c3 at pc 0x7fa985eeae6f bp 0x7ffca7328860 sp 0x7ffca7328020
+READ of size 4 at 0x55e495e060c3 thread T0
+    #0 0x7fa985eeae6e in __interceptor___strndup.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:462:3
+    #1 0x55e495e025a4 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/strndup_oob_test2.cpp:18:10
+    #2 0x7fa985c72082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55e495e0115d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/strndup_oob_test2.cpp.tmp+0x115d)
+
+0x55e495e060c3 is located 0 bytes after global variable 'kChars' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/strndup_oob_test2.cpp' (0x55e495e060c0) of size 3
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:462:3 in __interceptor___strndup.part.0
+Shadow bytes around the buggy address:
+  0x55e495e05e00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55e495e05e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55e495e05f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55e495e05f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55e495e06000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x55e495e06080: 00 00 00 00 00 00 00 00[03]f9 f9 f9 f9 f9 f9 f9
+  0x55e495e06100: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55e495e06180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55e495e06200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55e495e06280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55e495e06300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2732204==ABORTING
+=================================================================
+==2733404==ERROR: AddressSanitizer: global-buffer-overflow on address 0x555629c400c3 at pc 0x7f15d2d3ce6f bp 0x7ffe74959850 sp 0x7ffe74959010
+READ of size 4 at 0x555629c400c3 thread T0
+    #0 0x7f15d2d3ce6e in __interceptor___strndup.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:462:3
+    #1 0x555629c3c5a4 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/strndup_oob_test2.cpp:18:10
+    #2 0x7f15d2ac4082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x555629c3b15d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/strndup_oob_test2.cpp.tmp+0x115d)
+
+0x555629c400c3 is located 0 bytes after global variable 'kChars' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/strndup_oob_test2.cpp' (0x555629c400c0) of size 3
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:462:3 in __interceptor___strndup.part.0
+Shadow bytes around the buggy address:
+  0x555629c3fe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x555629c3fe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x555629c3ff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x555629c3ff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x555629c40000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x555629c40080: 00 00 00 00 00 00 00 00[03]f9 f9 f9 f9 f9 f9 f9
+  0x555629c40100: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x555629c40180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x555629c40200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x555629c40280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x555629c40300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2733404==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/strndup_oob_test2.cpp <<TAIL<<

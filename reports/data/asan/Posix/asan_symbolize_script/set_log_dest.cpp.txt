@@ -1,0 +1,51 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/asan_symbolize_script/set_log_dest.cpp <<HEAD<<
+
+usage: asan_symbolize.py [-h] [-d] [-c CROSS_COMPILE] [-l LOGFILE]
+                         [--force-system-symbolizer] [--log-dest LOG_DEST]
+                         [--log-level {debug,info,warning,error,critical}]
+                         [-p PLUGINS [PLUGINS ...]] [--module-map MODULE_MAP]
+                         [--skip-uuid-validation] [-s SYSROOT]
+                         [path_to_cut [path_to_cut ...]]
+
+ASan symbolization script
+
+positional arguments:
+  path_to_cut           pattern to be cut from the result file path
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d, --demangle        demangle function names
+  -c CROSS_COMPILE      set prefix for binutils
+  -l LOGFILE, --logfile LOGFILE
+                        set log file name to parse, default is stdin
+  --force-system-symbolizer
+                        don't use llvm-symbolizer
+  --log-dest LOG_DEST   Destination path for script logging (default stderr).
+  --log-level {debug,info,warning,error,critical}
+                        Log level for script (default: info).
+  -p PLUGINS [PLUGINS ...], --plugins PLUGINS [PLUGINS ...]
+                        Load plug-in
+  --module-map MODULE_MAP
+                        Path to text file containing module mapoutput. See
+                        print_module_map ASan option.
+  --skip-uuid-validation
+                        Skips validating UUID of modules using otool.
+  -s SYSROOT            set path to sysroot for sanitized binaries
+
+Example of use:
+  asan_symbolize.py -c "$HOME/opt/cross/bin/arm-linux-gnueabi-" -s "$HOME/SymbolFiles" < asan.log
+
+PLUGINS
+
+This script provides a way for external plug-ins to hook into the behaviour of
+various parts of this script (see `--plugins`). This is useful for situations
+where it is necessary to handle site-specific quirks (e.g. binaries with debug
+symbols only accessible via a remote service) without having to modify the
+script itself.
+DEBUG: [setup_logging() asan_symbolize.py:1004] Logging level set to "debug" and directing output to "/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/asan_symbolize_script/Output/set_log_dest.cpp.tmp_debug_log_output.txt"
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/asan_symbolize_script/set_log_dest.cpp <<TAIL<<

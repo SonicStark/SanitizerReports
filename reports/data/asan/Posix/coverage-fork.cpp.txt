@@ -1,0 +1,74 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/coverage-fork.cpp <<HEAD<<
+
+==2796721==Registered root region at 0x7fdc822007a0 of size 32
+==2796721==Registered root region at 0x7fdc81e02dc0 of size 192
+==2796721==Unregistered root region at 0x7fdc81e02dc0 of size 192
+==2796721==AddressSanitizer: failed to intercept '__isoc99_printf'
+==2796721==Registered root region at 0x7fdc81e02dc0 of size 192
+==2796721==Unregistered root region at 0x7fdc81e02dc0 of size 192
+==2796721==AddressSanitizer: failed to intercept '__isoc99_sprintf'
+==2796721==Registered root region at 0x7fdc81e02dc0 of size 192
+==2796721==Unregistered root region at 0x7fdc81e02dc0 of size 192
+==2796721==AddressSanitizer: failed to intercept '__isoc99_snprintf'
+==2796721==Registered root region at 0x7fdc81e02dc0 of size 192
+==2796721==Unregistered root region at 0x7fdc81e02dc0 of size 192
+==2796721==AddressSanitizer: failed to intercept '__isoc99_fprintf'
+==2796721==Registered root region at 0x7fdc81e02dc0 of size 192
+==2796721==Unregistered root region at 0x7fdc81e02dc0 of size 192
+==2796721==AddressSanitizer: failed to intercept '__isoc99_vprintf'
+==2796721==Registered root region at 0x7fdc81e02dc0 of size 192
+==2796721==Unregistered root region at 0x7fdc81e02dc0 of size 192
+==2796721==AddressSanitizer: failed to intercept '__isoc99_vsprintf'
+==2796721==Registered root region at 0x7fdc81e02dc0 of size 192
+==2796721==Unregistered root region at 0x7fdc81e02dc0 of size 192
+==2796721==AddressSanitizer: failed to intercept '__isoc99_vsnprintf'
+==2796721==Registered root region at 0x7fdc81e02dc0 of size 192
+==2796721==Unregistered root region at 0x7fdc81e02dc0 of size 192
+==2796721==AddressSanitizer: failed to intercept '__isoc99_vfprintf'
+==2796721==Registered root region at 0x7fdc81e02dc0 of size 192
+==2796721==Unregistered root region at 0x7fdc81e02dc0 of size 192
+==2796721==AddressSanitizer: failed to intercept 'xdr_destroy'
+==2796721==Registered root region at 0x7fdc81e02dc0 of size 192
+==2796721==Unregistered root region at 0x7fdc81e02dc0 of size 192
+==2796721==AddressSanitizer: failed to intercept 'crypt'
+==2796721==Registered root region at 0x7fdc81e02dc0 of size 192
+==2796721==Unregistered root region at 0x7fdc81e02dc0 of size 192
+==2796721==AddressSanitizer: failed to intercept 'crypt_r'
+==2796721==Registered root region at 0x7fdc81c03190 of size 208
+==2796721==Unregistered root region at 0x7fdc81c03190 of size 208
+==2796721==AddressSanitizer: failed to intercept '__cxa_rethrow_primary_exception'
+==2796721==AddressSanitizer: libc interceptors initialized
+|| `[0x10007fff8000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x02008fff7000, 0x10007fff7fff]` || HighShadow ||
+|| `[0x00008fff7000, 0x02008fff6fff]` || ShadowGap  ||
+|| `[0x00007fff8000, 0x00008fff6fff]` || LowShadow  ||
+|| `[0x000000000000, 0x00007fff7fff]` || LowMem     ||
+MemToShadow(shadow): 0x00008fff7000 0x000091ff6dff 0x004091ff6e00 0x02008fff6fff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=256M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x7fff8000
+==2796721==Installed the sigaction for signal 11
+==2796721==Installed the sigaction for signal 7
+==2796721==Installed the sigaction for signal 8
+==2796721==T0: FakeStack created: 0x7fdc800f7000 -- 0x7fdc80c00000 stack_size_log: 20; mmapped 11300K, noreserve=0 
+==2796721==T0: stack [0x7ffd53c08000,0x7ffd54408000) size 0x800000; local=0x7ffd544068ac
+==2796721==AddressSanitizer Init done
+SANCOV_OPTIONS: <empty>
+Parent PID: 2796721
+Child PID: 2796750
+==2796750==LeakSanitizer: checking for leaksSanitizerCoverage: ./coverage-fork.cpp.tmp.2796750.sancov: 2 PCs written
+baz
+==2796721==LeakSanitizer: checking for leaksSanitizerCoverage: ./coverage-fork.cpp.tmp.2796721.sancov: 3 PCs written
+foo
+bar
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/coverage-fork.cpp <<TAIL<<

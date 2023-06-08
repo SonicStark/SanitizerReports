@@ -1,0 +1,55 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/strcmp_strict.c <<HEAD<<
+
+=================================================================
+==2812838==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60b0000000a4 at pc 0x55e324806549 bp 0x7ffca048bf80 sp 0x7ffca048b740
+READ of size 101 at 0x60b0000000a4 thread T0
+    #0 0x55e324806548 in __interceptor_strcmp.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:514:5
+    #1 0x55e32487c8b6 in main /home/llvm/compiler-rt/test/asan/TestCases/strcmp_strict.c:19:11
+    #2 0x7f0f856fc082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55e3247502ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/strcmp_strict.c.tmp+0x1d2ed)
+
+0x60b0000000a4 is located 0 bytes after 100-byte region [0x60b000000040,0x60b0000000a4)
+allocated by thread T0 here:
+    #0 0x55e324834f77 in __interceptor_malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55e32487c7da in main /home/llvm/compiler-rt/test/asan/TestCases/strcmp_strict.c:13:21
+    #2 0x7f0f856fc082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:514:5 in __interceptor_strcmp.part.0
+Shadow bytes around the buggy address:
+  0x60affffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60affffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60afffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60afffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60b000000000: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+=>0x60b000000080: 00 00 00 00[04]fa fa fa fa fa fa fa fa fa 00 00
+  0x60b000000100: 00 00 00 00 00 00 00 00 00 00 04 fa fa fa fa fa
+  0x60b000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000300: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812838==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/strcmp_strict.c <<TAIL<<

@@ -1,0 +1,208 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/memcmp_test.cpp <<HEAD<<
+
+=================================================================
+==2811427==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffbe4600024 at pc 0x56497774f878 bp 0x7ffc3e274370 sp 0x7ffc3e273b30
+READ of size 5 at 0x7ffbe4600024 thread T0
+    #0 0x56497774f877 in MemcmpInterceptorCommon(void*, int (*)(void const*, void const*, unsigned long), void const*, void const*, unsigned long) /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:908:7
+    #1 0x5649777502c8 in __interceptor_memcmp /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:940:33
+    #2 0x5649777c58da in main /home/llvm/compiler-rt/test/asan/TestCases/memcmp_test.cpp:12:13
+    #3 0x7ffbe6e3b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x5649776962dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/memcmp_test.cpp.tmp+0x1e2dd)
+
+Address 0x7ffbe4600024 is located in stack of thread T0 at offset 36 in frame
+    #0 0x5649777c558f in main /home/llvm/compiler-rt/test/asan/TestCases/memcmp_test.cpp:9
+
+  This frame has 2 object(s):
+    [32, 36) 'a1' (line 10) <== Memory access at offset 36 overflows this variable
+    [48, 52) 'a2' (line 11)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:908:7 in MemcmpInterceptorCommon(void*, int (*)(void const*, void const*, unsigned long), void const*, void const*, unsigned long)
+Shadow bytes around the buggy address:
+  0x7ffbe45ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffbe45ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffbe45ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffbe45fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffbe45fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7ffbe4600000: f1 f1 f1 f1[04]f2 04 f3 00 00 00 00 00 00 00 00
+  0x7ffbe4600080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffbe4600100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffbe4600180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffbe4600200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffbe4600280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2811427==ABORTING
+=================================================================
+==2811974==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f4bb0100024 at pc 0x55d7663d6878 bp 0x7ffe2f99a9b0 sp 0x7ffe2f99a170
+READ of size 5 at 0x7f4bb0100024 thread T0
+    #0 0x55d7663d6877 in MemcmpInterceptorCommon(void*, int (*)(void const*, void const*, unsigned long), void const*, void const*, unsigned long) /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:908:7
+    #1 0x55d7663d72c8 in __interceptor_memcmp /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:940:33
+    #2 0x55d76644c71a in main /home/llvm/compiler-rt/test/asan/TestCases/memcmp_test.cpp:12:13
+    #3 0x7f4bb2912082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55d76631d2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/memcmp_test.cpp.tmp+0x1e2dd)
+
+Address 0x7f4bb0100024 is located in stack of thread T0 at offset 36 in frame
+    #0 0x55d76644c58f in main /home/llvm/compiler-rt/test/asan/TestCases/memcmp_test.cpp:9
+
+  This frame has 2 object(s):
+    [32, 36) 'a1' (line 10) <== Memory access at offset 36 overflows this variable
+    [48, 52) 'a2' (line 11)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:908:7 in MemcmpInterceptorCommon(void*, int (*)(void const*, void const*, unsigned long), void const*, void const*, unsigned long)
+Shadow bytes around the buggy address:
+  0x7f4bb00ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4bb00ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4bb00ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4bb00fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4bb00fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f4bb0100000: f1 f1 f1 f1[04]f2 04 f3 00 00 00 00 00 00 00 00
+  0x7f4bb0100080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4bb0100100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4bb0100180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4bb0100200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4bb0100280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2811974==ABORTING
+=================================================================
+==2812303==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f2551e00024 at pc 0x55da3c503878 bp 0x7fff1374dd70 sp 0x7fff1374d530
+READ of size 5 at 0x7f2551e00024 thread T0
+    #0 0x55da3c503877 in MemcmpInterceptorCommon(void*, int (*)(void const*, void const*, unsigned long), void const*, void const*, unsigned long) /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:908:7
+    #1 0x55da3c5042c8 in __interceptor_memcmp /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:940:33
+    #2 0x55da3c57971a in main /home/llvm/compiler-rt/test/asan/TestCases/memcmp_test.cpp:12:13
+    #3 0x7f2554637082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55da3c44a2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/memcmp_test.cpp.tmp+0x1e2dd)
+
+Address 0x7f2551e00024 is located in stack of thread T0 at offset 36 in frame
+    #0 0x55da3c57958f in main /home/llvm/compiler-rt/test/asan/TestCases/memcmp_test.cpp:9
+
+  This frame has 2 object(s):
+    [32, 36) 'a1' (line 10) <== Memory access at offset 36 overflows this variable
+    [48, 52) 'a2' (line 11)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:908:7 in MemcmpInterceptorCommon(void*, int (*)(void const*, void const*, unsigned long), void const*, void const*, unsigned long)
+Shadow bytes around the buggy address:
+  0x7f2551dffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f2551dffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f2551dffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f2551dfff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f2551dfff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f2551e00000: f1 f1 f1 f1[04]f2 04 f3 00 00 00 00 00 00 00 00
+  0x7f2551e00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f2551e00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f2551e00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f2551e00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f2551e00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812303==ABORTING
+=================================================================
+==2812990==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fd0b1d00024 at pc 0x55fe4c1e5878 bp 0x7ffc766a2830 sp 0x7ffc766a1ff0
+READ of size 5 at 0x7fd0b1d00024 thread T0
+    #0 0x55fe4c1e5877 in MemcmpInterceptorCommon(void*, int (*)(void const*, void const*, unsigned long), void const*, void const*, unsigned long) /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:908:7
+    #1 0x55fe4c1e62c8 in __interceptor_memcmp /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:940:33
+    #2 0x55fe4c25b719 in main /home/llvm/compiler-rt/test/asan/TestCases/memcmp_test.cpp:12:13
+    #3 0x7fd0b4580082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55fe4c12c2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/memcmp_test.cpp.tmp+0x1e2dd)
+
+Address 0x7fd0b1d00024 is located in stack of thread T0 at offset 36 in frame
+    #0 0x55fe4c25b58f in main /home/llvm/compiler-rt/test/asan/TestCases/memcmp_test.cpp:9
+
+  This frame has 2 object(s):
+    [32, 36) 'a1' (line 10) <== Memory access at offset 36 overflows this variable
+    [48, 52) 'a2' (line 11)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:908:7 in MemcmpInterceptorCommon(void*, int (*)(void const*, void const*, unsigned long), void const*, void const*, unsigned long)
+Shadow bytes around the buggy address:
+  0x7fd0b1cffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd0b1cffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd0b1cffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd0b1cfff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd0b1cfff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fd0b1d00000: f1 f1 f1 f1[04]f2 04 f3 00 00 00 00 00 00 00 00
+  0x7fd0b1d00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd0b1d00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd0b1d00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd0b1d00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd0b1d00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812990==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/memcmp_test.cpp <<TAIL<<

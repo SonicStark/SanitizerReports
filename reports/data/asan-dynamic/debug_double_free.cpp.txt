@@ -1,0 +1,32 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/debug_double_free.cpp <<HEAD<<
+
+heap_ptr: 0x602000000010
+=================================================================
+report present
+addr: 0x602000000010
+description: double-free
+==2732413==ERROR: AddressSanitizer: attempting double-free on 0x602000000010 in thread T0:
+    #0 0x7f1359ec66c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x555ac8e616a9 in main /home/llvm/compiler-rt/test/asan/TestCases/debug_double_free.cpp:36:3
+    #2 0x7f1359862082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x555ac8e601bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/debug_double_free.cpp.tmp+0x11bd)
+
+0x602000000010 is located 0 bytes inside of 10-byte region [0x602000000010,0x60200000001a)
+freed by thread T0 here:
+    #0 0x7f1359ec66c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x555ac8e6169d in main /home/llvm/compiler-rt/test/asan/TestCases/debug_double_free.cpp:35:3
+    #2 0x7f1359862082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x7f1359ec7427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x555ac8e61647 in main /home/llvm/compiler-rt/test/asan/TestCases/debug_double_free.cpp:31:22
+    #2 0x7f1359862082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: double-free /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3 in __interceptor_cfree.part.0
+==2732413==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/debug_double_free.cpp <<TAIL<<

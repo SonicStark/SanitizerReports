@@ -1,0 +1,196 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/odr-violation.cpp <<HEAD<<
+
+=================================================================
+==2721226==ERROR: AddressSanitizer: odr-violation (0x55dd55776140):
+  [1] size=100 'foo::G' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+  [2] size=4 'foo::G' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+These globals were registered at these points:
+  [1]:
+    #0 0x7f7c3f3a8190 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x55dd557725de in asan.module_ctor odr-violation.cpp
+    #2 0x55dd5577265c in __libc_csu_init (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/odr-violation.cpp.tmp-ODR-EXE+0x265c)
+    #3 0x7f7c3ee0500f in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:264:6
+    #4 0x55dd5577115d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/odr-violation.cpp.tmp-ODR-EXE+0x115d)
+
+  [2]:
+    #0 0x7f7c3f3a8190 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x7f7c3f32f56e in asan.module_ctor odr-violation.cpp
+    #2 0x7f7c3fea9b99 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:72:3
+    #3 0x7f7c3fea9ca0 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:30:6
+    #4 0x7f7c3fea9ca0 in _dl_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:119:5
+    #5 0x7f7c3fe99139  (/lib64/ld-linux-x86-64.so.2+0x1139) (BuildId: 4587364908de169dec62ffa538170118c1c3a078)
+
+==2721226==HINT: if you don't care about these errors you may set ASAN_OPTIONS=detect_odr_violation=0
+SUMMARY: AddressSanitizer: odr-violation: global 'foo::G' at /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+==2721226==ABORTING
+=================================================================
+==2721542==ERROR: AddressSanitizer: odr-violation (0x564fe24e7140):
+  [1] size=100 'foo::G' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+  [2] size=4 'foo::G' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+These globals were registered at these points:
+  [1]:
+    #0 0x7faf8b101190 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x564fe24e35de in asan.module_ctor odr-violation.cpp
+    #2 0x564fe24e365c in __libc_csu_init (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/odr-violation.cpp.tmp-ODR-EXE+0x265c)
+    #3 0x7faf8ab5e00f in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:264:6
+    #4 0x564fe24e215d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/odr-violation.cpp.tmp-ODR-EXE+0x115d)
+
+  [2]:
+    #0 0x7faf8b101190 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x7faf8b08856e in asan.module_ctor odr-violation.cpp
+    #2 0x7faf8bc02b99 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:72:3
+    #3 0x7faf8bc02ca0 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:30:6
+    #4 0x7faf8bc02ca0 in _dl_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:119:5
+    #5 0x7faf8bbf2139  (/lib64/ld-linux-x86-64.so.2+0x1139) (BuildId: 4587364908de169dec62ffa538170118c1c3a078)
+
+==2721542==HINT: if you don't care about these errors you may set ASAN_OPTIONS=detect_odr_violation=0
+SUMMARY: AddressSanitizer: odr-violation: global 'foo::G' at /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+==2721542==ABORTING
+PASS: 0x55bda831c140
+=================================================================
+==2721864==ERROR: AddressSanitizer: odr-violation (0x55f2267b7140):
+  [1] size=100 'foo::G' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+  [2] size=4 'foo::G' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+These globals were registered at these points:
+  [1]:
+    #0 0x7f7fff885190 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x55f2267b35de in asan.module_ctor odr-violation.cpp
+    #2 0x55f2267b365c in __libc_csu_init (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/odr-violation.cpp.tmp-ODR-EXE+0x265c)
+    #3 0x7f7fff2e200f in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:264:6
+    #4 0x55f2267b215d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/odr-violation.cpp.tmp-ODR-EXE+0x115d)
+
+  [2]:
+    #0 0x7f7fff885190 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x7f7fff80c56e in asan.module_ctor odr-violation.cpp
+    #2 0x7f8000386b99 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:72:3
+    #3 0x7f8000386ca0 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:30:6
+    #4 0x7f8000386ca0 in _dl_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:119:5
+    #5 0x7f8000376139  (/lib64/ld-linux-x86-64.so.2+0x1139) (BuildId: 4587364908de169dec62ffa538170118c1c3a078)
+
+==2721864==HINT: if you don't care about these errors you may set ASAN_OPTIONS=detect_odr_violation=0
+SUMMARY: AddressSanitizer: odr-violation: global 'foo::G' at /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+==2721864==ABORTING
+PASS: 0x5651d2eb0140
+=================================================================
+==2723008==ERROR: AddressSanitizer: odr-violation (0x55aa7b418140):
+  [1] size=100 'foo::G' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+  [2] size=100 'foo::G' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+These globals were registered at these points:
+  [1]:
+    #0 0x7f4bee571190 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x55aa7b4145de in asan.module_ctor odr-violation.cpp
+    #2 0x55aa7b41465c in __libc_csu_init (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/odr-violation.cpp.tmp-ODR-EXE+0x265c)
+    #3 0x7f4bedfce00f in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:264:6
+    #4 0x55aa7b41315d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/odr-violation.cpp.tmp-ODR-EXE+0x115d)
+
+  [2]:
+    #0 0x7f4bee571190 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x7f4bee4f856e in asan.module_ctor odr-violation.cpp
+    #2 0x7f4bef072b99 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:72:3
+    #3 0x7f4bef072ca0 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:30:6
+    #4 0x7f4bef072ca0 in _dl_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:119:5
+    #5 0x7f4bef062139  (/lib64/ld-linux-x86-64.so.2+0x1139) (BuildId: 4587364908de169dec62ffa538170118c1c3a078)
+
+==2723008==HINT: if you don't care about these errors you may set ASAN_OPTIONS=detect_odr_violation=0
+SUMMARY: AddressSanitizer: odr-violation: global 'foo::G' at /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+==2723008==ABORTING
+=================================================================
+==2723726==ERROR: AddressSanitizer: odr-violation (0x562f269f4140):
+  [1] size=100 'foo::G' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+  [2] size=100 'foo::G' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+These globals were registered at these points:
+  [1]:
+    #0 0x7fe86886b190 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x562f269f05de in asan.module_ctor odr-violation.cpp
+    #2 0x562f269f065c in __libc_csu_init (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/odr-violation.cpp.tmp-ODR-EXE+0x265c)
+    #3 0x7fe8682c800f in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:264:6
+    #4 0x562f269ef15d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/odr-violation.cpp.tmp-ODR-EXE+0x115d)
+
+  [2]:
+    #0 0x7fe86886b190 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x7fe8687f256e in asan.module_ctor odr-violation.cpp
+    #2 0x7fe86936cb99 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:72:3
+    #3 0x7fe86936cca0 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:30:6
+    #4 0x7fe86936cca0 in _dl_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:119:5
+    #5 0x7fe86935c139  (/lib64/ld-linux-x86-64.so.2+0x1139) (BuildId: 4587364908de169dec62ffa538170118c1c3a078)
+
+==2723726==HINT: if you don't care about these errors you may set ASAN_OPTIONS=detect_odr_violation=0
+SUMMARY: AddressSanitizer: odr-violation: global 'foo::G' at /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+==2723726==ABORTING
+=================================================================
+==2724466==ERROR: AddressSanitizer: odr-violation (0x5637acc00140):
+  [1] size=100 'foo::G' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+  [2] size=100 'foo::G' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+These globals were registered at these points:
+  [1]:
+    #0 0x7efc4a0e6190 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x5637acbfc5de in asan.module_ctor odr-violation.cpp
+    #2 0x5637acbfc65c in __libc_csu_init (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/odr-violation.cpp.tmp-ODR-EXE+0x265c)
+    #3 0x7efc49b4300f in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:264:6
+    #4 0x5637acbfb15d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/odr-violation.cpp.tmp-ODR-EXE+0x115d)
+
+  [2]:
+    #0 0x7efc4a0e6190 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x7efc4a06d56e in asan.module_ctor odr-violation.cpp
+    #2 0x7efc4abe7b99 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:72:3
+    #3 0x7efc4abe7ca0 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:30:6
+    #4 0x7efc4abe7ca0 in _dl_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:119:5
+    #5 0x7efc4abd7139  (/lib64/ld-linux-x86-64.so.2+0x1139) (BuildId: 4587364908de169dec62ffa538170118c1c3a078)
+
+==2724466==HINT: if you don't care about these errors you may set ASAN_OPTIONS=detect_odr_violation=0
+SUMMARY: AddressSanitizer: odr-violation: global 'foo::G' at /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+==2724466==ABORTING
+PASS: 0x55cfb4d18140
+PASS: 0x55bd7b2f2140
+=================================================================
+==2728160==ERROR: AddressSanitizer: odr-violation (0x564b7ea7e140):
+  [1] size=100 'foo::G' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+  [2] size=100 'foo::G' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:56
+These globals were registered at these points:
+  [1]:
+    #0 0x7fd315d2f190 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x564b7ea7a5de in asan.module_ctor odr-violation.cpp
+    #2 0x564b7ea7a65c in __libc_csu_init (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/odr-violation.cpp.tmp-ODR-EXE+0x265c)
+    #3 0x7fd31578c00f in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:264:6
+    #4 0x564b7ea7915d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/odr-violation.cpp.tmp-ODR-EXE+0x115d)
+
+  [2]:
+    #0 0x7fd315d2f190 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x7fd315cb656e in asan.module_ctor odr-violation.cpp
+    #2 0x7fd316830b99 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:72:3
+    #3 0x7fd316830ca0 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:30:6
+    #4 0x7fd316830ca0 in _dl_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:119:5
+    #5 0x7fd316820139  (/lib64/ld-linux-x86-64.so.2+0x1139) (BuildId: 4587364908de169dec62ffa538170118c1c3a078)
+
+==2728160==HINT: if you don't care about these errors you may set ASAN_OPTIONS=detect_odr_violation=0
+SUMMARY: AddressSanitizer: odr-violation: global 'foo::G' at /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+==2728160==ABORTING
+=================================================================
+==2730437==ERROR: AddressSanitizer: odr-violation (0x55bef6f5c140):
+  [1] size=100 'foo::G' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+  [2] size=100 'foo::G' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:56
+These globals were registered at these points:
+  [1]:
+    #0 0x7f3c4abad190 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x55bef6f585de in asan.module_ctor odr-violation.cpp
+    #2 0x55bef6f5865c in __libc_csu_init (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/odr-violation.cpp.tmp-ODR-EXE+0x265c)
+    #3 0x7f3c4a60a00f in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:264:6
+    #4 0x55bef6f5715d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/odr-violation.cpp.tmp-ODR-EXE+0x115d)
+
+  [2]:
+    #0 0x7f3c4abad190 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x7f3c4ab3456e in asan.module_ctor odr-violation.cpp
+    #2 0x7f3c4b6aeb99 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:72:3
+    #3 0x7f3c4b6aeca0 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:30:6
+    #4 0x7f3c4b6aeca0 in _dl_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:119:5
+    #5 0x7f3c4b69e139  (/lib64/ld-linux-x86-64.so.2+0x1139) (BuildId: 4587364908de169dec62ffa538170118c1c3a078)
+
+==2730437==HINT: if you don't care about these errors you may set ASAN_OPTIONS=detect_odr_violation=0
+SUMMARY: AddressSanitizer: odr-violation: global 'foo::G' at /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-violation.cpp:59
+==2730437==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/odr-violation.cpp <<TAIL<<

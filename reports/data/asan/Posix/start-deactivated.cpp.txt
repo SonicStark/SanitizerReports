@@ -1,0 +1,285 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/start-deactivated.cpp <<HEAD<<
+
+==2799567==WARNING: AddressSanitizer failed to allocate 0xfffffffffffffffe bytes
+=================================================================
+==2799567==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60b000000ba9 at pc 0x7f78c8dc36b3 bp 0x7ffe32d15ed0 sp 0x7ffe32d15ec8
+READ of size 1 at 0x60b000000ba9 thread T0
+    #0 0x7f78c8dc36b2 in do_another_bad_thing /home/llvm/compiler-rt/test/asan/TestCases/Posix/start-deactivated.cpp:131:20
+    #1 0x55fff822fc2e in main (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/start-deactivated.cpp.tmp+0x14dc2e)
+    #2 0x7f78c919d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55fff810037d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/start-deactivated.cpp.tmp+0x1e37d)
+
+0x60b000000ba9 is located 5 bytes after 100-byte region [0x60b000000b40,0x60b000000ba4)
+allocated by thread T0 here:
+    #0 0x55fff81e5007 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x7f78c8dc3646 in do_another_bad_thing /home/llvm/compiler-rt/test/asan/TestCases/Posix/start-deactivated.cpp:130:30
+    #2 0x55fff822fc2e in main (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/start-deactivated.cpp.tmp+0x14dc2e)
+    #3 0x7f78c919d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Posix/start-deactivated.cpp:131:20 in do_another_bad_thing
+Shadow bytes around the buggy address:
+  0x60b000000900: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x60b000000980: fd fd fd fd fa fa fd fd fd fd fd fd fd fd fd fd
+  0x60b000000a00: fd fd fd fd fd fd fd fd fd fd fa fa fd fd fd fd
+  0x60b000000a80: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x60b000000b00: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+=>0x60b000000b80: 00 00 00 00 04[fa]fa fa fa fa fa fa fa fa fa fa
+  0x60b000000c00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000c80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000d00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000d80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60b000000e00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2799567==ABORTING
+Available flags for AddressSanitizer:
+	redzone
+		-  (Current Value: 16)
+	max_redzone
+		-  (Current Value: 2048)
+	quarantine_size_mb
+		-  (Current Value: 256)
+	thread_local_quarantine_size_kb
+		-  (Current Value: 1024)
+	alloc_dealloc_mismatch
+		-  (Current Value: true)
+	poison_heap
+		-  (Current Value: true)
+	allocator_may_return_null
+		-  (Current Value: false)
+	malloc_context_size
+		-  (Current Value: 30)
+	coverage
+		-  (Current Value: false)
+	coverage_dir
+		-  (Current Value: .)
+	verbosity
+		-  (Current Value: 0)
+	help
+		-  (Current Value: true)
+	allocator_release_to_os_interval_ms
+		-  (Current Value: 5000)
+	include
+		- read more options from the given file (Current Value: )
+	include_if_exists
+		- read more options from the given file (if it exists) (Current Value: )
+=================================================================
+==2799969==ERROR: AddressSanitizer: requested allocation size 0xfffffffffffffffe (0x800 after adjustments for alignment, red zones etc.) exceeds maximum supported size of 0x10000000000 (thread T0)
+    #0 0x56233e781007 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x56233e7cbbe0 in main (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/start-deactivated.cpp.tmp+0x14dbe0)
+    #2 0x7f45a78f1082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+==2799969==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: allocation-size-too-big /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3 in malloc
+==2799969==ABORTING
+==2800270==Registered root region at 0x7fe4ca6007a0 of size 32
+==2800270==Registered root region at 0x7fe4ca202dc0 of size 192
+==2800270==Unregistered root region at 0x7fe4ca202dc0 of size 192
+==2800270==AddressSanitizer: failed to intercept '__isoc99_printf'
+==2800270==Registered root region at 0x7fe4ca202dc0 of size 192
+==2800270==Unregistered root region at 0x7fe4ca202dc0 of size 192
+==2800270==AddressSanitizer: failed to intercept '__isoc99_sprintf'
+==2800270==Registered root region at 0x7fe4ca003190 of size 208
+==2800270==Unregistered root region at 0x7fe4ca003190 of size 208
+==2800270==AddressSanitizer: failed to intercept '__isoc99_snprintf'
+==2800270==Registered root region at 0x7fe4ca202dc0 of size 192
+==2800270==Unregistered root region at 0x7fe4ca202dc0 of size 192
+==2800270==AddressSanitizer: failed to intercept '__isoc99_fprintf'
+==2800270==Registered root region at 0x7fe4ca202dc0 of size 192
+==2800270==Unregistered root region at 0x7fe4ca202dc0 of size 192
+==2800270==AddressSanitizer: failed to intercept '__isoc99_vprintf'
+==2800270==Registered root region at 0x7fe4ca003190 of size 208
+==2800270==Unregistered root region at 0x7fe4ca003190 of size 208
+==2800270==AddressSanitizer: failed to intercept '__isoc99_vsprintf'
+==2800270==Registered root region at 0x7fe4ca003190 of size 208
+==2800270==Unregistered root region at 0x7fe4ca003190 of size 208
+==2800270==AddressSanitizer: failed to intercept '__isoc99_vsnprintf'
+==2800270==Registered root region at 0x7fe4ca003190 of size 208
+==2800270==Unregistered root region at 0x7fe4ca003190 of size 208
+==2800270==AddressSanitizer: failed to intercept '__isoc99_vfprintf'
+==2800270==Registered root region at 0x7fe4ca202dc0 of size 192
+==2800270==Unregistered root region at 0x7fe4ca202dc0 of size 192
+==2800270==AddressSanitizer: failed to intercept 'xdr_destroy'
+==2800270==Registered root region at 0x7fe4ca202dc0 of size 192
+==2800270==Unregistered root region at 0x7fe4ca202dc0 of size 192
+==2800270==AddressSanitizer: failed to intercept 'crypt'
+==2800270==Registered root region at 0x7fe4ca202dc0 of size 192
+==2800270==Unregistered root region at 0x7fe4ca202dc0 of size 192
+==2800270==AddressSanitizer: failed to intercept 'crypt_r'
+==2800270==Registered root region at 0x7fe4ca003190 of size 208
+==2800270==Unregistered root region at 0x7fe4ca003190 of size 208
+==2800270==AddressSanitizer: failed to intercept '__cxa_rethrow_primary_exception'
+==2800270==AddressSanitizer: libc interceptors initialized
+|| `[0x10007fff8000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x02008fff7000, 0x10007fff7fff]` || HighShadow ||
+|| `[0x00008fff7000, 0x02008fff6fff]` || ShadowGap  ||
+|| `[0x00007fff8000, 0x00008fff6fff]` || LowShadow  ||
+|| `[0x000000000000, 0x00007fff7fff]` || LowMem     ||
+MemToShadow(shadow): 0x00008fff7000 0x000091ff6dff 0x004091ff6e00 0x02008fff6fff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=256M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x7fff8000
+==2800270==Installed the sigaction for signal 11
+==2800270==Installed the sigaction for signal 7
+==2800270==Installed the sigaction for signal 8
+==2800270==Deactivating ASan
+==2800270==T0: FakeStack created: 0x7fe4c84f7000 -- 0x7fe4c9000000 stack_size_log: 20; mmapped 11300K, noreserve=0 
+==2800270==T0: stack [0x7ffe79f76000,0x7ffe7a776000) size 0x800000; local=0x7ffe7a774eac
+==2800270==AddressSanitizer Init done
+==2800270==Activating ASan
+WARNING: found 1 unrecognized flag(s):
+    handle_segv
+Available flags for AddressSanitizer:
+	redzone
+		-  (Current Value: 16)
+	max_redzone
+		-  (Current Value: 2048)
+	quarantine_size_mb
+		-  (Current Value: 256)
+	thread_local_quarantine_size_kb
+		-  (Current Value: 1024)
+	alloc_dealloc_mismatch
+		-  (Current Value: true)
+	poison_heap
+		-  (Current Value: true)
+	allocator_may_return_null
+		-  (Current Value: false)
+	malloc_context_size
+		-  (Current Value: 30)
+	coverage
+		-  (Current Value: false)
+	coverage_dir
+		-  (Current Value: .)
+	verbosity
+		-  (Current Value: 1)
+	help
+		-  (Current Value: true)
+	allocator_release_to_os_interval_ms
+		-  (Current Value: 5000)
+	include
+		- read more options from the given file (Current Value: )
+	include_if_exists
+		- read more options from the given file (if it exists) (Current Value: )
+==2800270==Activated with flags:
+==2800270==quarantine_size_mb 256, thread_local_quarantine_size_kb 1024, max_redzone 2048, poison_heap 1, malloc_context_size 30, alloc_dealloc_mismatch 1, allocator_may_return_null 0, coverage 0, coverage_dir ., allocator_release_to_os_interval_ms 5000
+=================================================================
+==2800270==ERROR: AddressSanitizer: requested allocation size 0xfffffffffffffffe (0x800 after adjustments for alignment, red zones etc.) exceeds maximum supported size of 0x10000000000 (thread T0)
+    #0 0x556dab881007 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x556dab8cbbe0 in main (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/start-deactivated.cpp.tmp+0x14dbe0)
+    #2 0x7fe4caaf4082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+==2800270==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: allocation-size-too-big /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3 in malloc
+==2800270==ABORTING
+Available flags for AddressSanitizer:
+	redzone
+		-  (Current Value: 16)
+	max_redzone
+		-  (Current Value: 2048)
+	quarantine_size_mb
+		-  (Current Value: 256)
+	thread_local_quarantine_size_kb
+		-  (Current Value: 1024)
+	alloc_dealloc_mismatch
+		-  (Current Value: true)
+	poison_heap
+		-  (Current Value: true)
+	allocator_may_return_null
+		-  (Current Value: false)
+	malloc_context_size
+		-  (Current Value: 30)
+	coverage
+		-  (Current Value: false)
+	coverage_dir
+		-  (Current Value: .)
+	verbosity
+		-  (Current Value: 0)
+	help
+		-  (Current Value: true)
+	allocator_release_to_os_interval_ms
+		-  (Current Value: 5000)
+	include
+		- read more options from the given file (Current Value: )
+	include_if_exists
+		- read more options from the given file (if it exists) (Current Value: )
+=================================================================
+==2800638==ERROR: AddressSanitizer: requested allocation size 0xfffffffffffffffe (0x800 after adjustments for alignment, red zones etc.) exceeds maximum supported size of 0x10000000000 (thread T0)
+    #0 0x565352c3d007 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x565352c87be0 in main (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/start-deactivated.cpp.tmp+0x14dbe0)
+    #2 0x7f7cad01a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+==2800638==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: allocation-size-too-big /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3 in malloc
+==2800638==ABORTING
+WARNING: found 1 unrecognized flag(s):
+    handle_segv
+Available flags for AddressSanitizer:
+	redzone
+		-  (Current Value: 16)
+	max_redzone
+		-  (Current Value: 2048)
+	quarantine_size_mb
+		-  (Current Value: 256)
+	thread_local_quarantine_size_kb
+		-  (Current Value: 1024)
+	alloc_dealloc_mismatch
+		-  (Current Value: true)
+	poison_heap
+		-  (Current Value: true)
+	allocator_may_return_null
+		-  (Current Value: false)
+	malloc_context_size
+		-  (Current Value: 30)
+	coverage
+		-  (Current Value: false)
+	coverage_dir
+		-  (Current Value: .)
+	verbosity
+		-  (Current Value: 1)
+	help
+		-  (Current Value: true)
+	allocator_release_to_os_interval_ms
+		-  (Current Value: 5000)
+	include
+		- read more options from the given file (Current Value: )
+	include_if_exists
+		- read more options from the given file (if it exists) (Current Value: )
+==2800968==Activated with flags:
+==2800968==quarantine_size_mb 256, thread_local_quarantine_size_kb 1024, max_redzone 2048, poison_heap 1, malloc_context_size 30, alloc_dealloc_mismatch 1, allocator_may_return_null 0, coverage 0, coverage_dir ., allocator_release_to_os_interval_ms 5000
+=================================================================
+==2800968==ERROR: AddressSanitizer: requested allocation size 0xfffffffffffffffe (0x800 after adjustments for alignment, red zones etc.) exceeds maximum supported size of 0x10000000000 (thread T0)
+    #0 0x56196ebf5007 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x56196ec3fbe0 in main (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/start-deactivated.cpp.tmp+0x14dbe0)
+    #2 0x7f0e92f0e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+==2800968==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: allocation-size-too-big /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3 in malloc
+==2800968==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/start-deactivated.cpp <<TAIL<<

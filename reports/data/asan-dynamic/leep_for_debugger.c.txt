@@ -1,0 +1,132 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/sleep_for_debugger.c <<HEAD<<
+
+==2738325==Sleeping for 1 second(s) before init
+==2738325==Registered root region at 0x7f3e9db007a0 of size 32
+==2738325==Registered root region at 0x7f3e9d702620 of size 160
+==2738325==Unregistered root region at 0x7f3e9d702620 of size 160
+==2738325==AddressSanitizer: failed to intercept '__isoc99_printf'
+==2738325==Registered root region at 0x7f3e9d702620 of size 160
+==2738325==Unregistered root region at 0x7f3e9d702620 of size 160
+==2738325==AddressSanitizer: failed to intercept '__isoc99_sprintf'
+==2738325==Registered root region at 0x7f3e9d702620 of size 160
+==2738325==Unregistered root region at 0x7f3e9d702620 of size 160
+==2738325==AddressSanitizer: failed to intercept '__isoc99_snprintf'
+==2738325==Registered root region at 0x7f3e9d702620 of size 160
+==2738325==Unregistered root region at 0x7f3e9d702620 of size 160
+==2738325==AddressSanitizer: failed to intercept '__isoc99_fprintf'
+==2738325==Registered root region at 0x7f3e9d702620 of size 160
+==2738325==Unregistered root region at 0x7f3e9d702620 of size 160
+==2738325==AddressSanitizer: failed to intercept '__isoc99_vprintf'
+==2738325==Registered root region at 0x7f3e9d702620 of size 160
+==2738325==Unregistered root region at 0x7f3e9d702620 of size 160
+==2738325==AddressSanitizer: failed to intercept '__isoc99_vsprintf'
+==2738325==Registered root region at 0x7f3e9d702620 of size 160
+==2738325==Unregistered root region at 0x7f3e9d702620 of size 160
+==2738325==AddressSanitizer: failed to intercept '__isoc99_vsnprintf'
+==2738325==Registered root region at 0x7f3e9d702620 of size 160
+==2738325==Unregistered root region at 0x7f3e9d702620 of size 160
+==2738325==AddressSanitizer: failed to intercept '__isoc99_vfprintf'
+==2738325==Registered root region at 0x7f3e9d702620 of size 160
+==2738325==Unregistered root region at 0x7f3e9d702620 of size 160
+==2738325==AddressSanitizer: failed to intercept '__b64_ntop'
+==2738325==Registered root region at 0x7f3e9d702620 of size 160
+==2738325==Unregistered root region at 0x7f3e9d702620 of size 160
+==2738325==AddressSanitizer: failed to intercept '__b64_pton'
+==2738325==Registered root region at 0x7f3e9d702620 of size 160
+==2738325==Unregistered root region at 0x7f3e9d702620 of size 160
+==2738325==AddressSanitizer: failed to intercept '__dn_comp'
+==2738325==Registered root region at 0x7f3e9d702620 of size 160
+==2738325==Unregistered root region at 0x7f3e9d702620 of size 160
+==2738325==AddressSanitizer: failed to intercept '__dn_expand'
+==2738325==Registered root region at 0x7f3e9d702620 of size 160
+==2738325==Unregistered root region at 0x7f3e9d702620 of size 160
+==2738325==AddressSanitizer: failed to intercept 'xdr_destroy'
+==2738325==Registered root region at 0x7f3e9d702620 of size 160
+==2738325==Unregistered root region at 0x7f3e9d702620 of size 160
+==2738325==AddressSanitizer: failed to intercept 'crypt'
+==2738325==Registered root region at 0x7f3e9d702620 of size 160
+==2738325==Unregistered root region at 0x7f3e9d702620 of size 160
+==2738325==AddressSanitizer: failed to intercept 'crypt_r'
+==2738325==Registered root region at 0x7f3e9d5029f0 of size 176
+==2738325==Unregistered root region at 0x7f3e9d5029f0 of size 176
+==2738325==AddressSanitizer: failed to intercept '__cxa_rethrow_primary_exception'
+==2738325==AddressSanitizer: libc interceptors initialized
+|| `[0x10007fff8000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x02008fff7000, 0x10007fff7fff]` || HighShadow ||
+|| `[0x00008fff7000, 0x02008fff6fff]` || ShadowGap  ||
+|| `[0x00007fff8000, 0x00008fff6fff]` || LowShadow  ||
+|| `[0x000000000000, 0x00007fff7fff]` || LowMem     ||
+MemToShadow(shadow): 0x00008fff7000 0x000091ff6dff 0x004091ff6e00 0x02008fff6fff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=256M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x7fff8000
+==2738325==Installed the sigaction for signal 11
+==2738325==Installed the sigaction for signal 7
+==2738325==Installed the sigaction for signal 8
+==2738325==T0: FakeStack created: 0x7f3e9b9f7000 -- 0x7f3e9c500000 stack_size_log: 20; mmapped 11300K, noreserve=0 
+==2738325==T0: stack [0x7ffd895d6000,0x7ffd89dd6000) size 0x800000; local=0x7ffd89dd3e0c
+==2738325==AddressSanitizer Init done
+==2738325==Sleeping for 1 second(s) after init
+=================================================================
+==2738325==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000015 at pc 0x55ef494f05cc bp 0x7ffd89dd3df0 sp 0x7ffd89dd3de8
+READ of size 1 at 0x602000000015 thread T0
+    #0 0x55ef494f05cb in main /home/llvm/compiler-rt/test/asan/TestCases/sleep_for_debugger.c:9:10
+    #1 0x7f3e9e3c9082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55ef494ef14d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/sleep_for_debugger.c.tmp+0x114d)
+
+0x602000000015 is located 5 bytes inside of 10-byte region [0x602000000010,0x60200000001a)
+freed by thread T0 here:
+    #0 0x7f3e9e6e16c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x55ef494f059a in main /home/llvm/compiler-rt/test/asan/TestCases/sleep_for_debugger.c:8:3
+    #2 0x7f3e9e3c9082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x7f3e9e6e2427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55ef494f058f in main /home/llvm/compiler-rt/test/asan/TestCases/sleep_for_debugger.c:7:20
+    #2 0x7f3e9e3c9082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/test/asan/TestCases/sleep_for_debugger.c:9:10 in main
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fd fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2738325==ABORTING
+==2738325==Sleeping for 1 second(s) before dying
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/sleep_for_debugger.c <<TAIL<<

@@ -1,0 +1,561 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/use-after-scope-types.cpp <<HEAD<<
+
+=================================================================
+==2742085==ERROR: AddressSanitizer: stack-use-after-scope on address 0x7f623f800040 at pc 0x55b02dabbaea bp 0x7ffef6c395c0 sp 0x7ffef6c395b8
+WRITE of size 1 at 0x7f623f800040 thread T0
+    #0 0x55b02dabbae9 in Ptr<bool>::Access() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:21:22
+    #1 0x55b02dabaabe in void test<bool>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:42:7
+    #2 0x55b02daba928 in main /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:70:5
+    #3 0x7f6241d35082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55b02dab92cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/use-after-scope-types.cpp.tmp+0x22cd)
+
+Address 0x7f623f800040 is located in stack of thread T0 at offset 64 in frame
+    #0 0x55b02daba9df in void test<bool>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:35
+
+  This frame has 2 object(s):
+    [32, 40) 'ptr' (line 36)
+    [64, 65) 'x' (line 38) <== Memory access at offset 64 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-scope /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:21:22 in Ptr<bool>::Access()
+Shadow bytes around the buggy address:
+  0x7f623f7ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f623f7ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f623f7ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f623f7fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f623f7fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f623f800000: f1 f1 f1 f1 00 f2 f2 f2[f8]f3 f3 f3 00 00 00 00
+  0x7f623f800080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f623f800100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f623f800180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f623f800200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f623f800280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2742085==ABORTING
+=================================================================
+==2742641==ERROR: AddressSanitizer: stack-use-after-scope on address 0x7f8390e00040 at pc 0x565307f65bba bp 0x7ffe1bcdb180 sp 0x7ffe1bcdb178
+WRITE of size 1 at 0x7f8390e00040 thread T0
+    #0 0x565307f65bb9 in Ptr<char>::Access() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:21:22
+    #1 0x565307f64c1e in void test<char>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:42:7
+    #2 0x565307f64928 in main /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:70:5
+    #3 0x7f83933cb082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x565307f632cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/use-after-scope-types.cpp.tmp+0x22cd)
+
+Address 0x7f8390e00040 is located in stack of thread T0 at offset 64 in frame
+    #0 0x565307f64b3f in void test<char>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:35
+
+  This frame has 2 object(s):
+    [32, 40) 'ptr' (line 36)
+    [64, 65) 'x' (line 38) <== Memory access at offset 64 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-scope /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:21:22 in Ptr<char>::Access()
+Shadow bytes around the buggy address:
+  0x7f8390dffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8390dffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8390dffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8390dfff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8390dfff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f8390e00000: f1 f1 f1 f1 00 f2 f2 f2[f8]f3 f3 f3 00 00 00 00
+  0x7f8390e00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8390e00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8390e00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8390e00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8390e00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2742641==ABORTING
+=================================================================
+==2743608==ERROR: AddressSanitizer: stack-use-after-scope on address 0x7ff9c9e00040 at pc 0x558639a1fc8e bp 0x7ffe51ebab20 sp 0x7ffe51ebab18
+WRITE of size 4 at 0x7ff9c9e00040 thread T0
+    #0 0x558639a1fc8d in Ptr<int>::Access() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:21:22
+    #1 0x558639a1ed7e in void test<int>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:42:7
+    #2 0x558639a1e928 in main /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:70:5
+    #3 0x7ff9cc2e3082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x558639a1d2cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/use-after-scope-types.cpp.tmp+0x22cd)
+
+Address 0x7ff9c9e00040 is located in stack of thread T0 at offset 64 in frame
+    #0 0x558639a1ec9f in void test<int>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:35
+
+  This frame has 2 object(s):
+    [32, 40) 'ptr' (line 36)
+    [64, 68) 'x' (line 38) <== Memory access at offset 64 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-scope /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:21:22 in Ptr<int>::Access()
+Shadow bytes around the buggy address:
+  0x7ff9c9dffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ff9c9dffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ff9c9dffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ff9c9dfff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ff9c9dfff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7ff9c9e00000: f1 f1 f1 f1 00 f2 f2 f2[f8]f3 f3 f3 00 00 00 00
+  0x7ff9c9e00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ff9c9e00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ff9c9e00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ff9c9e00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ff9c9e00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2743608==ABORTING
+=================================================================
+==2744278==ERROR: AddressSanitizer: stack-use-after-scope on address 0x7f6ec4d00040 at pc 0x55fe4e1c3d43 bp 0x7ffef2f8a020 sp 0x7ffef2f8a018
+WRITE of size 8 at 0x7f6ec4d00040 thread T0
+    #0 0x55fe4e1c3d42 in Ptr<double>::Access() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:21:22
+    #1 0x55fe4e1c2ede in void test<double>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:42:7
+    #2 0x55fe4e1c2928 in main /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:70:5
+    #3 0x7f6ec7291082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55fe4e1c12cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/use-after-scope-types.cpp.tmp+0x22cd)
+
+Address 0x7f6ec4d00040 is located in stack of thread T0 at offset 64 in frame
+    #0 0x55fe4e1c2dff in void test<double>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:35
+
+  This frame has 2 object(s):
+    [32, 40) 'ptr' (line 36)
+    [64, 72) 'x' (line 38) <== Memory access at offset 64 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-scope /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:21:22 in Ptr<double>::Access()
+Shadow bytes around the buggy address:
+  0x7f6ec4cffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6ec4cffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6ec4cffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6ec4cfff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6ec4cfff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f6ec4d00000: f1 f1 f1 f1 00 f2 f2 f2[f8]f3 f3 f3 00 00 00 00
+  0x7f6ec4d00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6ec4d00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6ec4d00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6ec4d00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6ec4d00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2744278==ABORTING
+=================================================================
+==2744572==ERROR: AddressSanitizer: stack-use-after-scope on address 0x7fcbb6200040 at pc 0x5609715e8e1e bp 0x7ffc3feff060 sp 0x7ffc3feff058
+WRITE of size 4 at 0x7fcbb6200040 thread T0
+    #0 0x5609715e8e1d in Ptr<float>::Access() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:21:22
+    #1 0x5609715e803e in void test<float>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:42:7
+    #2 0x5609715e7928 in main /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:70:5
+    #3 0x7fcbb86fc082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x5609715e62cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/use-after-scope-types.cpp.tmp+0x22cd)
+
+Address 0x7fcbb6200040 is located in stack of thread T0 at offset 64 in frame
+    #0 0x5609715e7f5f in void test<float>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:35
+
+  This frame has 2 object(s):
+    [32, 40) 'ptr' (line 36)
+    [64, 68) 'x' (line 38) <== Memory access at offset 64 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-scope /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:21:22 in Ptr<float>::Access()
+Shadow bytes around the buggy address:
+  0x7fcbb61ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcbb61ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcbb61ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcbb61fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcbb61fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fcbb6200000: f1 f1 f1 f1 00 f2 f2 f2[f8]f3 f3 f3 00 00 00 00
+  0x7fcbb6200080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcbb6200100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcbb6200180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcbb6200200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcbb6200280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2744572==ABORTING
+=================================================================
+==2744587==ERROR: AddressSanitizer: stack-use-after-scope on address 0x7efe0f400040 at pc 0x56088c7a5ed3 bp 0x7ffe87a9e000 sp 0x7ffe87a9dff8
+WRITE of size 8 at 0x7efe0f400040 thread T0
+    #0 0x56088c7a5ed2 in Ptr<void*>::Access() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:21:22
+    #1 0x56088c7a519e in void test<void*>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:42:7
+    #2 0x56088c7a4928 in main /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:70:5
+    #3 0x7efe11907082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x56088c7a32cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/use-after-scope-types.cpp.tmp+0x22cd)
+
+Address 0x7efe0f400040 is located in stack of thread T0 at offset 64 in frame
+    #0 0x56088c7a50bf in void test<void*>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:35
+
+  This frame has 2 object(s):
+    [32, 40) 'ptr' (line 36)
+    [64, 72) 'x' (line 38) <== Memory access at offset 64 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-scope /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:21:22 in Ptr<void*>::Access()
+Shadow bytes around the buggy address:
+  0x7efe0f3ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7efe0f3ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7efe0f3ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7efe0f3fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7efe0f3fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7efe0f400000: f1 f1 f1 f1 00 f2 f2 f2[f8]f3 f3 f3 00 00 00 00
+  0x7efe0f400080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7efe0f400100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7efe0f400180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7efe0f400200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7efe0f400280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2744587==ABORTING
+=================================================================
+==2744604==ERROR: AddressSanitizer: stack-use-after-scope on address 0x7fa3d9200050 at pc 0x55af3e557066 bp 0x7ffd56c124c0 sp 0x7ffd56c124b8
+READ of size 8 at 0x7fa3d9200050 thread T0
+    #0 0x55af3e557065 in std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>>>::capacity() const /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_vector.h:996:40
+    #1 0x55af3e55689d in void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>>>::_M_assign_aux<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const*>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const*, std::forward_iterator_tag) /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/vector.tcc:306:14
+    #2 0x55af3e55671d in std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>>>::operator=(std::initializer_list<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>>) /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_vector.h:729:8
+    #3 0x55af3e556164 in Ptr<std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>>>>::Access() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:21:22
+    #4 0x55af3e555336 in void test<std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>>>>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:42:7
+    #5 0x55af3e554928 in main /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:70:5
+    #6 0x7fa3db6e7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #7 0x55af3e5532cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/use-after-scope-types.cpp.tmp+0x22cd)
+
+Address 0x7fa3d9200050 is located in stack of thread T0 at offset 80 in frame
+    #0 0x55af3e55521f in void test<std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>>>>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:35
+
+  This frame has 2 object(s):
+    [32, 40) 'ptr' (line 36)
+    [64, 88) 'x' (line 38) <== Memory access at offset 80 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-scope /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_vector.h:996:40 in std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>>>::capacity() const
+Shadow bytes around the buggy address:
+  0x7fa3d91ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa3d91ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa3d91ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa3d91fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa3d91fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fa3d9200000: f1 f1 f1 f1 00 f2 f2 f2 f8 f8[f8]f3 f3 f3 f3 f3
+  0x7fa3d9200080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa3d9200100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa3d9200180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa3d9200200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa3d9200280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2744604==ABORTING
+=================================================================
+==2744620==ERROR: AddressSanitizer: stack-use-after-scope on address 0x7fdad7000040 at pc 0x55bb16bf7eee bp 0x7ffe259eaf40 sp 0x7ffe259eaf38
+WRITE of size 4 at 0x7fdad7000040 thread T0
+    #0 0x55bb16bf7eed in Ptr<int [3]>::Access() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:30:22
+    #1 0x55bb16bf5532 in void test<int [3]>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:42:7
+    #2 0x55bb16bf4928 in main /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:70:5
+    #3 0x7fdad9532082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55bb16bf32cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/use-after-scope-types.cpp.tmp+0x22cd)
+
+Address 0x7fdad7000040 is located in stack of thread T0 at offset 64 in frame
+    #0 0x55bb16bf544f in void test<int [3]>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:35
+
+  This frame has 2 object(s):
+    [32, 40) 'ptr' (line 36)
+    [64, 76) 'x' (line 38) <== Memory access at offset 64 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-scope /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:30:22 in Ptr<int [3]>::Access()
+Shadow bytes around the buggy address:
+  0x7fdad6fffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdad6fffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdad6fffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdad6ffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdad6ffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fdad7000000: f1 f1 f1 f1 00 f2 f2 f2[f8]f8 f3 f3 00 00 00 00
+  0x7fdad7000080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdad7000100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdad7000180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdad7000200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdad7000280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2744620==ABORTING
+=================================================================
+==2744634==ERROR: AddressSanitizer: stack-use-after-scope on address 0x7f64a8700040 at pc 0x557ef41b0fbe bp 0x7ffc4a0645e0 sp 0x7ffc4a0645d8
+WRITE of size 4 at 0x7f64a8700040 thread T0
+    #0 0x557ef41b0fbd in Ptr<int [1000]>::Access() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:30:22
+    #1 0x557ef41ae6d6 in void test<int [1000]>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:42:7
+    #2 0x557ef41ad928 in main /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:70:5
+    #3 0x7f64aa633082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x557ef41ac2cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/use-after-scope-types.cpp.tmp+0x22cd)
+
+Address 0x7f64a8700040 is located in stack of thread T0 at offset 64 in frame
+    #0 0x557ef41ae5af in void test<int [1000]>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:35
+
+  This frame has 2 object(s):
+    [32, 40) 'ptr' (line 36)
+    [64, 4064) 'x' (line 38) <== Memory access at offset 64 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-scope /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:30:22 in Ptr<int [1000]>::Access()
+Shadow bytes around the buggy address:
+  0x7f64a86ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f64a86ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f64a86ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f64a86fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f64a86fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f64a8700000: f1 f1 f1 f1 00 f2 f2 f2[f8]f8 f8 f8 f8 f8 f8 f8
+  0x7f64a8700080: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7f64a8700100: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7f64a8700180: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7f64a8700200: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7f64a8700280: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2744634==ABORTING
+=================================================================
+==2744681==ERROR: AddressSanitizer: stack-use-after-scope on address 0x7fe4f7800040 at pc 0x56066be1308a bp 0x7ffef7c9de00 sp 0x7ffef7c9ddf8
+WRITE of size 1 at 0x7fe4f7800040 thread T0
+    #0 0x56066be13089 in Ptr<char [3]>::Access() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:30:22
+    #1 0x56066be1081e in void test<char [3]>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:42:7
+    #2 0x56066be0f928 in main /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:70:5
+    #3 0x7fe4f9d10082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x56066be0e2cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/use-after-scope-types.cpp.tmp+0x22cd)
+
+Address 0x7fe4f7800040 is located in stack of thread T0 at offset 64 in frame
+    #0 0x56066be1073f in void test<char [3]>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:35
+
+  This frame has 2 object(s):
+    [32, 40) 'ptr' (line 36)
+    [64, 67) 'x' (line 38) <== Memory access at offset 64 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-scope /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:30:22 in Ptr<char [3]>::Access()
+Shadow bytes around the buggy address:
+  0x7fe4f77ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fe4f77ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fe4f77ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fe4f77fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fe4f77fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fe4f7800000: f1 f1 f1 f1 00 f2 f2 f2[f8]f3 f3 f3 00 00 00 00
+  0x7fe4f7800080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fe4f7800100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fe4f7800180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fe4f7800200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fe4f7800280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2744681==ABORTING
+=================================================================
+==2744685==ERROR: AddressSanitizer: stack-use-after-scope on address 0x7f6f0f100040 at pc 0x56419ed2215a bp 0x7ffd1fd334c0 sp 0x7ffd1fd334b8
+WRITE of size 1 at 0x7f6f0f100040 thread T0
+    #0 0x56419ed22159 in Ptr<char [1000]>::Access() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:30:22
+    #1 0x56419ed1f9d6 in void test<char [1000]>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:42:7
+    #2 0x56419ed1e928 in main /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:70:5
+    #3 0x7f6f112cf082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x56419ed1d2cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/use-after-scope-types.cpp.tmp+0x22cd)
+
+Address 0x7f6f0f100040 is located in stack of thread T0 at offset 64 in frame
+    #0 0x56419ed1f89f in void test<char [1000]>() /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:35
+
+  This frame has 2 object(s):
+    [32, 40) 'ptr' (line 36)
+    [64, 1064) 'x' (line 38) <== Memory access at offset 64 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-scope /home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-types.cpp:30:22 in Ptr<char [1000]>::Access()
+Shadow bytes around the buggy address:
+  0x7f6f0f0ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6f0f0ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6f0f0ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6f0f0fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6f0f0fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f6f0f100000: f1 f1 f1 f1 00 f2 f2 f2[f8]f8 f8 f8 f8 f8 f8 f8
+  0x7f6f0f100080: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7f6f0f100100: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7f6f0f100180: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7f6f0f100200: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7f6f0f100280: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2744685==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/use-after-scope-types.cpp <<TAIL<<

@@ -1,0 +1,587 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/memset_test.cpp <<HEAD<<
+
+=================================================================
+==2736824==ERROR: AddressSanitizer: use-after-poison on address 0x61f000000280 at pc 0x7f176455391a bp 0x7ffe58903ff0 sp 0x7ffe589037b0
+WRITE of size 3000 at 0x61f000000280 thread T0
+    #0 0x7f1764553919 in __asan_memset /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:26:3
+    #1 0x557a69e9e73f in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:46:3
+    #2 0x7f1763ef0082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x557a69e9d1bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/memset_test.cpp.tmp+0x11bd)
+
+0x61f000000c38 is located 0 bytes after 3000-byte region [0x61f000000080,0x61f000000c38)
+allocated by thread T0 here:
+    #0 0x7f1764555427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x557a69e9e6ca in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:43:31
+    #2 0x7f1763ef0082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:26:3 in __asan_memset
+Shadow bytes around the buggy address:
+  0x61f000000000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x61f000000080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x61f000000280:[f7]f7 f7 f7 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000500: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2736824==ABORTING
+=================================================================
+==2737762==ERROR: AddressSanitizer: use-after-poison on address 0x61f000000280 at pc 0x7f8c6ed8f91a bp 0x7fffba7da1b0 sp 0x7fffba7d9970
+WRITE of size 3000 at 0x61f000000280 thread T0
+    #0 0x7f8c6ed8f919 in __asan_memset /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:26:3
+    #1 0x558fa754f6d5 in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:46:3
+    #2 0x7f8c6e72c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x558fa754e1bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/memset_test.cpp.tmp+0x11bd)
+
+0x61f000000c38 is located 0 bytes after 3000-byte region [0x61f000000080,0x61f000000c38)
+allocated by thread T0 here:
+    #0 0x7f8c6ed91427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x558fa754f68e in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:43:31
+    #2 0x7f8c6e72c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:26:3 in __asan_memset
+Shadow bytes around the buggy address:
+  0x61f000000000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x61f000000080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x61f000000280:[f7]f7 f7 f7 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000500: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2737762==ABORTING
+=================================================================
+==2738397==ERROR: AddressSanitizer: use-after-poison on address 0x61f000000280 at pc 0x7f36528ab91a bp 0x7ffceaea1410 sp 0x7ffceaea0bd0
+WRITE of size 3000 at 0x61f000000280 thread T0
+    #0 0x7f36528ab919 in __asan_memset /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:26:3
+    #1 0x55fd67f2d6d5 in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:46:3
+    #2 0x7f3652248082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55fd67f2c1bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/memset_test.cpp.tmp+0x11bd)
+
+0x61f000000c38 is located 0 bytes after 3000-byte region [0x61f000000080,0x61f000000c38)
+allocated by thread T0 here:
+    #0 0x7f36528ad427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55fd67f2d68e in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:43:31
+    #2 0x7f3652248082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:26:3 in __asan_memset
+Shadow bytes around the buggy address:
+  0x61f000000000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x61f000000080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x61f000000280:[f7]f7 f7 f7 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000500: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2738397==ABORTING
+=================================================================
+==2738891==ERROR: AddressSanitizer: use-after-poison on address 0x61f000000280 at pc 0x7fa3e992791a bp 0x7ffe07c98350 sp 0x7ffe07c97b10
+WRITE of size 3000 at 0x61f000000280 thread T0
+    #0 0x7fa3e9927919 in __asan_memset /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:26:3
+    #1 0x5622858b96d5 in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:46:3
+    #2 0x7fa3e92c4082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5622858b81bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/memset_test.cpp.tmp+0x11bd)
+
+0x61f000000c38 is located 0 bytes after 3000-byte region [0x61f000000080,0x61f000000c38)
+allocated by thread T0 here:
+    #0 0x7fa3e9929427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x5622858b968e in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:43:31
+    #2 0x7fa3e92c4082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:26:3 in __asan_memset
+Shadow bytes around the buggy address:
+  0x61f000000000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x61f000000080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x61f000000280:[f7]f7 f7 f7 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000500: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2738891==ABORTING
+=================================================================
+==2739374==ERROR: AddressSanitizer: use-after-poison on address 0x61f000000280 at pc 0x7fb139d0d50a bp 0x7ffd1be86930 sp 0x7ffd1be860f0
+READ of size 3000 at 0x61f000000280 thread T0
+    #0 0x7fb139d0d509 in __asan_memcpy /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3
+    #1 0x56381a28379f in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:53:3
+    #2 0x7fb1396aa082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x56381a2821bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/memset_test.cpp.tmp+0x11bd)
+
+0x61f000000c38 is located 0 bytes after 3000-byte region [0x61f000000080,0x61f000000c38)
+allocated by thread T0 here:
+    #0 0x7fb139d0f427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x56381a2836df in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:43:31
+    #2 0x7fb1396aa082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3 in __asan_memcpy
+Shadow bytes around the buggy address:
+  0x61f000000000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x61f000000080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x61f000000280:[f7]f7 f7 f7 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000500: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2739374==ABORTING
+=================================================================
+==2739703==ERROR: AddressSanitizer: use-after-poison on address 0x61f000000280 at pc 0x7fb019a2050a bp 0x7fff521190b0 sp 0x7fff52118870
+READ of size 3000 at 0x61f000000280 thread T0
+    #0 0x7fb019a20509 in __asan_memcpy /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3
+    #1 0x560d9f90f71b in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:53:3
+    #2 0x7fb0193bd082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x560d9f90e1bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/memset_test.cpp.tmp+0x11bd)
+
+0x61f000000c38 is located 0 bytes after 3000-byte region [0x61f000000080,0x61f000000c38)
+allocated by thread T0 here:
+    #0 0x7fb019a22427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x560d9f90f696 in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:43:31
+    #2 0x7fb0193bd082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3 in __asan_memcpy
+Shadow bytes around the buggy address:
+  0x61f000000000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x61f000000080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x61f000000280:[f7]f7 f7 f7 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000500: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2739703==ABORTING
+=================================================================
+==2740206==ERROR: AddressSanitizer: use-after-poison on address 0x61f000000280 at pc 0x7f62f216a50a bp 0x7ffe77e43490 sp 0x7ffe77e42c50
+READ of size 3000 at 0x61f000000280 thread T0
+    #0 0x7f62f216a509 in __asan_memcpy /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3
+    #1 0x55e28caad71b in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:53:3
+    #2 0x7f62f1b07082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55e28caac1bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/memset_test.cpp.tmp+0x11bd)
+
+0x61f000000c38 is located 0 bytes after 3000-byte region [0x61f000000080,0x61f000000c38)
+allocated by thread T0 here:
+    #0 0x7f62f216c427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55e28caad696 in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:43:31
+    #2 0x7f62f1b07082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3 in __asan_memcpy
+Shadow bytes around the buggy address:
+  0x61f000000000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x61f000000080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x61f000000280:[f7]f7 f7 f7 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000500: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2740206==ABORTING
+=================================================================
+==2740825==ERROR: AddressSanitizer: use-after-poison on address 0x61f000000280 at pc 0x7fdf7fb1950a bp 0x7ffd6c826510 sp 0x7ffd6c825cd0
+READ of size 3000 at 0x61f000000280 thread T0
+    #0 0x7fdf7fb19509 in __asan_memcpy /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3
+    #1 0x55d34ac0571b in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:53:3
+    #2 0x7fdf7f4b6082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55d34ac041bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/memset_test.cpp.tmp+0x11bd)
+
+0x61f000000c38 is located 0 bytes after 3000-byte region [0x61f000000080,0x61f000000c38)
+allocated by thread T0 here:
+    #0 0x7fdf7fb1b427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55d34ac05696 in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:43:31
+    #2 0x7fdf7f4b6082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3 in __asan_memcpy
+Shadow bytes around the buggy address:
+  0x61f000000000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x61f000000080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x61f000000280:[f7]f7 f7 f7 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000500: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2740825==ABORTING
+=================================================================
+==2741474==ERROR: AddressSanitizer: use-after-poison on address 0x61f000000280 at pc 0x7f70dc755dfa bp 0x7fffc9891050 sp 0x7fffc9890810
+READ of size 3000 at 0x61f000000280 thread T0
+    #0 0x7f70dc755df9 in __asan_memmove /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:30:3
+    #1 0x55eaebeb379f in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:58:3
+    #2 0x7f70dc0f2082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55eaebeb21bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/memset_test.cpp.tmp+0x11bd)
+
+0x61f000000c38 is located 0 bytes after 3000-byte region [0x61f000000080,0x61f000000c38)
+allocated by thread T0 here:
+    #0 0x7f70dc757427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55eaebeb36df in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:43:31
+    #2 0x7f70dc0f2082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:30:3 in __asan_memmove
+Shadow bytes around the buggy address:
+  0x61f000000000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x61f000000080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x61f000000280:[f7]f7 f7 f7 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000500: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2741474==ABORTING
+=================================================================
+==2742372==ERROR: AddressSanitizer: use-after-poison on address 0x61f000000280 at pc 0x7f484a540dfa bp 0x7ffeffcc8230 sp 0x7ffeffcc79f0
+READ of size 3000 at 0x61f000000280 thread T0
+    #0 0x7f484a540df9 in __asan_memmove /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:30:3
+    #1 0x558c8ac2c71b in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:58:3
+    #2 0x7f4849edd082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x558c8ac2b1bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/memset_test.cpp.tmp+0x11bd)
+
+0x61f000000c38 is located 0 bytes after 3000-byte region [0x61f000000080,0x61f000000c38)
+allocated by thread T0 here:
+    #0 0x7f484a542427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x558c8ac2c696 in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:43:31
+    #2 0x7f4849edd082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:30:3 in __asan_memmove
+Shadow bytes around the buggy address:
+  0x61f000000000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x61f000000080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x61f000000280:[f7]f7 f7 f7 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000500: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2742372==ABORTING
+=================================================================
+==2744162==ERROR: AddressSanitizer: use-after-poison on address 0x61f000000280 at pc 0x7f8aee0f8dfa bp 0x7fff8001f390 sp 0x7fff8001eb50
+READ of size 3000 at 0x61f000000280 thread T0
+    #0 0x7f8aee0f8df9 in __asan_memmove /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:30:3
+    #1 0x560d8848071b in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:58:3
+    #2 0x7f8aeda95082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x560d8847f1bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/memset_test.cpp.tmp+0x11bd)
+
+0x61f000000c38 is located 0 bytes after 3000-byte region [0x61f000000080,0x61f000000c38)
+allocated by thread T0 here:
+    #0 0x7f8aee0fa427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x560d88480696 in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:43:31
+    #2 0x7f8aeda95082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:30:3 in __asan_memmove
+Shadow bytes around the buggy address:
+  0x61f000000000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x61f000000080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x61f000000280:[f7]f7 f7 f7 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000500: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2744162==ABORTING
+=================================================================
+==2744591==ERROR: AddressSanitizer: use-after-poison on address 0x61f000000280 at pc 0x7f4677efadfa bp 0x7ffc9e6aad10 sp 0x7ffc9e6aa4d0
+READ of size 3000 at 0x61f000000280 thread T0
+    #0 0x7f4677efadf9 in __asan_memmove /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:30:3
+    #1 0x565246f8371b in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:58:3
+    #2 0x7f4677897082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x565246f821bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/memset_test.cpp.tmp+0x11bd)
+
+0x61f000000c38 is located 0 bytes after 3000-byte region [0x61f000000080,0x61f000000c38)
+allocated by thread T0 here:
+    #0 0x7f4677efc427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x565246f83696 in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:43:31
+    #2 0x7f4677897082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: use-after-poison /home/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:30:3 in __asan_memmove
+Shadow bytes around the buggy address:
+  0x61f000000000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x61f000000080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x61f000000280:[f7]f7 f7 f7 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x61f000000500: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2744591==ABORTING
+=================================================================
+==2744630==ERROR: AddressSanitizer: negative-size-param: (size=-1)
+    #0 0x7f23b1388c58 in __interceptor_memcpy /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:875:5
+    #1 0x5609c7e31755 in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:63:3
+    #2 0x7f23b0dc3082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5609c7e301ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/memset_test.cpp.tmp+0x11ad)
+
+0x61f000000e80 is located 0 bytes inside of 3000-byte region [0x61f000000e80,0x61f000001a38)
+allocated by thread T0 here:
+    #0 0x7f23b1428427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x5609c7e316dc in main /home/llvm/compiler-rt/test/asan/TestCases/memset_test.cpp:51:31
+    #2 0x7f23b0dc3082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: negative-size-param /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:875:5 in __interceptor_memcpy
+==2744630==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/memset_test.cpp <<TAIL<<

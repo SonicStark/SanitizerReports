@@ -1,0 +1,58 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/pass-object-byval.cpp <<HEAD<<
+
+=================================================================
+==2811470==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f436f30006c at pc 0x564a698016c4 bp 0x7ffcf40bb610 sp 0x7ffcf40bb608
+READ of size 4 at 0x7f436f30006c thread T0
+    #0 0x564a698016c3 in bar(A*) /home/llvm/compiler-rt/test/asan/TestCases/pass-object-byval.cpp:25:10
+    #1 0x564a698017a3 in foo(A) /home/llvm/compiler-rt/test/asan/TestCases/pass-object-byval.cpp:30:3
+    #2 0x564a698018c0 in main /home/llvm/compiler-rt/test/asan/TestCases/pass-object-byval.cpp:35:3
+    #3 0x7f43718b8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x564a696d22ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/pass-object-byval.cpp.tmp+0x1e2ed)
+
+Address 0x7f436f30006c is located in stack of thread T0 at offset 108 in frame
+    #0 0x564a698017bf in main /home/llvm/compiler-rt/test/asan/TestCases/pass-object-byval.cpp:33
+
+  This frame has 2 object(s):
+    [32, 72) 'a' (line 34)
+    [112, 152) 'agg.tmp' <== Memory access at offset 108 underflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/pass-object-byval.cpp:25:10 in bar(A*)
+Shadow bytes around the buggy address:
+  0x7f436f2ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f436f2ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f436f2ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f436f2fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f436f2fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f436f300000: f1 f1 f1 f1 00 00 00 00 00 f2 f2 f2 f2[f2]00 00
+  0x7f436f300080: 00 00 00 f3 f3 f3 f3 f3 00 00 00 00 00 00 00 00
+  0x7f436f300100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f436f300180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f436f300200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f436f300280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2811470==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/pass-object-byval.cpp <<TAIL<<

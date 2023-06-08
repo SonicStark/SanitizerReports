@@ -1,0 +1,35 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/auto_memory_profile_test.cpp <<HEAD<<
+
+
+
+HEAP PROFILE at RSS 18Mb
+Live Heap Allocations: 13073205 bytes in 4 chunks; quarantined: 208 bytes in 1 chunks; 379 other chunks; total chunks: 384; showing top 90% (at most 20 unique contexts)
+13000000 byte(s) (99%) in 1 allocation(s)
+    #0 0x5564285c09b7 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x5564285c35c6 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/auto_memory_profile_test.cpp:20:15
+    #2 0x7fe5d9172082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+
+
+HEAP PROFILE at RSS 31Mb
+Live Heap Allocations: 26073205 bytes in 5 chunks; quarantined: 208 bytes in 1 chunks; 379 other chunks; total chunks: 385; showing top 90% (at most 20 unique contexts)
+26000000 byte(s) (99%) in 2 allocation(s)
+    #0 0x5564285c09b7 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x5564285c35c6 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/auto_memory_profile_test.cpp:20:15
+    #2 0x7fe5d9172082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+
+
+HEAP PROFILE at RSS 43Mb
+Live Heap Allocations: 39073205 bytes in 6 chunks; quarantined: 208 bytes in 1 chunks; 379 other chunks; total chunks: 386; showing top 90% (at most 20 unique contexts)
+39000000 byte(s) (99%) in 3 allocation(s)
+    #0 0x5564285c09b7 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x5564285c35c6 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/auto_memory_profile_test.cpp:20:15
+    #2 0x7fe5d9172082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/auto_memory_profile_test.cpp <<TAIL<<

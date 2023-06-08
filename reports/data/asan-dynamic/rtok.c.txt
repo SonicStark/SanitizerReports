@@ -1,0 +1,258 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/strtok.c <<HEAD<<
+
+=================================================================
+==2739562==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fdaf8a00031 at pc 0x7fdafb6d2bb6 bp 0x7ffd41bcd3d0 sp 0x7ffd41bccb90
+READ of size 2 at 0x7fdaf8a00031 thread T0
+    #0 0x7fdafb6d2bb5 in __interceptor_strtok.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:693:5
+    #1 0x555800a5171a in test1 /home/llvm/compiler-rt/test/asan/TestCases/strtok.c:37:11
+    #2 0x555800a52002 in main /home/llvm/compiler-rt/test/asan/TestCases/strtok.c:96:34
+    #3 0x7fdafb3ed082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x555800a501cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/strtok.c.tmp+0x21cd)
+
+Address 0x7fdaf8a00031 is located in stack of thread T0 at offset 49 in frame
+    #0 0x555800a5160f in test1 /home/llvm/compiler-rt/test/asan/TestCases/strtok.c:32
+
+  This frame has 2 object(s):
+    [32, 36) 's' (line 34)
+    [48, 50) 'token_delimiter' (line 35) <== Memory access at offset 49 partially overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:693:5 in __interceptor_strtok.part.0
+Shadow bytes around the buggy address:
+  0x7fdaf89ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdaf89ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdaf89ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdaf89fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdaf89fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fdaf8a00000: f1 f1 f1 f1 04 f2[01]f3 00 00 00 00 00 00 00 00
+  0x7fdaf8a00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdaf8a00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdaf8a00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdaf8a00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdaf8a00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2739562==ABORTING
+=================================================================
+==2739791==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f9601200031 at pc 0x7f9603ebabb6 bp 0x7fff41efb990 sp 0x7fff41efb150
+READ of size 2 at 0x7f9601200031 thread T0
+    #0 0x7f9603ebabb5 in __interceptor_strtok.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:693:5
+    #1 0x556b529a08ed in test2 /home/llvm/compiler-rt/test/asan/TestCases/strtok.c:50:11
+    #2 0x556b529a1049 in main /home/llvm/compiler-rt/test/asan/TestCases/strtok.c:97:34
+    #3 0x7f9603bd5082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x556b5299f1cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/strtok.c.tmp+0x21cd)
+
+Address 0x7f9601200031 is located in stack of thread T0 at offset 49 in frame
+    #0 0x556b529a078f in test2 /home/llvm/compiler-rt/test/asan/TestCases/strtok.c:43
+
+  This frame has 2 object(s):
+    [32, 36) 's' (line 45)
+    [48, 50) 'token_delimiter' (line 46) <== Memory access at offset 49 partially overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:693:5 in __interceptor_strtok.part.0
+Shadow bytes around the buggy address:
+  0x7f96011ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f96011ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f96011ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f96011fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f96011fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f9601200000: f1 f1 f1 f1 04 f2[01]f3 00 00 00 00 00 00 00 00
+  0x7f9601200080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9601200100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9601200180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9601200200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9601200280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2739791==ABORTING
+=================================================================
+==2740063==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f90dc300023 at pc 0x7f90def1edb6 bp 0x7ffd5f2e6c10 sp 0x7ffd5f2e63d0
+READ of size 4 at 0x7f90dc300023 thread T0
+    #0 0x7f90def1edb5 in __interceptor_strtok.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:691:7
+    #1 0x56313d749a6a in test3 /home/llvm/compiler-rt/test/asan/TestCases/strtok.c:60:11
+    #2 0x56313d74a090 in main /home/llvm/compiler-rt/test/asan/TestCases/strtok.c:98:34
+    #3 0x7f90dec39082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x56313d7481cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/strtok.c.tmp+0x21cd)
+
+Address 0x7f90dc300023 is located in stack of thread T0 at offset 35 in frame
+    #0 0x56313d74995f in test3 /home/llvm/compiler-rt/test/asan/TestCases/strtok.c:55
+
+  This frame has 2 object(s):
+    [32, 36) 's' (line 57) <== Memory access at offset 35 partially overflows this variable
+    [48, 50) 'token_delimiter' (line 58)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:691:7 in __interceptor_strtok.part.0
+Shadow bytes around the buggy address:
+  0x7f90dc2ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f90dc2ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f90dc2ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f90dc2fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f90dc2fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f90dc300000: f1 f1 f1 f1[03]f2 02 f3 00 00 00 00 00 00 00 00
+  0x7f90dc300080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f90dc300100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f90dc300180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f90dc300200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f90dc300280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2740063==ABORTING
+=================================================================
+==2740494==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f6f4d300022 at pc 0x7f6f4ff36762 bp 0x7ffd158f4670 sp 0x7ffd158f3e30
+READ of size 4 at 0x7f6f4d300022 thread T0
+    #0 0x7f6f4ff36761 in __interceptor_strtok.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:708:7
+    #1 0x55a137351d9c in test5 /home/llvm/compiler-rt/test/asan/TestCases/strtok.c:80:11
+    #2 0x55a13735211e in main /home/llvm/compiler-rt/test/asan/TestCases/strtok.c:100:34
+    #3 0x7f6f4fc51082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55a1373501cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/strtok.c.tmp+0x21cd)
+
+Address 0x7f6f4d300022 is located in stack of thread T0 at offset 34 in frame
+    #0 0x55a137351c7f in test5 /home/llvm/compiler-rt/test/asan/TestCases/strtok.c:74
+
+  This frame has 2 object(s):
+    [32, 36) 's' (line 76) <== Memory access at offset 34 partially overflows this variable
+    [48, 50) 'token_delimiter' (line 77)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:708:7 in __interceptor_strtok.part.0
+Shadow bytes around the buggy address:
+  0x7f6f4d2ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6f4d2ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6f4d2ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6f4d2fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6f4d2fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f6f4d300000: f1 f1 f1 f1[02]f2 01 f3 00 00 00 00 00 00 00 00
+  0x7f6f4d300080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6f4d300100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6f4d300180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6f4d300200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6f4d300280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2740494==ABORTING
+=================================================================
+==2740849==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f4fde400031 at pc 0x7f4fe1058eb3 bp 0x7ffeb16bea50 sp 0x7ffeb16be210
+READ of size 1 at 0x7f4fde400031 thread T0
+    #0 0x7f4fe1058eb2 in __interceptor_strtok.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:705:5
+    #1 0x55d7213fcf1e in test6 /home/llvm/compiler-rt/test/asan/TestCases/strtok.c:90:11
+    #2 0x55d7213fd165 in main /home/llvm/compiler-rt/test/asan/TestCases/strtok.c:101:34
+    #3 0x7f4fe0d73082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55d7213fb1cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/strtok.c.tmp+0x21cd)
+
+Address 0x7f4fde400031 is located in stack of thread T0 at offset 49 in frame
+    #0 0x55d7213fce0f in test6 /home/llvm/compiler-rt/test/asan/TestCases/strtok.c:85
+
+  This frame has 2 object(s):
+    [32, 36) 's' (line 87)
+    [48, 49) 'token_delimiter' (line 88) <== Memory access at offset 49 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:705:5 in __interceptor_strtok.part.0
+Shadow bytes around the buggy address:
+  0x7f4fde3ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4fde3ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4fde3ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4fde3fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4fde3fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f4fde400000: f1 f1 f1 f1 04 f2[01]f3 00 00 00 00 00 00 00 00
+  0x7f4fde400080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4fde400100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4fde400180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4fde400200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f4fde400280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2740849==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/strtok.c <<TAIL<<

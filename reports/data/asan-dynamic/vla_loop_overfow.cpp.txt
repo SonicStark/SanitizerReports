@@ -1,0 +1,50 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/vla_loop_overfow.cpp <<HEAD<<
+
+=================================================================
+==2741547==ERROR: AddressSanitizer: dynamic-stack-buffer-overflow on address 0x7ffdc35dbff5 at pc 0x56367c8b16e9 bp 0x7ffdc35dbfb0 sp 0x7ffdc35dbfa8
+WRITE of size 1 at 0x7ffdc35dbff5 thread T0
+    #0 0x56367c8b16e8 in foo(int, int) /home/llvm/compiler-rt/test/asan/TestCases/vla_loop_overfow.cpp:13:22
+    #1 0x56367c8b1754 in main /home/llvm/compiler-rt/test/asan/TestCases/vla_loop_overfow.cpp:20:3
+    #2 0x7f4b23132082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x56367c8b018d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/vla_loop_overfow.cpp.tmp+0x118d)
+
+Address 0x7ffdc35dbff5 is located in stack of thread T0
+SUMMARY: AddressSanitizer: dynamic-stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/vla_loop_overfow.cpp:13:22 in foo(int, int)
+Shadow bytes around the buggy address:
+  0x7ffdc35dbd00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffdc35dbd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffdc35dbe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffdc35dbe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffdc35dbf00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7ffdc35dbf80: 00 00 00 00 00 00 00 00 ca ca ca ca 00 00[05]cb
+  0x7ffdc35dc000: cb cb cb cb 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffdc35dc080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffdc35dc100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffdc35dc180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffdc35dc200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2741547==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/vla_loop_overfow.cpp <<TAIL<<

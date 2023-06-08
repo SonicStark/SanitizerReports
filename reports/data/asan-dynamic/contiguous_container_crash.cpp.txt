@@ -1,0 +1,181 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/contiguous_container_crash.cpp <<HEAD<<
+
+=================================================================
+==2731955==ERROR: AddressSanitizer: container-overflow on address 0x7fa5d5e00940 at pc 0x55bb8602f253 bp 0x7ffe5f6838d0 sp 0x7ffe5f6838c8
+READ of size 8 at 0x7fa5d5e00940 thread T0
+    #0 0x55bb8602f252 in TestCrash /home/llvm/compiler-rt/test/asan/TestCases/contiguous_container_crash.cpp:28:15
+    #1 0x55bb8602f252 in main /home/llvm/compiler-rt/test/asan/TestCases/contiguous_container_crash.cpp:57:12
+    #2 0x7fa5d7dfc082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55bb8602d1fd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/contiguous_container_crash.cpp.tmp+0x11fd)
+
+Address 0x7fa5d5e00940 is located in stack of thread T0 at offset 2368 in frame
+    #0 0x55bb8602ed5f in main /home/llvm/compiler-rt/test/asan/TestCases/contiguous_container_crash.cpp:54
+
+  This frame has 4 object(s):
+    [32, 428) 't.i33' (line 47)
+    [496, 896) 't.i26' (line 39)
+    [960, 1760) 't.i24' (line 32)
+    [1888, 2688) 't.i' (line 22) <== Memory access at offset 2368 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+HINT: if you don't care about these errors you may set ASAN_OPTIONS=detect_container_overflow=0.
+If you suspect a false positive see also: https://github.com/google/sanitizers/wiki/AddressSanitizerContainerOverflow.
+SUMMARY: AddressSanitizer: container-overflow /home/llvm/compiler-rt/test/asan/TestCases/contiguous_container_crash.cpp:28:15 in TestCrash
+Shadow bytes around the buggy address:
+  0x7fa5d5e00680: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f2 f2 f2 f2
+  0x7fa5d5e00700: f2 f2 f2 f2 f2 f2 f2 f2 f2 f2 f2 f2 00 00 00 00
+  0x7fa5d5e00780: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa5d5e00800: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa5d5e00880: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 fc fc
+=>0x7fa5d5e00900: fc fc fc fc fc fc fc fc[fc]fc fc fc fc fc fc fc
+  0x7fa5d5e00980: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+  0x7fa5d5e00a00: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+  0x7fa5d5e00a80: f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3
+  0x7fa5d5e00b00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa5d5e00b80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2731955==ABORTING
+=================================================================
+==2732489==ERROR: AddressSanitizer: bad parameters to __sanitizer_annotate_contiguous_container:
+      beg     : 0x7f7f99b003c0
+      end     : 0x7f7f99b006e0
+      old_mid : 0x7f7f99b006e8
+      new_mid : 0x7f7f99b00550
+    #0 0x7f7f9c214fb9 in __sanitizer_annotate_contiguous_container /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:428:5
+    #1 0x556ade1d40c2 in BadBounds /home/llvm/compiler-rt/test/asan/TestCases/contiguous_container_crash.cpp:34:3
+    #2 0x556ade1d40c2 in main /home/llvm/compiler-rt/test/asan/TestCases/contiguous_container_crash.cpp:59:5
+    #3 0x7f7f9bbac082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x556ade1d21fd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/contiguous_container_crash.cpp.tmp+0x11fd)
+
+SUMMARY: AddressSanitizer: bad-__sanitizer_annotate_contiguous_container /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:428:5 in __sanitizer_annotate_contiguous_container
+==2732489==ABORTING
+=================================================================
+==2733003==ERROR: AddressSanitizer: container-overflow on address 0x7f55bed002e0 at pc 0x55c22474e1f3 bp 0x7ffd786b0050 sp 0x7ffd786b0048
+READ of size 4 at 0x7f55bed002e0 thread T0
+    #0 0x55c22474e1f2 in OddAlignment /home/llvm/compiler-rt/test/asan/TestCases/contiguous_container_crash.cpp:43:15
+    #1 0x55c22474e1f2 in main /home/llvm/compiler-rt/test/asan/TestCases/contiguous_container_crash.cpp:61:12
+    #2 0x7f55c0d16082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55c22474c1fd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/contiguous_container_crash.cpp.tmp+0x11fd)
+
+Address 0x7f55bed002e0 is located in stack of thread T0 at offset 736 in frame
+    #0 0x55c22474dd5f in main /home/llvm/compiler-rt/test/asan/TestCases/contiguous_container_crash.cpp:54
+
+  This frame has 4 object(s):
+    [32, 428) 't.i33' (line 47)
+    [496, 896) 't.i26' (line 39) <== Memory access at offset 736 is inside this variable
+    [960, 1760) 't.i24' (line 32)
+    [1888, 2688) 't.i' (line 22)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+HINT: if you don't care about these errors you may set ASAN_OPTIONS=detect_container_overflow=0.
+If you suspect a false positive see also: https://github.com/google/sanitizers/wiki/AddressSanitizerContainerOverflow.
+SUMMARY: AddressSanitizer: container-overflow /home/llvm/compiler-rt/test/asan/TestCases/contiguous_container_crash.cpp:43:15 in OddAlignment
+Shadow bytes around the buggy address:
+  0x7f55bed00000: f1 f1 f1 f1 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7f55bed00080: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7f55bed00100: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7f55bed00180: f8 f8 f8 f8 f8 f8 f2 f2 f2 f2 f2 f2 f2 f2 00 00
+  0x7f55bed00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f55bed00280: 00 00 00 00 00 00 00 04 fc fc fc fc[fc]fc fc fc
+  0x7f55bed00300: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+  0x7f55bed00380: f2 f2 f2 f2 f2 f2 f2 f2 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7f55bed00400: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7f55bed00480: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7f55bed00500: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2733003==ABORTING
+=================================================================
+==2733398==ERROR: AddressSanitizer: container-overflow on address 0x7ffb21d00110 at pc 0x55a7df677241 bp 0x7fff5cf99b70 sp 0x7fff5cf99b68
+READ of size 4 at 0x7ffb21d00110 thread T0
+    #0 0x55a7df677240 in OddAlignmentEnd /home/llvm/compiler-rt/test/asan/TestCases/contiguous_container_crash.cpp:51:15
+    #1 0x55a7df677240 in main /home/llvm/compiler-rt/test/asan/TestCases/contiguous_container_crash.cpp:63:12
+    #2 0x7ffb23cfc082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55a7df6751fd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/contiguous_container_crash.cpp.tmp+0x11fd)
+
+Address 0x7ffb21d00110 is located in stack of thread T0 at offset 272 in frame
+    #0 0x55a7df676d5f in main /home/llvm/compiler-rt/test/asan/TestCases/contiguous_container_crash.cpp:54
+
+  This frame has 4 object(s):
+    [32, 428) 't.i33' (line 47) <== Memory access at offset 272 is inside this variable
+    [496, 896) 't.i26' (line 39)
+    [960, 1760) 't.i24' (line 32)
+    [1888, 2688) 't.i' (line 22)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+HINT: if you don't care about these errors you may set ASAN_OPTIONS=detect_container_overflow=0.
+If you suspect a false positive see also: https://github.com/google/sanitizers/wiki/AddressSanitizerContainerOverflow.
+SUMMARY: AddressSanitizer: container-overflow /home/llvm/compiler-rt/test/asan/TestCases/contiguous_container_crash.cpp:51:15 in OddAlignmentEnd
+Shadow bytes around the buggy address:
+  0x7ffb21cffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffb21cfff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffb21cfff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffb21d00000: f1 f1 f1 f1 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffb21d00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 fc fc fc
+=>0x7ffb21d00100: fc fc[fc]fc fc fc fc fc fc fc fc fc fc fc fc fc
+  0x7ffb21d00180: fc fc fc fc fc 04 f2 f2 f2 f2 f2 f2 f2 f2 f8 f8
+  0x7ffb21d00200: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7ffb21d00280: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7ffb21d00300: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7ffb21d00380: f2 f2 f2 f2 f2 f2 f2 f2 f8 f8 f8 f8 f8 f8 f8 f8
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2733398==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/contiguous_container_crash.cpp <<TAIL<<

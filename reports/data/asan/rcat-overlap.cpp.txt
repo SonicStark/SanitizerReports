@@ -1,0 +1,104 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/strcat-overlap.cpp <<HEAD<<
+
+=================================================================
+==2812529==ERROR: AddressSanitizer: strcat-param-overlap: memory ranges [0x7fd01f700020,0x7fd01f70002a) and [0x7fd01f700021, 0x7fd01f700026) overlap
+    #0 0x55ca3f1009d4 in strcat /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:397:9
+    #1 0x55ca3f18d660 in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strcat-overlap.cpp:48:3
+    #2 0x55ca3f18d6da in main /home/llvm/compiler-rt/test/asan/TestCases/strcat-overlap.cpp:52:3
+    #3 0x7fd021ef6082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55ca3f05e2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/strcat-overlap.cpp.tmp+0x1e2dd)
+
+Address 0x7fd01f700020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x55ca3f18d58f in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strcat-overlap.cpp:41
+
+  This frame has 1 object(s):
+    [32, 42) 'buffer' (line 42) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Address 0x7fd01f700021 is located in stack of thread T0 at offset 33 in frame
+    #0 0x55ca3f18d58f in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strcat-overlap.cpp:41
+
+  This frame has 1 object(s):
+    [32, 42) 'buffer' (line 42) <== Memory access at offset 33 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: strcat-param-overlap /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:397:9 in strcat
+==2812529==ABORTING
+=================================================================
+==2813108==ERROR: AddressSanitizer: strcat-param-overlap: memory ranges [0x7efdb2900020,0x7efdb290002a) and [0x7efdb2900021, 0x7efdb2900026) overlap
+    #0 0x558eff3449d4 in strcat /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:397:9
+    #1 0x558eff3d1637 in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strcat-overlap.cpp:48:3
+    #2 0x558eff3d1698 in main /home/llvm/compiler-rt/test/asan/TestCases/strcat-overlap.cpp:52:3
+    #3 0x7efdb5186082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x558eff2a22dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/strcat-overlap.cpp.tmp+0x1e2dd)
+
+Address 0x7efdb2900020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x558eff3d158f in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strcat-overlap.cpp:41
+
+  This frame has 1 object(s):
+    [32, 42) 'buffer' (line 42) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Address 0x7efdb2900021 is located in stack of thread T0 at offset 33 in frame
+    #0 0x558eff3d158f in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strcat-overlap.cpp:41
+
+  This frame has 1 object(s):
+    [32, 42) 'buffer' (line 42) <== Memory access at offset 33 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: strcat-param-overlap /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:397:9 in strcat
+==2813108==ABORTING
+=================================================================
+==2813907==ERROR: AddressSanitizer: strcat-param-overlap: memory ranges [0x7f046d500020,0x7f046d50002a) and [0x7f046d500021, 0x7f046d500026) overlap
+    #0 0x55f20d85a9d4 in strcat /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:397:9
+    #1 0x55f20d8e7637 in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strcat-overlap.cpp:48:3
+    #2 0x55f20d8e7698 in main /home/llvm/compiler-rt/test/asan/TestCases/strcat-overlap.cpp:52:3
+    #3 0x7f046fd29082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55f20d7b82dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/strcat-overlap.cpp.tmp+0x1e2dd)
+
+Address 0x7f046d500020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x55f20d8e758f in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strcat-overlap.cpp:41
+
+  This frame has 1 object(s):
+    [32, 42) 'buffer' (line 42) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Address 0x7f046d500021 is located in stack of thread T0 at offset 33 in frame
+    #0 0x55f20d8e758f in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strcat-overlap.cpp:41
+
+  This frame has 1 object(s):
+    [32, 42) 'buffer' (line 42) <== Memory access at offset 33 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: strcat-param-overlap /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:397:9 in strcat
+==2813907==ABORTING
+=================================================================
+==2814497==ERROR: AddressSanitizer: strcat-param-overlap: memory ranges [0x7f1199600020,0x7f119960002a) and [0x7f1199600021, 0x7f1199600026) overlap
+    #0 0x55ec4ae689d4 in strcat /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:397:9
+    #1 0x55ec4aef5636 in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strcat-overlap.cpp:48:3
+    #2 0x55ec4aef56a8 in main /home/llvm/compiler-rt/test/asan/TestCases/strcat-overlap.cpp:52:3
+    #3 0x7f119be9a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55ec4adc62dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/strcat-overlap.cpp.tmp+0x1e2dd)
+
+Address 0x7f1199600020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x55ec4aef558f in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strcat-overlap.cpp:41
+
+  This frame has 1 object(s):
+    [32, 42) 'buffer' (line 42) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Address 0x7f1199600021 is located in stack of thread T0 at offset 33 in frame
+    #0 0x55ec4aef558f in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strcat-overlap.cpp:41
+
+  This frame has 1 object(s):
+    [32, 42) 'buffer' (line 42) <== Memory access at offset 33 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: strcat-param-overlap /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:397:9 in strcat
+==2814497==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/strcat-overlap.cpp <<TAIL<<

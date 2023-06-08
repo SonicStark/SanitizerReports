@@ -1,0 +1,57 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/strpbrk-2.c <<HEAD<<
+
+=================================================================
+==2739375==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f0260700032 at pc 0x7f0263361659 bp 0x7ffe96dd08d0 sp 0x7ffe96dd0090
+READ of size 4 at 0x7f0260700032 thread T0
+    #0 0x7f0263361658 in __interceptor_strpbrk.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:832:5
+    #1 0x562b48326708 in main /home/llvm/compiler-rt/test/asan/TestCases/strpbrk-2.c:16:7
+    #2 0x7f02630b7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x562b483251ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/strpbrk-2.c.tmp+0x11ad)
+
+Address 0x7f0260700032 is located in stack of thread T0 at offset 50 in frame
+    #0 0x562b483265ef in main /home/llvm/compiler-rt/test/asan/TestCases/strpbrk-2.c:11
+
+  This frame has 2 object(s):
+    [32, 34) 's1' (line 13)
+    [48, 52) 's2' (line 14) <== Memory access at offset 50 partially overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:832:5 in __interceptor_strpbrk.part.0
+Shadow bytes around the buggy address:
+  0x7f02606ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f02606ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f02606ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f02606fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f02606fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f0260700000: f1 f1 f1 f1 02 f2[02]f3 00 00 00 00 00 00 00 00
+  0x7f0260700080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0260700100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0260700180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0260700200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0260700280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2739375==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/strpbrk-2.c <<TAIL<<

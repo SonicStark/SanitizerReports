@@ -1,0 +1,57 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/initialization-bug.cpp <<HEAD<<
+
+=================================================================
+==2810913==ERROR: AddressSanitizer: initialization-order-fiasco on address 0x55868cc69be0 at pc 0x55868c25b77a bp 0x7ffdec9b8760 sp 0x7ffdec9b8758
+READ of size 4 at 0x55868cc69be0 thread T0
+    #0 0x55868c25b779 in initX() /home/llvm/compiler-rt/test/asan/TestCases/initialization-bug.cpp:31:10
+    #1 0x55868c12c32c in __cxx_global_var_init.1 /home/llvm/compiler-rt/test/asan/TestCases/initialization-bug.cpp:40:16
+    #2 0x55868c12c3a9 in _GLOBAL__sub_I_initialization_bug.cpp /home/llvm/compiler-rt/test/asan/TestCases/initialization-bug.cpp
+    #3 0x55868c25b90c in __libc_csu_init (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/initialization-bug.cpp.tmp-INIT-ORDER-EXE+0x14d90c)
+    #4 0x7fd53cfd900f in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:264:6
+    #5 0x55868c12c47d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/initialization-bug.cpp.tmp-INIT-ORDER-EXE+0x1e47d)
+
+0x55868cc69be0 is located 0 bytes inside of global variable 'y' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Helpers/initialization-bug-extra2.cpp' (0x55868cc69be0) of size 4
+  registered at:
+    #0 0x55868c145db0 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x55868c25b88e in asan.module_ctor initialization-bug-extra2.cpp
+    #2 0x55868c25b90c in __libc_csu_init (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/initialization-bug.cpp.tmp-INIT-ORDER-EXE+0x14d90c)
+
+SUMMARY: AddressSanitizer: initialization-order-fiasco /home/llvm/compiler-rt/test/asan/TestCases/initialization-bug.cpp:31:10 in initX()
+Shadow bytes around the buggy address:
+  0x55868cc69900: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55868cc69980: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55868cc69a00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55868cc69a80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55868cc69b00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x55868cc69b80: 04 f9 f9 f9 04 f9 f9 f9 00 00 00 00[f6]f6 f6 f6
+  0x55868cc69c00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55868cc69c80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55868cc69d00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55868cc69d80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55868cc69e00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2810913==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/initialization-bug.cpp <<TAIL<<

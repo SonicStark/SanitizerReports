@@ -1,0 +1,54 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/verbose-log-path_test.cpp <<HEAD<<
+
+=================================================================
+==verbose-log-path_test-binary==2814516==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200000001a at pc 0x55c05af9d60d bp 0x7ffcc14e4fa0 sp 0x7ffcc14e4f98
+READ of size 1 at 0x60200000001a thread T0
+    #0 0x55c05af9d60c in main /home/llvm/compiler-rt/test/asan/TestCases/verbose-log-path_test.cpp:22:13
+    #1 0x7fcbcaa05082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55c05ae6e2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/verbose-log-path_test.cpp.tmp-dir/verbose-log-path_test-binary+0x1e2dd)
+
+0x60200000001a is located 0 bytes after 10-byte region [0x602000000010,0x60200000001a)
+allocated by thread T0 here:
+    #0 0x55c05af52f67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55c05af9d5b5 in main /home/llvm/compiler-rt/test/asan/TestCases/verbose-log-path_test.cpp:20:20
+    #2 0x7fcbcaa05082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/verbose-log-path_test.cpp:22:13 in main
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa 00[02]fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==verbose-log-path_test-binary==2814516==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/verbose-log-path_test.cpp <<TAIL<<

@@ -1,0 +1,113 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/recvfrom.cpp <<HEAD<<
+
+=================================================================
+==2721583==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f9ff2f00025 at pc 0x7f9ff59a2bfa bp 0x7ffd062f5150 sp 0x7ffd062f4910
+WRITE of size 10 at 0x7f9ff2f00025 thread T0
+    #0 0x7f9ff59a2bf9 in __interceptor_recvfrom.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:6858:5
+    #1 0x561bad6109c5 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/recvfrom.cpp:74:3
+    #2 0x7f9ff53eb082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x561bad60f21d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/recvfrom.cpp.tmp+0x121d)
+
+Address 0x7f9ff2f00025 is located in stack of thread T0 at offset 37 in frame
+    #0 0x561bad61065f in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/recvfrom.cpp:50
+
+  This frame has 3 object(s):
+    [32, 37) 'buf' (line 52) <== Memory access at offset 37 overflows this variable
+    [64, 72) 'client_thread' (line 56)
+    [96, 112) 'serveraddr' (line 57)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:6858:5 in __interceptor_recvfrom.part.0
+Shadow bytes around the buggy address:
+  0x7f9ff2effd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9ff2effe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9ff2effe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9ff2efff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9ff2efff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f9ff2f00000: f1 f1 f1 f1[05]f2 f2 f2 00 f2 f2 f2 00 00 f3 f3
+  0x7f9ff2f00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9ff2f00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9ff2f00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9ff2f00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f9ff2f00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2721583==ABORTING
+=================================================================
+==2722430==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f7b6adff025 at pc 0x7f7b6f77ab26 bp 0x7f7b6bffedb0 sp 0x7f7b6bffe570
+READ of size 10 at 0x7f7b6adff025 thread T1
+    #0 0x7f7b6f77ab25 in __interceptor_sendto.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:6896:5
+    #1 0x55d3ef69ecb2 in client_thread_udp(void*) /home/llvm/compiler-rt/test/asan/TestCases/Linux/recvfrom.cpp:42:15
+    #2 0x7f7b6f150608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+    #3 0x7f7b6f292132 in __clone /build/glibc-SzIz7B/glibc-2.31/misc/../sysdeps/unix/sysv/linux/x86_64/clone.S:95
+
+Address 0x7f7b6adff025 is located in stack of thread T1 at offset 37 in frame
+    #0 0x55d3ef69eadf in client_thread_udp(void*) /home/llvm/compiler-rt/test/asan/TestCases/Linux/recvfrom.cpp:30
+
+  This frame has 3 object(s):
+    [32, 37) 'buf' (line 32) <== Memory access at offset 37 overflows this variable
+    [64, 80) 'serveraddr' (line 36)
+    [96, 100) 'addrlen' (line 37)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Thread T1 created by T0 here:
+    #0 0x7f7b6f733496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55d3ef69e947 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/recvfrom.cpp:71:7
+    #2 0x7f7b6f197082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:6896:5 in __interceptor_sendto.part.0
+Shadow bytes around the buggy address:
+  0x7f7b6adfed80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7b6adfee00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7b6adfee80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7b6adfef00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7b6adfef80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f7b6adff000: f1 f1 f1 f1[05]f2 f2 f2 00 00 f2 f2 04 f3 f3 f3
+  0x7f7b6adff080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7b6adff100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7b6adff180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7b6adff200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f7b6adff280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2722430==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/recvfrom.cpp <<TAIL<<

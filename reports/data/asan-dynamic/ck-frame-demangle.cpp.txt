@@ -1,0 +1,56 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/stack-frame-demangle.cpp <<HEAD<<
+
+=================================================================
+==2738601==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f881d50002b at pc 0x55aa2c4fe6c4 bp 0x7ffda7be1790 sp 0x7ffda7be1788
+READ of size 1 at 0x7f881d50002b thread T0
+    #0 0x55aa2c4fe6c3 in XXX::YYY::ZZZ(int) /home/llvm/compiler-rt/test/asan/TestCases/stack-frame-demangle.cpp:10:12
+    #1 0x55aa2c4fe5a0 in main /home/llvm/compiler-rt/test/asan/TestCases/stack-frame-demangle.cpp:20:13
+    #2 0x7f881fb9d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55aa2c4fd14d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/stack-frame-demangle.cpp.tmp+0x114d)
+
+Address 0x7f881d50002b is located in stack of thread T0 at offset 43 in frame
+    #0 0x55aa2c4fe5bf in XXX::YYY::ZZZ(int) /home/llvm/compiler-rt/test/asan/TestCases/stack-frame-demangle.cpp:7
+
+  This frame has 1 object(s):
+    [32, 42) 'array' (line 8) <== Memory access at offset 43 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/stack-frame-demangle.cpp:10:12 in XXX::YYY::ZZZ(int)
+Shadow bytes around the buggy address:
+  0x7f881d4ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f881d4ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f881d4ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f881d4fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f881d4fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f881d500000: f1 f1 f1 f1 00[02]f3 f3 00 00 00 00 00 00 00 00
+  0x7f881d500080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f881d500100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f881d500180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f881d500200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f881d500280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2738601==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/stack-frame-demangle.cpp <<TAIL<<

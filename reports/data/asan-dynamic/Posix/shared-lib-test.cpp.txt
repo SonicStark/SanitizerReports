@@ -1,0 +1,180 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/shared-lib-test.cpp <<HEAD<<
+
+=================================================================
+==2729356==ERROR: AddressSanitizer: global-buffer-overflow on address 0x7f8d16d1719c at pc 0x7f8d16d135a6 bp 0x7ffeb71d0110 sp 0x7ffeb71d0108
+READ of size 4 at 0x7f8d16d1719c thread T0
+    #0 0x7f8d16d135a5 in inc /home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp:49:14
+    #1 0x5638ec7f5a6c in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp:33:3
+    #2 0x7f8d17111082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5638ec7f432d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/shared-lib-test.cpp.tmp+0x232d)
+
+0x7f8d16d1719c is located 4 bytes before global variable 'GLOB' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp' (0x7f8d16d171a0) of size 40
+0x7f8d16d1719c is located 52 bytes after global variable 'pad' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp' (0x7f8d16d17140) of size 40
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp:49:14 in inc
+Shadow bytes around the buggy address:
+  0x7f8d16d16f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8d16d16f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8d16d17000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8d16d17080: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x7f8d16d17100: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 f9 f9 f9
+=>0x7f8d16d17180: f9 f9 f9[f9]00 00 00 00 00 f9 f9 f9 f9 f9 f9 f9
+  0x7f8d16d17200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8d16d17280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8d16d17300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8d16d17380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f8d16d17400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2729356==ABORTING
+=================================================================
+==2732590==ERROR: AddressSanitizer: global-buffer-overflow on address 0x7fa994e4619c at pc 0x7fa994e42589 bp 0x7ffde07c9540 sp 0x7ffde07c9538
+READ of size 4 at 0x7fa994e4619c thread T0
+    #0 0x7fa994e42588 in inc /home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp:49:14
+    #1 0x55ebbd658b02 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp:33:3
+    #2 0x7fa995240082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55ebbd65723d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/shared-lib-test.cpp.tmp+0x223d)
+
+0x7fa994e4619c is located 4 bytes before global variable 'GLOB' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp' (0x7fa994e461a0) of size 40
+0x7fa994e4619c is located 52 bytes after global variable 'pad' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp' (0x7fa994e46140) of size 40
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp:49:14 in inc
+Shadow bytes around the buggy address:
+  0x7fa994e45f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa994e45f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa994e46000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa994e46080: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x7fa994e46100: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 f9 f9 f9
+=>0x7fa994e46180: f9 f9 f9[f9]00 00 00 00 00 f9 f9 f9 f9 f9 f9 f9
+  0x7fa994e46200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa994e46280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa994e46300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa994e46380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa994e46400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2732590==ABORTING
+=================================================================
+==2734507==ERROR: AddressSanitizer: global-buffer-overflow on address 0x7f113963119c at pc 0x7f113962d589 bp 0x7fff421d7b60 sp 0x7fff421d7b58
+READ of size 4 at 0x7f113963119c thread T0
+    #0 0x7f113962d588 in inc /home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp:49:14
+    #1 0x55d65fff0af0 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp:33:3
+    #2 0x7f1139a2b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55d65ffef23d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/shared-lib-test.cpp.tmp+0x223d)
+
+0x7f113963119c is located 4 bytes before global variable 'GLOB' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp' (0x7f11396311a0) of size 40
+0x7f113963119c is located 52 bytes after global variable 'pad' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp' (0x7f1139631140) of size 40
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp:49:14 in inc
+Shadow bytes around the buggy address:
+  0x7f1139630f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f1139630f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f1139631000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f1139631080: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x7f1139631100: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 f9 f9 f9
+=>0x7f1139631180: f9 f9 f9[f9]00 00 00 00 00 f9 f9 f9 f9 f9 f9 f9
+  0x7f1139631200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f1139631280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f1139631300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f1139631380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f1139631400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2734507==ABORTING
+=================================================================
+==2736326==ERROR: AddressSanitizer: global-buffer-overflow on address 0x7f6cda13b19c at pc 0x7f6cda137589 bp 0x7fffbd23bb80 sp 0x7fffbd23bb78
+READ of size 4 at 0x7f6cda13b19c thread T0
+    #0 0x7f6cda137588 in inc /home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp:49:14
+    #1 0x55dc6a4e9b07 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp:33:3
+    #2 0x7f6cda535082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55dc6a4e823d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/shared-lib-test.cpp.tmp+0x223d)
+
+0x7f6cda13b19c is located 4 bytes before global variable 'GLOB' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp' (0x7f6cda13b1a0) of size 40
+0x7f6cda13b19c is located 52 bytes after global variable 'pad' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp' (0x7f6cda13b140) of size 40
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Posix/shared-lib-test.cpp:49:14 in inc
+Shadow bytes around the buggy address:
+  0x7f6cda13af00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6cda13af80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6cda13b000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6cda13b080: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x7f6cda13b100: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 f9 f9 f9
+=>0x7f6cda13b180: f9 f9 f9[f9]00 00 00 00 00 f9 f9 f9 f9 f9 f9 f9
+  0x7f6cda13b200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6cda13b280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6cda13b300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6cda13b380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6cda13b400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2736326==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/shared-lib-test.cpp <<TAIL<<

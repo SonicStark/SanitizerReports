@@ -1,0 +1,24 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/new_delete_mismatch_stack.cpp <<HEAD<<
+
+=================================================================
+==2720907==ERROR: AddressSanitizer: attempting free on address which was not malloc()-ed: 0x7f8f43000020 in thread T0
+    #0 0x7f8f45cf67b7 in operator delete(void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:152:3
+    #1 0x56065ad06686 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/new_delete_mismatch_stack.cpp:12:3
+    #2 0x7f8f45680082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x56065ad0516d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/new_delete_mismatch_stack.cpp.tmp+0x116d)
+
+Address 0x7f8f43000020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x56065ad065af in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/new_delete_mismatch_stack.cpp:9
+
+  This frame has 1 object(s):
+    [32, 42) 'a' (line 10) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: bad-free /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:152:3 in operator delete(void*)
+==2720907==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/new_delete_mismatch_stack.cpp <<TAIL<<

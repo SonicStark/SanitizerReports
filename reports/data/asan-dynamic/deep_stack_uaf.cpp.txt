@@ -1,0 +1,176 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/deep_stack_uaf.cpp <<HEAD<<
+
+=================================================================
+==2733213==ERROR: AddressSanitizer: heap-use-after-free on address 0x615000000205 at pc 0x55cd2b29b5e3 bp 0x7ffd8f416490 sp 0x7ffd8f416488
+READ of size 1 at 0x615000000205 thread T0
+    #0 0x55cd2b29b5e2 in main /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:27:10
+    #1 0x7f64d0c20082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55cd2b29a14d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/deep_stack_uaf.cpp.tmp+0x114d)
+
+0x615000000205 is located 5 bytes inside of 10-byte region [0x615000000200,0x61500000020a)
+freed by thread T0 here:
+    #0 0x7f64d12846c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x55cd2b29cf04 in DeepFree<0>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:19:5
+    #2 0x55cd2b29cee4 in DeepFree<1>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #3 0x55cd2b29cec4 in DeepFree<2>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #4 0x55cd2b29cea4 in DeepFree<3>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #5 0x55cd2b29ce84 in DeepFree<4>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #6 0x55cd2b29ce64 in DeepFree<5>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #7 0x55cd2b29ce44 in DeepFree<6>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #8 0x55cd2b29ce24 in DeepFree<7>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #9 0x55cd2b29ce04 in DeepFree<8>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #10 0x55cd2b29cde4 in DeepFree<9>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #11 0x55cd2b29cdc4 in DeepFree<10>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #12 0x55cd2b29cda4 in DeepFree<11>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #13 0x55cd2b29cd84 in DeepFree<12>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #14 0x55cd2b29cd64 in DeepFree<13>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #15 0x55cd2b29cd44 in DeepFree<14>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #16 0x55cd2b29cd24 in DeepFree<15>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #17 0x55cd2b29cd04 in DeepFree<16>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #18 0x55cd2b29cce4 in DeepFree<17>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #19 0x55cd2b29ccc4 in DeepFree<18>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #20 0x55cd2b29cca4 in DeepFree<19>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #21 0x55cd2b29cc84 in DeepFree<20>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #22 0x55cd2b29cc64 in DeepFree<21>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #23 0x55cd2b29cc44 in DeepFree<22>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #24 0x55cd2b29cc24 in DeepFree<23>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #25 0x55cd2b29cc04 in DeepFree<24>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #26 0x55cd2b29cbe4 in DeepFree<25>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #27 0x55cd2b29cbc4 in DeepFree<26>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #28 0x55cd2b29cba4 in DeepFree<27>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #29 0x55cd2b29cb84 in DeepFree<28>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #30 0x55cd2b29cb64 in DeepFree<29>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #31 0x55cd2b29cb44 in DeepFree<30>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #32 0x55cd2b29cb24 in DeepFree<31>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #33 0x55cd2b29cb04 in DeepFree<32>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #34 0x55cd2b29cae4 in DeepFree<33>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #35 0x55cd2b29cac4 in DeepFree<34>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #36 0x55cd2b29caa4 in DeepFree<35>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #37 0x55cd2b29ca84 in DeepFree<36>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #38 0x55cd2b29ca64 in DeepFree<37>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #39 0x55cd2b29ca44 in DeepFree<38>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #40 0x55cd2b29ca24 in DeepFree<39>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #41 0x55cd2b29ca04 in DeepFree<40>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #42 0x55cd2b29c9e4 in DeepFree<41>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #43 0x55cd2b29c9c4 in DeepFree<42>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #44 0x55cd2b29c9a4 in DeepFree<43>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #45 0x55cd2b29c984 in DeepFree<44>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #46 0x55cd2b29c964 in DeepFree<45>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #47 0x55cd2b29c944 in DeepFree<46>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #48 0x55cd2b29c924 in DeepFree<47>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #49 0x55cd2b29c904 in DeepFree<48>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #50 0x55cd2b29c8e4 in DeepFree<49>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #51 0x55cd2b29c8c4 in DeepFree<50>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #52 0x55cd2b29c8a4 in DeepFree<51>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #53 0x55cd2b29c884 in DeepFree<52>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #54 0x55cd2b29c864 in DeepFree<53>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #55 0x55cd2b29c844 in DeepFree<54>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #56 0x55cd2b29c824 in DeepFree<55>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #57 0x55cd2b29c804 in DeepFree<56>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #58 0x55cd2b29c7e4 in DeepFree<57>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #59 0x55cd2b29c7c4 in DeepFree<58>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #60 0x55cd2b29c7a4 in DeepFree<59>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #61 0x55cd2b29c784 in DeepFree<60>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #62 0x55cd2b29c764 in DeepFree<61>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #63 0x55cd2b29c744 in DeepFree<62>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #64 0x55cd2b29c724 in DeepFree<63>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #65 0x55cd2b29c704 in DeepFree<64>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #66 0x55cd2b29c6e4 in DeepFree<65>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #67 0x55cd2b29c6c4 in DeepFree<66>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #68 0x55cd2b29c6a4 in DeepFree<67>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #69 0x55cd2b29c684 in DeepFree<68>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #70 0x55cd2b29c664 in DeepFree<69>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #71 0x55cd2b29c644 in DeepFree<70>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #72 0x55cd2b29c624 in DeepFree<71>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #73 0x55cd2b29c604 in DeepFree<72>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #74 0x55cd2b29c5e4 in DeepFree<73>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #75 0x55cd2b29c5c4 in DeepFree<74>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #76 0x55cd2b29c5a4 in DeepFree<75>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #77 0x55cd2b29c584 in DeepFree<76>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #78 0x55cd2b29c564 in DeepFree<77>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #79 0x55cd2b29c544 in DeepFree<78>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #80 0x55cd2b29c524 in DeepFree<79>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #81 0x55cd2b29c504 in DeepFree<80>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #82 0x55cd2b29c4e4 in DeepFree<81>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #83 0x55cd2b29c4c4 in DeepFree<82>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #84 0x55cd2b29c4a4 in DeepFree<83>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #85 0x55cd2b29c484 in DeepFree<84>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #86 0x55cd2b29c464 in DeepFree<85>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #87 0x55cd2b29c444 in DeepFree<86>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #88 0x55cd2b29c424 in DeepFree<87>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #89 0x55cd2b29c404 in DeepFree<88>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #90 0x55cd2b29c3e4 in DeepFree<89>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #91 0x55cd2b29c3c4 in DeepFree<90>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #92 0x55cd2b29c3a4 in DeepFree<91>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #93 0x55cd2b29c384 in DeepFree<92>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #94 0x55cd2b29c364 in DeepFree<93>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #95 0x55cd2b29c344 in DeepFree<94>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #96 0x55cd2b29c324 in DeepFree<95>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #97 0x55cd2b29c304 in DeepFree<96>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #98 0x55cd2b29c2e4 in DeepFree<97>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #99 0x55cd2b29c2c4 in DeepFree<98>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #100 0x55cd2b29c2a4 in DeepFree<99>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #101 0x55cd2b29c284 in DeepFree<100>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #102 0x55cd2b29c264 in DeepFree<101>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #103 0x55cd2b29c244 in DeepFree<102>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #104 0x55cd2b29c224 in DeepFree<103>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #105 0x55cd2b29c204 in DeepFree<104>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #106 0x55cd2b29c1e4 in DeepFree<105>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #107 0x55cd2b29c1c4 in DeepFree<106>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #108 0x55cd2b29c1a4 in DeepFree<107>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #109 0x55cd2b29c184 in DeepFree<108>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #110 0x55cd2b29c164 in DeepFree<109>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #111 0x55cd2b29c144 in DeepFree<110>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #112 0x55cd2b29c124 in DeepFree<111>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #113 0x55cd2b29c104 in DeepFree<112>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #114 0x55cd2b29c0e4 in DeepFree<113>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #115 0x55cd2b29c0c4 in DeepFree<114>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #116 0x55cd2b29c0a4 in DeepFree<115>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #117 0x55cd2b29c084 in DeepFree<116>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #118 0x55cd2b29c064 in DeepFree<117>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+    #119 0x55cd2b29c044 in DeepFree<118>::free(char*) /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:12:5
+
+previously allocated by thread T0 here:
+    #0 0x7f64d1285427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55cd2b29b598 in main /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:24:20
+    #2 0x7f64d0c20082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/test/asan/TestCases/deep_stack_uaf.cpp:27:10 in main
+Shadow bytes around the buggy address:
+  0x614fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x615000000000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x615000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x615000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x615000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x615000000200:[fd]fd fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x615000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x615000000300: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x615000000380: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x615000000400: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x615000000480: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2733213==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/deep_stack_uaf.cpp <<TAIL<<

@@ -1,0 +1,238 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/asan_update_allocation.cpp <<HEAD<<
+
+=================================================================
+==2732749==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000015 at pc 0x55f5e01d5985 bp 0x7ffc91cf3ef0 sp 0x7ffc91cf3ee8
+READ of size 1 at 0x602000000015 thread T0
+    #0 0x55f5e01d5984 in main /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:26:10
+    #1 0x7f4b9f0c0082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55f5e01d423d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/asan_update_allocation.cpp.tmp+0x223d)
+
+0x602000000015 is located 5 bytes inside of 10-byte region [0x602000000010,0x60200000001a)
+freed by thread T0 here:
+    #0 0x7f4b9f7246c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x55f5e01d5926 in main /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:25:3
+    #2 0x7f4b9f0c0082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x7f4b9f6447e8 in __asan_update_allocation_context /home/llvm/compiler-rt/lib/asan/asan_allocator.cpp:1192:3
+    #1 0x55f5e01d5684 in UPDATE(void*) /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:16:3
+    #2 0x55f5e01d58fc in main /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:24:5
+    #3 0x7f4b9f0c0082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:26:10 in main
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fd fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2732749==ABORTING
+=================================================================
+==2733332==ERROR: AddressSanitizer: heap-use-after-free on address 0x7f1c3e975805 at pc 0x5644e4238985 bp 0x7ffd0ebed790 sp 0x7ffd0ebed788
+READ of size 1 at 0x7f1c3e975805 thread T0
+    #0 0x5644e4238984 in main /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:26:10
+    #1 0x7f1c42498082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5644e423723d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/asan_update_allocation.cpp.tmp+0x223d)
+
+0x7f1c3e975805 is located 5 bytes inside of 10000000-byte region [0x7f1c3e975800,0x7f1c3f2fee80)
+freed by thread T0 here:
+    #0 0x7f1c42afc6c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x5644e4238926 in main /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:25:3
+    #2 0x7f1c42498082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x7f1c42a1c7e8 in __asan_update_allocation_context /home/llvm/compiler-rt/lib/asan/asan_allocator.cpp:1192:3
+    #1 0x5644e4238684 in UPDATE(void*) /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:16:3
+    #2 0x5644e42388fc in main /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:24:5
+    #3 0x7f1c42498082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:26:10 in main
+Shadow bytes around the buggy address:
+  0x7f1c3e975580: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x7f1c3e975600: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x7f1c3e975680: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x7f1c3e975700: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x7f1c3e975780: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x7f1c3e975800:[fd]fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x7f1c3e975880: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x7f1c3e975900: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x7f1c3e975980: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x7f1c3e975a00: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x7f1c3e975a80: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2733332==ABORTING
+=================================================================
+==2733754==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000015 at pc 0x557e37543985 bp 0x7ffe17ee0410 sp 0x7ffe17ee0408
+READ of size 1 at 0x602000000015 thread T0
+    #0 0x557e37543984 in main /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:26:10
+    #1 0x7fe6fb2e4082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x557e3754223d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/asan_update_allocation.cpp.tmp+0x223d)
+
+0x602000000015 is located 5 bytes inside of 10-byte region [0x602000000010,0x60200000001a)
+freed by thread T0 here:
+    #0 0x7fe6fb9486c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x557e37543926 in main /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:25:3
+    #2 0x7fe6fb2e4082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T1 here:
+    #0 0x7fe6fb8687e8 in __asan_update_allocation_context /home/llvm/compiler-rt/lib/asan/asan_allocator.cpp:1192:3
+    #1 0x557e37543684 in UPDATE(void*) /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:16:3
+    #2 0x557e3754405e in main::$_0::operator()() const /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:22:25
+    #3 0x557e37543ff4 in void std::__invoke_impl<void, main::$_0>(std::__invoke_other, main::$_0&&) /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:60:14
+    #4 0x557e37543fb4 in std::__invoke_result<main::$_0>::type std::__invoke<main::$_0>(main::$_0&&) /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:95:14
+    #5 0x557e37543f8c in void std::thread::_Invoker<std::tuple<main::$_0>>::_M_invoke<0ul>(std::_Index_tuple<0ul>) /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:244:13
+    #6 0x557e37543f64 in std::thread::_Invoker<std::tuple<main::$_0>>::operator()() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:251:11
+    #7 0x557e37543e68 in std::thread::_State_impl<std::thread::_Invoker<std::tuple<main::$_0>>>::_M_run() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:195:13
+    #8 0x7fe6fb6f2de3  (/lib/x86_64-linux-gnu/libstdc++.so.6+0xd6de3) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+Thread T1 created by T0 here:
+    #0 0x7fe6fb880496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x7fe6fb6f30a8 in std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State>>, void (*)()) (/lib/x86_64-linux-gnu/libstdc++.so.6+0xd70a8) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+    #2 0x557e3754387a in main /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:22:5
+    #3 0x7fe6fb2e4082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:26:10 in main
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fd fa fa fd fd fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2733754==ABORTING
+=================================================================
+==2734042==ERROR: AddressSanitizer: heap-use-after-free on address 0x7f406b775805 at pc 0x563d7373d985 bp 0x7ffc78c36f10 sp 0x7ffc78c36f08
+READ of size 1 at 0x7f406b775805 thread T0
+    #0 0x563d7373d984 in main /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:26:10
+    #1 0x7f406f2d8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x563d7373c23d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/asan_update_allocation.cpp.tmp+0x223d)
+
+0x7f406b775805 is located 5 bytes inside of 10000000-byte region [0x7f406b775800,0x7f406c0fee80)
+freed by thread T0 here:
+    #0 0x7f406f93c6c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x563d7373d926 in main /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:25:3
+    #2 0x7f406f2d8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T1 here:
+    #0 0x7f406f85c7e8 in __asan_update_allocation_context /home/llvm/compiler-rt/lib/asan/asan_allocator.cpp:1192:3
+    #1 0x563d7373d684 in UPDATE(void*) /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:16:3
+    #2 0x563d7373e05e in main::$_0::operator()() const /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:22:25
+    #3 0x563d7373dff4 in void std::__invoke_impl<void, main::$_0>(std::__invoke_other, main::$_0&&) /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:60:14
+    #4 0x563d7373dfb4 in std::__invoke_result<main::$_0>::type std::__invoke<main::$_0>(main::$_0&&) /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/invoke.h:95:14
+    #5 0x563d7373df8c in void std::thread::_Invoker<std::tuple<main::$_0>>::_M_invoke<0ul>(std::_Index_tuple<0ul>) /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:244:13
+    #6 0x563d7373df64 in std::thread::_Invoker<std::tuple<main::$_0>>::operator()() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:251:11
+    #7 0x563d7373de68 in std::thread::_State_impl<std::thread::_Invoker<std::tuple<main::$_0>>>::_M_run() /usr/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/thread:195:13
+    #8 0x7f406f6e6de3  (/lib/x86_64-linux-gnu/libstdc++.so.6+0xd6de3) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+
+Thread T1 created by T0 here:
+    #0 0x7f406f874496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x7f406f6e70a8 in std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State>>, void (*)()) (/lib/x86_64-linux-gnu/libstdc++.so.6+0xd70a8) (BuildId: c90e6603c7cdf84713cd445700a575d3ea446d9b)
+    #2 0x563d7373d87a in main /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:22:5
+    #3 0x7f406f2d8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/test/asan/TestCases/asan_update_allocation.cpp:26:10 in main
+Shadow bytes around the buggy address:
+  0x7f406b775580: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x7f406b775600: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x7f406b775680: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x7f406b775700: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x7f406b775780: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x7f406b775800:[fd]fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x7f406b775880: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x7f406b775900: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x7f406b775980: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x7f406b775a00: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x7f406b775a80: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2734042==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/asan_update_allocation.cpp <<TAIL<<

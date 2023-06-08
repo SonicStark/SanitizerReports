@@ -1,0 +1,63 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/asan_symbolize_script/plugin_wrong_frame_number_bug.cpp <<HEAD<<
+
+=================================================================
+==2723125==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000010 at pc 0x55d4383ae638 bp 0x7ffec7701280 sp 0x7ffec7701278
+WRITE of size 4 at 0x602000000010 thread T0
+    #0 0x55d4383ae637  (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/asan_symbolize_script/Output/plugin_wrong_frame_number_bug.cpp.tmp+0x2637)
+    #1 0x55d4383ae658 in do_access /home/llvm/compiler-rt/test/asan/TestCases/Posix/asan_symbolize_script/plugin_wrong_frame_number_bug.cpp:32:3
+    #2 0x55d4383ae69d in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/asan_symbolize_script/plugin_wrong_frame_number_bug.cpp:38:3
+    #3 0x7f91408be082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55d4383ad16d in _start ??:0:0
+
+0x602000000010 is located 0 bytes inside of 8-byte region [0x602000000010,0x602000000018)
+freed by thread T0 here:
+    #0 0x7f9140f226c7 in __interceptor_cfree.part.0 _asan_rtl_:3
+    #1 0x55d4383ae5af in bug /home/llvm/compiler-rt/test/asan/TestCases/Posix/asan_symbolize_script/plugin_wrong_frame_number_bug.cpp:17:3
+    #2 0x55d4383ae5de in foo /home/llvm/compiler-rt/test/asan/TestCases/Posix/asan_symbolize_script/plugin_wrong_frame_number_bug.cpp:22:5
+    #3 0x55d4383ae698 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/asan_symbolize_script/plugin_wrong_frame_number_bug.cpp:37:3
+    #4 0x7f91408be082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x7f9140f23427 in malloc _asan_rtl_:3
+    #1 0x55d4383ae67f in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/asan_symbolize_script/plugin_wrong_frame_number_bug.cpp:36:14
+    #2 0x7f91408be082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/asan_symbolize_script/Output/plugin_wrong_frame_number_bug.cpp.tmp+0x2637)
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2723125==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/asan_symbolize_script/plugin_wrong_frame_number_bug.cpp <<TAIL<<

@@ -1,0 +1,11 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/malloc_fill.cpp <<HEAD<<
+
+-bebebebebebebebebebebebebebebebebebebebebebebebebebebebebebebebebe-
+-080808080808080808080000000000000000000000000000000000000000000000-
+-abababababababababababababababababababab00000000000000000000000000-
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/malloc_fill.cpp <<TAIL<<

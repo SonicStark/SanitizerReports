@@ -1,0 +1,175 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/global-location-nodebug.cpp <<HEAD<<
+
+=================================================================
+==2734051==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55b1a608a1ec at pc 0x55b1a6086659 bp 0x7ffc99790f60 sp 0x7ffc99790f58
+READ of size 4 at 0x55b1a608a1ec thread T0
+    #0 0x55b1a6086658 in main (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/global-location-nodebug.cpp.tmp+0x2658)
+    #1 0x7f9c42cec082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55b1a608515d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/global-location-nodebug.cpp.tmp+0x115d)
+
+0x55b1a608a1ec is located 52 bytes before global variable 'C::array' defined in '/home/llvm/compiler-rt/test/asan/TestCases/global-location.cpp' (0x55b1a608a220) of size 40
+0x55b1a608a1ec is located 4 bytes after global variable 'global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/global-location.cpp' (0x55b1a608a1c0) of size 40
+SUMMARY: AddressSanitizer: global-buffer-overflow (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/global-location-nodebug.cpp.tmp+0x2658) in main
+Shadow bytes around the buggy address:
+  0x55b1a6089f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55b1a6089f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55b1a608a000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55b1a608a080: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x55b1a608a100: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+=>0x55b1a608a180: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00[f9]f9 f9
+  0x55b1a608a200: f9 f9 f9 f9 00 00 00 00 00 f9 f9 f9 f9 f9 f9 f9
+  0x55b1a608a280: 00 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+  0x55b1a608a300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55b1a608a380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55b1a608a400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2734051==ABORTING
+=================================================================
+==2734489==ERROR: AddressSanitizer: global-buffer-overflow on address 0x562df904224c at pc 0x562df903e623 bp 0x7ffd21442580 sp 0x7ffd21442578
+READ of size 4 at 0x562df904224c thread T0
+    #0 0x562df903e622 in main (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/global-location-nodebug.cpp.tmp+0x2622)
+    #1 0x7f1c71192082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x562df903d15d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/global-location-nodebug.cpp.tmp+0x115d)
+
+0x562df904224c is located 52 bytes before global variable 'main::array' defined in '/home/llvm/compiler-rt/test/asan/TestCases/global-location.cpp' (0x562df9042280) of size 40
+0x562df904224c is located 4 bytes after global variable 'C::array' defined in '/home/llvm/compiler-rt/test/asan/TestCases/global-location.cpp' (0x562df9042220) of size 40
+SUMMARY: AddressSanitizer: global-buffer-overflow (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/global-location-nodebug.cpp.tmp+0x2622) in main
+Shadow bytes around the buggy address:
+  0x562df9041f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x562df9042000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x562df9042080: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x562df9042100: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x562df9042180: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 f9 f9 f9
+=>0x562df9042200: f9 f9 f9 f9 00 00 00 00 00[f9]f9 f9 f9 f9 f9 f9
+  0x562df9042280: 00 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+  0x562df9042300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x562df9042380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x562df9042400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x562df9042480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2734489==ABORTING
+=================================================================
+==2734769==ERROR: AddressSanitizer: global-buffer-overflow on address 0x557d1f0442ac at pc 0x557d1f0406e0 bp 0x7ffce112dcc0 sp 0x7ffce112dcb8
+READ of size 4 at 0x557d1f0442ac thread T0
+    #0 0x557d1f0406df in main (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/global-location-nodebug.cpp.tmp+0x26df)
+    #1 0x7f99699ba082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x557d1f03f15d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/global-location-nodebug.cpp.tmp+0x115d)
+
+0x557d1f0442ac is located 4 bytes after global variable 'main::array' defined in '/home/llvm/compiler-rt/test/asan/TestCases/global-location.cpp' (0x557d1f044280) of size 40
+SUMMARY: AddressSanitizer: global-buffer-overflow (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/global-location-nodebug.cpp.tmp+0x26df) in main
+Shadow bytes around the buggy address:
+  0x557d1f044000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557d1f044080: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x557d1f044100: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x557d1f044180: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 f9 f9 f9
+  0x557d1f044200: f9 f9 f9 f9 00 00 00 00 00 f9 f9 f9 f9 f9 f9 f9
+=>0x557d1f044280: 00 00 00 00 00[f9]f9 f9 f9 f9 f9 f9 00 00 00 00
+  0x557d1f044300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557d1f044380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557d1f044400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557d1f044480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x557d1f044500: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2734769==ABORTING
+=================================================================
+==2735097==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55d8b39e606b at pc 0x55d8b39e56ee bp 0x7ffc0a451190 sp 0x7ffc0a451188
+READ of size 1 at 0x55d8b39e606b thread T0
+    #0 0x55d8b39e56ed in main (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/global-location-nodebug.cpp.tmp+0x26ed)
+    #1 0x7f7beea63082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55d8b39e415d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/global-location-nodebug.cpp.tmp+0x115d)
+
+0x55d8b39e606b is located 0 bytes after global variable '.str' defined in '/home/llvm/compiler-rt/test/asan/TestCases/global-location.cpp' (0x55d8b39e6060) of size 11
+  '.str' is ascii string '0123456789'
+SUMMARY: AddressSanitizer: global-buffer-overflow (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/global-location-nodebug.cpp.tmp+0x26ed) in main
+Shadow bytes around the buggy address:
+  0x55d8b39e5d80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d8b39e5e00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d8b39e5e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d8b39e5f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d8b39e5f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x55d8b39e6000: 00 00 00 00 00 00 00 00 00 00 00 00 00[03]f9 f9
+  0x55d8b39e6080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d8b39e6100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d8b39e6180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d8b39e6200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d8b39e6280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2735097==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/global-location-nodebug.cpp <<TAIL<<

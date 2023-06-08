@@ -1,0 +1,42 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/use-after-scope-conversion.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-conversion.cpp:24:9: error: cannot specify any part of a return type in the declaration of a conversion function; put the complete type after 'operator'
+  const operator C() const { return C(&p); }
+        ^~~~~~~~
+/home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-conversion.cpp:29:5: error: no viable conversion from 'A' to 'C'
+  C s = A();
+    ^   ~~~
+/home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-conversion.cpp:15:8: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'A' to 'const C &' for 1st argument
+struct C {
+       ^
+/home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-conversion.cpp:15:8: note: candidate constructor (the implicit move constructor) not viable: no known conversion from 'A' to 'C &&' for 1st argument
+struct C {
+       ^
+/home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-conversion.cpp:17:12: note: explicit constructor is not a candidate
+  explicit C(const char *c) : p(c) {}
+           ^
+/home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-conversion.cpp:18:12: note: explicit constructor is not a candidate
+  explicit C(const B &b) : p(&b.p) {}
+           ^
+/home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-conversion.cpp:34:5: error: no viable conversion from 'B' to 'C'
+  C s = B();
+    ^   ~~~
+/home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-conversion.cpp:15:8: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'B' to 'const C &' for 1st argument
+struct C {
+       ^
+/home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-conversion.cpp:15:8: note: candidate constructor (the implicit move constructor) not viable: no known conversion from 'B' to 'C &&' for 1st argument
+struct C {
+       ^
+/home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-conversion.cpp:17:12: note: explicit constructor is not a candidate
+  explicit C(const char *c) : p(c) {}
+           ^
+/home/llvm/compiler-rt/test/asan/TestCases/use-after-scope-conversion.cpp:18:12: note: explicit constructor is not a candidate
+  explicit C(const B &b) : p(&b.p) {}
+           ^
+3 errors generated.
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/use-after-scope-conversion.cpp <<TAIL<<

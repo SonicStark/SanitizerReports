@@ -1,0 +1,161 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/fgets_fputs.cpp <<HEAD<<
+
+=================================================================
+==2797582==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f08f2700022 at pc 0x564a5cc198cd bp 0x7ffe13df66d0 sp 0x7ffe13df5e90
+WRITE of size 3 at 0x7f08f2700022 thread T0
+    #0 0x564a5cc198cc in __interceptor_fgets.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1302:5
+    #1 0x564a5cd0d6aa in test_fgets(char const*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/fgets_fputs.cpp:15:3
+    #2 0x564a5cd0d9cf in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/fgets_fputs.cpp:40:12
+    #3 0x7f08f4fb3082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x564a5cbde2ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/fgets_fputs.cpp.tmp+0x1e2ed)
+
+Address 0x7f08f2700022 is located in stack of thread T0 at offset 34 in frame
+    #0 0x564a5cd0d59f in test_fgets(char const*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/fgets_fputs.cpp:11
+
+  This frame has 1 object(s):
+    [32, 34) 'buf' (line 12) <== Memory access at offset 34 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1302:5 in __interceptor_fgets.part.0
+Shadow bytes around the buggy address:
+  0x7f08f26ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f08f26ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f08f26ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f08f26fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f08f26fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f08f2700000: f1 f1 f1 f1[02]f3 f3 f3 00 00 00 00 00 00 00 00
+  0x7f08f2700080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f08f2700100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f08f2700180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f08f2700200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f08f2700280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2797582==ABORTING
+=================================================================
+==2797900==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f27c8500021 at pc 0x563114303a9d bp 0x7fff6bf6f330 sp 0x7fff6bf6eaf0
+READ of size 2 at 0x7f27c8500021 thread T0
+    #0 0x563114303a9c in __interceptor_fputs.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1316:5
+    #1 0x56311440c835 in test_fputs() /home/llvm/compiler-rt/test/asan/TestCases/Posix/fgets_fputs.cpp:24:3
+    #2 0x56311440c9ed in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/fgets_fputs.cpp:43:12
+    #3 0x7f27cad34082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x5631142dd2ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/fgets_fputs.cpp.tmp+0x1e2ed)
+
+Address 0x7f27c8500021 is located in stack of thread T0 at offset 33 in frame
+    #0 0x56311440c71f in test_fputs() /home/llvm/compiler-rt/test/asan/TestCases/Posix/fgets_fputs.cpp:20
+
+  This frame has 1 object(s):
+    [32, 33) 'buf' (line 21) <== Memory access at offset 33 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1316:5 in __interceptor_fputs.part.0
+Shadow bytes around the buggy address:
+  0x7f27c84ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f27c84ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f27c84ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f27c84fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f27c84fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f27c8500000: f1 f1 f1 f1[01]f3 f3 f3 00 00 00 00 00 00 00 00
+  0x7f27c8500080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f27c8500100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f27c8500180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f27c8500200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f27c8500280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2797900==ABORTING
+=================================================================
+==2798404==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000010 at pc 0x55e3cddcb2f6 bp 0x7ffdba2e5860 sp 0x7ffdba2e5020
+READ of size 2 at 0x602000000010 thread T0
+    #0 0x55e3cddcb2f5 in __interceptor_puts.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1331:5
+    #1 0x55e3cded48c9 in test_puts() /home/llvm/compiler-rt/test/asan/TestCases/Posix/fgets_fputs.cpp:32:3
+    #2 0x55e3cded4a0b in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/fgets_fputs.cpp:45:12
+    #3 0x7f9be9b41082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55e3cdda52ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/fgets_fputs.cpp.tmp+0x1e2ed)
+
+0x602000000010 is located 0 bytes inside of 2-byte region [0x602000000010,0x602000000012)
+freed by thread T0 here:
+    #0 0x55e3cde89157 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x55e3cded48c0 in test_puts() /home/llvm/compiler-rt/test/asan/TestCases/Posix/fgets_fputs.cpp:31:3
+    #2 0x55e3cded4a0b in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/fgets_fputs.cpp:45:12
+    #3 0x7f9be9b41082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x55e3cde0bebf in __interceptor_strdup /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:454:3
+    #1 0x55e3cded48b3 in test_puts() /home/llvm/compiler-rt/test/asan/TestCases/Posix/fgets_fputs.cpp:30:13
+    #2 0x55e3cded4a0b in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/fgets_fputs.cpp:45:12
+    #3 0x7f9be9b41082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1331:5 in __interceptor_puts.part.0
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2798404==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/fgets_fputs.cpp <<TAIL<<

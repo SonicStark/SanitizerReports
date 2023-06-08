@@ -1,0 +1,18 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/glob.cpp <<HEAD<<
+
+pattern: /home/llvm/compiler-rt/test/asan/TestCases/Posix/glob_test_root/*a
+0 Success
+106
+106
+PASS
+pattern: /home/llvm/compiler-rt/test/asan/TestCases/Posix/glob_test_root/*a
+0 Success
+106
+106
+PASS
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/glob.cpp <<TAIL<<

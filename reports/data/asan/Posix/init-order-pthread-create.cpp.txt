@@ -1,0 +1,14 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/init-order-pthread-create.cpp <<HEAD<<
+
+glob poller is startedglob is now: 0x1234
+glob is now: 0x1234
+glob is now: 0x1234
+glob is now: 0x1234
+0x1234 0x2345
+glob is now: 0x1234
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/init-order-pthread-create.cpp <<TAIL<<

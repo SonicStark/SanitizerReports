@@ -1,0 +1,18 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/calloc-overflow.cpp <<HEAD<<
+
+=================================================================
+==2731943==ERROR: AddressSanitizer: calloc parameters overflow: count * size (-1 * 1000) cannot be represented in type size_t (thread T0)
+    #0 0x7f2226d869a7 in __interceptor_calloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:77:3
+    #1 0x56490baa25bf in main /home/llvm/compiler-rt/test/asan/TestCases/calloc-overflow.cpp:11:13
+    #2 0x7f2226721082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+==2731943==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: calloc-overflow /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:77:3 in __interceptor_calloc
+==2731943==ABORTING
+calloc returned: 0
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/calloc-overflow.cpp <<TAIL<<

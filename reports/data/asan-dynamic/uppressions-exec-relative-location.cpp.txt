@@ -1,0 +1,66 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/suppressions-exec-relative-location.cpp <<HEAD<<
+
+=================================================================
+==2739789==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000010 at pc 0x7fe699ba495a bp 0x7fff5b5f2770 sp 0x7fff5b5f1f30
+READ of size 2 at 0x602000000010 thread T0
+    #0 0x7fe699ba4959 in __interceptor_strlen.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:437:5
+    #1 0x55e280db95e7 in crash_function() /home/llvm/compiler-rt/test/asan/TestCases/suppressions-exec-relative-location.cpp:36:16
+    #2 0x55e280db9648 in main /home/llvm/compiler-rt/test/asan/TestCases/suppressions-exec-relative-location.cpp:41:3
+    #3 0x7fe6995e9082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55e280db818d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/suppressions-exec-relative-location.cpp.tmp+0x118d)
+
+0x602000000010 is located 0 bytes inside of 6-byte region [0x602000000010,0x602000000016)
+freed by thread T0 here:
+    #0 0x7fe699c4d6c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x55e280db95de in crash_function() /home/llvm/compiler-rt/test/asan/TestCases/suppressions-exec-relative-location.cpp:35:3
+    #2 0x55e280db9648 in main /home/llvm/compiler-rt/test/asan/TestCases/suppressions-exec-relative-location.cpp:41:3
+    #3 0x7fe6995e9082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x7fe699c4e427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55e280db95d1 in crash_function() /home/llvm/compiler-rt/test/asan/TestCases/suppressions-exec-relative-location.cpp:34:21
+    #2 0x55e280db9648 in main /home/llvm/compiler-rt/test/asan/TestCases/suppressions-exec-relative-location.cpp:41:3
+    #3 0x7fe6995e9082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:437:5 in __interceptor_strlen.part.0
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2739789==ABORTING
+strlen ignored, len = 1
+AddressSanitizer: failed to read suppressions file '/absolute/path'
+AddressSanitizer: failed to read suppressions file '/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/folder/only/'
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/suppressions-exec-relative-location.cpp <<TAIL<<

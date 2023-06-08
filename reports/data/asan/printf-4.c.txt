@@ -1,0 +1,128 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/printf-4.c <<HEAD<<
+
+before sprintf
+=================================================================
+==2812015==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fa1caa00062 at pc 0x55ab1c8a3234 bp 0x7fff8d6732e0 sp 0x7fff8d672aa0
+WRITE of size 15 at 0x7fa1caa00062 thread T0
+    #0 0x55ab1c8a3233 in __interceptor_vsprintf /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1741:1
+    #1 0x55ab1c8a352e in sprintf /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1784:1
+    #2 0x55ab1c95e991 in main /home/llvm/compiler-rt/test/asan/TestCases/printf-4.c:17:3
+    #3 0x7fa1ccf32082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55ab1c8322dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/printf-4.c.tmp+0x1d2dd)
+
+Address 0x7fa1caa00062 is located in stack of thread T0 at offset 98 in frame
+    #0 0x55ab1c95e7af in main /home/llvm/compiler-rt/test/asan/TestCases/printf-4.c:10
+
+  This frame has 5 object(s):
+    [32, 33) 'c' (line 11)
+    [48, 52) 'x' (line 12)
+    [64, 68) 'f' (line 13)
+    [80, 83) 's' (line 14)
+    [96, 98) 'buf' (line 15) <== Memory access at offset 98 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1741:1 in __interceptor_vsprintf
+Shadow bytes around the buggy address:
+  0x7fa1ca9ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa1ca9ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa1ca9ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa1ca9fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa1ca9fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fa1caa00000: f1 f1 f1 f1 01 f2 04 f2 04 f2 03 f2[02]f3 f3 f3
+  0x7fa1caa00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa1caa00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa1caa00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa1caa00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fa1caa00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812015==ABORTING
+before sprintf
+=================================================================
+==2812103==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fdf4ad00062 at pc 0x55c680f19234 bp 0x7ffeefb95620 sp 0x7ffeefb94de0
+WRITE of size 15 at 0x7fdf4ad00062 thread T0
+    #0 0x55c680f19233 in __interceptor_vsprintf /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1741:1
+    #1 0x55c680f1952e in sprintf /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1784:1
+    #2 0x55c680fd4991 in main /home/llvm/compiler-rt/test/asan/TestCases/printf-4.c:17:3
+    #3 0x7fdf4d219082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55c680ea82dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/printf-4.c.tmp+0x1d2dd)
+
+Address 0x7fdf4ad00062 is located in stack of thread T0 at offset 98 in frame
+    #0 0x55c680fd47af in main /home/llvm/compiler-rt/test/asan/TestCases/printf-4.c:10
+
+  This frame has 5 object(s):
+    [32, 33) 'c' (line 11)
+    [48, 52) 'x' (line 12)
+    [64, 68) 'f' (line 13)
+    [80, 83) 's' (line 14)
+    [96, 98) 'buf' (line 15) <== Memory access at offset 98 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1741:1 in __interceptor_vsprintf
+Shadow bytes around the buggy address:
+  0x7fdf4acffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdf4acffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdf4acffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdf4acfff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdf4acfff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fdf4ad00000: f1 f1 f1 f1 01 f2 04 f2 04 f2 03 f2[02]f3 f3 f3
+  0x7fdf4ad00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdf4ad00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdf4ad00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdf4ad00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fdf4ad00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812103==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/printf-4.c <<TAIL<<
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/printf-4.c <<HEAD<<
+
+/home/llvm/compiler-rt/test/asan/TestCases/printf-4.c:17:3: warning: 'sprintf' will always overflow; destination buffer has size 2, but format string expands to at least 12 [-Wfortify-source]
+  sprintf((char *)buf, "%c %d %.3f %s\n", c, x, f, s);
+  ^
+1 warning generated.
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/printf-4.c <<TAIL<<

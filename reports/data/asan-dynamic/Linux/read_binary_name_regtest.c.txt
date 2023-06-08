@@ -1,0 +1,32 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/read_binary_name_regtest.c <<HEAD<<
+
+/usr/include/linux/seccomp.h
+=================================================================
+==2721547==ERROR: AddressSanitizer: attempting double-free on 0x602000000010 in thread T0:
+    #0 0x7f163b8706c7  (/home/llvm/mybuild/./lib/clang/16/lib/x86_64-unknown-linux-gnu/libclang_rt.asan.so+0x13e6c7) (BuildId: 778852087ca8595f31db905bdfb409312e673109)
+    #1 0x562629bf3607  (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/read_binary_name_regtest.c.tmp+0x2607)
+    #2 0x562629bf3817  (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/read_binary_name_regtest.c.tmp+0x2817)
+    #3 0x7f163b558082  (/lib/x86_64-linux-gnu/libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #4 0x562629bf21ad  (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/read_binary_name_regtest.c.tmp+0x11ad)
+
+0x602000000010 is located 0 bytes inside of 10-byte region [0x602000000010,0x60200000001a)
+freed by thread T0 here:
+    #0 0x7f163b8706c7  (/home/llvm/mybuild/./lib/clang/16/lib/x86_64-unknown-linux-gnu/libclang_rt.asan.so+0x13e6c7) (BuildId: 778852087ca8595f31db905bdfb409312e673109)
+    #1 0x562629bf35fe  (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/read_binary_name_regtest.c.tmp+0x25fe)
+    #2 0x562629bf3817  (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/read_binary_name_regtest.c.tmp+0x2817)
+    #3 0x7f163b558082  (/lib/x86_64-linux-gnu/libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+
+previously allocated by thread T0 here:
+    #0 0x7f163b871427  (/home/llvm/mybuild/./lib/clang/16/lib/x86_64-unknown-linux-gnu/libclang_rt.asan.so+0x13f427) (BuildId: 778852087ca8595f31db905bdfb409312e673109)
+    #1 0x562629bf35f1  (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/read_binary_name_regtest.c.tmp+0x25f1)
+    #2 0x562629bf3817  (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/read_binary_name_regtest.c.tmp+0x2817)
+    #3 0x7f163b558082  (/lib/x86_64-linux-gnu/libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+
+SUMMARY: AddressSanitizer: double-free (/home/llvm/mybuild/./lib/clang/16/lib/x86_64-unknown-linux-gnu/libclang_rt.asan.so+0x13e6c7) (BuildId: 778852087ca8595f31db905bdfb409312e673109) 
+==2721547==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/read_binary_name_regtest.c <<TAIL<<

@@ -1,0 +1,18 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/nohugepage_test.cpp <<HEAD<<
+
+X: 0x7f9249300000-0x7f9259300000
+RSS CHANGE IS 0 => 1: SMALL (120 vs 120)
+RSS CHANGE IS 1 => 2: SMALL (120 vs 120)
+RSS CHANGE IS 2 => 3: SMALL (120 vs 184)
+RSS CHANGE IS 3 => 4: LARGE (184 vs 32888)
+X: 0x7fbd0a900000-0x7fbd1a900000
+RSS CHANGE IS 0 => 1: SMALL (120 vs 120)
+RSS CHANGE IS 1 => 2: SMALL (120 vs 120)
+RSS CHANGE IS 2 => 3: SMALL (120 vs 184)
+RSS CHANGE IS 3 => 4: LARGE (184 vs 32888)
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/nohugepage_test.cpp <<TAIL<<

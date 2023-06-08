@@ -1,0 +1,93 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/coverage-and-lsan.cpp <<HEAD<<
+
+==2732036==Registered root region at 0x7f6e41d007a0 of size 32
+==2732036==Registered root region at 0x7f6e41902620 of size 160
+==2732036==Unregistered root region at 0x7f6e41902620 of size 160
+==2732036==AddressSanitizer: failed to intercept '__isoc99_printf'
+==2732036==Registered root region at 0x7f6e41902620 of size 160
+==2732036==Unregistered root region at 0x7f6e41902620 of size 160
+==2732036==AddressSanitizer: failed to intercept '__isoc99_sprintf'
+==2732036==Registered root region at 0x7f6e41902620 of size 160
+==2732036==Unregistered root region at 0x7f6e41902620 of size 160
+==2732036==AddressSanitizer: failed to intercept '__isoc99_snprintf'
+==2732036==Registered root region at 0x7f6e41902620 of size 160
+==2732036==Unregistered root region at 0x7f6e41902620 of size 160
+==2732036==AddressSanitizer: failed to intercept '__isoc99_fprintf'
+==2732036==Registered root region at 0x7f6e41902620 of size 160
+==2732036==Unregistered root region at 0x7f6e41902620 of size 160
+==2732036==AddressSanitizer: failed to intercept '__isoc99_vprintf'
+==2732036==Registered root region at 0x7f6e41902620 of size 160
+==2732036==Unregistered root region at 0x7f6e41902620 of size 160
+==2732036==AddressSanitizer: failed to intercept '__isoc99_vsprintf'
+==2732036==Registered root region at 0x7f6e41902620 of size 160
+==2732036==Unregistered root region at 0x7f6e41902620 of size 160
+==2732036==AddressSanitizer: failed to intercept '__isoc99_vsnprintf'
+==2732036==Registered root region at 0x7f6e41902620 of size 160
+==2732036==Unregistered root region at 0x7f6e41902620 of size 160
+==2732036==AddressSanitizer: failed to intercept '__isoc99_vfprintf'
+==2732036==Registered root region at 0x7f6e41902620 of size 160
+==2732036==Unregistered root region at 0x7f6e41902620 of size 160
+==2732036==AddressSanitizer: failed to intercept '__b64_ntop'
+==2732036==Registered root region at 0x7f6e41902620 of size 160
+==2732036==Unregistered root region at 0x7f6e41902620 of size 160
+==2732036==AddressSanitizer: failed to intercept '__b64_pton'
+==2732036==Registered root region at 0x7f6e41902620 of size 160
+==2732036==Unregistered root region at 0x7f6e41902620 of size 160
+==2732036==AddressSanitizer: failed to intercept '__dn_comp'
+==2732036==Registered root region at 0x7f6e41902620 of size 160
+==2732036==Unregistered root region at 0x7f6e41902620 of size 160
+==2732036==AddressSanitizer: failed to intercept '__dn_expand'
+==2732036==Registered root region at 0x7f6e41902620 of size 160
+==2732036==Unregistered root region at 0x7f6e41902620 of size 160
+==2732036==AddressSanitizer: failed to intercept 'xdr_destroy'
+==2732036==Registered root region at 0x7f6e41902620 of size 160
+==2732036==Unregistered root region at 0x7f6e41902620 of size 160
+==2732036==AddressSanitizer: failed to intercept 'crypt'
+==2732036==Registered root region at 0x7f6e41902620 of size 160
+==2732036==Unregistered root region at 0x7f6e41902620 of size 160
+==2732036==AddressSanitizer: failed to intercept 'crypt_r'
+==2732036==Registered root region at 0x7f6e417029f0 of size 176
+==2732036==Unregistered root region at 0x7f6e417029f0 of size 176
+==2732036==AddressSanitizer: failed to intercept '__cxa_rethrow_primary_exception'
+==2732036==AddressSanitizer: libc interceptors initialized
+|| `[0x10007fff8000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x02008fff7000, 0x10007fff7fff]` || HighShadow ||
+|| `[0x00008fff7000, 0x02008fff6fff]` || ShadowGap  ||
+|| `[0x00007fff8000, 0x00008fff6fff]` || LowShadow  ||
+|| `[0x000000000000, 0x00007fff7fff]` || LowMem     ||
+MemToShadow(shadow): 0x00008fff7000 0x000091ff6dff 0x004091ff6e00 0x02008fff6fff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=256M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x7fff8000
+==2732036==Installed the sigaction for signal 11
+==2732036==Installed the sigaction for signal 7
+==2732036==Installed the sigaction for signal 8
+==2732036==T0: FakeStack created: 0x7f6e3fbf7000 -- 0x7f6e40700000 stack_size_log: 20; mmapped 11300K, noreserve=0 
+==2732036==T0: stack [0x7fffcae7b000,0x7fffcb67b000) size 0x800000; local=0x7fffcb67a00c
+==2732036==AddressSanitizer Init done
+SANCOV_OPTIONS: <empty>
+==2732036==LeakSanitizer: checking for leaks
+=================================================================
+==2732036==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 145 byte(s) in 9 object(s) allocated from:
+    #0 0x7f6e42899f17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x55883a27261a in main /home/llvm/compiler-rt/test/asan/TestCases/coverage-and-lsan.cpp:17:9
+    #2 0x7f6e42224082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: 145 byte(s) leaked in 9 allocation(s).
+SanitizerCoverage: /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/coverage-and-lsan.cpp.tmp-dir/coverage-and-lsan.cpp.tmp.2732036.sancov: 1 PCs written
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: read 1 64-bit PCs from /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/coverage-and-lsan.cpp.tmp-dir/coverage-and-lsan.cpp.tmp.2732036.sancov
+/home/llvm/compiler-rt/lib/sanitizer_common/scripts/sancov.py: 1 file merged; 1 PCs total
+0x25ca
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/coverage-and-lsan.cpp <<TAIL<<

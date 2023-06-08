@@ -1,0 +1,102 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/coverage-reset.cpp <<HEAD<<
+
+==2724890==Registered root region at 0x7f89191007a0 of size 32
+==2724890==Registered root region at 0x7f8918d02620 of size 160
+==2724890==Unregistered root region at 0x7f8918d02620 of size 160
+==2724890==AddressSanitizer: failed to intercept '__isoc99_printf'
+==2724890==Registered root region at 0x7f8918d02620 of size 160
+==2724890==Unregistered root region at 0x7f8918d02620 of size 160
+==2724890==AddressSanitizer: failed to intercept '__isoc99_sprintf'
+==2724890==Registered root region at 0x7f8918d02620 of size 160
+==2724890==Unregistered root region at 0x7f8918d02620 of size 160
+==2724890==AddressSanitizer: failed to intercept '__isoc99_snprintf'
+==2724890==Registered root region at 0x7f8918d02620 of size 160
+==2724890==Unregistered root region at 0x7f8918d02620 of size 160
+==2724890==AddressSanitizer: failed to intercept '__isoc99_fprintf'
+==2724890==Registered root region at 0x7f8918d02620 of size 160
+==2724890==Unregistered root region at 0x7f8918d02620 of size 160
+==2724890==AddressSanitizer: failed to intercept '__isoc99_vprintf'
+==2724890==Registered root region at 0x7f8918d02620 of size 160
+==2724890==Unregistered root region at 0x7f8918d02620 of size 160
+==2724890==AddressSanitizer: failed to intercept '__isoc99_vsprintf'
+==2724890==Registered root region at 0x7f8918d02620 of size 160
+==2724890==Unregistered root region at 0x7f8918d02620 of size 160
+==2724890==AddressSanitizer: failed to intercept '__isoc99_vsnprintf'
+==2724890==Registered root region at 0x7f8918d02620 of size 160
+==2724890==Unregistered root region at 0x7f8918d02620 of size 160
+==2724890==AddressSanitizer: failed to intercept '__isoc99_vfprintf'
+==2724890==Registered root region at 0x7f8918d02620 of size 160
+==2724890==Unregistered root region at 0x7f8918d02620 of size 160
+==2724890==AddressSanitizer: failed to intercept '__b64_ntop'
+==2724890==Registered root region at 0x7f8918d02620 of size 160
+==2724890==Unregistered root region at 0x7f8918d02620 of size 160
+==2724890==AddressSanitizer: failed to intercept '__b64_pton'
+==2724890==Registered root region at 0x7f8918d02620 of size 160
+==2724890==Unregistered root region at 0x7f8918d02620 of size 160
+==2724890==AddressSanitizer: failed to intercept '__dn_comp'
+==2724890==Registered root region at 0x7f8918d02620 of size 160
+==2724890==Unregistered root region at 0x7f8918d02620 of size 160
+==2724890==AddressSanitizer: failed to intercept '__dn_expand'
+==2724890==Registered root region at 0x7f8918d02620 of size 160
+==2724890==Unregistered root region at 0x7f8918d02620 of size 160
+==2724890==AddressSanitizer: failed to intercept 'xdr_destroy'
+==2724890==Registered root region at 0x7f8918d02620 of size 160
+==2724890==Unregistered root region at 0x7f8918d02620 of size 160
+==2724890==AddressSanitizer: failed to intercept 'crypt'
+==2724890==Registered root region at 0x7f8918d02620 of size 160
+==2724890==Unregistered root region at 0x7f8918d02620 of size 160
+==2724890==AddressSanitizer: failed to intercept 'crypt_r'
+==2724890==Registered root region at 0x7f8918b029f0 of size 176
+==2724890==Unregistered root region at 0x7f8918b029f0 of size 176
+==2724890==AddressSanitizer: failed to intercept '__cxa_rethrow_primary_exception'
+==2724890==AddressSanitizer: libc interceptors initialized
+|| `[0x10007fff8000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x02008fff7000, 0x10007fff7fff]` || HighShadow ||
+|| `[0x00008fff7000, 0x02008fff6fff]` || ShadowGap  ||
+|| `[0x00007fff8000, 0x00008fff6fff]` || LowShadow  ||
+|| `[0x000000000000, 0x00007fff7fff]` || LowMem     ||
+MemToShadow(shadow): 0x00008fff7000 0x000091ff6dff 0x004091ff6e00 0x02008fff6fff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=256M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x7fff8000
+==2724890==Installed the sigaction for signal 11
+==2724890==Installed the sigaction for signal 7
+==2724890==Installed the sigaction for signal 8
+==2724890==T0: FakeStack created: 0x7f8916ff7000 -- 0x7f8917b00000 stack_size_log: 20; mmapped 11300K, noreserve=0 
+==2724890==T0: stack [0x7fff0c833000,0x7fff0d033000) size 0x800000; local=0x7fff0d030b8c
+==2724890==AddressSanitizer Init done
+SANCOV_OPTIONS: <empty>
+RESET
+SanitizerCoverage: ./coverage-reset.cpp.tmp.2724890.sancov: 2 PCs written
+SanitizerCoverage: ./libcoverage-reset.cpp.dynamic.so.2724890.sancov: 2 PCs written
+RESET
+SanitizerCoverage: ./coverage-reset.cpp.tmp.2724890.sancov: 1 PCs written
+SanitizerCoverage: ./libcoverage-reset.cpp.dynamic.so.2724890.sancov: 1 PCs written
+RESET
+SanitizerCoverage: ./coverage-reset.cpp.tmp.2724890.sancov: 2 PCs written
+RESET
+SanitizerCoverage: ./libcoverage-reset.cpp.dynamic.so.2724890.sancov: 2 PCs written
+RESET
+==2724890==LeakSanitizer: checking for leaksSanitizerCoverage: ./libcoverage-reset.cpp.dynamic.so.2724890.sancov: 1 PCs written
+foo1
+foo2
+bar1
+bar2
+foo1
+bar1
+foo1
+foo2
+bar1
+bar2
+bar2
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/coverage-reset.cpp <<TAIL<<

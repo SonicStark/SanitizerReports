@@ -1,0 +1,55 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/intra-object-overflow.cpp <<HEAD<<
+
+=================================================================
+==2810988==ERROR: AddressSanitizer: intra-object-overflow on address 0x60c000000094 at pc 0x563d42b9f8f4 bp 0x7ffcf63ca250 sp 0x7ffcf63ca248
+WRITE of size 4 at 0x60c000000094 thread T0
+    #0 0x563d42b9f8f3 in Foo::set(int, int) /home/llvm/compiler-rt/test/asan/TestCases/intra-object-overflow.cpp:17:35
+    #1 0x563d42b9f630 in main /home/llvm/compiler-rt/test/asan/TestCases/intra-object-overflow.cpp:29:8
+    #2 0x7fd093ad7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x563d42a702ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/intra-object-overflow.cpp.tmp+0x1e2ed)
+
+0x60c000000094 is located 84 bytes inside of 128-byte region [0x60c000000040,0x60c0000000c0)
+allocated by thread T0 here:
+    #0 0x563d42b9c857 in operator new(unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:95:3
+    #1 0x563d42b9f603 in main /home/llvm/compiler-rt/test/asan/TestCases/intra-object-overflow.cpp:28:14
+    #2 0x7fd093ad7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: intra-object-overflow /home/llvm/compiler-rt/test/asan/TestCases/intra-object-overflow.cpp:17:35 in Foo::set(int, int)
+Shadow bytes around the buggy address:
+  0x60bffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60bffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60bfffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60bfffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x60c000000000: fa fa fa fa fa fa fa fa 00 04 bb 04 bb 00 00 00
+=>0x60c000000080: 00 00[04]bb 04 bb 04 bb fa fa fa fa fa fa fa fa
+  0x60c000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60c000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60c000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60c000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x60c000000300: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2810988==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/intra-object-overflow.cpp <<TAIL<<

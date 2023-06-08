@@ -1,0 +1,18 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/global-address.cpp <<HEAD<<
+
+=================================================================
+==2810506==ERROR: AddressSanitizer: attempting to call __sanitizer_get_allocated_size() for pointer which is not owned: 0x55aaa791eb40
+    #0 0x55aaa77b8bd7 in __sanitizer_get_allocated_size /home/llvm/compiler-rt/lib/asan/asan_allocator.cpp:1180:5
+    #1 0x55aaa78e459a in main /home/llvm/compiler-rt/test/asan/TestCases/global-address.cpp:11:15
+    #2 0x7f2362a4b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55aaa77b52dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/global-address.cpp.tmp+0x1e2dd)
+
+0x55aaa791eb40 is located 0 bytes inside of global variable 'g_i' defined in '/home/llvm/compiler-rt/test/asan/TestCases/global-address.cpp' (0x55aaa791eb40) of size 4
+SUMMARY: AddressSanitizer: bad-__sanitizer_get_allocated_size /home/llvm/compiler-rt/lib/asan/asan_allocator.cpp:1180:5 in __sanitizer_get_allocated_size
+==2810506==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/global-address.cpp <<TAIL<<

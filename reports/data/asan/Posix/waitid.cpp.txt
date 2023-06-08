@@ -1,0 +1,104 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/waitid.cpp <<HEAD<<
+
+=================================================================
+==2800000==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f0a72d0002c at pc 0x558d1db85c66 bp 0x7ffe3bc83410 sp 0x7ffe3bc82bd0
+WRITE of size 128 at 0x7f0a72d0002c thread T0
+    #0 0x558d1db85c65 in __interceptor_waitid.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:2642:5
+    #1 0x558d1dc746b8 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/waitid.cpp:19:11
+    #2 0x7f0a754c7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x558d1db452ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/waitid.cpp.tmp+0x1e2ed)
+
+Address 0x7f0a72d0002c is located in stack of thread T0 at offset 44 in frame
+    #0 0x558d1dc7459f in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/waitid.cpp:11
+
+  This frame has 1 object(s):
+    [32, 44) 'x' (line 14) <== Memory access at offset 44 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:2642:5 in __interceptor_waitid.part.0
+Shadow bytes around the buggy address:
+  0x7f0a72cffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0a72cffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0a72cffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0a72cfff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0a72cfff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f0a72d00000: f1 f1 f1 f1 00[04]f3 f3 00 00 00 00 00 00 00 00
+  0x7f0a72d00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0a72d00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0a72d00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0a72d00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0a72d00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2800000==ABORTING
+=================================================================
+==2804081==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f345510002c at pc 0x55fbdfa7fc66 bp 0x7ffd0d18e410 sp 0x7ffd0d18dbd0
+WRITE of size 128 at 0x7f345510002c thread T0
+    #0 0x55fbdfa7fc65 in __interceptor_waitid.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:2642:5
+    #1 0x55fbdfb6e64a in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/waitid.cpp:19:11
+    #2 0x7f34578be082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55fbdfa3f2ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/waitid.cpp.tmp+0x1e2ed)
+
+Address 0x7f345510002c is located in stack of thread T0 at offset 44 in frame
+    #0 0x55fbdfb6e59f in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/waitid.cpp:11
+
+  This frame has 1 object(s):
+    [32, 44) 'x' (line 14) <== Memory access at offset 44 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:2642:5 in __interceptor_waitid.part.0
+Shadow bytes around the buggy address:
+  0x7f34550ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f34550ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f34550ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f34550fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f34550fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f3455100000: f1 f1 f1 f1 00[04]f3 f3 00 00 00 00 00 00 00 00
+  0x7f3455100080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f3455100100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f3455100180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f3455100200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f3455100280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2804081==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/waitid.cpp <<TAIL<<

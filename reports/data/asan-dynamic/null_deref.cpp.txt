@@ -1,0 +1,60 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/null_deref.cpp <<HEAD<<
+
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2737072==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000028 (pc 0x55e51af165d1 bp 0x7ffc26069b10 sp 0x7ffc26069af0 T0)
+==2737072==The signal is caused by a READ memory access.
+==2737072==Hint: address points to the zero page.
+    #0 0x55e51af165d1 in NullDeref(int*) /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:15:10
+    #1 0x55e51af1656c in main /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:21:3
+    #2 0x7f3abe3e9082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55e51af1512d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/null_deref.cpp.tmp+0x112d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:15:10 in NullDeref(int*)
+==2737072==ABORTING
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2738021==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000028 (pc 0x561238cdc580 bp 0x7ffe19e44d20 sp 0x7ffe19e44d20 T0)
+==2738021==The signal is caused by a WRITE memory access.
+==2738021==Hint: address points to the zero page.
+    #0 0x561238cdc580 in NullDeref(int*) /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:15:10
+    #1 0x561238cdc568 in main /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:21:3
+    #2 0x7f5bf3477082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x561238cdb12d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/null_deref.cpp.tmp+0x112d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:15:10 in NullDeref(int*)
+==2738021==ABORTING
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2738532==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000028 (pc 0x55e698ae9580 bp 0x7fffe9a70e00 sp 0x7fffe9a70e00 T0)
+==2738532==The signal is caused by a WRITE memory access.
+==2738532==Hint: address points to the zero page.
+    #0 0x55e698ae9580 in NullDeref(int*) /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:15:10
+    #1 0x55e698ae9568 in main /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:21:3
+    #2 0x7fc00ca17082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55e698ae812d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/null_deref.cpp.tmp+0x112d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:15:10 in NullDeref(int*)
+==2738532==ABORTING
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2738980==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000028 (pc 0x562326713580 bp 0x7ffed7105da0 sp 0x7ffed7105da0 T0)
+==2738980==The signal is caused by a WRITE memory access.
+==2738980==Hint: address points to the zero page.
+    #0 0x562326713580 in NullDeref(int*) /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:15:10
+    #1 0x562326713568 in main /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:21:3
+    #2 0x7fe9d89d2082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x56232671212d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/null_deref.cpp.tmp+0x112d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:15:10 in NullDeref(int*)
+==2738980==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/null_deref.cpp <<TAIL<<

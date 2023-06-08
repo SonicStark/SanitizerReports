@@ -1,0 +1,18 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/tsd_dtor_leak.cpp <<HEAD<<
+
+heap size: new: 1187840 old: 1187840
+heap size: new: 1187840 old: 1187840
+heap size: new: 1187840 old: 1187840
+heap size: new: 1187840 old: 1187840
+heap size: new: 1187840 old: 1187840
+heap size: new: 1187840 old: 1187840
+heap size: new: 1187840 old: 1187840
+heap size: new: 1187840 old: 1187840
+heap size: new: 1187840 old: 1187840
+heap size: new: 1187840 old: 1187840
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/tsd_dtor_leak.cpp <<TAIL<<

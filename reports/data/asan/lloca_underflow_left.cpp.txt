@@ -1,0 +1,50 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/alloca_underflow_left.cpp <<HEAD<<
+
+=================================================================
+==2800678==ERROR: AddressSanitizer: dynamic-stack-buffer-overflow on address 0x7ffd0f4cb5bf at pc 0x56157d22a69c bp 0x7ffd0f4cb590 sp 0x7ffd0f4cb588
+WRITE of size 1 at 0x7ffd0f4cb5bf thread T0
+    #0 0x56157d22a69b in foo(int, int) /home/llvm/compiler-rt/test/asan/TestCases/alloca_underflow_left.cpp:10:14
+    #1 0x56157d22a704 in main /home/llvm/compiler-rt/test/asan/TestCases/alloca_underflow_left.cpp:16:3
+    #2 0x7fd4e242e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x56157d0fb2ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/alloca_underflow_left.cpp.tmp+0x1e2ed)
+
+Address 0x7ffd0f4cb5bf is located in stack of thread T0
+SUMMARY: AddressSanitizer: dynamic-stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/alloca_underflow_left.cpp:10:14 in foo(int, int)
+Shadow bytes around the buggy address:
+  0x7ffd0f4cb300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffd0f4cb380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffd0f4cb400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffd0f4cb480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffd0f4cb500: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7ffd0f4cb580: 00 00 00 00 ca ca ca[ca]00 02 cb cb cb cb cb cb
+  0x7ffd0f4cb600: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffd0f4cb680: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffd0f4cb700: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffd0f4cb780: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffd0f4cb800: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2800678==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/alloca_underflow_left.cpp <<TAIL<<

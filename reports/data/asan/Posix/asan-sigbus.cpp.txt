@@ -1,0 +1,21 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/asan-sigbus.cpp <<HEAD<<
+
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2794921==ERROR: AddressSanitizer: BUS on unknown address (pc 0x55e0d83aca0d bp 0x7ffd7220fad0 sp 0x7ffd7220f9e0 T0)
+==2794921==The signal is caused by a READ memory access.
+==2794921==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55e0d83aca0d in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/asan-sigbus.cpp:42:10
+    #1 0x7fdc6b791082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55e0d827d3ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/asan-sigbus.cpp.tmp+0x1e3ad)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: BUS /home/llvm/compiler-rt/test/asan/TestCases/Posix/asan-sigbus.cpp:42:10 in main
+==2794921==ABORTING
+error: Bus error
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/asan-sigbus.cpp <<TAIL<<

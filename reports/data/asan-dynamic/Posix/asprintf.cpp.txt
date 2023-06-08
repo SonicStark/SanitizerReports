@@ -1,0 +1,12 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/asprintf.cpp <<HEAD<<
+
+x1 1x
+DONE
+x1 1x
+DONE
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/asprintf.cpp <<TAIL<<

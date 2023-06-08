@@ -1,0 +1,96 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/poison_partial.cpp <<HEAD<<
+
+=================================================================
+==2737347==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55ab29019174 at pc 0x55ab29015643 bp 0x7ffd63fe1e60 sp 0x7ffd63fe1e58
+READ of size 4 at 0x55ab29019174 thread T0
+    #0 0x55ab29015642 in main /home/llvm/compiler-rt/test/asan/TestCases/poison_partial.cpp:17:10
+    #1 0x7faa78e3c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55ab2901416d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/poison_partial.cpp.tmp+0x116d)
+
+0x55ab29019174 is located 44 bytes before global variable 'x' defined in '/home/llvm/compiler-rt/test/asan/TestCases/poison_partial.cpp' (0x55ab290191a0) of size 8
+0x55ab29019175 is located 0 bytes after global variable 'g' defined in '/home/llvm/compiler-rt/test/asan/TestCases/poison_partial.cpp' (0x55ab29019160) of size 21
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/poison_partial.cpp:17:10 in main
+Shadow bytes around the buggy address:
+  0x55ab29018e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ab29018f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ab29018f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ab29019000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ab29019080: 00 00 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+=>0x55ab29019100: f9 f9 f9 f9 f9 f9 00 00 00 00 00 00 00 00[05]f9
+  0x55ab29019180: f9 f9 f9 f9 00 f9 f9 f9 00 00 00 00 00 00 00 00
+  0x55ab29019200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ab29019280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ab29019300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55ab29019380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2737347==ABORTING
+=================================================================
+==2737698==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x603000000024 at pc 0x55f96b9e9643 bp 0x7ffdc9a9fa20 sp 0x7ffdc9a9fa18
+READ of size 4 at 0x603000000024 thread T0
+    #0 0x55f96b9e9642 in main /home/llvm/compiler-rt/test/asan/TestCases/poison_partial.cpp:17:10
+    #1 0x7fd143191082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55f96b9e816d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/poison_partial.cpp.tmp+0x116d)
+
+0x603000000025 is located 0 bytes after 21-byte region [0x603000000010,0x603000000025)
+allocated by thread T0 here:
+    #0 0x7fd143806f17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x55f96b9e95c9 in main /home/llvm/compiler-rt/test/asan/TestCases/poison_partial.cpp:12:9
+    #2 0x7fd143191082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/poison_partial.cpp:17:10 in main
+Shadow bytes around the buggy address:
+  0x602ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x603000000000: fa fa 00 00[05]fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x603000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2737698==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/poison_partial.cpp <<TAIL<<

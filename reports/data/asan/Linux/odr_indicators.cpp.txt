@@ -1,0 +1,40 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/odr_indicators.cpp <<HEAD<<
+
+    #0 0x55d7a0416c96 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:367:5
+    #1 0x55d7a052c6fe in asan.module_ctor odr_indicators.cpp
+    #2 0x55d7a052c77c in __libc_csu_init (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/odr_indicators.cpp.tmp+0x14d77c)
+    #3 0x7f9707f1b00f in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:264:6
+    #4 0x55d7a03fd2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/odr_indicators.cpp.tmp+0x1e2dd)
+
+=== ID 5; 0x55d7a0566b30 0x55d7a0566bf0
+==2791657==Added Global[0x55d7a0566b30]: beg=0x55d7a0f3ab80 size=4/32 name=test_global_1 module=/home/llvm/compiler-rt/test/asan/TestCases/Linux/odr_indicators.cpp dyn_init=0 odr_indicator=0x000000000000
+==2791657==Added Global[0x55d7a0566b70]: beg=0x55d7a0541840 size=10/32 name=__const.main.f module=/home/llvm/compiler-rt/test/asan/TestCases/Linux/odr_indicators.cpp dyn_init=0 odr_indicator=0xffffffffffffffff
+==2791657==Added Global[0x55d7a0566bb0]: beg=0x55d7a0f3aba0 size=4/32 name=test_global_2 module=/home/llvm/compiler-rt/test/asan/TestCases/Linux/odr_indicators.cpp dyn_init=0 odr_indicator=0xffffffffffffffff
+==2791657==Added Global[0x55d7a0566bf0]: beg=0x55d7a0f3abc0 size=4/32 name=(anonymous namespace)::test_global_3 module=/home/llvm/compiler-rt/test/asan/TestCases/Linux/odr_indicators.cpp dyn_init=0 odr_indicator=0xffffffffffffffff
+==2791657==Removed Global[0x55d7a0566b30]: beg=0x55d7a0f3ab80 size=4/32 name=test_global_1 module=/home/llvm/compiler-rt/test/asan/TestCases/Linux/odr_indicators.cpp dyn_init=0 odr_indicator=0x000000000000
+==2791657==Removed Global[0x55d7a0566b70]: beg=0x55d7a0541840 size=10/32 name=__const.main.f module=/home/llvm/compiler-rt/test/asan/TestCases/Linux/odr_indicators.cpp dyn_init=0 odr_indicator=0xffffffffffffffff
+==2791657==Removed Global[0x55d7a0566bb0]: beg=0x55d7a0f3aba0 size=4/32 name=test_global_2 module=/home/llvm/compiler-rt/test/asan/TestCases/Linux/odr_indicators.cpp dyn_init=0 odr_indicator=0xffffffffffffffff
+==2791657==Removed Global[0x55d7a0566bf0]: beg=0x55d7a0f3abc0 size=4/32 name=(anonymous namespace)::test_global_3 module=/home/llvm/compiler-rt/test/asan/TestCases/Linux/odr_indicators.cpp dyn_init=0 odr_indicator=0xffffffffffffffff
+0 0 0
+    #0 0x55ab7776cc96 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:367:5
+    #1 0x55ab778826fe in asan.module_ctor odr_indicators.cpp
+    #2 0x55ab7788277c in __libc_csu_init (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/odr_indicators.cpp.tmp+0x14d77c)
+    #3 0x7fcccd93000f in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:264:6
+    #4 0x55ab777532dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/odr_indicators.cpp.tmp+0x1e2dd)
+
+=== ID 5; 0x55ab778bcb30 0x55ab778bcbf0
+==2792159==Added Global[0x55ab778bcb30]: beg=0x55ab78290b80 size=4/32 name=test_global_1 module=/home/llvm/compiler-rt/test/asan/TestCases/Linux/odr_indicators.cpp dyn_init=0 odr_indicator=0x55ab78290be0
+==2792159==Added Global[0x55ab778bcb70]: beg=0x55ab77897840 size=10/32 name=__const.main.f module=/home/llvm/compiler-rt/test/asan/TestCases/Linux/odr_indicators.cpp dyn_init=0 odr_indicator=0xffffffffffffffff
+==2792159==Added Global[0x55ab778bcbb0]: beg=0x55ab78290ba0 size=4/32 name=test_global_2 module=/home/llvm/compiler-rt/test/asan/TestCases/Linux/odr_indicators.cpp dyn_init=0 odr_indicator=0xffffffffffffffff
+==2792159==Added Global[0x55ab778bcbf0]: beg=0x55ab78290bc0 size=4/32 name=(anonymous namespace)::test_global_3 module=/home/llvm/compiler-rt/test/asan/TestCases/Linux/odr_indicators.cpp dyn_init=0 odr_indicator=0xffffffffffffffff
+==2792159==Removed Global[0x55ab778bcb30]: beg=0x55ab78290b80 size=4/32 name=test_global_1 module=/home/llvm/compiler-rt/test/asan/TestCases/Linux/odr_indicators.cpp dyn_init=0 odr_indicator=0x55ab78290be0
+==2792159==Removed Global[0x55ab778bcb70]: beg=0x55ab77897840 size=10/32 name=__const.main.f module=/home/llvm/compiler-rt/test/asan/TestCases/Linux/odr_indicators.cpp dyn_init=0 odr_indicator=0xffffffffffffffff
+==2792159==Removed Global[0x55ab778bcbb0]: beg=0x55ab78290ba0 size=4/32 name=test_global_2 module=/home/llvm/compiler-rt/test/asan/TestCases/Linux/odr_indicators.cpp dyn_init=0 odr_indicator=0xffffffffffffffff
+==2792159==Removed Global[0x55ab778bcbf0]: beg=0x55ab78290bc0 size=4/32 name=(anonymous namespace)::test_global_3 module=/home/llvm/compiler-rt/test/asan/TestCases/Linux/odr_indicators.cpp dyn_init=0 odr_indicator=0xffffffffffffffff
+0 0 0
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/odr_indicators.cpp <<TAIL<<

@@ -1,0 +1,74 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/activation-options.cpp <<HEAD<<
+
+Available flags for AddressSanitizer:
+	redzone
+		-  (Current Value: 16)
+	max_redzone
+		-  (Current Value: 2048)
+	quarantine_size_mb
+		-  (Current Value: 256)
+	thread_local_quarantine_size_kb
+		-  (Current Value: 1024)
+	alloc_dealloc_mismatch
+		-  (Current Value: true)
+	poison_heap
+		-  (Current Value: true)
+	allocator_may_return_null
+		-  (Current Value: false)
+	malloc_context_size
+		-  (Current Value: 30)
+	coverage
+		-  (Current Value: false)
+	coverage_dir
+		-  (Current Value: .)
+	verbosity
+		-  (Current Value: 0)
+	help
+		-  (Current Value: true)
+	allocator_release_to_os_interval_ms
+		-  (Current Value: 5000)
+	include
+		- read more options from the given file (Current Value Truncated: /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Out)
+	include_if_exists
+		- read more options from the given file (if it exists) (Current Value: )
+Failed to read options from '/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/activation-options.cpp.tmp.asan.options': error 2
+AddressSanitizer: ERROR: Flag parsing failed.
+Failed to read options from '/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/activation-options.cpp.tmp.asan.options.ABCDE': error 2
+AddressSanitizer: ERROR: Flag parsing failed.
+Available flags for AddressSanitizer:
+	redzone
+		-  (Current Value: 16)
+	max_redzone
+		-  (Current Value: 2048)
+	quarantine_size_mb
+		-  (Current Value: 256)
+	thread_local_quarantine_size_kb
+		-  (Current Value: 1024)
+	alloc_dealloc_mismatch
+		-  (Current Value: true)
+	poison_heap
+		-  (Current Value: true)
+	allocator_may_return_null
+		-  (Current Value: false)
+	malloc_context_size
+		-  (Current Value: 30)
+	coverage
+		-  (Current Value: false)
+	coverage_dir
+		-  (Current Value: .)
+	verbosity
+		-  (Current Value: 0)
+	help
+		-  (Current Value: true)
+	allocator_release_to_os_interval_ms
+		-  (Current Value: 5000)
+	include
+		- read more options from the given file (Current Value Truncated: /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Out)
+	include_if_exists
+		- read more options from the given file (if it exists) (Current Value: )
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/activation-options.cpp <<TAIL<<

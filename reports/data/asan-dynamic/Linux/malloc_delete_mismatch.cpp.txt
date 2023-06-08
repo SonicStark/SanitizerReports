@@ -1,0 +1,52 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/malloc_delete_mismatch.cpp <<HEAD<<
+
+=================================================================
+==2720636==ERROR: AddressSanitizer: alloc-dealloc-mismatch (malloc vs operator delete) on 0x602000000010
+    #0 0x7f45b58647b7 in operator delete(void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:152:3
+    #1 0x55df238c4620 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/malloc_delete_mismatch.cpp:23:3
+    #2 0x7f45b51ee082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55df238c316d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/malloc_delete_mismatch.cpp.tmp+0x116d)
+
+0x602000000010 is located 0 bytes inside of 10-byte region [0x602000000010,0x60200000001a)
+allocated by thread T0 here:
+    #0 0x7f45b5853427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55df238c45b8 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/malloc_delete_mismatch.cpp:21:14
+    #2 0x7f45b51ee082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: alloc-dealloc-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:152:3 in operator delete(void*)
+==2720636==HINT: if you don't care about these errors you may set ASAN_OPTIONS=alloc_dealloc_mismatch=0
+==2720636==ABORTING
+=================================================================
+==2720853==ERROR: AddressSanitizer: alloc-dealloc-mismatch (malloc vs operator delete) on 0x602000000010
+    #0 0x7fe9234de7f8 in operator delete(void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:152:3
+    #1 0x563ac64cb620 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/malloc_delete_mismatch.cpp:23:3
+    #2 0x7fe922e68082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x563ac64ca16d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/malloc_delete_mismatch.cpp.tmp+0x116d)
+
+0x602000000010 is located 0 bytes inside of 10-byte region [0x602000000010,0x60200000001a)
+allocated by thread T0 here:
+    #0 0x7fe9234cd468 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+
+SUMMARY: AddressSanitizer: alloc-dealloc-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:152:3 in operator delete(void*)
+==2720853==HINT: if you don't care about these errors you may set ASAN_OPTIONS=alloc_dealloc_mismatch=0
+==2720853==ABORTING
+=================================================================
+==2721036==ERROR: AddressSanitizer: alloc-dealloc-mismatch (malloc vs operator delete) on 0x602000000010
+    #0 0x7fcae37fd7f8 in operator delete(void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:152:3
+    #1 0x558634943620 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/malloc_delete_mismatch.cpp:23:3
+    #2 0x7fcae3187082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55863494216d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/malloc_delete_mismatch.cpp.tmp+0x116d)
+
+0x602000000010 is located 0 bytes inside of 10-byte region [0x602000000010,0x60200000001a)
+allocated by thread T0 here:
+    #0 0x7fcae37ec468 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+
+SUMMARY: AddressSanitizer: alloc-dealloc-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:152:3 in operator delete(void*)
+==2721036==HINT: if you don't care about these errors you may set ASAN_OPTIONS=alloc_dealloc_mismatch=0
+==2721036==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/malloc_delete_mismatch.cpp <<TAIL<<

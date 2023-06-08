@@ -1,0 +1,49 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/invalid-free.cpp <<HEAD<<
+
+=================================================================
+==2735421==ERROR: AddressSanitizer: attempting free on address which was not malloc()-ed: 0x602000000015 in thread T0
+    #0 0x7f845ae076c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x55dd32b1061a in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-free.cpp:15:3
+    #2 0x7f845a7a3082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55dd32b0f15d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/invalid-free.cpp.tmp+0x115d)
+
+0x602000000015 is located 5 bytes inside of 10-byte region [0x602000000010,0x60200000001a)
+allocated by thread T0 here:
+    #0 0x7f845ae08427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55dd32b105af in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-free.cpp:12:20
+    #2 0x7f845a7a3082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: bad-free /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3 in __interceptor_cfree.part.0
+==2735421==ABORTING
+=================================================================
+==2735695==ERROR: AddressSanitizer: attempting free on address which was not malloc()-ed: 0x602000000015 in thread T0
+    #0 0x7f29929a5708 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x56498e71061a in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-free.cpp:15:3
+    #2 0x7f2992341082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x56498e70f15d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/invalid-free.cpp.tmp+0x115d)
+
+0x602000000015 is located 5 bytes inside of 10-byte region [0x602000000010,0x60200000001a)
+allocated by thread T0 here:
+    #0 0x7f29929a6468 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+
+SUMMARY: AddressSanitizer: bad-free /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3 in __interceptor_cfree.part.0
+==2735695==ABORTING
+=================================================================
+==2735990==ERROR: AddressSanitizer: attempting free on address which was not malloc()-ed: 0x602000000015 in thread T0
+    #0 0x7f800ad46708 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x559f0c63061a in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-free.cpp:15:3
+    #2 0x7f800a6e2082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x559f0c62f15d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/invalid-free.cpp.tmp+0x115d)
+
+0x602000000015 is located 5 bytes inside of 10-byte region [0x602000000010,0x60200000001a)
+allocated by thread T0 here:
+    #0 0x7f800ad47468 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+
+SUMMARY: AddressSanitizer: bad-free /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3 in __interceptor_cfree.part.0
+==2735990==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/invalid-free.cpp <<TAIL<<

@@ -1,0 +1,27 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/halt_on_error-signals.c <<HEAD<<
+
+=================================================================
+==2725550==ERROR: AddressSanitizer: use-after-poison on address 0x5620ccdcf160 at pc 0x5620ccdcaaa5 bp 0x7f674c5fdeb0 sp 0x7f674c5fdea8
+WRITE of size 1 at 0x5620ccdcf160 thread T1
+AddressSanitizer: nested bug in the same thread, aborting.
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/halt_on_error-signals.c <<TAIL<<
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/halt_on_error-signals.c <<HEAD<<
+
+In file included from /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error-signals.c:11:
+In file included from /usr/include/stdio.h:27:
+In file included from /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:33:
+/usr/include/features.h:187:3: warning: "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE" [-W#warnings]
+# warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE"
+  ^
+1 warning generated.
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/halt_on_error-signals.c <<TAIL<<

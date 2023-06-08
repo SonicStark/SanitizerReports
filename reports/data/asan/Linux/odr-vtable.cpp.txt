@@ -1,0 +1,80 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/odr-vtable.cpp <<HEAD<<
+
+=================================================================
+==2791885==ERROR: AddressSanitizer: odr-violation (0x7f3e91d63da0):
+  [1] size=24 'vtable for XYZ' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-vtable.cpp
+  [2] size=24 'vtable for XYZ' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-vtable.cpp
+These globals were registered at these points:
+  [1]:
+    #0 0x5555d9684c10 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x7f3e91d6057e in asan.module_ctor odr-vtable.cpp
+    #2 0x7f3e91d78b99 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:72:3
+    #3 0x7f3e91d78ca0 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:30:6
+    #4 0x7f3e91d78ca0 in _dl_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:119:5
+    #5 0x7f3e91d68139  (/lib64/ld-linux-x86-64.so.2+0x1139) (BuildId: 4587364908de169dec62ffa538170118c1c3a078)
+
+  [2]:
+    #0 0x5555d9684c10 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x7f3e91d5957e in asan.module_ctor odr-vtable.cpp
+    #2 0x7f3e91d78b99 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:72:3
+    #3 0x7f3e91d78ca0 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:30:6
+    #4 0x7f3e91d78ca0 in _dl_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:119:5
+    #5 0x7f3e91d68139  (/lib64/ld-linux-x86-64.so.2+0x1139) (BuildId: 4587364908de169dec62ffa538170118c1c3a078)
+
+==2791885==HINT: if you don't care about these errors you may set ASAN_OPTIONS=detect_odr_violation=0
+SUMMARY: AddressSanitizer: odr-violation: global 'vtable for XYZ' at /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-vtable.cpp
+==2791885==ABORTING
+=================================================================
+==2792208==ERROR: AddressSanitizer: odr-violation (0x7f180b5ddda0):
+  [1] size=24 'vtable for XYZ' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-vtable.cpp
+  [2] size=24 'vtable for XYZ' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-vtable.cpp
+These globals were registered at these points:
+  [1]:
+    #0 0x5586ead66c10 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x7f180b5da57e in asan.module_ctor odr-vtable.cpp
+    #2 0x7f180b5f2b99 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:72:3
+    #3 0x7f180b5f2ca0 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:30:6
+    #4 0x7f180b5f2ca0 in _dl_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:119:5
+    #5 0x7f180b5e2139  (/lib64/ld-linux-x86-64.so.2+0x1139) (BuildId: 4587364908de169dec62ffa538170118c1c3a078)
+
+  [2]:
+    #0 0x5586ead66c10 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x7f180b5d357e in asan.module_ctor odr-vtable.cpp
+    #2 0x7f180b5f2b99 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:72:3
+    #3 0x7f180b5f2ca0 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:30:6
+    #4 0x7f180b5f2ca0 in _dl_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:119:5
+    #5 0x7f180b5e2139  (/lib64/ld-linux-x86-64.so.2+0x1139) (BuildId: 4587364908de169dec62ffa538170118c1c3a078)
+
+==2792208==HINT: if you don't care about these errors you may set ASAN_OPTIONS=detect_odr_violation=0
+SUMMARY: AddressSanitizer: odr-violation: global 'vtable for XYZ' at /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-vtable.cpp
+==2792208==ABORTING
+=================================================================
+==2793272==ERROR: AddressSanitizer: odr-violation (0x7fba0889eda0):
+  [1] size=24 'vtable for XYZ' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-vtable.cpp
+  [2] size=24 'vtable for XYZ' /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-vtable.cpp
+These globals were registered at these points:
+  [1]:
+    #0 0x55dbf7703c10 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x7fba0889b57e in asan.module_ctor odr-vtable.cpp
+    #2 0x7fba088b3b99 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:72:3
+    #3 0x7fba088b3ca0 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:30:6
+    #4 0x7fba088b3ca0 in _dl_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:119:5
+    #5 0x7fba088a3139  (/lib64/ld-linux-x86-64.so.2+0x1139) (BuildId: 4587364908de169dec62ffa538170118c1c3a078)
+
+  [2]:
+    #0 0x55dbf7703c10 in __asan_register_globals.part.0 /home/llvm/compiler-rt/lib/asan/asan_globals.cpp:356:3
+    #1 0x7fba0889457e in asan.module_ctor odr-vtable.cpp
+    #2 0x7fba088b3b99 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:72:3
+    #3 0x7fba088b3ca0 in call_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:30:6
+    #4 0x7fba088b3ca0 in _dl_init /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:119:5
+    #5 0x7fba088a3139  (/lib64/ld-linux-x86-64.so.2+0x1139) (BuildId: 4587364908de169dec62ffa538170118c1c3a078)
+
+==2793272==HINT: if you don't care about these errors you may set ASAN_OPTIONS=detect_odr_violation=0
+SUMMARY: AddressSanitizer: odr-violation: global 'vtable for XYZ' at /home/llvm/compiler-rt/test/asan/TestCases/Linux/odr-vtable.cpp
+==2793272==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/odr-vtable.cpp <<TAIL<<

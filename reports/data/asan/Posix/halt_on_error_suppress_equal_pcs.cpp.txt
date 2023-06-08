@@ -1,0 +1,296 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp <<HEAD<<
+
+=================================================================
+==2797296==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f0d5380002a at pc 0x55a40de2e963 bp 0x7ffd8b998430 sp 0x7ffd8b998428
+READ of size 1 at 0x7f0d5380002a thread T0
+    #0 0x55a40de2e962 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:37:26
+    #1 0x7f0d55d7e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55a40dd022dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/halt_on_error_suppress_equal_pcs.cpp.tmp+0x1d2dd)
+
+Address 0x7f0d5380002a is located in stack of thread T0 at offset 42 in frame
+    #0 0x55a40de2e7af in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:30
+
+  This frame has 3 object(s):
+    [32, 42) 'a' (line 31) <== Memory access at offset 42 overflows this variable
+    [64, 74) 'b' (line 32)
+    [96, 100) 'res' (line 37)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:37:26 in main
+Shadow bytes around the buggy address:
+  0x7f0d537ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d537ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d537ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d537fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d537fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f0d53800000: f1 f1 f1 f1 00[02]f2 f2 00 02 f2 f2 04 f3 f3 f3
+  0x7f0d53800080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d53800100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d53800180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d53800200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d53800280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+=================================================================
+==2797296==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f0d5380002a at pc 0x55a40de2ea3e bp 0x7ffd8b998430 sp 0x7ffd8b998428
+WRITE of size 1 at 0x7f0d5380002a thread T0
+    #0 0x55a40de2ea3d in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:39:18
+    #1 0x7f0d55d7e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55a40dd022dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/halt_on_error_suppress_equal_pcs.cpp.tmp+0x1d2dd)
+
+Address 0x7f0d5380002a is located in stack of thread T0 at offset 42 in frame
+    #0 0x55a40de2e7af in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:30
+
+  This frame has 3 object(s):
+    [32, 42) 'a' (line 31) <== Memory access at offset 42 overflows this variable
+    [64, 74) 'b' (line 32)
+    [96, 100) 'res' (line 37)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:39:18 in main
+Shadow bytes around the buggy address:
+  0x7f0d537ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d537ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d537ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d537fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d537fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f0d53800000: f1 f1 f1 f1 00[02]f2 f2 00 02 f2 f2 04 f3 f3 f3
+  0x7f0d53800080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d53800100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d53800180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d53800200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d53800280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+=================================================================
+==2797296==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f0d5380002a at pc 0x55a40de2eaaf bp 0x7ffd8b998430 sp 0x7ffd8b998428
+READ of size 1 at 0x7f0d5380002a thread T0
+    #0 0x55a40de2eaae in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:41:13
+    #1 0x7f0d55d7e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55a40dd022dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/halt_on_error_suppress_equal_pcs.cpp.tmp+0x1d2dd)
+
+Address 0x7f0d5380002a is located in stack of thread T0 at offset 42 in frame
+    #0 0x55a40de2e7af in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:30
+
+  This frame has 3 object(s):
+    [32, 42) 'a' (line 31) <== Memory access at offset 42 overflows this variable
+    [64, 74) 'b' (line 32)
+    [96, 100) 'res' (line 37)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:41:13 in main
+Shadow bytes around the buggy address:
+  0x7f0d537ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d537ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d537ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d537fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d537fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f0d53800000: f1 f1 f1 f1 00[02]f2 f2 00 02 f2 f2 04 f3 f3 f3
+  0x7f0d53800080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d53800100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d53800180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d53800200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f0d53800280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+=================================================================
+==2797841==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f684160002a at pc 0x55f73f4cc963 bp 0x7ffcf5e4fb50 sp 0x7ffcf5e4fb48
+READ of size 1 at 0x7f684160002a thread T0
+    #0 0x55f73f4cc962 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:37:26
+    #1 0x7f6843aea082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55f73f3a02dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/halt_on_error_suppress_equal_pcs.cpp.tmp+0x1d2dd)
+
+Address 0x7f684160002a is located in stack of thread T0 at offset 42 in frame
+    #0 0x55f73f4cc7af in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:30
+
+  This frame has 3 object(s):
+    [32, 42) 'a' (line 31) <== Memory access at offset 42 overflows this variable
+    [64, 74) 'b' (line 32)
+    [96, 100) 'res' (line 37)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:37:26 in main
+Shadow bytes around the buggy address:
+  0x7f68415ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f68415ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f68415ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f68415fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f68415fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f6841600000: f1 f1 f1 f1 00[02]f2 f2 00 02 f2 f2 04 f3 f3 f3
+  0x7f6841600080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6841600100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6841600180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6841600200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6841600280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+=================================================================
+==2797841==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f684160002a at pc 0x55f73f4cca3e bp 0x7ffcf5e4fb50 sp 0x7ffcf5e4fb48
+WRITE of size 1 at 0x7f684160002a thread T0
+    #0 0x55f73f4cca3d in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:39:18
+    #1 0x7f6843aea082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55f73f3a02dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/halt_on_error_suppress_equal_pcs.cpp.tmp+0x1d2dd)
+
+Address 0x7f684160002a is located in stack of thread T0 at offset 42 in frame
+    #0 0x55f73f4cc7af in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:30
+
+  This frame has 3 object(s):
+    [32, 42) 'a' (line 31) <== Memory access at offset 42 overflows this variable
+    [64, 74) 'b' (line 32)
+    [96, 100) 'res' (line 37)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:39:18 in main
+Shadow bytes around the buggy address:
+  0x7f68415ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f68415ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f68415ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f68415fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f68415fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f6841600000: f1 f1 f1 f1 00[02]f2 f2 00 02 f2 f2 04 f3 f3 f3
+  0x7f6841600080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6841600100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6841600180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6841600200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6841600280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+=================================================================
+==2797841==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f684160002a at pc 0x55f73f4ccaaf bp 0x7ffcf5e4fb50 sp 0x7ffcf5e4fb48
+READ of size 1 at 0x7f684160002a thread T0
+    #0 0x55f73f4ccaae in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:41:13
+    #1 0x7f6843aea082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55f73f3a02dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/halt_on_error_suppress_equal_pcs.cpp.tmp+0x1d2dd)
+
+Address 0x7f684160002a is located in stack of thread T0 at offset 42 in frame
+    #0 0x55f73f4cc7af in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:30
+
+  This frame has 3 object(s):
+    [32, 42) 'a' (line 31) <== Memory access at offset 42 overflows this variable
+    [64, 74) 'b' (line 32)
+    [96, 100) 'res' (line 37)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp:41:13 in main
+Shadow bytes around the buggy address:
+  0x7f68415ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f68415ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f68415ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f68415fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f68415fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f6841600000: f1 f1 f1 f1 00[02]f2 f2 00 02 f2 f2 04 f3 f3 f3
+  0x7f6841600080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6841600100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6841600180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6841600200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6841600280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/halt_on_error_suppress_equal_pcs.cpp <<TAIL<<

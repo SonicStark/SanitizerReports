@@ -1,0 +1,82 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/preinstalled_signal.cpp <<HEAD<<
+
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2721129==ERROR: AddressSanitizer: SEGV on unknown address 0x03e900298569 (pc 0x7fb0f584100b bp 0x7fff4b082f60 sp 0x7fff4b082a10 T0)
+==2721129==The signal is caused by a READ memory access.
+    #0 0x7fb0f584100b in raise /build/glibc-SzIz7B/glibc-2.31/signal/../sysdeps/unix/sysv/linux/raise.c:51:1
+    #1 0x559f7df6a3ff in main (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/preinstalled_signal.cpp.tmp+0x13ff)
+    #2 0x7fb0f5822082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x559f7df6a0bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/preinstalled_signal.cpp.tmp+0x10bd)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /build/glibc-SzIz7B/glibc-2.31/signal/../sysdeps/unix/sysv/linux/raise.c:51:1 in raise
+==2721129==ABORTING
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2721423==ERROR: AddressSanitizer: SEGV on unknown address 0x03e90029868f (pc 0x7f7b5461100b bp 0x7ffd4805eab0 sp 0x7ffd4805e560 T0)
+==2721423==The signal is caused by a READ memory access.
+    #0 0x7f7b5461100b in raise /build/glibc-SzIz7B/glibc-2.31/signal/../sysdeps/unix/sysv/linux/raise.c:51:1
+    #1 0x55d8865043ff in main (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/preinstalled_signal.cpp.tmp+0x13ff)
+    #2 0x7f7b545f2082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55d8865040bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/preinstalled_signal.cpp.tmp+0x10bd)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /build/glibc-SzIz7B/glibc-2.31/signal/../sysdeps/unix/sysv/linux/raise.c:51:1 in raise
+==2721423==ABORTING
+TestSigHandler
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2722081==ERROR: AddressSanitizer: SEGV on unknown address 0x03e900298921 (pc 0x7f00f449000b bp 0x7fff9f35a340 sp 0x7fff9f359df0 T0)
+==2722081==The signal is caused by a READ memory access.
+    #0 0x7f00f449000b in raise /build/glibc-SzIz7B/glibc-2.31/signal/../sysdeps/unix/sysv/linux/raise.c:51:1
+    #1 0x55ba9ec384df in main (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/preinstalled_signal.cpp.tmp+0x14df)
+    #2 0x7f00f4471082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55ba9ec380ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/preinstalled_signal.cpp.tmp+0x10ed)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /build/glibc-SzIz7B/glibc-2.31/signal/../sysdeps/unix/sysv/linux/raise.c:51:1 in raise
+==2722081==ABORTING
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2722628==ERROR: AddressSanitizer: SEGV on unknown address 0x03e900298b44 (pc 0x7f520848f00b bp 0x7ffdd06df380 sp 0x7ffdd06dee30 T0)
+==2722628==The signal is caused by a READ memory access.
+    #0 0x7f520848f00b in raise /build/glibc-SzIz7B/glibc-2.31/signal/../sysdeps/unix/sysv/linux/raise.c:51:1
+    #1 0x55d73c47e4df in main (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/preinstalled_signal.cpp.tmp+0x14df)
+    #2 0x7f5208470082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55d73c47e0ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/preinstalled_signal.cpp.tmp+0x10ed)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /build/glibc-SzIz7B/glibc-2.31/signal/../sysdeps/unix/sysv/linux/raise.c:51:1 in raise
+==2722628==ABORTING
+TestSigAction
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2724422==ERROR: AddressSanitizer: SEGV on unknown address 0x03e900299246 (pc 0x7f113991400b bp 0x7fffcb95c9e0 sp 0x7fffcb95c490 T0)
+==2724422==The signal is caused by a READ memory access.
+    #0 0x7f113991400b in raise /build/glibc-SzIz7B/glibc-2.31/signal/../sysdeps/unix/sysv/linux/raise.c:51:1
+    #1 0x557ff60c34ef in main (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/preinstalled_signal.cpp.tmp+0x14ef)
+    #2 0x7f11398f5082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x557ff60c30ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/preinstalled_signal.cpp.tmp+0x10ed)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /build/glibc-SzIz7B/glibc-2.31/signal/../sysdeps/unix/sysv/linux/raise.c:51:1 in raise
+==2724422==ABORTING
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2724962==ERROR: AddressSanitizer: SEGV on unknown address 0x03e900299462 (pc 0x7f9adbca300b bp 0x7fffd939c550 sp 0x7fffd939c000 T0)
+==2724962==The signal is caused by a READ memory access.
+    #0 0x7f9adbca300b in raise /build/glibc-SzIz7B/glibc-2.31/signal/../sysdeps/unix/sysv/linux/raise.c:51:1
+    #1 0x5591312204ef in main (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/preinstalled_signal.cpp.tmp+0x14ef)
+    #2 0x7f9adbc84082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5591312200ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/preinstalled_signal.cpp.tmp+0x10ed)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /build/glibc-SzIz7B/glibc-2.31/signal/../sysdeps/unix/sysv/linux/raise.c:51:1 in raise
+==2724962==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/preinstalled_signal.cpp <<TAIL<<

@@ -1,0 +1,9 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/printf-m.c <<HEAD<<
+
+Success hello, world
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/printf-m.c <<TAIL<<

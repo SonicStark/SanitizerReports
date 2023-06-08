@@ -1,0 +1,76 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/static_tls.cpp <<HEAD<<
+
+==2792439==Registered root region at 0x7f0bfde007a0 of size 32
+==2792439==Registered root region at 0x7f0bfda02dc0 of size 192
+==2792439==Unregistered root region at 0x7f0bfda02dc0 of size 192
+==2792439==AddressSanitizer: failed to intercept '__isoc99_printf'
+==2792439==Registered root region at 0x7f0bfda02dc0 of size 192
+==2792439==Unregistered root region at 0x7f0bfda02dc0 of size 192
+==2792439==AddressSanitizer: failed to intercept '__isoc99_sprintf'
+==2792439==Registered root region at 0x7f0bfda02dc0 of size 192
+==2792439==Unregistered root region at 0x7f0bfda02dc0 of size 192
+==2792439==AddressSanitizer: failed to intercept '__isoc99_snprintf'
+==2792439==Registered root region at 0x7f0bfda02dc0 of size 192
+==2792439==Unregistered root region at 0x7f0bfda02dc0 of size 192
+==2792439==AddressSanitizer: failed to intercept '__isoc99_fprintf'
+==2792439==Registered root region at 0x7f0bfda02dc0 of size 192
+==2792439==Unregistered root region at 0x7f0bfda02dc0 of size 192
+==2792439==AddressSanitizer: failed to intercept '__isoc99_vprintf'
+==2792439==Registered root region at 0x7f0bfda02dc0 of size 192
+==2792439==Unregistered root region at 0x7f0bfda02dc0 of size 192
+==2792439==AddressSanitizer: failed to intercept '__isoc99_vsprintf'
+==2792439==Registered root region at 0x7f0bfda02dc0 of size 192
+==2792439==Unregistered root region at 0x7f0bfda02dc0 of size 192
+==2792439==AddressSanitizer: failed to intercept '__isoc99_vsnprintf'
+==2792439==Registered root region at 0x7f0bfda02dc0 of size 192
+==2792439==Unregistered root region at 0x7f0bfda02dc0 of size 192
+==2792439==AddressSanitizer: failed to intercept '__isoc99_vfprintf'
+==2792439==Registered root region at 0x7f0bfda02dc0 of size 192
+==2792439==Unregistered root region at 0x7f0bfda02dc0 of size 192
+==2792439==AddressSanitizer: failed to intercept 'xdr_destroy'
+==2792439==Registered root region at 0x7f0bfd8029f0 of size 176
+==2792439==Unregistered root region at 0x7f0bfd8029f0 of size 176
+==2792439==AddressSanitizer: failed to intercept 'crypt'
+==2792439==Registered root region at 0x7f0bfd8029f0 of size 176
+==2792439==Unregistered root region at 0x7f0bfd8029f0 of size 176
+==2792439==AddressSanitizer: failed to intercept 'crypt_r'
+==2792439==Registered root region at 0x7f0bfd603190 of size 208
+==2792439==Unregistered root region at 0x7f0bfd603190 of size 208
+==2792439==AddressSanitizer: failed to intercept '__cxa_rethrow_primary_exception'
+==2792439==AddressSanitizer: libc interceptors initialized
+|| `[0x10007fff8000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x02008fff7000, 0x10007fff7fff]` || HighShadow ||
+|| `[0x00008fff7000, 0x02008fff6fff]` || ShadowGap  ||
+|| `[0x00007fff8000, 0x00008fff6fff]` || LowShadow  ||
+|| `[0x000000000000, 0x00007fff7fff]` || LowMem     ||
+MemToShadow(shadow): 0x00008fff7000 0x000091ff6dff 0x004091ff6e00 0x02008fff6fff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=256M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x7fff8000
+==2792439==Installed the sigaction for signal 11
+==2792439==Installed the sigaction for signal 7
+==2792439==Installed the sigaction for signal 8
+==2792439==SetCurrentThread: 0x7f0bfe8b3000 for thread 0x7f0bfe3137c0
+==2792439==T0: FakeStack created: 0x7f0bfbaf7000 -- 0x7f0bfc600000 stack_size_log: 20; mmapped 11300K, noreserve=0 
+==2792439==T0: stack [0x7fffd4a07000,0x7fffd5207000) size 0x800000; local=0x7fffd5205c3c
+==2792439==Using llvm-symbolizer found at: /home/llvm/mybuild/./bin/llvm-symbolizer
+==2792439==AddressSanitizer Init done
+before
+==2792439==__tls_get_addr: DTLS_Find 0x7f0bfe313798 2
+==2792439==__tls_get_addr: DTLS_NextBlock 0x7f0bfe313798 0
+==2792439==__tls_get_addr: 0x7f0bfe8a6fd0 {0x2,0x0} => 0x7f0bfe3137bc; tls_beg: 0x7f0bfe3137bc; sp: 0x7fffd5205bb8 num_live_dtls 1
+==2792439==__tls_get_addr: static tls: 0x7f0bfe3137bc
+after
+==2792439==LeakSanitizer: checking for leaks==2792488==Attached to thread 2792439.
+==2792488==Detached from thread 2792439.
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/static_tls.cpp <<TAIL<<

@@ -1,0 +1,50 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/alloca_detect_custom_size_.cpp <<HEAD<<
+
+=================================================================
+==2800406==ERROR: AddressSanitizer: dynamic-stack-buffer-overflow on address 0x7ffe9dced800 at pc 0x55cef3b526a2 bp 0x7ffe9dced730 sp 0x7ffe9dced728
+WRITE of size 1 at 0x7ffe9dced800 thread T0
+    #0 0x55cef3b526a1 in foo(int, int) /home/llvm/compiler-rt/test/asan/TestCases/alloca_detect_custom_size_.cpp:15:19
+    #1 0x55cef3b52701 in main /home/llvm/compiler-rt/test/asan/TestCases/alloca_detect_custom_size_.cpp:21:3
+    #2 0x7fbcf6f03082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55cef3a232ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/alloca_detect_custom_size_.cpp.tmp+0x1e2ed)
+
+Address 0x7ffe9dced800 is located in stack of thread T0
+SUMMARY: AddressSanitizer: dynamic-stack-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/alloca_detect_custom_size_.cpp:15:19 in foo(int, int)
+Shadow bytes around the buggy address:
+  0x7ffe9dced580: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffe9dced600: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffe9dced680: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffe9dced700: 00 00 00 00 00 00 00 00 ca ca ca ca 00 00 00 00
+  0x7ffe9dced780: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7ffe9dced800:[cb]cb cb cb 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffe9dced880: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffe9dced900: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffe9dced980: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffe9dceda00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7ffe9dceda80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2800406==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/alloca_detect_custom_size_.cpp <<TAIL<<

@@ -1,0 +1,106 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/fread_fwrite.cpp <<HEAD<<
+
+=================================================================
+==2725082==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f6251b00022 at pc 0x7f625470da96 bp 0x7ffe6b8a0070 sp 0x7ffe6b89f830
+READ of size 4 at 0x7f6251b00022 thread T0
+    #0 0x7f625470da95 in __interceptor_fwrite.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1205:16
+    #1 0x55f355974822 in test_fwrite() /home/llvm/compiler-rt/test/asan/TestCases/Posix/fread_fwrite.cpp:19:3
+    #2 0x55f3559748be in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/fread_fwrite.cpp:27:5
+    #3 0x7f6254150082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55f35597319d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/fread_fwrite.cpp.tmp+0x119d)
+
+Address 0x7f6251b00022 is located in stack of thread T0 at offset 34 in frame
+    #0 0x55f35597473f in test_fwrite() /home/llvm/compiler-rt/test/asan/TestCases/Posix/fread_fwrite.cpp:16
+
+  This frame has 1 object(s):
+    [32, 34) 'buf' (line 18) <== Memory access at offset 34 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1205:16 in __interceptor_fwrite.part.0
+Shadow bytes around the buggy address:
+  0x7f6251affd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6251affe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6251affe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6251afff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6251afff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7f6251b00000: f1 f1 f1 f1[02]f3 f3 f3 00 00 00 00 00 00 00 00
+  0x7f6251b00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6251b00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6251b00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6251b00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7f6251b00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2725082==ABORTING
+=================================================================
+==2725884==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fcffa900022 at pc 0x7fcffd593626 bp 0x7ffd1d3ebf70 sp 0x7ffd1d3eb730
+WRITE of size 4 at 0x7fcffa900022 thread T0
+    #0 0x7fcffd593625 in __interceptor_fread.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1091:16
+    #1 0x556a6dc726c3 in test_fread() /home/llvm/compiler-rt/test/asan/TestCases/Posix/fread_fwrite.cpp:11:3
+    #2 0x556a6dc728b4 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/fread_fwrite.cpp:25:5
+    #3 0x7fcffcfd5082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x556a6dc7119d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/fread_fwrite.cpp.tmp+0x119d)
+
+Address 0x7fcffa900022 is located in stack of thread T0 at offset 34 in frame
+    #0 0x556a6dc725df in test_fread() /home/llvm/compiler-rt/test/asan/TestCases/Posix/fread_fwrite.cpp:8
+
+  This frame has 1 object(s):
+    [32, 34) 'buf' (line 10) <== Memory access at offset 34 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1091:16 in __interceptor_fread.part.0
+Shadow bytes around the buggy address:
+  0x7fcffa8ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcffa8ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcffa8ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcffa8fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcffa8fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fcffa900000: f1 f1 f1 f1[02]f3 f3 f3 00 00 00 00 00 00 00 00
+  0x7fcffa900080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcffa900100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcffa900180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcffa900200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcffa900280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2725884==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/fread_fwrite.cpp <<TAIL<<

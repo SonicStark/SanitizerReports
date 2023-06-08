@@ -1,0 +1,88 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/swapcontext_test.cpp <<HEAD<<
+
+==2792284==WARNING: ASan doesn't fully support makecontext/swapcontext functions and may produce false positives in some cases!
+==2792284==WARNING: ASan is ignoring requested __asan_handle_no_return: stack type: default top: 0x7fff9609d000; bottom 0x7f777c47d000; size: 0x008819c20000 (584547696640)
+False positive error reports may follow
+For details see https://github.com/google/sanitizers/issues/189
+Child stack: 0x7fff95f9b1e0
+Child: 0x7f777d100020
+ThrowAndCatch: 1
+Test1 passed
+Child stack: 0x7fff95f9b1e0
+Child: 0x7f777d1000a0
+ThrowAndCatch: 1
+Test2 passed
+Child stack: 0x7f777c3fe800
+Child: 0x7f777d100120
+ThrowAndCatch: 1
+Test3 passed
+Child stack: 0x7f777c3fe800
+Child: 0x7f777d1001a0
+ThrowAndCatch: 1
+Test4 passed
+==2794875==WARNING: ASan doesn't fully support makecontext/swapcontext functions and may produce false positives in some cases!
+==2794875==WARNING: ASan is ignoring requested __asan_handle_no_return: stack type: default top: 0x7fff8a328000; bottom 0x7fc67857d000; size: 0x003911dab000 (245112680448)
+False positive error reports may follow
+For details see https://github.com/google/sanitizers/issues/189
+Child stack: 0x7fff8a225c20
+Child: 0x7fc679200020
+ThrowAndCatch: 1
+Test1 passed
+Child stack: 0x7fff8a225c20
+Child: 0x7fc6792000a0
+ThrowAndCatch: 1
+Test2 passed
+Child stack: 0x7fc6784fe800
+Child: 0x7fc679200120
+ThrowAndCatch: 1
+Test3 passed
+Child stack: 0x7fc6784fe800
+Child: 0x7fc6792001a0
+ThrowAndCatch: 1
+Test4 passed
+==2797632==WARNING: ASan doesn't fully support makecontext/swapcontext functions and may produce false positives in some cases!
+==2797632==WARNING: ASan is ignoring requested __asan_handle_no_return: stack type: default top: 0x7ffff8058000; bottom 0x7f4b5b37d000; size: 0x00b49ccdb000 (775724838912)
+False positive error reports may follow
+For details see https://github.com/google/sanitizers/issues/189
+Child stack: 0x7ffff7f55b80
+Child: 0x7f4b5c000020
+ThrowAndCatch: 1
+Test1 passed
+Child stack: 0x7ffff7f55b80
+Child: 0x7f4b5c0000a0
+ThrowAndCatch: 1
+Test2 passed
+Child stack: 0x7f4b5b2fe800
+Child: 0x7f4b5c000120
+ThrowAndCatch: 1
+Test3 passed
+Child stack: 0x7f4b5b2fe800
+Child: 0x7f4b5c0001a0
+ThrowAndCatch: 1
+Test4 passed
+==2798671==WARNING: ASan doesn't fully support makecontext/swapcontext functions and may produce false positives in some cases!
+==2798671==WARNING: ASan is ignoring requested __asan_handle_no_return: stack type: default top: 0x7fff63264000; bottom 0x7f8f9dd7d000; size: 0x006fc54e7000 (480051621888)
+False positive error reports may follow
+For details see https://github.com/google/sanitizers/issues/189
+Child stack: 0x7fff63162f00
+Child: 0x7f8f9ea00020
+ThrowAndCatch: 1
+Test1 passed
+Child stack: 0x7fff63162f00
+Child: 0x7f8f9ea000a0
+ThrowAndCatch: 1
+Test2 passed
+Child stack: 0x7f8f9dcfe800
+Child: 0x7f8f9ea00120
+ThrowAndCatch: 1
+Test3 passed
+Child stack: 0x7f8f9dcfe800
+Child: 0x7f8f9ea001a0
+ThrowAndCatch: 1
+Test4 passed
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/swapcontext_test.cpp <<TAIL<<

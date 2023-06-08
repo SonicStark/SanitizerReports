@@ -1,0 +1,50 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/global-overflow-bfd.cpp <<HEAD<<
+
+=================================================================
+==2791205==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55af90e9a9ea at pc 0x55af908b18d5 bp 0x7ffd979e4710 sp 0x7ffd979e4708
+READ of size 1 at 0x55af90e9a9ea thread T0
+    #0 0x55af908b18d4 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/global-overflow-bfd.cpp:13:13
+    #1 0x7f8ffbeac082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55af907922ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/global-overflow-bfd.cpp.tmp+0x1e2ad)
+
+0x55af90e9a9ea is located 22 bytes before global variable 'main::ZZZ' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Linux/global-overflow-bfd.cpp' (0x55af90e9aa00) of size 10
+0x55af90e9a9ea is located 0 bytes after global variable 'main::YYY' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Linux/global-overflow-bfd.cpp' (0x55af90e9a9e0) of size 10
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Linux/global-overflow-bfd.cpp:13:13 in main
+Shadow bytes around the buggy address:
+  0x55af90e9a700: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55af90e9a780: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55af90e9a800: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55af90e9a880: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55af90e9a900: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x55af90e9a980: 00 00 00 00 00 00 00 00 00 02 f9 f9 00[02]f9 f9
+  0x55af90e9aa00: 00 02 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55af90e9aa80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55af90e9ab00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55af90e9ab80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55af90e9ac00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2791205==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/global-overflow-bfd.cpp <<TAIL<<

@@ -1,0 +1,95 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/overflow-in-qsort.cpp <<HEAD<<
+
+=================================================================
+==2791669==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55b3ee50ac28 at pc 0x55b3edafc60a bp 0x7ffcba5e6770 sp 0x7ffcba5e6768
+WRITE of size 4 at 0x55b3ee50ac28 thread T0
+    #0 0x55b3edafc609 in QsortCallback /home/llvm/compiler-rt/test/asan/TestCases/Linux/overflow-in-qsort.cpp:23:26
+    #1 0x55b3ed9f594a in __interceptor_qsort_r.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:10164:13
+    #2 0x55b3edafc65f in MyQsort /home/llvm/compiler-rt/test/asan/TestCases/Linux/overflow-in-qsort.cpp:30:3
+    #3 0x55b3edafc733 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/overflow-in-qsort.cpp:37:3
+    #4 0x7f47a975e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+0x55b3ee50ac28 is located 0 bytes after global variable 'global_array' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Linux/overflow-in-qsort.cpp' (0x55b3ee50ac00) of size 40
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Linux/overflow-in-qsort.cpp:23:26 in QsortCallback
+Shadow bytes around the buggy address:
+  0x55b3ee50a980: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55b3ee50aa00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55b3ee50aa80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55b3ee50ab00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55b3ee50ab80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x55b3ee50ac00: 00 00 00 00 00[f9]f9 f9 f9 f9 f9 f9 00 00 00 00
+  0x55b3ee50ac80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55b3ee50ad00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55b3ee50ad80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55b3ee50ae00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55b3ee50ae80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2791669==ABORTING
+=================================================================
+==2791775==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55d800208c28 at pc 0x55d7ff7fa60a bp 0x7ffe5f14b3d0 sp 0x7ffe5f14b3c8
+WRITE of size 4 at 0x55d800208c28 thread T0
+    #0 0x55d7ff7fa609 in QsortCallback /home/llvm/compiler-rt/test/asan/TestCases/Linux/overflow-in-qsort.cpp:23:26
+    #1 0x55d7ff6f394a in __interceptor_qsort_r.part.0 /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:10164:13
+    #2 0x55d7ff7fa65f in MyQsort /home/llvm/compiler-rt/test/asan/TestCases/Linux/overflow-in-qsort.cpp:30:3
+    #3 0x55d7ff7fa733 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/overflow-in-qsort.cpp:37:3
+    #4 0x7fee0bead082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #5 0x55d7ff6cb2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/overflow-in-qsort.cpp.tmp+0x1e2dd)
+
+0x55d800208c28 is located 0 bytes after global variable 'global_array' defined in '/home/llvm/compiler-rt/test/asan/TestCases/Linux/overflow-in-qsort.cpp' (0x55d800208c00) of size 40
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/llvm/compiler-rt/test/asan/TestCases/Linux/overflow-in-qsort.cpp:23:26 in QsortCallback
+Shadow bytes around the buggy address:
+  0x55d800208980: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d800208a00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d800208a80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d800208b00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d800208b80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x55d800208c00: 00 00 00 00 00[f9]f9 f9 f9 f9 f9 f9 00 00 00 00
+  0x55d800208c80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d800208d00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d800208d80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d800208e00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x55d800208e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2791775==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/overflow-in-qsort.cpp <<TAIL<<

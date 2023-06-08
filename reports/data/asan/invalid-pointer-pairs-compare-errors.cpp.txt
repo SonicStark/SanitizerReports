@@ -1,0 +1,314 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/invalid-pointer-pairs-compare-errors.cpp <<HEAD<<
+
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x604000000010 0x604000000050
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e504026b3 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:27:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+0x604000000010 is located 0 bytes inside of 42-byte region [0x604000000010,0x60400000003a)
+allocated by thread T0 here:
+    #0 0x556e503b7f67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x556e50402694 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:22:25
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+0x604000000050 is located 0 bytes inside of 42-byte region [0x604000000050,0x60400000007a)
+allocated by thread T0 here:
+    #0 0x556e503b7f67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x556e504026a2 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:23:25
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x619000000080 0x619000000481
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e504026e7 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:34:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+0x619000000080 is located 0 bytes inside of 1024-byte region [0x619000000080,0x619000000480)
+allocated by thread T0 here:
+    #0 0x556e503b7f67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x556e504026cf in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:31:19
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+0x619000000481 is located 1 bytes after 1024-byte region [0x619000000080,0x619000000480)
+allocated by thread T0 here:
+    #0 0x556e503b7f67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x556e504026cf in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:31:19
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x619000000480 0x619000000481
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e50402702 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:37:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+0x619000000480 is located 0 bytes after 1024-byte region [0x619000000080,0x619000000480)
+allocated by thread T0 here:
+    #0 0x556e503b7f67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x556e504026cf in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:31:19
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+0x619000000481 is located 1 bytes after 1024-byte region [0x619000000080,0x619000000480)
+allocated by thread T0 here:
+    #0 0x556e503b7f67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x556e504026cf in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:31:19
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x621000000100 0x621000001101
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e5040272d in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:43:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+0x621000000100 is located 0 bytes inside of 4096-byte region [0x621000000100,0x621000001100)
+allocated by thread T0 here:
+    #0 0x556e503b7f67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x556e50402715 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:40:19
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+0x621000001101 is located 1 bytes after 4096-byte region [0x621000000100,0x621000001100)
+allocated by thread T0 here:
+    #0 0x556e503b7f67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x556e50402715 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:40:19
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x621000000100 0x000000000000
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e5040273a in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:46:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+0x621000000100 is located 0 bytes inside of 4096-byte region [0x621000000100,0x621000001100)
+allocated by thread T0 here:
+    #0 0x556e503b7f67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x556e50402715 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:40:19
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Address 0x000000000000 is a wild pointer inside of access range of size 0x000000000001.
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x556e50e10c80 0x556e50e10d2a
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e50402751 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:51:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+0x556e50e10c80 is located 0 bytes inside of global variable 'global1' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10c80) of size 100
+0x556e50e10d2a is located 10 bytes inside of global variable 'global2' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10d20) of size 100
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x556e50e10de0 0x556e50e10de8
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e5040278b in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:58:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+0x556e50e10de0 is located 32 bytes before global variable 'little_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10e00) of size 10
+0x556e50e10de0 is located 0 bytes inside of global variable 'small_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10de0) of size 7
+0x556e50e10de8 is located 56 bytes before global variable 'medium_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10e20) of size 4000
+0x556e50e10de8 is located 24 bytes before global variable 'little_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10e00) of size 10
+0x556e50e10de8 is located 1 bytes after global variable 'small_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10de0) of size 7
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x556e50e10ddf 0x556e50e10de0
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e5040279c in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:61:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+0x556e50e10ddf is located 33 bytes before global variable 'little_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10e00) of size 10
+0x556e50e10ddf is located 1 bytes before global variable 'small_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10de0) of size 7
+0x556e50e10ddf is located 26 bytes after global variable 'smallest_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10dc0) of size 5
+0x556e50e10de0 is located 32 bytes before global variable 'little_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10e00) of size 10
+0x556e50e10de0 is located 0 bytes inside of global variable 'small_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10de0) of size 7
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x556e50e10de0 0x556e50e10ddf
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e504027ad in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:64:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+0x556e50e10de0 is located 32 bytes before global variable 'little_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10e00) of size 10
+0x556e50e10de0 is located 0 bytes inside of global variable 'small_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10de0) of size 7
+0x556e50e10ddf is located 33 bytes before global variable 'little_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10e00) of size 10
+0x556e50e10ddf is located 1 bytes before global variable 'small_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10de0) of size 7
+0x556e50e10ddf is located 26 bytes after global variable 'smallest_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10dc0) of size 5
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x556e50e10ddf 0x556e50e10de8
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e504027c2 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:67:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+0x556e50e10ddf is located 33 bytes before global variable 'little_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10e00) of size 10
+0x556e50e10ddf is located 1 bytes before global variable 'small_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10de0) of size 7
+0x556e50e10ddf is located 26 bytes after global variable 'smallest_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10dc0) of size 5
+0x556e50e10de8 is located 56 bytes before global variable 'medium_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10e20) of size 4000
+0x556e50e10de8 is located 24 bytes before global variable 'little_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10e00) of size 10
+0x556e50e10de8 is located 1 bytes after global variable 'small_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10de0) of size 7
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x556e50e1219f 0x556e50e121a0
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e504027de in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:72:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+0x556e50e1219f is located 1 bytes before global variable 'large_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e121a0) of size 5000
+0x556e50e1219f is located 991 bytes after global variable 'medium_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10e20) of size 4000
+0x556e50e121a0 is located 0 bytes inside of global variable 'large_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e121a0) of size 5000
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x556e50e121a0 0x556e50e1219f
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e504027ef in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:75:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+0x556e50e121a0 is located 0 bytes inside of global variable 'large_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e121a0) of size 5000
+0x556e50e1219f is located 1 bytes before global variable 'large_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e121a0) of size 5000
+0x556e50e1219f is located 991 bytes after global variable 'medium_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10e20) of size 4000
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x556e50e121a0 0x556e50e10c80
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e504027ff in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:78:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+0x556e50e121a0 is located 0 bytes inside of global variable 'large_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e121a0) of size 5000
+0x556e50e10c80 is located 0 bytes inside of global variable 'global1' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10c80) of size 100
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x556e50e121a0 0x556e50e10de0
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e5040280f in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:81:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+0x556e50e121a0 is located 0 bytes inside of global variable 'large_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e121a0) of size 5000
+0x556e50e10de0 is located 32 bytes before global variable 'little_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10e00) of size 10
+0x556e50e10de0 is located 0 bytes inside of global variable 'small_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10de0) of size 7
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x556e50e121a0 0x000000000000
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e5040281c in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:84:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+0x556e50e121a0 is located 0 bytes inside of global variable 'large_global' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e121a0) of size 5000
+Address 0x000000000000 is a wild pointer inside of access range of size 0x000000000001.
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x7f0abdc00020 0x7f0abdc00030
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e5040283b in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:90:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+Address 0x7f0abdc00020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x556e504025cf in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:20
+
+  This frame has 2 object(s):
+    [32, 33) 'stack1' (line 87) <== Memory access at offset 32 is inside this variable
+    [48, 49) 'stack2' (line 87)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Address 0x7f0abdc00030 is located in stack of thread T0 at offset 48 in frame
+    #0 0x556e504025cf in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:20
+
+  This frame has 2 object(s):
+    [32, 33) 'stack1' (line 87)
+    [48, 49) 'stack2' (line 87) <== Memory access at offset 48 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x621000000100 0x7f0abdc00020
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e50402848 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:95:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+0x621000000100 is located 0 bytes inside of 4096-byte region [0x621000000100,0x621000001100)
+allocated by thread T0 here:
+    #0 0x556e503b7f67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x556e50402715 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:40:19
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Address 0x7f0abdc00020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x556e504025cf in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:20
+
+  This frame has 2 object(s):
+    [32, 33) 'stack1' (line 87) <== Memory access at offset 32 is inside this variable
+    [48, 49) 'stack2' (line 87)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x621000000100 0x556e50e10c80
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e50402858 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:97:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+0x621000000100 is located 0 bytes inside of 4096-byte region [0x621000000100,0x621000001100)
+allocated by thread T0 here:
+    #0 0x556e503b7f67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x556e50402715 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:40:19
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+0x556e50e10c80 is located 0 bytes inside of global variable 'global1' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10c80) of size 100
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x7f0abdc00020 0x556e50e10c80
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e50402868 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:99:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+Address 0x7f0abdc00020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x556e504025cf in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:20
+
+  This frame has 2 object(s):
+    [32, 33) 'stack1' (line 87) <== Memory access at offset 32 is inside this variable
+    [48, 49) 'stack2' (line 87)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+0x556e50e10c80 is located 0 bytes inside of global variable 'global1' defined in '/home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp' (0x556e50e10c80) of size 100
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+=================================================================
+==2810997==ERROR: AddressSanitizer: invalid-pointer-pair: 0x7f0abdc00020 0x000000000000
+    #0 0x556e504025a4 in foo(char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12
+    #1 0x556e50402875 in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:102:3
+    #2 0x7f0ac0236082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556e502d32dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/invalid-pointer-pairs-compare-errors.cpp.tmp+0x1e2dd)
+
+Address 0x7f0abdc00020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x556e504025cf in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:20
+
+  This frame has 2 object(s):
+    [32, 33) 'stack1' (line 87) <== Memory access at offset 32 is inside this variable
+    [48, 49) 'stack2' (line 87)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Address 0x000000000000 is a wild pointer inside of access range of size 0x000000000001.
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs-compare-errors.cpp:9:12 in foo(char*, char*)
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/invalid-pointer-pairs-compare-errors.cpp <<TAIL<<

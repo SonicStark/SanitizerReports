@@ -1,0 +1,32 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/dlclose-test.cpp <<HEAD<<
+
+opening /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/dlclose-test.cpp.tmp-so.so ... 
+/home/llvm/compiler-rt/test/asan/TestCases/Posix/dlclose-test.cpp: I am being dlopened
+addr: 0x7fe7e42f11c0
+attempting to dlclose
+/home/llvm/compiler-rt/test/asan/TestCases/Posix/dlclose-test.cpp: I am being dlclosed
+PASS
+opening /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/dlclose-test.cpp.tmp-so.so ... 
+/home/llvm/compiler-rt/test/asan/TestCases/Posix/dlclose-test.cpp: I am being dlopened
+addr: 0x7f7f6c2d61c0
+attempting to dlclose
+/home/llvm/compiler-rt/test/asan/TestCases/Posix/dlclose-test.cpp: I am being dlclosed
+PASS
+opening /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/dlclose-test.cpp.tmp-so.so ... 
+/home/llvm/compiler-rt/test/asan/TestCases/Posix/dlclose-test.cpp: I am being dlopened
+addr: 0x7f53982b21c0
+attempting to dlclose
+/home/llvm/compiler-rt/test/asan/TestCases/Posix/dlclose-test.cpp: I am being dlclosed
+PASS
+opening /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/dlclose-test.cpp.tmp-so.so ... 
+/home/llvm/compiler-rt/test/asan/TestCases/Posix/dlclose-test.cpp: I am being dlopened
+addr: 0x7f294c4151c0
+attempting to dlclose
+/home/llvm/compiler-rt/test/asan/TestCases/Posix/dlclose-test.cpp: I am being dlclosed
+PASS
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/dlclose-test.cpp <<TAIL<<

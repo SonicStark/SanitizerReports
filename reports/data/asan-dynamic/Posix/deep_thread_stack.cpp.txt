@@ -1,0 +1,344 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/deep_thread_stack.cpp <<HEAD<<
+
+=================================================================
+==2724796==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000010 at pc 0x55f5d48e06cc bp 0x7fd27e1f4e40 sp 0x7fd27e1f4e38
+WRITE of size 4 at 0x602000000010 thread T6
+    #0 0x55f5d48e06cb in AccessThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:23:6
+    #1 0x7fd28280b608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+    #2 0x7fd28272e132 in __clone /build/glibc-SzIz7B/glibc-2.31/misc/../sysdeps/unix/sysv/linux/x86_64/clone.S:95
+
+0x602000000010 is located 0 bytes inside of 4-byte region [0x602000000010,0x602000000014)
+freed by thread T4 here:
+    #0 0x7fd282cce7b7 in operator delete(void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:152:3
+    #1 0x55f5d48e0669 in FreeThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:18:3
+    #2 0x7fd28280b608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+previously allocated by thread T2 here:
+    #0 0x7fd282ccddb7 in operator new(unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:95:3
+    #1 0x55f5d48e05e5 in AllocThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:12:7
+    #2 0x7fd28280b608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Thread T6 created by T5 here:
+    #0 0x7fd282bf4496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55f5d48e07b0 in RunnerThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:31:3
+    #2 0x7fd28280b608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Thread T5 created by T0 here:
+    #0 0x7fd282bf4496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55f5d48e0914 in RunThread(void* (*)(void*)) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:38:3
+    #2 0x55f5d48e09d9 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:45:3
+    #3 0x7fd282633082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Thread T4 created by T3 here:
+    #0 0x7fd282bf4496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55f5d48e07b0 in RunnerThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:31:3
+    #2 0x7fd28280b608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Thread T3 created by T0 here:
+    #0 0x7fd282bf4496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55f5d48e0914 in RunThread(void* (*)(void*)) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:38:3
+    #2 0x55f5d48e09cd in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:44:3
+    #3 0x7fd282633082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Thread T2 created by T1 here:
+    #0 0x7fd282bf4496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55f5d48e07b0 in RunnerThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:31:3
+    #2 0x7fd28280b608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Thread T1 created by T0 here:
+    #0 0x7fd282bf4496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55f5d48e0914 in RunThread(void* (*)(void*)) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:38:3
+    #2 0x55f5d48e09c1 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:43:3
+    #3 0x7fd282633082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:23:6 in AccessThread(void*)
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2724796==ABORTING
+=================================================================
+==2726591==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000010 at pc 0x55a5e9cff688 bp 0x7fd728ff4e60 sp 0x7fd728ff4e58
+WRITE of size 4 at 0x602000000010 thread T6
+    #0 0x55a5e9cff687 in AccessThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:23:6
+    #1 0x7fd72d5df608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+    #2 0x7fd72d502132 in __clone /build/glibc-SzIz7B/glibc-2.31/misc/../sysdeps/unix/sysv/linux/x86_64/clone.S:95
+
+0x602000000010 is located 0 bytes inside of 4-byte region [0x602000000010,0x602000000014)
+freed by thread T4 here:
+    #0 0x7fd72daa27b7 in operator delete(void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:152:3
+    #1 0x55a5e9cff644 in FreeThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:18:3
+    #2 0x7fd72d5df608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+previously allocated by thread T2 here:
+    #0 0x7fd72daa1db7 in operator new(unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:95:3
+    #1 0x55a5e9cff5ed in AllocThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:12:7
+    #2 0x7fd72d5df608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Thread T6 created by T5 here:
+    #0 0x7fd72d9c8496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55a5e9cff736 in RunnerThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:31:3
+    #2 0x7fd72d5df608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Thread T5 created by T0 here:
+    #0 0x7fd72d9c8496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55a5e9cffa1e in RunThread /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:38:3
+    #2 0x55a5e9cffa1e in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:45:3
+    #3 0x7fd72d407082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Thread T4 created by T3 here:
+    #0 0x7fd72d9c8496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55a5e9cff736 in RunnerThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:31:3
+    #2 0x7fd72d5df608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Thread T3 created by T0 here:
+    #0 0x7fd72d9c8496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55a5e9cff9d3 in RunThread /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:38:3
+    #2 0x55a5e9cff9d3 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:44:3
+    #3 0x7fd72d407082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Thread T2 created by T1 here:
+    #0 0x7fd72d9c8496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55a5e9cff736 in RunnerThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:31:3
+    #2 0x7fd72d5df608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Thread T1 created by T0 here:
+    #0 0x7fd72d9c8496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55a5e9cff989 in RunThread /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:38:3
+    #2 0x55a5e9cff989 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:43:3
+    #3 0x7fd72d407082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:23:6 in AccessThread(void*)
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2726591==ABORTING
+=================================================================
+==2728090==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000010 at pc 0x561597989688 bp 0x7ffadf0f4e60 sp 0x7ffadf0f4e58
+WRITE of size 4 at 0x602000000010 thread T6
+    #0 0x561597989687 in AccessThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:23:6
+    #1 0x7ffae377f608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+    #2 0x7ffae36a2132 in __clone /build/glibc-SzIz7B/glibc-2.31/misc/../sysdeps/unix/sysv/linux/x86_64/clone.S:95
+
+0x602000000010 is located 0 bytes inside of 4-byte region [0x602000000010,0x602000000014)
+freed by thread T4 here:
+    #0 0x7ffae3c427b7 in operator delete(void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:152:3
+    #1 0x561597989644 in FreeThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:18:3
+    #2 0x7ffae377f608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+previously allocated by thread T2 here:
+    #0 0x7ffae3c41db7 in operator new(unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:95:3
+    #1 0x5615979895ed in AllocThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:12:7
+    #2 0x7ffae377f608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Thread T6 created by T5 here:
+    #0 0x7ffae3b68496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x561597989736 in RunnerThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:31:3
+    #2 0x7ffae377f608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Thread T5 created by T0 here:
+    #0 0x7ffae3b68496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x561597989a1e in RunThread /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:38:3
+    #2 0x561597989a1e in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:45:3
+    #3 0x7ffae35a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Thread T4 created by T3 here:
+    #0 0x7ffae3b68496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x561597989736 in RunnerThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:31:3
+    #2 0x7ffae377f608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Thread T3 created by T0 here:
+    #0 0x7ffae3b68496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x5615979899d3 in RunThread /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:38:3
+    #2 0x5615979899d3 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:44:3
+    #3 0x7ffae35a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Thread T2 created by T1 here:
+    #0 0x7ffae3b68496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x561597989736 in RunnerThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:31:3
+    #2 0x7ffae377f608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Thread T1 created by T0 here:
+    #0 0x7ffae3b68496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x561597989989 in RunThread /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:38:3
+    #2 0x561597989989 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:43:3
+    #3 0x7ffae35a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:23:6 in AccessThread(void*)
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2728090==ABORTING
+=================================================================
+==2729709==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000010 at pc 0x55992876a688 bp 0x7f8e4a6f4e60 sp 0x7f8e4a6f4e58
+WRITE of size 4 at 0x602000000010 thread T6
+    #0 0x55992876a687 in AccessThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:23:6
+    #1 0x7f8e4ecb4608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+    #2 0x7f8e4ebd7132 in __clone /build/glibc-SzIz7B/glibc-2.31/misc/../sysdeps/unix/sysv/linux/x86_64/clone.S:95
+
+0x602000000010 is located 0 bytes inside of 4-byte region [0x602000000010,0x602000000014)
+freed by thread T4 here:
+    #0 0x7f8e4f1777b7 in operator delete(void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:152:3
+    #1 0x55992876a644 in FreeThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:18:3
+    #2 0x7f8e4ecb4608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+previously allocated by thread T2 here:
+    #0 0x7f8e4f176db7 in operator new(unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:95:3
+    #1 0x55992876a5ed in AllocThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:12:7
+    #2 0x7f8e4ecb4608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Thread T6 created by T5 here:
+    #0 0x7f8e4f09d496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55992876a735 in RunnerThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:31:3
+    #2 0x7f8e4ecb4608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Thread T5 created by T0 here:
+    #0 0x7f8e4f09d496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55992876aa3e in RunThread /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:38:3
+    #2 0x55992876aa3e in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:45:3
+    #3 0x7f8e4eadc082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Thread T4 created by T3 here:
+    #0 0x7f8e4f09d496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55992876a735 in RunnerThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:31:3
+    #2 0x7f8e4ecb4608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Thread T3 created by T0 here:
+    #0 0x7f8e4f09d496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55992876a9f3 in RunThread /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:38:3
+    #2 0x55992876a9f3 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:44:3
+    #3 0x7f8e4eadc082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Thread T2 created by T1 here:
+    #0 0x7f8e4f09d496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55992876a735 in RunnerThread(void*) /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:31:3
+    #2 0x7f8e4ecb4608 in start_thread /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:477:8
+
+Thread T1 created by T0 here:
+    #0 0x7f8e4f09d496 in __interceptor_pthread_create /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:208:3
+    #1 0x55992876a9a9 in RunThread /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:38:3
+    #2 0x55992876a9a9 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:43:3
+    #3 0x7f8e4eadc082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/llvm/compiler-rt/test/asan/TestCases/Posix/deep_thread_stack.cpp:23:6 in AccessThread(void*)
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa[fd]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2729709==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/deep_thread_stack.cpp <<TAIL<<

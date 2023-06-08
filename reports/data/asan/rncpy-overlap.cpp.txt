@@ -1,0 +1,104 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/strncpy-overlap.cpp <<HEAD<<
+
+=================================================================
+==2812947==ERROR: AddressSanitizer: strncpy-param-overlap: memory ranges [0x7f916d100020,0x7f916d100025) and [0x7f916d100021, 0x7f916d100026) overlap
+    #0 0x555bf997a2cd in __interceptor_strncpy /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:483:5
+    #1 0x555bf9a14663 in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strncpy-overlap.cpp:42:3
+    #2 0x555bf9a146da in main /home/llvm/compiler-rt/test/asan/TestCases/strncpy-overlap.cpp:46:3
+    #3 0x7f916f954082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x555bf98e52dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/strncpy-overlap.cpp.tmp+0x1e2dd)
+
+Address 0x7f916d100020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x555bf9a1458f in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strncpy-overlap.cpp:35
+
+  This frame has 1 object(s):
+    [32, 38) 'buffer' (line 36) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Address 0x7f916d100021 is located in stack of thread T0 at offset 33 in frame
+    #0 0x555bf9a1458f in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strncpy-overlap.cpp:35
+
+  This frame has 1 object(s):
+    [32, 38) 'buffer' (line 36) <== Memory access at offset 33 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: strncpy-param-overlap /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:483:5 in __interceptor_strncpy
+==2812947==ABORTING
+=================================================================
+==2813258==ERROR: AddressSanitizer: strncpy-param-overlap: memory ranges [0x7f2e73300020,0x7f2e73300025) and [0x7f2e73300021, 0x7f2e73300026) overlap
+    #0 0x56255c8252cd in __interceptor_strncpy /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:483:5
+    #1 0x56255c8bf63a in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strncpy-overlap.cpp:42:3
+    #2 0x56255c8bf698 in main /home/llvm/compiler-rt/test/asan/TestCases/strncpy-overlap.cpp:46:3
+    #3 0x7f2e75b34082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x56255c7902dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/strncpy-overlap.cpp.tmp+0x1e2dd)
+
+Address 0x7f2e73300020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x56255c8bf58f in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strncpy-overlap.cpp:35
+
+  This frame has 1 object(s):
+    [32, 38) 'buffer' (line 36) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Address 0x7f2e73300021 is located in stack of thread T0 at offset 33 in frame
+    #0 0x56255c8bf58f in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strncpy-overlap.cpp:35
+
+  This frame has 1 object(s):
+    [32, 38) 'buffer' (line 36) <== Memory access at offset 33 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: strncpy-param-overlap /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:483:5 in __interceptor_strncpy
+==2813258==ABORTING
+=================================================================
+==2814020==ERROR: AddressSanitizer: strncpy-param-overlap: memory ranges [0x7f9dc2a00020,0x7f9dc2a00025) and [0x7f9dc2a00021, 0x7f9dc2a00026) overlap
+    #0 0x55ed7f45f2cd in __interceptor_strncpy /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:483:5
+    #1 0x55ed7f4f963a in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strncpy-overlap.cpp:42:3
+    #2 0x55ed7f4f9698 in main /home/llvm/compiler-rt/test/asan/TestCases/strncpy-overlap.cpp:46:3
+    #3 0x7f9dc5260082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55ed7f3ca2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/strncpy-overlap.cpp.tmp+0x1e2dd)
+
+Address 0x7f9dc2a00020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x55ed7f4f958f in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strncpy-overlap.cpp:35
+
+  This frame has 1 object(s):
+    [32, 38) 'buffer' (line 36) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Address 0x7f9dc2a00021 is located in stack of thread T0 at offset 33 in frame
+    #0 0x55ed7f4f958f in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strncpy-overlap.cpp:35
+
+  This frame has 1 object(s):
+    [32, 38) 'buffer' (line 36) <== Memory access at offset 33 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: strncpy-param-overlap /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:483:5 in __interceptor_strncpy
+==2814020==ABORTING
+=================================================================
+==2814461==ERROR: AddressSanitizer: strncpy-param-overlap: memory ranges [0x7f5ad3600020,0x7f5ad3600025) and [0x7f5ad3600021, 0x7f5ad3600026) overlap
+    #0 0x5557c49512cd in __interceptor_strncpy /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:483:5
+    #1 0x5557c49eb639 in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strncpy-overlap.cpp:42:3
+    #2 0x5557c49eb6a8 in main /home/llvm/compiler-rt/test/asan/TestCases/strncpy-overlap.cpp:46:3
+    #3 0x7f5ad5e51082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x5557c48bc2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/strncpy-overlap.cpp.tmp+0x1e2dd)
+
+Address 0x7f5ad3600020 is located in stack of thread T0 at offset 32 in frame
+    #0 0x5557c49eb58f in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strncpy-overlap.cpp:35
+
+  This frame has 1 object(s):
+    [32, 38) 'buffer' (line 36) <== Memory access at offset 32 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Address 0x7f5ad3600021 is located in stack of thread T0 at offset 33 in frame
+    #0 0x5557c49eb58f in bad_function() /home/llvm/compiler-rt/test/asan/TestCases/strncpy-overlap.cpp:35
+
+  This frame has 1 object(s):
+    [32, 38) 'buffer' (line 36) <== Memory access at offset 33 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: strncpy-param-overlap /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:483:5 in __interceptor_strncpy
+==2814461==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/strncpy-overlap.cpp <<TAIL<<

@@ -1,0 +1,22 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/sanbox_read_proc_self_maps_test.cpp <<HEAD<<
+
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2792191==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000042 (pc 0x55914eb90724 bp 0x7fffc527e570 sp 0x7fffc527e4e0 T0)
+==2792191==The signal is caused by a WRITE memory access.
+==2792191==Hint: address points to the zero page.
+==2792191==WARNING: invalid path to external symbolizer!
+==2792191==WARNING: Failed to use and restart external symbolizer!
+    #0 0x55914eb90724  (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/sanbox_read_proc_self_maps_test.cpp.tmp+0x14d724)
+    #1 0x7f0ef1576082  (/lib/x86_64-linux-gnu/libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #2 0x55914ea612fd  (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/sanbox_read_proc_self_maps_test.cpp.tmp+0x1e2fd)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/sanbox_read_proc_self_maps_test.cpp.tmp+0x14d724) 
+==2792191==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/sanbox_read_proc_self_maps_test.cpp <<TAIL<<

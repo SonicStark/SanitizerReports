@@ -1,0 +1,10 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/pthread_create_from_constructor.cpp <<HEAD<<
+
+initializing library
+done
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/pthread_create_from_constructor.cpp <<TAIL<<

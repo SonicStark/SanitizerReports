@@ -1,0 +1,83 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/invalid-pointer-pairs.cpp <<HEAD<<
+
+=================================================================
+==2735928==ERROR: AddressSanitizer: invalid-pointer-pair: 0x604000000010 0x604000000050
+    #0 0x563475524634 in f(char, char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:17:14
+    #1 0x56347552480c in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:41:3
+    #2 0x7fa952fd7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5634755231ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/invalid-pointer-pairs.cpp.tmp+0x11ad)
+
+0x604000000010 is located 0 bytes inside of 42-byte region [0x604000000010,0x60400000003a)
+allocated by thread T0 here:
+    #0 0x7fa95363c427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x56347552474f in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:38:21
+    #2 0x7fa952fd7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+0x604000000050 is located 0 bytes inside of 42-byte region [0x604000000050,0x60400000007a)
+allocated by thread T0 here:
+    #0 0x7fa95363c427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x56347552475d in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:39:21
+    #2 0x7fa952fd7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:17:14 in f(char, char*, char*)
+==2735928==ABORTING
+=================================================================
+==2736328==ERROR: AddressSanitizer: invalid-pointer-pair: 0x604000000010 0x604000000050
+    #0 0x5623b971e664 in f(char, char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:20:14
+    #1 0x5623b971e80c in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:41:3
+    #2 0x7f186b1e8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5623b971d1ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/invalid-pointer-pairs.cpp.tmp+0x11ad)
+
+0x604000000010 is located 0 bytes inside of 42-byte region [0x604000000010,0x60400000003a)
+allocated by thread T0 here:
+    #0 0x7f186b84d427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x5623b971e74f in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:38:21
+    #2 0x7f186b1e8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+0x604000000050 is located 0 bytes inside of 42-byte region [0x604000000050,0x60400000007a)
+allocated by thread T0 here:
+    #0 0x7f186b84d427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x5623b971e75d in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:39:21
+    #2 0x7f186b1e8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:20:14 in f(char, char*, char*)
+==2736328==ABORTING
+=================================================================
+==2736657==ERROR: AddressSanitizer: invalid-pointer-pair: 0x604000000010 0x604000000024
+    #0 0x55fb3526e6dd in f(char, char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:31:14
+    #1 0x55fb3526e80c in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:41:3
+    #2 0x7f3801645082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55fb3526d1ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/invalid-pointer-pairs.cpp.tmp+0x11ad)
+
+0x604000000010 is located 0 bytes inside of 42-byte region [0x604000000010,0x60400000003a)
+freed by thread T0 here:
+    #0 0x7f3801ca96c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x55fb3526e6c8 in f(char, char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:28:5
+    #2 0x55fb3526e80c in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:41:3
+    #3 0x7f3801645082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x7f3801caa427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55fb3526e74f in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:38:21
+    #2 0x7f3801645082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+0x604000000024 is located 20 bytes inside of 42-byte region [0x604000000010,0x60400000003a)
+freed by thread T0 here:
+    #0 0x7f3801ca96c7 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #1 0x55fb3526e6c8 in f(char, char*, char*) /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:28:5
+    #2 0x55fb3526e80c in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:41:3
+    #3 0x7f3801645082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+previously allocated by thread T0 here:
+    #0 0x7f3801caa427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55fb3526e74f in main /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:38:21
+    #2 0x7f3801645082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: invalid-pointer-pair /home/llvm/compiler-rt/test/asan/TestCases/invalid-pointer-pairs.cpp:31:14 in f(char, char*, char*)
+==2736657==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/invalid-pointer-pairs.cpp <<TAIL<<

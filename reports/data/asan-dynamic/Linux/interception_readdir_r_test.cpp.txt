@@ -1,0 +1,200 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/interception_readdir_r_test.cpp <<HEAD<<
+
+test1: reading the /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_readdir_r_test.cpp.tmp-dir directory...
+read 3 entries
+test2: reading the /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_readdir_r_test.cpp.tmp-dir directory...
+read 3 entries
+test1: reading the /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_readdir_r_test.cpp.tmp-dir directory...
+read 3 entries
+test2: reading the /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_readdir_r_test.cpp.tmp-dir directory...
+read 3 entries
+test1: reading the /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_readdir_r_test.cpp.tmp-dir directory...
+read 3 entries
+test2: reading the /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_readdir_r_test.cpp.tmp-dir directory...
+read 3 entries
+test1: reading the /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_readdir_r_test.cpp.tmp-dir directory...
+read 3 entries
+test2: reading the /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_readdir_r_test.cpp.tmp-dir directory...
+read 3 entries
+test1: reading the /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_readdir_r_test.cpp.tmp-dir directory...
+read 3 entries
+test2: reading the /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_readdir_r_test.cpp.tmp-dir directory...
+read 3 entries
+test1: reading the /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_readdir_r_test.cpp.tmp-dir directory...
+read 3 entries
+test2: reading the /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_readdir_r_test.cpp.tmp-dir directory...
+read 3 entries
+test1: reading the /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_readdir_r_test.cpp.tmp-dir directory...
+read 3 entries
+test2: reading the /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_readdir_r_test.cpp.tmp-dir directory...
+read 3 entries
+test1: reading the /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_readdir_r_test.cpp.tmp-dir directory...
+read 3 entries
+test2: reading the /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/interception_readdir_r_test.cpp.tmp-dir directory...
+read 3 entries
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/interception_readdir_r_test.cpp <<TAIL<<
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/interception_readdir_r_test.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_readdir_r_test.cpp:37:9: warning: 'readdir_r' is deprecated [-Wdeprecated-declarations]
+    if (readdir_r(d, (struct dirent *)entry_buffer, &result) != 0)
+        ^
+/usr/include/dirent.h:186:28: note: 'readdir_r' has been explicitly marked deprecated here
+     __nonnull ((1, 2, 3)) __attribute_deprecated__;
+                           ^
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:251:51: note: expanded from macro '__attribute_deprecated__'
+# define __attribute_deprecated__ __attribute__ ((__deprecated__))
+                                                  ^
+/home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_readdir_r_test.cpp:56:9: warning: 'readdir64_r' is deprecated [-Wdeprecated-declarations]
+    if (readdir64_r(d, (struct dirent64 *)entry_buffer, &result64) != 0)
+        ^
+/usr/include/dirent.h:204:25: note: 'readdir64_r' has been explicitly marked deprecated here
+  __nonnull ((1, 2, 3)) __attribute_deprecated__;
+                        ^
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:251:51: note: expanded from macro '__attribute_deprecated__'
+# define __attribute_deprecated__ __attribute__ ((__deprecated__))
+                                                  ^
+2 warnings generated.
+/home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_readdir_r_test.cpp:37:9: warning: 'readdir_r' is deprecated [-Wdeprecated-declarations]
+    if (readdir_r(d, (struct dirent *)entry_buffer, &result) != 0)
+        ^
+/usr/include/dirent.h:186:28: note: 'readdir_r' has been explicitly marked deprecated here
+     __nonnull ((1, 2, 3)) __attribute_deprecated__;
+                           ^
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:251:51: note: expanded from macro '__attribute_deprecated__'
+# define __attribute_deprecated__ __attribute__ ((__deprecated__))
+                                                  ^
+/home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_readdir_r_test.cpp:56:9: warning: 'readdir64_r' is deprecated [-Wdeprecated-declarations]
+    if (readdir64_r(d, (struct dirent64 *)entry_buffer, &result64) != 0)
+        ^
+/usr/include/dirent.h:204:25: note: 'readdir64_r' has been explicitly marked deprecated here
+  __nonnull ((1, 2, 3)) __attribute_deprecated__;
+                        ^
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:251:51: note: expanded from macro '__attribute_deprecated__'
+# define __attribute_deprecated__ __attribute__ ((__deprecated__))
+                                                  ^
+2 warnings generated.
+/home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_readdir_r_test.cpp:37:9: warning: 'readdir_r' is deprecated [-Wdeprecated-declarations]
+    if (readdir_r(d, (struct dirent *)entry_buffer, &result) != 0)
+        ^
+/usr/include/dirent.h:186:28: note: 'readdir_r' has been explicitly marked deprecated here
+     __nonnull ((1, 2, 3)) __attribute_deprecated__;
+                           ^
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:251:51: note: expanded from macro '__attribute_deprecated__'
+# define __attribute_deprecated__ __attribute__ ((__deprecated__))
+                                                  ^
+/home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_readdir_r_test.cpp:56:9: warning: 'readdir64_r' is deprecated [-Wdeprecated-declarations]
+    if (readdir64_r(d, (struct dirent64 *)entry_buffer, &result64) != 0)
+        ^
+/usr/include/dirent.h:204:25: note: 'readdir64_r' has been explicitly marked deprecated here
+  __nonnull ((1, 2, 3)) __attribute_deprecated__;
+                        ^
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:251:51: note: expanded from macro '__attribute_deprecated__'
+# define __attribute_deprecated__ __attribute__ ((__deprecated__))
+                                                  ^
+2 warnings generated.
+/home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_readdir_r_test.cpp:37:9: warning: 'readdir_r' is deprecated [-Wdeprecated-declarations]
+    if (readdir_r(d, (struct dirent *)entry_buffer, &result) != 0)
+        ^
+/usr/include/dirent.h:186:28: note: 'readdir_r' has been explicitly marked deprecated here
+     __nonnull ((1, 2, 3)) __attribute_deprecated__;
+                           ^
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:251:51: note: expanded from macro '__attribute_deprecated__'
+# define __attribute_deprecated__ __attribute__ ((__deprecated__))
+                                                  ^
+/home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_readdir_r_test.cpp:56:9: warning: 'readdir64_r' is deprecated [-Wdeprecated-declarations]
+    if (readdir64_r(d, (struct dirent64 *)entry_buffer, &result64) != 0)
+        ^
+/usr/include/dirent.h:204:25: note: 'readdir64_r' has been explicitly marked deprecated here
+  __nonnull ((1, 2, 3)) __attribute_deprecated__;
+                        ^
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:251:51: note: expanded from macro '__attribute_deprecated__'
+# define __attribute_deprecated__ __attribute__ ((__deprecated__))
+                                                  ^
+2 warnings generated.
+/home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_readdir_r_test.cpp:37:9: warning: 'readdir_r' is deprecated [-Wdeprecated-declarations]
+    if (readdir_r(d, (struct dirent *)entry_buffer, &result) != 0)
+        ^
+/usr/include/dirent.h:194:25: note: 'readdir_r' has been explicitly marked deprecated here
+  __nonnull ((1, 2, 3)) __attribute_deprecated__;
+                        ^
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:251:51: note: expanded from macro '__attribute_deprecated__'
+# define __attribute_deprecated__ __attribute__ ((__deprecated__))
+                                                  ^
+/home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_readdir_r_test.cpp:56:9: warning: 'readdir64_r' is deprecated [-Wdeprecated-declarations]
+    if (readdir64_r(d, (struct dirent64 *)entry_buffer, &result64) != 0)
+        ^
+/usr/include/dirent.h:204:25: note: 'readdir64_r' has been explicitly marked deprecated here
+  __nonnull ((1, 2, 3)) __attribute_deprecated__;
+                        ^
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:251:51: note: expanded from macro '__attribute_deprecated__'
+# define __attribute_deprecated__ __attribute__ ((__deprecated__))
+                                                  ^
+2 warnings generated.
+/home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_readdir_r_test.cpp:37:9: warning: 'readdir_r' is deprecated [-Wdeprecated-declarations]
+    if (readdir_r(d, (struct dirent *)entry_buffer, &result) != 0)
+        ^
+/usr/include/dirent.h:194:25: note: 'readdir_r' has been explicitly marked deprecated here
+  __nonnull ((1, 2, 3)) __attribute_deprecated__;
+                        ^
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:251:51: note: expanded from macro '__attribute_deprecated__'
+# define __attribute_deprecated__ __attribute__ ((__deprecated__))
+                                                  ^
+/home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_readdir_r_test.cpp:56:9: warning: 'readdir64_r' is deprecated [-Wdeprecated-declarations]
+    if (readdir64_r(d, (struct dirent64 *)entry_buffer, &result64) != 0)
+        ^
+/usr/include/dirent.h:204:25: note: 'readdir64_r' has been explicitly marked deprecated here
+  __nonnull ((1, 2, 3)) __attribute_deprecated__;
+                        ^
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:251:51: note: expanded from macro '__attribute_deprecated__'
+# define __attribute_deprecated__ __attribute__ ((__deprecated__))
+                                                  ^
+2 warnings generated.
+/home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_readdir_r_test.cpp:37:9: warning: 'readdir_r' is deprecated [-Wdeprecated-declarations]
+    if (readdir_r(d, (struct dirent *)entry_buffer, &result) != 0)
+        ^
+/usr/include/dirent.h:194:25: note: 'readdir_r' has been explicitly marked deprecated here
+  __nonnull ((1, 2, 3)) __attribute_deprecated__;
+                        ^
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:251:51: note: expanded from macro '__attribute_deprecated__'
+# define __attribute_deprecated__ __attribute__ ((__deprecated__))
+                                                  ^
+/home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_readdir_r_test.cpp:56:9: warning: 'readdir64_r' is deprecated [-Wdeprecated-declarations]
+    if (readdir64_r(d, (struct dirent64 *)entry_buffer, &result64) != 0)
+        ^
+/usr/include/dirent.h:204:25: note: 'readdir64_r' has been explicitly marked deprecated here
+  __nonnull ((1, 2, 3)) __attribute_deprecated__;
+                        ^
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:251:51: note: expanded from macro '__attribute_deprecated__'
+# define __attribute_deprecated__ __attribute__ ((__deprecated__))
+                                                  ^
+2 warnings generated.
+/home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_readdir_r_test.cpp:37:9: warning: 'readdir_r' is deprecated [-Wdeprecated-declarations]
+    if (readdir_r(d, (struct dirent *)entry_buffer, &result) != 0)
+        ^
+/usr/include/dirent.h:194:25: note: 'readdir_r' has been explicitly marked deprecated here
+  __nonnull ((1, 2, 3)) __attribute_deprecated__;
+                        ^
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:251:51: note: expanded from macro '__attribute_deprecated__'
+# define __attribute_deprecated__ __attribute__ ((__deprecated__))
+                                                  ^
+/home/llvm/compiler-rt/test/asan/TestCases/Linux/interception_readdir_r_test.cpp:56:9: warning: 'readdir64_r' is deprecated [-Wdeprecated-declarations]
+    if (readdir64_r(d, (struct dirent64 *)entry_buffer, &result64) != 0)
+        ^
+/usr/include/dirent.h:204:25: note: 'readdir64_r' has been explicitly marked deprecated here
+  __nonnull ((1, 2, 3)) __attribute_deprecated__;
+                        ^
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:251:51: note: expanded from macro '__attribute_deprecated__'
+# define __attribute_deprecated__ __attribute__ ((__deprecated__))
+                                                  ^
+2 warnings generated.
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/interception_readdir_r_test.cpp <<TAIL<<

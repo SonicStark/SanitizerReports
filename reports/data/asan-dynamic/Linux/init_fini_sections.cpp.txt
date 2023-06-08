@@ -1,0 +1,10 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/init_fini_sections.cpp <<HEAD<<
+
+c=2
+fini
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/init_fini_sections.cpp <<TAIL<<

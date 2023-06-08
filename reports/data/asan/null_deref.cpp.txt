@@ -1,0 +1,60 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/null_deref.cpp <<HEAD<<
+
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2811451==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000028 (pc 0x55dd99c6e5f1 bp 0x7ffec60cdb50 sp 0x7ffec60cdb30 T0)
+==2811451==The signal is caused by a READ memory access.
+==2811451==Hint: address points to the zero page.
+    #0 0x55dd99c6e5f1 in NullDeref(int*) /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:15:10
+    #1 0x55dd99c6e58c in main /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:21:3
+    #2 0x7fbc8b43e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55dd99b3f2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/null_deref.cpp.tmp+0x1e2dd)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:15:10 in NullDeref(int*)
+==2811451==ABORTING
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2811993==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000028 (pc 0x557d4f1145a0 bp 0x7ffc40fb7ee0 sp 0x7ffc40fb7ee0 T0)
+==2811993==The signal is caused by a WRITE memory access.
+==2811993==Hint: address points to the zero page.
+    #0 0x557d4f1145a0 in NullDeref(int*) /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:15:10
+    #1 0x557d4f114588 in main /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:21:3
+    #2 0x7fce0fba0082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x557d4efe52dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/null_deref.cpp.tmp+0x1e2dd)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:15:10 in NullDeref(int*)
+==2811993==ABORTING
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2812308==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000028 (pc 0x55f2389815a0 bp 0x7fffc4b72680 sp 0x7fffc4b72680 T0)
+==2812308==The signal is caused by a WRITE memory access.
+==2812308==Hint: address points to the zero page.
+    #0 0x55f2389815a0 in NullDeref(int*) /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:15:10
+    #1 0x55f238981588 in main /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:21:3
+    #2 0x7fe2b362b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55f2388522dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/null_deref.cpp.tmp+0x1e2dd)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:15:10 in NullDeref(int*)
+==2812308==ABORTING
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2812804==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000028 (pc 0x5621c1d775a0 bp 0x7fff7c1aecb0 sp 0x7fff7c1aecb0 T0)
+==2812804==The signal is caused by a WRITE memory access.
+==2812804==Hint: address points to the zero page.
+    #0 0x5621c1d775a0 in NullDeref(int*) /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:15:10
+    #1 0x5621c1d77588 in main /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:21:3
+    #2 0x7f8c00a04082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5621c1c482dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/null_deref.cpp.tmp+0x1e2dd)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/test/asan/TestCases/null_deref.cpp:15:10 in NullDeref(int*)
+==2812804==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/null_deref.cpp <<TAIL<<

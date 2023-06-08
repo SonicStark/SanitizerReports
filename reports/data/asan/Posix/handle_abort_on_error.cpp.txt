@@ -1,0 +1,21 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/handle_abort_on_error.cpp <<HEAD<<
+
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2797519==ERROR: AddressSanitizer: ABRT on unknown address 0x03e9002aafcf (pc 0x7f9a135ca00b bp 0x7ffc3dc089e0 sp 0x7ffc3dc08780 T0)
+    #0 0x7f9a135ca00b in raise /build/glibc-SzIz7B/glibc-2.31/signal/../sysdeps/unix/sysv/linux/raise.c:51:1
+    #1 0x7f9a135a9858 in abort /build/glibc-SzIz7B/glibc-2.31/stdlib/abort.c:79:7
+    #2 0x557f481db598 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/handle_abort_on_error.cpp:9:3
+    #3 0x7f9a135ab082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x557f480ac2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Posix/Output/handle_abort_on_error.cpp.tmp+0x1e2dd)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: ABRT /build/glibc-SzIz7B/glibc-2.31/signal/../sysdeps/unix/sysv/linux/raise.c:51:1 in raise
+==2797519==ABORTING
+error: Aborted
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/handle_abort_on_error.cpp <<TAIL<<

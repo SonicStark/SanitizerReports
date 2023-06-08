@@ -1,0 +1,92 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/debug_mapping.cpp <<HEAD<<
+
+==2732449==Registered root region at 0x7fd78bc007a0 of size 32
+==2732449==Registered root region at 0x7fd78b802620 of size 160
+==2732449==Unregistered root region at 0x7fd78b802620 of size 160
+==2732449==AddressSanitizer: failed to intercept '__isoc99_printf'
+==2732449==Registered root region at 0x7fd78b802620 of size 160
+==2732449==Unregistered root region at 0x7fd78b802620 of size 160
+==2732449==AddressSanitizer: failed to intercept '__isoc99_sprintf'
+==2732449==Registered root region at 0x7fd78b802620 of size 160
+==2732449==Unregistered root region at 0x7fd78b802620 of size 160
+==2732449==AddressSanitizer: failed to intercept '__isoc99_snprintf'
+==2732449==Registered root region at 0x7fd78b802620 of size 160
+==2732449==Unregistered root region at 0x7fd78b802620 of size 160
+==2732449==AddressSanitizer: failed to intercept '__isoc99_fprintf'
+==2732449==Registered root region at 0x7fd78b802620 of size 160
+==2732449==Unregistered root region at 0x7fd78b802620 of size 160
+==2732449==AddressSanitizer: failed to intercept '__isoc99_vprintf'
+==2732449==Registered root region at 0x7fd78b802620 of size 160
+==2732449==Unregistered root region at 0x7fd78b802620 of size 160
+==2732449==AddressSanitizer: failed to intercept '__isoc99_vsprintf'
+==2732449==Registered root region at 0x7fd78b802620 of size 160
+==2732449==Unregistered root region at 0x7fd78b802620 of size 160
+==2732449==AddressSanitizer: failed to intercept '__isoc99_vsnprintf'
+==2732449==Registered root region at 0x7fd78b802620 of size 160
+==2732449==Unregistered root region at 0x7fd78b802620 of size 160
+==2732449==AddressSanitizer: failed to intercept '__isoc99_vfprintf'
+==2732449==Registered root region at 0x7fd78b802620 of size 160
+==2732449==Unregistered root region at 0x7fd78b802620 of size 160
+==2732449==AddressSanitizer: failed to intercept '__b64_ntop'
+==2732449==Registered root region at 0x7fd78b802620 of size 160
+==2732449==Unregistered root region at 0x7fd78b802620 of size 160
+==2732449==AddressSanitizer: failed to intercept '__b64_pton'
+==2732449==Registered root region at 0x7fd78b802620 of size 160
+==2732449==Unregistered root region at 0x7fd78b802620 of size 160
+==2732449==AddressSanitizer: failed to intercept '__dn_comp'
+==2732449==Registered root region at 0x7fd78b802620 of size 160
+==2732449==Unregistered root region at 0x7fd78b802620 of size 160
+==2732449==AddressSanitizer: failed to intercept '__dn_expand'
+==2732449==Registered root region at 0x7fd78b802620 of size 160
+==2732449==Unregistered root region at 0x7fd78b802620 of size 160
+==2732449==AddressSanitizer: failed to intercept 'xdr_destroy'
+==2732449==Registered root region at 0x7fd78b802620 of size 160
+==2732449==Unregistered root region at 0x7fd78b802620 of size 160
+==2732449==AddressSanitizer: failed to intercept 'crypt'
+==2732449==Registered root region at 0x7fd78b802620 of size 160
+==2732449==Unregistered root region at 0x7fd78b802620 of size 160
+==2732449==AddressSanitizer: failed to intercept 'crypt_r'
+==2732449==Registered root region at 0x7fd78b6029f0 of size 176
+==2732449==Unregistered root region at 0x7fd78b6029f0 of size 176
+==2732449==AddressSanitizer: failed to intercept '__cxa_rethrow_primary_exception'
+==2732449==AddressSanitizer: libc interceptors initialized
+|| `[0x10007fff8000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x02008fff7000, 0x10007fff7fff]` || HighShadow ||
+|| `[0x00008fff7000, 0x02008fff6fff]` || ShadowGap  ||
+|| `[0x00007fff8000, 0x00008fff6fff]` || LowShadow  ||
+|| `[0x000000000000, 0x00007fff7fff]` || LowMem     ||
+MemToShadow(shadow): 0x00008fff7000 0x000091ff6dff 0x004091ff6e00 0x02008fff6fff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=256M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x7fff8000
+==2732449==Installed the sigaction for signal 11
+==2732449==Installed the sigaction for signal 7
+==2732449==Installed the sigaction for signal 8
+==2732449==T0: FakeStack created: 0x7fd789af7000 -- 0x7fd78a600000 stack_size_log: 20; mmapped 11300K, noreserve=0 
+==2732449==T0: stack [0x7fffa21f0000,0x7fffa29f0000) size 0x800000; local=0x7fffa29edd0c
+==2732449==AddressSanitizer Init done
+scale: 3
+offset: 0x7fff8000
+==2732449==LeakSanitizer: checking for leaks
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/debug_mapping.cpp <<TAIL<<
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/debug_mapping.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/asan/TestCases/debug_mapping.cpp:24:42: warning: format specifies type 'unsigned long' but the argument has type 'void *' [-Wformat]
+  fprintf(stderr, "offset: 0x" PTR "\n", (void*)offset);
+                               ~~~       ^~~~~~~~~~~~~
+1 warning generated.
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/debug_mapping.cpp <<TAIL<<

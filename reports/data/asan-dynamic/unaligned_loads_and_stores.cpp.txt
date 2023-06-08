@@ -1,0 +1,478 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/unaligned_loads_and_stores.cpp <<HEAD<<
+
+=================================================================
+==2740006==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000020 at pc 0x7f41f0d2953e bp 0x7ffcbe7381e0 sp 0x7ffcbe7381b8
+READ of size 2 at 0x602000000020 thread T0
+    #0 0x7f41f0d2953d in __sanitizer_unaligned_load16 /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:222:3
+    #1 0x5631846796df in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:24:21
+    #2 0x7f41f06c1082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5631846781bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/unaligned_loads_and_stores.cpp.tmp+0x11bd)
+
+0x602000000020 is located 0 bytes after 16-byte region [0x602000000010,0x602000000020)
+allocated by thread T0 here:
+    #0 0x7f41f0d36f17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x563184679625 in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:20:13
+    #2 0x7f41f06c1082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:222:3 in __sanitizer_unaligned_load16
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa 00 00[fa]fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2740006==ABORTING
+=================================================================
+==2740242==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000020 at pc 0x7fc60eb445fe bp 0x7ffdcbef3630 sp 0x7ffdcbef3608
+READ of size 4 at 0x602000000020 thread T0
+    #0 0x7fc60eb445fd in __sanitizer_unaligned_load32 /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:228:3
+    #1 0x557a322f46f7 in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:28:21
+    #2 0x7fc60e4dc082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x557a322f31bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/unaligned_loads_and_stores.cpp.tmp+0x11bd)
+
+0x602000000020 is located 0 bytes after 16-byte region [0x602000000010,0x602000000020)
+allocated by thread T0 here:
+    #0 0x7fc60eb51f17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x557a322f4625 in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:20:13
+    #2 0x7fc60e4dc082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:228:3 in __sanitizer_unaligned_load32
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa 00 00[fa]fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2740242==ABORTING
+=================================================================
+==2740506==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000020 at pc 0x7f05cd33a5fe bp 0x7fffcdc47850 sp 0x7fffcdc47828
+READ of size 4 at 0x602000000020 thread T0
+    #0 0x7f05cd33a5fd in __sanitizer_unaligned_load32 /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:228:3
+    #1 0x55745bdd070c in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:30:21
+    #2 0x7f05cccd2082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55745bdcf1bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/unaligned_loads_and_stores.cpp.tmp+0x11bd)
+
+0x602000000020 is located 0 bytes after 16-byte region [0x602000000010,0x602000000020)
+allocated by thread T0 here:
+    #0 0x7f05cd347f17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x55745bdd0625 in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:20:13
+    #2 0x7f05cccd2082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:228:3 in __sanitizer_unaligned_load32
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa 00 00[fa]fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2740506==ABORTING
+=================================================================
+==2740718==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000020 at pc 0x7fa390d376be bp 0x7fff64c8f9c0 sp 0x7fff64c8f998
+READ of size 8 at 0x602000000020 thread T0
+    #0 0x7fa390d376bd in __sanitizer_unaligned_load64 /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:234:3
+    #1 0x56387cf24721 in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:32:21
+    #2 0x7fa3906cf082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x56387cf231bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/unaligned_loads_and_stores.cpp.tmp+0x11bd)
+
+0x602000000020 is located 0 bytes after 16-byte region [0x602000000010,0x602000000020)
+allocated by thread T0 here:
+    #0 0x7fa390d44f17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x56387cf24625 in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:20:13
+    #2 0x7fa3906cf082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:234:3 in __sanitizer_unaligned_load64
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa 00 00[fa]fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2740718==ABORTING
+=================================================================
+==2740960==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000020 at pc 0x7effd89866be bp 0x7ffd0a2bd0d0 sp 0x7ffd0a2bd0a8
+READ of size 8 at 0x602000000020 thread T0
+    #0 0x7effd89866bd in __sanitizer_unaligned_load64 /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:234:3
+    #1 0x55727f6bc736 in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:34:21
+    #2 0x7effd831e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55727f6bb1bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/unaligned_loads_and_stores.cpp.tmp+0x11bd)
+
+0x602000000020 is located 0 bytes after 16-byte region [0x602000000010,0x602000000020)
+allocated by thread T0 here:
+    #0 0x7effd8993f17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x55727f6bc625 in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:20:13
+    #2 0x7effd831e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:234:3 in __sanitizer_unaligned_load64
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa 00 00[fa]fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2740960==ABORTING
+=================================================================
+==2741166==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000020 at pc 0x7ff20c1d2786 bp 0x7ffec0938130 sp 0x7ffec0938108
+WRITE of size 2 at 0x602000000020 thread T0
+    #0 0x7ff20c1d2785 in __sanitizer_unaligned_store16 /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:240:3
+    #1 0x5603a119f74d in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:37:15
+    #2 0x7ff20bb6a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5603a119e1bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/unaligned_loads_and_stores.cpp.tmp+0x11bd)
+
+0x602000000020 is located 0 bytes after 16-byte region [0x602000000010,0x602000000020)
+allocated by thread T0 here:
+    #0 0x7ff20c1dff17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x5603a119f625 in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:20:13
+    #2 0x7ff20bb6a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:240:3 in __sanitizer_unaligned_store16
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa 00 00[fa]fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2741166==ABORTING
+=================================================================
+==2741408==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000020 at pc 0x7f08ca021846 bp 0x7ffc11f4b9f0 sp 0x7ffc11f4b9c8
+WRITE of size 4 at 0x602000000020 thread T0
+    #0 0x7f08ca021845 in __sanitizer_unaligned_store32 /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:246:3
+    #1 0x55e0594d7761 in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:41:15
+    #2 0x7f08c99b9082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55e0594d61bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/unaligned_loads_and_stores.cpp.tmp+0x11bd)
+
+0x602000000020 is located 0 bytes after 16-byte region [0x602000000010,0x602000000020)
+allocated by thread T0 here:
+    #0 0x7f08ca02ef17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x55e0594d7625 in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:20:13
+    #2 0x7f08c99b9082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:246:3 in __sanitizer_unaligned_store32
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa 00 00[fa]fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2741408==ABORTING
+=================================================================
+==2741723==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000020 at pc 0x7f9e0f9ee846 bp 0x7ffc1c5eb6b0 sp 0x7ffc1c5eb688
+WRITE of size 4 at 0x602000000020 thread T0
+    #0 0x7f9e0f9ee845 in __sanitizer_unaligned_store32 /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:246:3
+    #1 0x55a84779a775 in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:43:15
+    #2 0x7f9e0f386082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55a8477991bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/unaligned_loads_and_stores.cpp.tmp+0x11bd)
+
+0x602000000020 is located 0 bytes after 16-byte region [0x602000000010,0x602000000020)
+allocated by thread T0 here:
+    #0 0x7f9e0f9fbf17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x55a84779a625 in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:20:13
+    #2 0x7f9e0f386082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:246:3 in __sanitizer_unaligned_store32
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa 00 00[fa]fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2741723==ABORTING
+=================================================================
+==2742223==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000020 at pc 0x7f6ec82d9916 bp 0x7ffdbe72e330 sp 0x7ffdbe72e308
+WRITE of size 8 at 0x602000000020 thread T0
+    #0 0x7f6ec82d9915 in __sanitizer_unaligned_store64 /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:252:3
+    #1 0x55d21e7a878b in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:45:15
+    #2 0x7f6ec7c71082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55d21e7a71bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/unaligned_loads_and_stores.cpp.tmp+0x11bd)
+
+0x602000000020 is located 0 bytes after 16-byte region [0x602000000010,0x602000000020)
+allocated by thread T0 here:
+    #0 0x7f6ec82e6f17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x55d21e7a8625 in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:20:13
+    #2 0x7f6ec7c71082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:252:3 in __sanitizer_unaligned_store64
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa 00 00[fa]fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2742223==ABORTING
+=================================================================
+==2742848==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000020 at pc 0x7ff993ab6916 bp 0x7fffc6b95490 sp 0x7fffc6b95468
+WRITE of size 8 at 0x602000000020 thread T0
+    #0 0x7ff993ab6915 in __sanitizer_unaligned_store64 /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:252:3
+    #1 0x561398eed7a1 in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:47:15
+    #2 0x7ff99344e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x561398eec1bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/unaligned_loads_and_stores.cpp.tmp+0x11bd)
+
+0x602000000020 is located 0 bytes after 16-byte region [0x602000000010,0x602000000020)
+allocated by thread T0 here:
+    #0 0x7ff993ac3f17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x561398eed625 in main /home/llvm/compiler-rt/test/asan/TestCases/unaligned_loads_and_stores.cpp:20:13
+    #2 0x7ff99344e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/llvm/compiler-rt/lib/asan/asan_poisoning.cpp:252:3 in __sanitizer_unaligned_store64
+Shadow bytes around the buggy address:
+  0x601ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x602000000000: fa fa 00 00[fa]fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2742848==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/unaligned_loads_and_stores.cpp <<TAIL<<

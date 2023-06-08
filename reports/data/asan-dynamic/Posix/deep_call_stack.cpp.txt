@@ -1,0 +1,118 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/deep_call_stack.cpp <<HEAD<<
+
+[15000] ptr: (nil)
+[14000] ptr: 0x7fa28470f9e0
+[13000] ptr: 0x7fa28471f3e0
+[12000] ptr: 0x7fa28472ede0
+[11000] ptr: 0x7fa28473e7e0
+[10000] ptr: 0x7fa28474e1e0
+[09000] ptr: 0x7fa28475dbe0
+[08000] ptr: 0x7fa28476d5e0
+[07000] ptr: 0x7fa28477cfe0
+[06000] ptr: 0x7fa28478c9e0
+[05000] ptr: 0x7fa28479c3e0
+[04000] ptr: 0x7fa2847abde0
+[03000] ptr: 0x7fa2847bb7e0
+[02000] ptr: 0x7fa2847cb1e0
+[01000] ptr: 0x7fa2847dabe0
+[00000] ptr: 0x7fa2847ea5e0
+[15000] ptr: (nil)
+[14000] ptr: 0x7f8ca130f9e0
+[13000] ptr: 0x7f8ca131f3e0
+[12000] ptr: 0x7f8ca132ede0
+[11000] ptr: 0x7f8ca133e7e0
+[10000] ptr: 0x7f8ca134e1e0
+[09000] ptr: 0x7f8ca135dbe0
+[08000] ptr: 0x7f8ca136d5e0
+[07000] ptr: 0x7f8ca137cfe0
+[06000] ptr: 0x7f8ca138c9e0
+[05000] ptr: 0x7f8ca139c3e0
+[04000] ptr: 0x7f8ca13abde0
+[03000] ptr: 0x7f8ca13bb7e0
+[02000] ptr: 0x7f8ca13cb1e0
+[01000] ptr: 0x7f8ca13dabe0
+[00000] ptr: 0x7f8ca13ea5e0
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/deep_call_stack.cpp <<TAIL<<
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/deep_call_stack.cpp <<HEAD<<
+
+==2724859==Registered root region at 0x7f8ca34007a0 of size 32
+==2724859==Registered root region at 0x7f8ca3002620 of size 160
+==2724859==Unregistered root region at 0x7f8ca3002620 of size 160
+==2724859==AddressSanitizer: failed to intercept '__isoc99_printf'
+==2724859==Registered root region at 0x7f8ca3002620 of size 160
+==2724859==Unregistered root region at 0x7f8ca3002620 of size 160
+==2724859==AddressSanitizer: failed to intercept '__isoc99_sprintf'
+==2724859==Registered root region at 0x7f8ca3002620 of size 160
+==2724859==Unregistered root region at 0x7f8ca3002620 of size 160
+==2724859==AddressSanitizer: failed to intercept '__isoc99_snprintf'
+==2724859==Registered root region at 0x7f8ca3002620 of size 160
+==2724859==Unregistered root region at 0x7f8ca3002620 of size 160
+==2724859==AddressSanitizer: failed to intercept '__isoc99_fprintf'
+==2724859==Registered root region at 0x7f8ca3002620 of size 160
+==2724859==Unregistered root region at 0x7f8ca3002620 of size 160
+==2724859==AddressSanitizer: failed to intercept '__isoc99_vprintf'
+==2724859==Registered root region at 0x7f8ca3002620 of size 160
+==2724859==Unregistered root region at 0x7f8ca3002620 of size 160
+==2724859==AddressSanitizer: failed to intercept '__isoc99_vsprintf'
+==2724859==Registered root region at 0x7f8ca3002620 of size 160
+==2724859==Unregistered root region at 0x7f8ca3002620 of size 160
+==2724859==AddressSanitizer: failed to intercept '__isoc99_vsnprintf'
+==2724859==Registered root region at 0x7f8ca3002620 of size 160
+==2724859==Unregistered root region at 0x7f8ca3002620 of size 160
+==2724859==AddressSanitizer: failed to intercept '__isoc99_vfprintf'
+==2724859==Registered root region at 0x7f8ca3002620 of size 160
+==2724859==Unregistered root region at 0x7f8ca3002620 of size 160
+==2724859==AddressSanitizer: failed to intercept '__b64_ntop'
+==2724859==Registered root region at 0x7f8ca3002620 of size 160
+==2724859==Unregistered root region at 0x7f8ca3002620 of size 160
+==2724859==AddressSanitizer: failed to intercept '__b64_pton'
+==2724859==Registered root region at 0x7f8ca3002620 of size 160
+==2724859==Unregistered root region at 0x7f8ca3002620 of size 160
+==2724859==AddressSanitizer: failed to intercept '__dn_comp'
+==2724859==Registered root region at 0x7f8ca3002620 of size 160
+==2724859==Unregistered root region at 0x7f8ca3002620 of size 160
+==2724859==AddressSanitizer: failed to intercept '__dn_expand'
+==2724859==Registered root region at 0x7f8ca3002620 of size 160
+==2724859==Unregistered root region at 0x7f8ca3002620 of size 160
+==2724859==AddressSanitizer: failed to intercept 'xdr_destroy'
+==2724859==Registered root region at 0x7f8ca3002620 of size 160
+==2724859==Unregistered root region at 0x7f8ca3002620 of size 160
+==2724859==AddressSanitizer: failed to intercept 'crypt'
+==2724859==Registered root region at 0x7f8ca3002620 of size 160
+==2724859==Unregistered root region at 0x7f8ca3002620 of size 160
+==2724859==AddressSanitizer: failed to intercept 'crypt_r'
+==2724859==Registered root region at 0x7f8ca2e029f0 of size 176
+==2724859==Unregistered root region at 0x7f8ca2e029f0 of size 176
+==2724859==AddressSanitizer: failed to intercept '__cxa_rethrow_primary_exception'
+==2724859==AddressSanitizer: libc interceptors initialized
+|| `[0x10007fff8000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x02008fff7000, 0x10007fff7fff]` || HighShadow ||
+|| `[0x00008fff7000, 0x02008fff6fff]` || ShadowGap  ||
+|| `[0x00007fff8000, 0x00008fff6fff]` || LowShadow  ||
+|| `[0x000000000000, 0x00007fff7fff]` || LowMem     ||
+MemToShadow(shadow): 0x00008fff7000 0x000091ff6dff 0x004091ff6e00 0x02008fff6fff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=256M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x7fff8000
+==2724859==Installed the sigaction for signal 11
+==2724859==Installed the sigaction for signal 7
+==2724859==Installed the sigaction for signal 8
+==2724859==T0: FakeStack created: 0x7f8ca12f7000 -- 0x7f8ca1e00000 stack_size_log: 20; mmapped 11300K, noreserve=0 
+==2724859==T0: stack [0x7ffe0cadb000,0x7ffe0cedb000) size 0x400000; local=0x7ffe0ced9d6c
+==2724859==AddressSanitizer Init done
+==2724859==LeakSanitizer: checking for leaks
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/deep_call_stack.cpp <<TAIL<<

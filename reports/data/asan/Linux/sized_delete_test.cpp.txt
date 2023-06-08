@@ -1,0 +1,130 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/sized_delete_test.cpp <<HEAD<<
+
+OK SO FAR
+=================================================================
+==2792487==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x603000000040 in thread T0:
+  object passed to delete has wrong type:
+  size of the allocated type:   20 bytes;
+  size of the deallocated type: 12 bytes.
+    #0 0x55f52c1d8807 in operator delete(void*, unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:164:3
+    #1 0x55f52c1da6f4 in Del12(S12*) /home/llvm/compiler-rt/test/asan/TestCases/Linux/sized_delete_test.cpp:37:3
+    #2 0x55f52c1daae4 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/sized_delete_test.cpp:72:5
+    #3 0x7f5cb0a4f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55f52c0ab41d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/sized_delete_test.cpp.tmp+0x1e41d)
+
+0x603000000040 is located 0 bytes inside of 20-byte region [0x603000000040,0x603000000054)
+allocated by thread T0 here:
+    #0 0x55f52c1d7987 in operator new(unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:95:3
+    #1 0x55f52c1daad2 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/sized_delete_test.cpp:72:34
+    #2 0x7f5cb0a4f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:164:3 in operator delete(void*, unsigned long)
+==2792487==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+==2792487==ABORTING
+OK SO FAR
+=================================================================
+==2793077==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x603000000040 in thread T0:
+  object passed to delete has wrong type:
+  size of the allocated type:   20 bytes;
+  size of the deallocated type: 12 bytes.
+    #0 0x5650b83d9807 in operator delete(void*, unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:164:3
+    #1 0x5650b83db6f4 in Del12(S12*) /home/llvm/compiler-rt/test/asan/TestCases/Linux/sized_delete_test.cpp:37:3
+    #2 0x5650b83dbae4 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/sized_delete_test.cpp:72:5
+    #3 0x7f13c8abf082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x5650b82ac41d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/sized_delete_test.cpp.tmp+0x1e41d)
+
+0x603000000040 is located 0 bytes inside of 20-byte region [0x603000000040,0x603000000054)
+allocated by thread T0 here:
+    #0 0x5650b83d8987 in operator new(unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:95:3
+    #1 0x5650b83dbad2 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/sized_delete_test.cpp:72:34
+    #2 0x7f13c8abf082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:164:3 in operator delete(void*, unsigned long)
+==2793077==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+==2793077==ABORTING
+OK SO FAR
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+=================================================================
+==2794404==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x611000000180 in thread T0:
+  object passed to delete has wrong type:
+  size of the allocated type:   208 bytes;
+  size of the deallocated type: 128 bytes.
+    #0 0x5583eb73e927 in operator delete[](void*, unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:167:3
+    #1 0x5583eb740c21 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/sized_delete_test.cpp:82:5
+    #2 0x7f87ed504082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5583eb61141d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/sized_delete_test.cpp.tmp+0x1e41d)
+
+0x611000000180 is located 0 bytes inside of 208-byte region [0x611000000180,0x611000000250)
+allocated by thread T0 here:
+    #0 0x5583eb73dae7 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x5583eb740b68 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/sized_delete_test.cpp:80:36
+    #2 0x7f87ed504082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:167:3 in operator delete[](void*, unsigned long)
+==2794404==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+==2794404==ABORTING
+OK SO FAR
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+=================================================================
+==2795119==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x611000000180 in thread T0:
+  object passed to delete has wrong type:
+  size of the allocated type:   208 bytes;
+  size of the deallocated type: 128 bytes.
+    #0 0x56445f765927 in operator delete[](void*, unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:167:3
+    #1 0x56445f767c21 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/sized_delete_test.cpp:82:5
+    #2 0x7f1c0e0f7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x56445f63841d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/sized_delete_test.cpp.tmp+0x1e41d)
+
+0x611000000180 is located 0 bytes inside of 208-byte region [0x611000000180,0x611000000250)
+allocated by thread T0 here:
+    #0 0x56445f764ae7 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x56445f767b68 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/sized_delete_test.cpp:80:36
+    #2 0x7f1c0e0f7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:167:3 in operator delete[](void*, unsigned long)
+==2795119==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+==2795119==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/sized_delete_test.cpp <<TAIL<<
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/sized_delete_test.cpp <<HEAD<<
+
+OK SO FAR
+OK SO FAR
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+D1::~D1
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/sized_delete_test.cpp <<TAIL<<

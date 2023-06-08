@@ -1,0 +1,41 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/segv_read_write.c <<HEAD<<
+
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2721807==ERROR: AddressSanitizer: SEGV on unknown address 0x7f7a03ceb000 (pc 0x555593aaa5fd bp 0x7ffc93160570 sp 0x7ffc93160550 T0)
+==2721807==The signal is caused by a READ memory access.
+    #0 0x555593aaa5fd in Read(int*) /home/llvm/compiler-rt/test/asan/TestCases/Linux/segv_read_write.c:9:56
+    #1 0x555593aaa7ca in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/segv_read_write.c:19:5
+    #2 0x7f7a041ed082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x555593aa917d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/segv_read_write.c.tmp+0x117d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/test/asan/TestCases/Linux/segv_read_write.c:9:56 in Read(int*)
+==2721807==ABORTING
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2722044==ERROR: AddressSanitizer: SEGV on unknown address 0x7f42559b3000 (pc 0x55fcc500a65d bp 0x7fff1af06a50 sp 0x7fff1af06a30 T0)
+==2722044==The signal is caused by a WRITE memory access.
+    #0 0x55fcc500a65d in Write(int*) /home/llvm/compiler-rt/test/asan/TestCases/Linux/segv_read_write.c:10:55
+    #1 0x55fcc500a7f9 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/segv_read_write.c:21:5
+    #2 0x7f4255db5082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55fcc500917d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/segv_read_write.c.tmp+0x117d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/llvm/compiler-rt/test/asan/TestCases/Linux/segv_read_write.c:10:55 in Write(int*)
+==2722044==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/segv_read_write.c <<TAIL<<
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/segv_read_write.c <<HEAD<<
+
+clang-16: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/segv_read_write.c <<TAIL<<

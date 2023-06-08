@@ -1,0 +1,347 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/quarantine_size_mb.cpp <<HEAD<<
+
+==2791871==Registered root region at 0x7f1ce16007a0 of size 32
+==2791871==Registered root region at 0x7f1ce1202dc0 of size 192
+==2791871==Unregistered root region at 0x7f1ce1202dc0 of size 192
+==2791871==AddressSanitizer: failed to intercept '__isoc99_printf'
+==2791871==Registered root region at 0x7f1ce1003190 of size 208
+==2791871==Unregistered root region at 0x7f1ce1003190 of size 208
+==2791871==AddressSanitizer: failed to intercept '__isoc99_sprintf'
+==2791871==Registered root region at 0x7f1ce1003190 of size 208
+==2791871==Unregistered root region at 0x7f1ce1003190 of size 208
+==2791871==AddressSanitizer: failed to intercept '__isoc99_snprintf'
+==2791871==Registered root region at 0x7f1ce1003190 of size 208
+==2791871==Unregistered root region at 0x7f1ce1003190 of size 208
+==2791871==AddressSanitizer: failed to intercept '__isoc99_fprintf'
+==2791871==Registered root region at 0x7f1ce1003190 of size 208
+==2791871==Unregistered root region at 0x7f1ce1003190 of size 208
+==2791871==AddressSanitizer: failed to intercept '__isoc99_vprintf'
+==2791871==Registered root region at 0x7f1ce1003190 of size 208
+==2791871==Unregistered root region at 0x7f1ce1003190 of size 208
+==2791871==AddressSanitizer: failed to intercept '__isoc99_vsprintf'
+==2791871==Registered root region at 0x7f1ce1003190 of size 208
+==2791871==Unregistered root region at 0x7f1ce1003190 of size 208
+==2791871==AddressSanitizer: failed to intercept '__isoc99_vsnprintf'
+==2791871==Registered root region at 0x7f1ce1003190 of size 208
+==2791871==Unregistered root region at 0x7f1ce1003190 of size 208
+==2791871==AddressSanitizer: failed to intercept '__isoc99_vfprintf'
+==2791871==Registered root region at 0x7f1ce1202dc0 of size 192
+==2791871==Unregistered root region at 0x7f1ce1202dc0 of size 192
+==2791871==AddressSanitizer: failed to intercept 'xdr_destroy'
+==2791871==Registered root region at 0x7f1ce1202dc0 of size 192
+==2791871==Unregistered root region at 0x7f1ce1202dc0 of size 192
+==2791871==AddressSanitizer: failed to intercept 'crypt'
+==2791871==Registered root region at 0x7f1ce1202dc0 of size 192
+==2791871==Unregistered root region at 0x7f1ce1202dc0 of size 192
+==2791871==AddressSanitizer: failed to intercept 'crypt_r'
+==2791871==Registered root region at 0x7f1ce1003190 of size 208
+==2791871==Unregistered root region at 0x7f1ce1003190 of size 208
+==2791871==AddressSanitizer: failed to intercept '__cxa_rethrow_primary_exception'
+==2791871==AddressSanitizer: libc interceptors initialized
+|| `[0x10007fff8000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x02008fff7000, 0x10007fff7fff]` || HighShadow ||
+|| `[0x00008fff7000, 0x02008fff6fff]` || ShadowGap  ||
+|| `[0x00007fff8000, 0x00008fff6fff]` || LowShadow  ||
+|| `[0x000000000000, 0x00007fff7fff]` || LowMem     ||
+MemToShadow(shadow): 0x00008fff7000 0x000091ff6dff 0x004091ff6e00 0x02008fff6fff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=10M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x7fff8000
+==2791871==Installed the sigaction for signal 11
+==2791871==Installed the sigaction for signal 7
+==2791871==Installed the sigaction for signal 8
+==2791871==T0: FakeStack created: 0x7f1cdf4f7000 -- 0x7f1ce0000000 stack_size_log: 20; mmapped 11300K, noreserve=0 
+==2791871==T0: stack [0x7ffd7e413000,0x7ffd7ec13000) size 0x800000; local=0x7ffd7ec1252c
+==2791871==AddressSanitizer Init done
+AddressSanitizer: Started BackgroundThread
+AddressSanitizer: RSS: 15Mb
+AddressSanitizer: StackDepot: 8 ids; 9M allocated
+AddressSanitizer: RSS: 17Mb
+==2791871==LeakSanitizer: checking for leaks==2792378==Registered root region at 0x7f13f44007a0 of size 32
+==2792378==Registered root region at 0x7f13f4002dc0 of size 192
+==2792378==Unregistered root region at 0x7f13f4002dc0 of size 192
+==2792378==AddressSanitizer: failed to intercept '__isoc99_printf'
+==2792378==Registered root region at 0x7f13f3e03190 of size 208
+==2792378==Unregistered root region at 0x7f13f3e03190 of size 208
+==2792378==AddressSanitizer: failed to intercept '__isoc99_sprintf'
+==2792378==Registered root region at 0x7f13f3e03190 of size 208
+==2792378==Unregistered root region at 0x7f13f3e03190 of size 208
+==2792378==AddressSanitizer: failed to intercept '__isoc99_snprintf'
+==2792378==Registered root region at 0x7f13f3e03190 of size 208
+==2792378==Unregistered root region at 0x7f13f3e03190 of size 208
+==2792378==AddressSanitizer: failed to intercept '__isoc99_fprintf'
+==2792378==Registered root region at 0x7f13f3e03190 of size 208
+==2792378==Unregistered root region at 0x7f13f3e03190 of size 208
+==2792378==AddressSanitizer: failed to intercept '__isoc99_vprintf'
+==2792378==Registered root region at 0x7f13f3e03190 of size 208
+==2792378==Unregistered root region at 0x7f13f3e03190 of size 208
+==2792378==AddressSanitizer: failed to intercept '__isoc99_vsprintf'
+==2792378==Registered root region at 0x7f13f3e03190 of size 208
+==2792378==Unregistered root region at 0x7f13f3e03190 of size 208
+==2792378==AddressSanitizer: failed to intercept '__isoc99_vsnprintf'
+==2792378==Registered root region at 0x7f13f3e03190 of size 208
+==2792378==Unregistered root region at 0x7f13f3e03190 of size 208
+==2792378==AddressSanitizer: failed to intercept '__isoc99_vfprintf'
+==2792378==Registered root region at 0x7f13f4002dc0 of size 192
+==2792378==Unregistered root region at 0x7f13f4002dc0 of size 192
+==2792378==AddressSanitizer: failed to intercept 'xdr_destroy'
+==2792378==Registered root region at 0x7f13f4002dc0 of size 192
+==2792378==Unregistered root region at 0x7f13f4002dc0 of size 192
+==2792378==AddressSanitizer: failed to intercept 'crypt'
+==2792378==Registered root region at 0x7f13f4002dc0 of size 192
+==2792378==Unregistered root region at 0x7f13f4002dc0 of size 192
+==2792378==AddressSanitizer: failed to intercept 'crypt_r'
+==2792378==Registered root region at 0x7f13f3e03190 of size 208
+==2792378==Unregistered root region at 0x7f13f3e03190 of size 208
+==2792378==AddressSanitizer: failed to intercept '__cxa_rethrow_primary_exception'
+==2792378==AddressSanitizer: libc interceptors initialized
+|| `[0x10007fff8000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x02008fff7000, 0x10007fff7fff]` || HighShadow ||
+|| `[0x00008fff7000, 0x02008fff6fff]` || ShadowGap  ||
+|| `[0x00007fff8000, 0x00008fff6fff]` || LowShadow  ||
+|| `[0x000000000000, 0x00007fff7fff]` || LowMem     ||
+MemToShadow(shadow): 0x00008fff7000 0x000091ff6dff 0x004091ff6e00 0x02008fff6fff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=10M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x7fff8000
+==2792378==Installed the sigaction for signal 11
+==2792378==Installed the sigaction for signal 7
+==2792378==Installed the sigaction for signal 8
+==2792378==T0: FakeStack created: 0x7f13f22f7000 -- 0x7f13f2e00000 stack_size_log: 20; mmapped 11300K, noreserve=0 
+==2792378==T0: stack [0x7ffcddad5000,0x7ffcde2d5000) size 0x800000; local=0x7ffcde2d39fc
+==2792378==AddressSanitizer Init done
+AddressSanitizer: Started BackgroundThread
+AddressSanitizer: RSS: 15Mb
+AddressSanitizer: StackDepot: 8 ids; 9M allocated
+AddressSanitizer: RSS: 17Mb
+==2792378==LeakSanitizer: checking for leaks==2792384==AddressSanitizer: please use either 'quarantine_size' (deprecated) or quarantine_size_mb, but not both
+==2792387==AddressSanitizer: hard rss limit exhausted (50Mb vs 189Mb)
+==2792387==Process memory map follows:
+	0x00007fff7000-0x00008fff7000	
+	0x00008fff7000-0x02008fff7000	
+	0x02008fff7000-0x10007fff8000	
+	0x5565c8a0b000-0x5565c8a29000	/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/quarantine_size_mb.cpp.tmp
+	0x5565c8a29000-0x5565c8b59000	/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/quarantine_size_mb.cpp.tmp
+	0x5565c8b59000-0x5565c8b8e000	/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/quarantine_size_mb.cpp.tmp
+	0x5565c8b8f000-0x5565c8b90000	/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/quarantine_size_mb.cpp.tmp
+	0x5565c8b90000-0x5565c8b93000	/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/quarantine_size_mb.cpp.tmp
+	0x5565c8b93000-0x5565c9567000	
+	0x600000000000-0x610000000000	
+	0x610000000000-0x610000010000	
+	0x610000010000-0x610e00000000	
+	0x610e00000000-0x610e00010000	
+	0x610e00010000-0x611000000000	
+	0x611000000000-0x611000010000	
+	0x611000010000-0x611e00000000	
+	0x611e00000000-0x611e00010000	
+	0x611e00010000-0x612000000000	
+	0x612000000000-0x612000010000	
+	0x612000010000-0x612e00000000	
+	0x612e00000000-0x612e00010000	
+	0x612e00010000-0x624000000000	
+	0x624000000000-0x624000150000	
+	0x624000150000-0x624e00000000	
+	0x624e00000000-0x624e00010000	
+	0x624e00010000-0x631000000000	
+	0x631000000000-0x631000020000	
+	0x631000020000-0x631e00000000	
+	0x631e00000000-0x631e00010000	
+	0x631e00010000-0x640000000000	
+	0x640000000000-0x640000002000	
+	0x7f0c570bb000-0x7f0c613ff000	
+	0x7f0c613ff000-0x7f0c61400000	
+	0x7f0c61400000-0x7f0c61d00000	
+	0x7f0c61e00000-0x7f0c61f00000	
+	0x7f0c62000000-0x7f0c62100000	
+	0x7f0c62200000-0x7f0c62300000	
+	0x7f0c62400000-0x7f0c62500000	
+	0x7f0c62557000-0x7f0c63200000	
+	0x7f0c63200000-0x7f0c63a00000	
+	0x7f0c63a00000-0x7f0c63a20000	
+	0x7f0c63a20000-0x7f0c64200000	
+	0x7f0c64200000-0x7f0c64300000	
+	0x7f0c64400000-0x7f0c64500000	
+	0x7f0c64600000-0x7f0c64900000	
+	0x7f0c64942000-0x7f0c64960000	
+	0x7f0c64962000-0x7f0c64d0c000	
+	0x7f0c64d0c000-0x7f0c64d2e000	/usr/lib/x86_64-linux-gnu/libc-2.31.so
+	0x7f0c64d2e000-0x7f0c64ea6000	/usr/lib/x86_64-linux-gnu/libc-2.31.so
+	0x7f0c64ea6000-0x7f0c64ef4000	/usr/lib/x86_64-linux-gnu/libc-2.31.so
+	0x7f0c64ef4000-0x7f0c64ef8000	/usr/lib/x86_64-linux-gnu/libc-2.31.so
+	0x7f0c64ef8000-0x7f0c64efa000	/usr/lib/x86_64-linux-gnu/libc-2.31.so
+	0x7f0c64efa000-0x7f0c64efe000	
+	0x7f0c64efe000-0x7f0c64f01000	/usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+	0x7f0c64f01000-0x7f0c64f13000	/usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+	0x7f0c64f13000-0x7f0c64f17000	/usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+	0x7f0c64f17000-0x7f0c64f18000	/usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+	0x7f0c64f18000-0x7f0c64f19000	/usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+	0x7f0c64f19000-0x7f0c64f1b000	
+	0x7f0c64f1b000-0x7f0c64f1f000	/usr/lib/x86_64-linux-gnu/libresolv-2.31.so
+	0x7f0c64f1f000-0x7f0c64f2f000	/usr/lib/x86_64-linux-gnu/libresolv-2.31.so
+	0x7f0c64f2f000-0x7f0c64f33000	/usr/lib/x86_64-linux-gnu/libresolv-2.31.so
+	0x7f0c64f33000-0x7f0c64f34000	/usr/lib/x86_64-linux-gnu/libresolv-2.31.so
+	0x7f0c64f34000-0x7f0c64f35000	/usr/lib/x86_64-linux-gnu/libresolv-2.31.so
+	0x7f0c64f35000-0x7f0c64f37000	
+	0x7f0c64f37000-0x7f0c64f38000	/usr/lib/x86_64-linux-gnu/libdl-2.31.so
+	0x7f0c64f38000-0x7f0c64f3a000	/usr/lib/x86_64-linux-gnu/libdl-2.31.so
+	0x7f0c64f3a000-0x7f0c64f3b000	/usr/lib/x86_64-linux-gnu/libdl-2.31.so
+	0x7f0c64f3b000-0x7f0c64f3c000	/usr/lib/x86_64-linux-gnu/libdl-2.31.so
+	0x7f0c64f3c000-0x7f0c64f3d000	/usr/lib/x86_64-linux-gnu/libdl-2.31.so
+	0x7f0c64f3d000-0x7f0c64f3f000	/usr/lib/x86_64-linux-gnu/librt-2.31.so
+	0x7f0c64f3f000-0x7f0c64f43000	/usr/lib/x86_64-linux-gnu/librt-2.31.so
+	0x7f0c64f43000-0x7f0c64f45000	/usr/lib/x86_64-linux-gnu/librt-2.31.so
+	0x7f0c64f45000-0x7f0c64f46000	/usr/lib/x86_64-linux-gnu/librt-2.31.so
+	0x7f0c64f46000-0x7f0c64f47000	/usr/lib/x86_64-linux-gnu/librt-2.31.so
+	0x7f0c64f47000-0x7f0c64f4d000	/usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+	0x7f0c64f4d000-0x7f0c64f5e000	/usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+	0x7f0c64f5e000-0x7f0c64f64000	/usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+	0x7f0c64f64000-0x7f0c64f65000	/usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+	0x7f0c64f65000-0x7f0c64f66000	/usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+	0x7f0c64f66000-0x7f0c64f6a000	
+	0x7f0c64f6a000-0x7f0c64f77000	/usr/lib/x86_64-linux-gnu/libm-2.31.so
+	0x7f0c64f77000-0x7f0c6501e000	/usr/lib/x86_64-linux-gnu/libm-2.31.so
+	0x7f0c6501e000-0x7f0c650b7000	/usr/lib/x86_64-linux-gnu/libm-2.31.so
+	0x7f0c650b7000-0x7f0c650b8000	/usr/lib/x86_64-linux-gnu/libm-2.31.so
+	0x7f0c650b8000-0x7f0c650b9000	/usr/lib/x86_64-linux-gnu/libm-2.31.so
+	0x7f0c650b9000-0x7f0c6514f000	/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+	0x7f0c6514f000-0x7f0c65240000	/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+	0x7f0c65240000-0x7f0c65289000	/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+	0x7f0c65289000-0x7f0c6528a000	/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+	0x7f0c6528a000-0x7f0c65295000	/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+	0x7f0c65295000-0x7f0c65298000	/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+	0x7f0c65298000-0x7f0c652a9000	
+	0x7f0c652a9000-0x7f0c652aa000	/usr/lib/x86_64-linux-gnu/ld-2.31.so
+	0x7f0c652aa000-0x7f0c652cd000	/usr/lib/x86_64-linux-gnu/ld-2.31.so
+	0x7f0c652cd000-0x7f0c652d5000	/usr/lib/x86_64-linux-gnu/ld-2.31.so
+	0x7f0c652d5000-0x7f0c652d6000	
+	0x7f0c652d6000-0x7f0c652d7000	/usr/lib/x86_64-linux-gnu/ld-2.31.so
+	0x7f0c652d7000-0x7f0c652d8000	/usr/lib/x86_64-linux-gnu/ld-2.31.so
+	0x7f0c652d8000-0x7f0c652d9000	
+	0x7ffd8f443000-0x7ffd8f464000	[stack]
+	0x7ffd8f51c000-0x7ffd8f51f000	[vvar]
+	0x7ffd8f51f000-0x7ffd8f520000	[vdso]
+	0xffffffffff600000-0xffffffffff601000	[vsyscall]
+==2792387==End of process memory map.
+==2792392==AddressSanitizer: hard rss limit exhausted (20Mb vs 202Mb)
+==2792392==Process memory map follows:
+	0x00007fff7000-0x00008fff7000	
+	0x00008fff7000-0x02008fff7000	
+	0x02008fff7000-0x10007fff8000	
+	0x56029bcfa000-0x56029bd18000	/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/quarantine_size_mb.cpp.tmp
+	0x56029bd18000-0x56029be48000	/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/quarantine_size_mb.cpp.tmp
+	0x56029be48000-0x56029be7d000	/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/quarantine_size_mb.cpp.tmp
+	0x56029be7e000-0x56029be7f000	/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/quarantine_size_mb.cpp.tmp
+	0x56029be7f000-0x56029be82000	/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/quarantine_size_mb.cpp.tmp
+	0x56029be82000-0x56029c856000	
+	0x600000000000-0x610000000000	
+	0x610000000000-0x610000010000	
+	0x610000010000-0x610e00000000	
+	0x610e00000000-0x610e00010000	
+	0x610e00010000-0x611000000000	
+	0x611000000000-0x611000010000	
+	0x611000010000-0x611e00000000	
+	0x611e00000000-0x611e00010000	
+	0x611e00010000-0x612000000000	
+	0x612000000000-0x612000010000	
+	0x612000010000-0x612e00000000	
+	0x612e00000000-0x612e00010000	
+	0x612e00010000-0x624000000000	
+	0x624000000000-0x624000160000	
+	0x624000160000-0x624e00000000	
+	0x624e00000000-0x624e00010000	
+	0x624e00010000-0x631000000000	
+	0x631000000000-0x631000020000	
+	0x631000020000-0x631e00000000	
+	0x631e00000000-0x631e00010000	
+	0x631e00010000-0x640000000000	
+	0x640000000000-0x640000002000	
+	0x7fb66faa5000-0x7fb67a8ff000	
+	0x7fb67a8ff000-0x7fb67a900000	
+	0x7fb67a900000-0x7fb67b200000	
+	0x7fb67b300000-0x7fb67b400000	
+	0x7fb67b500000-0x7fb67b600000	
+	0x7fb67b700000-0x7fb67b800000	
+	0x7fb67b900000-0x7fb67ba00000	
+	0x7fb67ba57000-0x7fb67c700000	
+	0x7fb67c700000-0x7fb67cf00000	
+	0x7fb67cf00000-0x7fb67cf20000	
+	0x7fb67cf20000-0x7fb67d700000	
+	0x7fb67d700000-0x7fb67d800000	
+	0x7fb67d900000-0x7fb67da00000	
+	0x7fb67db00000-0x7fb67de00000	
+	0x7fb67de0d000-0x7fb67de2b000	
+	0x7fb67de2d000-0x7fb67e1d7000	
+	0x7fb67e1d7000-0x7fb67e1f9000	/usr/lib/x86_64-linux-gnu/libc-2.31.so
+	0x7fb67e1f9000-0x7fb67e371000	/usr/lib/x86_64-linux-gnu/libc-2.31.so
+	0x7fb67e371000-0x7fb67e3bf000	/usr/lib/x86_64-linux-gnu/libc-2.31.so
+	0x7fb67e3bf000-0x7fb67e3c3000	/usr/lib/x86_64-linux-gnu/libc-2.31.so
+	0x7fb67e3c3000-0x7fb67e3c5000	/usr/lib/x86_64-linux-gnu/libc-2.31.so
+	0x7fb67e3c5000-0x7fb67e3c9000	
+	0x7fb67e3c9000-0x7fb67e3cc000	/usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+	0x7fb67e3cc000-0x7fb67e3de000	/usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+	0x7fb67e3de000-0x7fb67e3e2000	/usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+	0x7fb67e3e2000-0x7fb67e3e3000	/usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+	0x7fb67e3e3000-0x7fb67e3e4000	/usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+	0x7fb67e3e4000-0x7fb67e3e6000	
+	0x7fb67e3e6000-0x7fb67e3ea000	/usr/lib/x86_64-linux-gnu/libresolv-2.31.so
+	0x7fb67e3ea000-0x7fb67e3fa000	/usr/lib/x86_64-linux-gnu/libresolv-2.31.so
+	0x7fb67e3fa000-0x7fb67e3fe000	/usr/lib/x86_64-linux-gnu/libresolv-2.31.so
+	0x7fb67e3fe000-0x7fb67e3ff000	/usr/lib/x86_64-linux-gnu/libresolv-2.31.so
+	0x7fb67e3ff000-0x7fb67e400000	/usr/lib/x86_64-linux-gnu/libresolv-2.31.so
+	0x7fb67e400000-0x7fb67e402000	
+	0x7fb67e402000-0x7fb67e403000	/usr/lib/x86_64-linux-gnu/libdl-2.31.so
+	0x7fb67e403000-0x7fb67e405000	/usr/lib/x86_64-linux-gnu/libdl-2.31.so
+	0x7fb67e405000-0x7fb67e406000	/usr/lib/x86_64-linux-gnu/libdl-2.31.so
+	0x7fb67e406000-0x7fb67e407000	/usr/lib/x86_64-linux-gnu/libdl-2.31.so
+	0x7fb67e407000-0x7fb67e408000	/usr/lib/x86_64-linux-gnu/libdl-2.31.so
+	0x7fb67e408000-0x7fb67e40a000	/usr/lib/x86_64-linux-gnu/librt-2.31.so
+	0x7fb67e40a000-0x7fb67e40e000	/usr/lib/x86_64-linux-gnu/librt-2.31.so
+	0x7fb67e40e000-0x7fb67e410000	/usr/lib/x86_64-linux-gnu/librt-2.31.so
+	0x7fb67e410000-0x7fb67e411000	/usr/lib/x86_64-linux-gnu/librt-2.31.so
+	0x7fb67e411000-0x7fb67e412000	/usr/lib/x86_64-linux-gnu/librt-2.31.so
+	0x7fb67e412000-0x7fb67e418000	/usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+	0x7fb67e418000-0x7fb67e429000	/usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+	0x7fb67e429000-0x7fb67e42f000	/usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+	0x7fb67e42f000-0x7fb67e430000	/usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+	0x7fb67e430000-0x7fb67e431000	/usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+	0x7fb67e431000-0x7fb67e435000	
+	0x7fb67e435000-0x7fb67e442000	/usr/lib/x86_64-linux-gnu/libm-2.31.so
+	0x7fb67e442000-0x7fb67e4e9000	/usr/lib/x86_64-linux-gnu/libm-2.31.so
+	0x7fb67e4e9000-0x7fb67e582000	/usr/lib/x86_64-linux-gnu/libm-2.31.so
+	0x7fb67e582000-0x7fb67e583000	/usr/lib/x86_64-linux-gnu/libm-2.31.so
+	0x7fb67e583000-0x7fb67e584000	/usr/lib/x86_64-linux-gnu/libm-2.31.so
+	0x7fb67e584000-0x7fb67e61a000	/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+	0x7fb67e61a000-0x7fb67e70b000	/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+	0x7fb67e70b000-0x7fb67e754000	/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+	0x7fb67e754000-0x7fb67e755000	/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+	0x7fb67e755000-0x7fb67e760000	/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+	0x7fb67e760000-0x7fb67e763000	/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+	0x7fb67e763000-0x7fb67e774000	
+	0x7fb67e774000-0x7fb67e775000	/usr/lib/x86_64-linux-gnu/ld-2.31.so
+	0x7fb67e775000-0x7fb67e798000	/usr/lib/x86_64-linux-gnu/ld-2.31.so
+	0x7fb67e798000-0x7fb67e7a0000	/usr/lib/x86_64-linux-gnu/ld-2.31.so
+	0x7fb67e7a0000-0x7fb67e7a1000	
+	0x7fb67e7a1000-0x7fb67e7a2000	/usr/lib/x86_64-linux-gnu/ld-2.31.so
+	0x7fb67e7a2000-0x7fb67e7a3000	/usr/lib/x86_64-linux-gnu/ld-2.31.so
+	0x7fb67e7a3000-0x7fb67e7a4000	
+	0x7ffd35164000-0x7ffd35185000	[stack]
+	0x7ffd351cf000-0x7ffd351d2000	[vvar]
+	0x7ffd351d2000-0x7ffd351d3000	[vdso]
+	0xffffffffff600000-0xffffffffff601000	[vsyscall]
+==2792392==End of process memory map.
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/quarantine_size_mb.cpp <<TAIL<<

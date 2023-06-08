@@ -1,0 +1,60 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/ptrace.cpp <<HEAD<<
+
+7fdb1a4e3100
+37f
+=================================================================
+==2792466==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fcd4c2000f8 at pc 0x556b189e4181 bp 0x7ffe0f7a1fd0 sp 0x7ffe0f7a1790
+WRITE of size 216 at 0x7fcd4c2000f8 thread T0
+    #0 0x556b189e4180 in __interceptor_ptrace /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:3526:7
+    #1 0x556b18a5f7ea in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/ptrace.cpp:115:11
+    #2 0x7fcd4e5d1082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x556b1893030d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/ptrace.cpp.tmp+0x1e30d)
+
+Address 0x7fcd4c2000f8 is located in stack of thread T0 at offset 248 in frame
+    #0 0x556b18a5f5bf in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/ptrace.cpp:87
+
+  This frame has 3 object(s):
+    [32, 248) 'regs' (line 95)
+    [320, 328) 'pregs' (line 96) <== Memory access at offset 248 partially underflows this variable
+    [352, 864) 'fpregs' (line 121) <== Memory access at offset 248 partially underflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:3526:7 in __interceptor_ptrace
+Shadow bytes around the buggy address:
+  0x7fcd4c1ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcd4c1ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcd4c1fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcd4c1fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fcd4c200000: f1 f1 f1 f1 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fcd4c200080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00[f2]
+  0x7fcd4c200100: f2 f2 f2 f2 f2 f2 f2 f2 00 f2 f2 f2 f8 f8 f8 f8
+  0x7fcd4c200180: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7fcd4c200200: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7fcd4c200280: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  0x7fcd4c200300: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f3 f3 f3 f3
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2792466==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/ptrace.cpp <<TAIL<<

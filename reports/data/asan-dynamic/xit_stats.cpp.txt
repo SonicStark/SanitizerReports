@@ -1,0 +1,27 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/atexit_stats.cpp <<HEAD<<
+
+AddressSanitizer exit stats:
+Stats: 8M malloced (0M for red zones) by 6 calls
+Stats: 0M realloced by 0 calls
+Stats: 0M freed by 1 calls
+Stats: 0M really freed by 0 calls
+Stats: 9M (9M-0M) mmaped; 14 maps, 0 unmaps
+  mallocs by size class: 14:1; 15:1; 25:1; 49:1; 50:1; 
+Stats: malloc large: 1
+Stats: StackDepot: 8 ids; 9M allocated
+Stats: SizeClassAllocator64: 0M mapped (0M rss) in 317 allocations; remains 317
+  14 (   224): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     164 avail:    292 rss:      4K releases:      0 last released:      0K region: 0x60e000000000
+  15 (   240): mapped:     64K allocs:     128 frees:       0 inuse:    128 num_freed_chunks     145 avail:    273 rss:      4K releases:      0 last released:      0K region: 0x60f000000000
+  25 (  1280): mapped:     64K allocs:      51 frees:       0 inuse:     51 num_freed_chunks       0 avail:     51 rss:      4K releases:      0 last released:      0K region: 0x619000000000
+  36 (  8192): mapped:     64K allocs:       8 frees:       0 inuse:      8 num_freed_chunks       0 avail:      8 rss:      4K releases:      0 last released:      0K region: 0x624000000000
+  49 ( 81920): mapped:    128K allocs:       1 frees:       0 inuse:      1 num_freed_chunks       0 avail:      1 rss:      8K releases:      0 last released:      0K region: 0x631000000000
+  50 ( 98304): mapped:    128K allocs:       1 frees:       0 inuse:      1 num_freed_chunks       0 avail:      1 rss:      8K releases:      0 last released:      0K region: 0x632000000000
+Stats: LargeMmapAllocator: allocated 1 times, remains 1 (8800 K) max 8 M; by size logs: 23:1; 
+Quarantine limits: global: 256Mb; thread local: 1024Kb
+Global quarantine stats: batches: 0; bytes: 0 (user: 0); chunks: 0 (capacity: 0); 0% chunks used; 0% memory overhead
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/atexit_stats.cpp <<TAIL<<

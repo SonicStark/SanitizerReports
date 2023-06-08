@@ -1,0 +1,196 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/heavy_uar_test.cpp <<HEAD<<
+
+=================================================================
+==2810547==ERROR: AddressSanitizer: stack-use-after-return on address 0x7fd374884084 at pc 0x5566e8b0c882 bp 0x7fffa6b45ad0 sp 0x7fffa6b45ac8
+READ of size 1 at 0x7fd374884084 thread T0
+    #0 0x5566e8b0c881 in main /home/llvm/compiler-rt/test/asan/TestCases/heavy_uar_test.cpp:66:19
+    #1 0x7fd376ad0082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5566e89dd2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/heavy_uar_test.cpp.tmp+0x1e2dd)
+
+Address 0x7fd374884084 is located in stack of thread T0 at offset 132 in frame
+    #0 0x5566e8b0c5af in LeakStack() /home/llvm/compiler-rt/test/asan/TestCases/heavy_uar_test.cpp:26
+
+  This frame has 1 object(s):
+    [32, 1056) 'x' (line 27) <== Memory access at offset 132 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/heavy_uar_test.cpp:66:19 in main
+Shadow bytes around the buggy address:
+  0x7fd374883e00: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd374883e80: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd374883f00: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd374883f80: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd374884000: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+=>0x7fd374884080:[f5]f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd374884100: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd374884180: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd374884200: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd374884280: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd374884300: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2810547==ABORTING
+=================================================================
+==2811051==ERROR: AddressSanitizer: stack-use-after-return on address 0x7fd789584084 at pc 0x564ffc0dc7d2 bp 0x7ffec4d44870 sp 0x7ffec4d44868
+READ of size 1 at 0x7fd789584084 thread T0
+    #0 0x564ffc0dc7d1 in main /home/llvm/compiler-rt/test/asan/TestCases/heavy_uar_test.cpp:66:19
+    #1 0x7fd78b852082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x564ffbfad2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/heavy_uar_test.cpp.tmp+0x1e2dd)
+
+Address 0x7fd789584084 is located in stack of thread T0 at offset 132 in frame
+    #0 0x564ffc0dc59f in LeakStack() /home/llvm/compiler-rt/test/asan/TestCases/heavy_uar_test.cpp:26
+
+  This frame has 1 object(s):
+    [32, 1056) 'x' (line 27) <== Memory access at offset 132 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/heavy_uar_test.cpp:66:19 in main
+Shadow bytes around the buggy address:
+  0x7fd789583e00: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd789583e80: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd789583f00: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd789583f80: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd789584000: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+=>0x7fd789584080:[f5]f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd789584100: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd789584180: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd789584200: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd789584280: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd789584300: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2811051==ABORTING
+=================================================================
+==2811719==ERROR: AddressSanitizer: stack-use-after-return on address 0x7f2083584084 at pc 0x562dfec5b872 bp 0x7fffff0f32f0 sp 0x7fffff0f32e8
+READ of size 1 at 0x7f2083584084 thread T0
+    #0 0x562dfec5b871 in main /home/llvm/compiler-rt/test/asan/TestCases/heavy_uar_test.cpp:66:19
+    #1 0x7f208582c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x562dfeb2c2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/heavy_uar_test.cpp.tmp+0x1e2dd)
+
+Address 0x7f2083584084 is located in stack of thread T0 at offset 132 in frame
+    #0 0x562dfec5b5af in LeakStack() /home/llvm/compiler-rt/test/asan/TestCases/heavy_uar_test.cpp:26
+
+  This frame has 1 object(s):
+    [32, 1056) 'x' (line 27) <== Memory access at offset 132 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/heavy_uar_test.cpp:66:19 in main
+Shadow bytes around the buggy address:
+  0x7f2083583e00: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f2083583e80: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f2083583f00: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f2083583f80: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f2083584000: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+=>0x7f2083584080:[f5]f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f2083584100: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f2083584180: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f2083584200: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f2083584280: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f2083584300: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2811719==ABORTING
+=================================================================
+==2812192==ERROR: AddressSanitizer: stack-use-after-return on address 0x7fc05ab84084 at pc 0x563c26e627c2 bp 0x7ffd49ef8930 sp 0x7ffd49ef8928
+READ of size 1 at 0x7fc05ab84084 thread T0
+    #0 0x563c26e627c1 in main /home/llvm/compiler-rt/test/asan/TestCases/heavy_uar_test.cpp:66:19
+    #1 0x7fc05ce98082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x563c26d332dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/heavy_uar_test.cpp.tmp+0x1e2dd)
+
+Address 0x7fc05ab84084 is located in stack of thread T0 at offset 132 in frame
+    #0 0x563c26e6259f in LeakStack() /home/llvm/compiler-rt/test/asan/TestCases/heavy_uar_test.cpp:26
+
+  This frame has 1 object(s):
+    [32, 1056) 'x' (line 27) <== Memory access at offset 132 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-return /home/llvm/compiler-rt/test/asan/TestCases/heavy_uar_test.cpp:66:19 in main
+Shadow bytes around the buggy address:
+  0x7fc05ab83e00: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fc05ab83e80: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fc05ab83f00: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fc05ab83f80: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fc05ab84000: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+=>0x7fc05ab84080:[f5]f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fc05ab84100: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fc05ab84180: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fc05ab84200: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fc05ab84280: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fc05ab84300: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2812192==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/heavy_uar_test.cpp <<TAIL<<

@@ -1,0 +1,10 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Posix/new_array_cookie_with_new_from_class.cpp <<HEAD<<
+
+foo  : 0x603000000018
+alloc: 0x603000000010
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Posix/new_array_cookie_with_new_from_class.cpp <<TAIL<<

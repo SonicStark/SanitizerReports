@@ -1,0 +1,11 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/thread_local_quarantine_pthread_join.cpp <<HEAD<<
+
+Heap size: 1056768
+New heap size: 2236416
+Heap growth is within limits
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/thread_local_quarantine_pthread_join.cpp <<TAIL<<

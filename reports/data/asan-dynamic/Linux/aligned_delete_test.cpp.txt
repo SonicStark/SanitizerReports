@@ -1,0 +1,398 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/aligned_delete_test.cpp <<HEAD<<
+
+=================================================================
+==2719756==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x611000000080 in thread T0:
+  object passed to delete has wrong type:
+  alignment of the allocated type:   128 bytes;
+  alignment of the deallocated type: default-aligned.
+    #0 0x7fd465dc89f7 in operator delete(void*, std::nothrow_t const&) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:158:3
+    #1 0x558b93970699 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:61:3
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x558b9396f22d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x122d)
+
+0x611000000080 is located 0 bytes inside of 128-byte region [0x611000000080,0x611000000100)
+allocated by thread T0 here:
+    #0 0x7fd465dc82c7 in operator new(unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:107:3
+    #1 0x558b93970682 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:61:38
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:158:3 in operator delete(void*, std::nothrow_t const&)
+==2719756==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2719756==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x611000000180 in thread T0:
+  object passed to delete has wrong type:
+  size of the allocated type:   128 bytes;
+  size of the deallocated type: 128 bytes.
+  alignment of the allocated type:   128 bytes;
+  alignment of the deallocated type: default-aligned.
+    #0 0x7fd465dc8c37 in operator delete(void*, unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:164:3
+    #1 0x558b939706bb in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:68:3
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x558b9396f22d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x122d)
+
+0x611000000180 is located 0 bytes inside of 128-byte region [0x611000000180,0x611000000200)
+allocated by thread T0 here:
+    #0 0x7fd465dc82c7 in operator new(unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:107:3
+    #1 0x558b939706a6 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:68:38
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:164:3 in operator delete(void*, unsigned long)
+==2719756==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2719756==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x627000000100 in thread T0:
+  object passed to delete has wrong type:
+  alignment of the allocated type:   128 bytes;
+  alignment of the deallocated type: default-aligned.
+    #0 0x7fd465dc8b17 in operator delete[](void*, std::nothrow_t const&) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:161:3
+    #1 0x558b939706e1 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:75:3
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x558b9396f22d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x122d)
+
+0x627000000100 is located 0 bytes inside of 12800-byte region [0x627000000100,0x627000003300)
+allocated by thread T0 here:
+    #0 0x7fd465dc8427 in operator new[](unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:110:3
+    #1 0x558b939706ca in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:75:40
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:161:3 in operator delete[](void*, std::nothrow_t const&)
+==2719756==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2719756==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x627000003900 in thread T0:
+  object passed to delete has wrong type:
+  size of the allocated type:   12800 bytes;
+  size of the deallocated type: 12800 bytes.
+  alignment of the allocated type:   128 bytes;
+  alignment of the deallocated type: default-aligned.
+    #0 0x7fd465dc8d57 in operator delete[](void*, unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:167:3
+    #1 0x558b93970705 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:82:3
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x558b9396f22d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x122d)
+
+0x627000003900 is located 0 bytes inside of 12800-byte region [0x627000003900,0x627000006b00)
+allocated by thread T0 here:
+    #0 0x7fd465dc8427 in operator new[](unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:110:3
+    #1 0x558b939706f0 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:82:40
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:167:3 in operator delete[](void*, unsigned long)
+==2719756==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2719756==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x615000000100 in thread T0:
+  object passed to delete has wrong type:
+  alignment of the allocated type:   256 bytes;
+  alignment of the deallocated type: default-aligned.
+    #0 0x7fd465dc87b7 in operator delete(void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:152:3
+    #1 0x558b93970731 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:91:3
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x558b9396f22d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x122d)
+
+0x615000000100 is located 0 bytes inside of 256-byte region [0x615000000100,0x615000000200)
+allocated by thread T0 here:
+    #0 0x7fd465dc82c7 in operator new(unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:107:3
+    #1 0x558b93970712 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:91:52
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:152:3 in operator delete(void*)
+==2719756==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2719756==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x602000000010 in thread T0:
+  object passed to delete has wrong type:
+  alignment of the allocated type:   default-aligned;
+  alignment of the deallocated type: 256 bytes.
+    #0 0x7fd465dc8e77 in operator delete(void*, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:170:3
+    #1 0x558b9397075f in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:98:3
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x558b9396f22d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x122d)
+
+0x602000000010 is located 0 bytes inside of 12-byte region [0x602000000010,0x60200000001c)
+allocated by thread T0 here:
+    #0 0x7fd465dc7db7 in operator new(unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:95:3
+    #1 0x558b9397073b in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:98:56
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:170:3 in operator delete(void*, std::align_val_t)
+==2719756==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2719756==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x615000000300 in thread T0:
+  object passed to delete has wrong type:
+  alignment of the allocated type:   256 bytes;
+  alignment of the deallocated type: 128 bytes.
+    #0 0x7fd465dc8e77 in operator delete(void*, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:170:3
+    #1 0x558b93970790 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:105:3
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x558b9396f22d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x122d)
+
+0x615000000300 is located 0 bytes inside of 256-byte region [0x615000000300,0x615000000400)
+allocated by thread T0 here:
+    #0 0x7fd465dc82c7 in operator new(unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:107:3
+    #1 0x558b9397076c in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:105:56
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:170:3 in operator delete(void*, std::align_val_t)
+==2719756==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2719756==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x62b000000200 in thread T0:
+  object passed to delete has wrong type:
+  alignment of the allocated type:   256 bytes;
+  alignment of the deallocated type: default-aligned.
+    #0 0x7fd465dc88d7 in operator delete[](void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:155:3
+    #1 0x558b939707be in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:112:3
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x558b9396f22d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x122d)
+
+0x62b000000200 is located 0 bytes inside of 25600-byte region [0x62b000000200,0x62b000006600)
+allocated by thread T0 here:
+    #0 0x7fd465dc8427 in operator new[](unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:110:3
+    #1 0x558b9397079f in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:112:55
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:155:3 in operator delete[](void*)
+==2719756==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2719756==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x61a000000080 in thread T0:
+  object passed to delete has wrong type:
+  alignment of the allocated type:   default-aligned;
+  alignment of the deallocated type: 256 bytes.
+    #0 0x7fd465dc8f97 in operator delete[](void*, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:173:3
+    #1 0x558b939707ec in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:119:3
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x558b9396f22d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x122d)
+
+0x61a000000080 is located 0 bytes inside of 1200-byte region [0x61a000000080,0x61a000000530)
+allocated by thread T0 here:
+    #0 0x7fd465dc7f17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x558b939707c8 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:119:59
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:173:3 in operator delete[](void*, std::align_val_t)
+==2719756==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2719756==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x62b000007200 in thread T0:
+  object passed to delete has wrong type:
+  alignment of the allocated type:   256 bytes;
+  alignment of the deallocated type: 128 bytes.
+    #0 0x7fd465dc8f97 in operator delete[](void*, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:173:3
+    #1 0x558b9397081f in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:126:3
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x558b9396f22d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x122d)
+
+0x62b000007200 is located 0 bytes inside of 25600-byte region [0x62b000007200,0x62b00000d600)
+allocated by thread T0 here:
+    #0 0x7fd465dc8427 in operator new[](unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:110:3
+    #1 0x558b939707fb in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:126:59
+    #2 0x7fd465752082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:173:3 in operator delete[](void*, std::align_val_t)
+==2719756==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+Checking alignments >= 512 bytes
+Done
+=================================================================
+==2720406==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x611000000080 in thread T0:
+  object passed to delete has wrong type:
+  alignment of the allocated type:   128 bytes;
+  alignment of the deallocated type: default-aligned.
+    #0 0x7f4c8c1ff9f7 in operator delete(void*, std::nothrow_t const&) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:158:3
+    #1 0x55a6909e7689 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:61:3
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55a6909e621d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x121d)
+
+0x611000000080 is located 0 bytes inside of 128-byte region [0x611000000080,0x611000000100)
+allocated by thread T0 here:
+    #0 0x7f4c8c1ff2c7 in operator new(unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:107:3
+    #1 0x55a6909e7672 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:61:38
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:158:3 in operator delete(void*, std::nothrow_t const&)
+==2720406==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2720406==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x611000000180 in thread T0:
+  object passed to delete has wrong type:
+  size of the allocated type:   128 bytes;
+  size of the deallocated type: 128 bytes.
+  alignment of the allocated type:   128 bytes;
+  alignment of the deallocated type: default-aligned.
+    #0 0x7f4c8c1ffc37 in operator delete(void*, unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:164:3
+    #1 0x55a6909e76ab in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:68:3
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55a6909e621d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x121d)
+
+0x611000000180 is located 0 bytes inside of 128-byte region [0x611000000180,0x611000000200)
+allocated by thread T0 here:
+    #0 0x7f4c8c1ff2c7 in operator new(unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:107:3
+    #1 0x55a6909e7696 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:68:38
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:164:3 in operator delete(void*, unsigned long)
+==2720406==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2720406==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x627000000100 in thread T0:
+  object passed to delete has wrong type:
+  alignment of the allocated type:   128 bytes;
+  alignment of the deallocated type: default-aligned.
+    #0 0x7f4c8c1ffb17 in operator delete[](void*, std::nothrow_t const&) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:161:3
+    #1 0x55a6909e76d1 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:75:3
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55a6909e621d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x121d)
+
+0x627000000100 is located 0 bytes inside of 12800-byte region [0x627000000100,0x627000003300)
+allocated by thread T0 here:
+    #0 0x7f4c8c1ff427 in operator new[](unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:110:3
+    #1 0x55a6909e76ba in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:75:40
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:161:3 in operator delete[](void*, std::nothrow_t const&)
+==2720406==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2720406==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x627000003900 in thread T0:
+  object passed to delete has wrong type:
+  size of the allocated type:   12800 bytes;
+  size of the deallocated type: 12800 bytes.
+  alignment of the allocated type:   128 bytes;
+  alignment of the deallocated type: default-aligned.
+    #0 0x7f4c8c1ffd57 in operator delete[](void*, unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:167:3
+    #1 0x55a6909e76f5 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:82:3
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55a6909e621d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x121d)
+
+0x627000003900 is located 0 bytes inside of 12800-byte region [0x627000003900,0x627000006b00)
+allocated by thread T0 here:
+    #0 0x7f4c8c1ff427 in operator new[](unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:110:3
+    #1 0x55a6909e76e0 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:82:40
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:167:3 in operator delete[](void*, unsigned long)
+==2720406==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2720406==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x615000000100 in thread T0:
+  object passed to delete has wrong type:
+  size of the allocated type:   256 bytes;
+  size of the deallocated type: 12 bytes.
+  alignment of the allocated type:   256 bytes;
+  alignment of the deallocated type: default-aligned.
+    #0 0x7f4c8c1ffc37 in operator delete(void*, unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:164:3
+    #1 0x55a6909e7726 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:91:3
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55a6909e621d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x121d)
+
+0x615000000100 is located 0 bytes inside of 256-byte region [0x615000000100,0x615000000200)
+allocated by thread T0 here:
+    #0 0x7f4c8c1ff2c7 in operator new(unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:107:3
+    #1 0x55a6909e7702 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:91:52
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:164:3 in operator delete(void*, unsigned long)
+==2720406==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2720406==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x602000000010 in thread T0:
+  object passed to delete has wrong type:
+  size of the allocated type:   12 bytes;
+  size of the deallocated type: 256 bytes.
+  alignment of the allocated type:   default-aligned;
+  alignment of the deallocated type: 256 bytes.
+    #0 0x7f4c8c200304 in operator delete(void*, unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:182:3
+    #1 0x55a6909e7757 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:98:3
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55a6909e621d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x121d)
+
+0x602000000010 is located 0 bytes inside of 12-byte region [0x602000000010,0x60200000001c)
+allocated by thread T0 here:
+    #0 0x7f4c8c1fedb7 in operator new(unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:95:3
+    #1 0x55a6909e7730 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:98:56
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:182:3 in operator delete(void*, unsigned long, std::align_val_t)
+==2720406==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2720406==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x615000000300 in thread T0:
+  object passed to delete has wrong type:
+  size of the allocated type:   256 bytes;
+  size of the deallocated type: 128 bytes.
+  alignment of the allocated type:   256 bytes;
+  alignment of the deallocated type: 128 bytes.
+    #0 0x7f4c8c200304 in operator delete(void*, unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:182:3
+    #1 0x55a6909e778b in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:105:3
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55a6909e621d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x121d)
+
+0x615000000300 is located 0 bytes inside of 256-byte region [0x615000000300,0x615000000400)
+allocated by thread T0 here:
+    #0 0x7f4c8c1ff2c7 in operator new(unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:107:3
+    #1 0x55a6909e7764 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:105:56
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:182:3 in operator delete(void*, unsigned long, std::align_val_t)
+==2720406==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2720406==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x62b000000200 in thread T0:
+  object passed to delete has wrong type:
+  alignment of the allocated type:   256 bytes;
+  alignment of the deallocated type: default-aligned.
+    #0 0x7f4c8c1ff8d7 in operator delete[](void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:155:3
+    #1 0x55a6909e77b9 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:112:3
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55a6909e621d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x121d)
+
+0x62b000000200 is located 0 bytes inside of 25600-byte region [0x62b000000200,0x62b000006600)
+allocated by thread T0 here:
+    #0 0x7f4c8c1ff427 in operator new[](unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:110:3
+    #1 0x55a6909e779a in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:112:55
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:155:3 in operator delete[](void*)
+==2720406==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2720406==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x61a000000080 in thread T0:
+  object passed to delete has wrong type:
+  alignment of the allocated type:   default-aligned;
+  alignment of the deallocated type: 256 bytes.
+    #0 0x7f4c8c1fff97 in operator delete[](void*, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:173:3
+    #1 0x55a6909e77e7 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:119:3
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55a6909e621d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x121d)
+
+0x61a000000080 is located 0 bytes inside of 1200-byte region [0x61a000000080,0x61a000000530)
+allocated by thread T0 here:
+    #0 0x7f4c8c1fef17 in operator new[](unsigned long) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:98:3
+    #1 0x55a6909e77c3 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:119:59
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:173:3 in operator delete[](void*, std::align_val_t)
+==2720406==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+=================================================================
+==2720406==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x62b000007200 in thread T0:
+  object passed to delete has wrong type:
+  alignment of the allocated type:   256 bytes;
+  alignment of the deallocated type: 128 bytes.
+    #0 0x7f4c8c1fff97 in operator delete[](void*, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:173:3
+    #1 0x55a6909e781a in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:126:3
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55a6909e621d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Linux/Output/aligned_delete_test.cpp.tmp+0x121d)
+
+0x62b000007200 is located 0 bytes inside of 25600-byte region [0x62b000007200,0x62b00000d600)
+allocated by thread T0 here:
+    #0 0x7f4c8c1ff427 in operator new[](unsigned long, std::align_val_t) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:110:3
+    #1 0x55a6909e77f6 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/aligned_delete_test.cpp:126:59
+    #2 0x7f4c8bb89082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:173:3 in operator delete[](void*, std::align_val_t)
+==2720406==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+Checking alignments >= 512 bytes
+Done
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/aligned_delete_test.cpp <<TAIL<<
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/aligned_delete_test.cpp <<HEAD<<
+
+Checking alignments >= 512 bytes
+Done
+Checking alignments >= 512 bytes
+Done
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/aligned_delete_test.cpp <<TAIL<<

@@ -1,0 +1,58 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/strstr-2.c <<HEAD<<
+
+=================================================================
+==2813132==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fc3c4a00032 at pc 0x556fe6ea10e0 bp 0x7ffe6005c3c0 sp 0x7ffe6005bb80
+READ of size 4 at 0x7fc3c4a00032 thread T0
+    #0 0x556fe6ea10df in StrstrCheck(void*, char*, char const*, char const*) /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:629:5
+    #1 0x556fe6f2287a in strstr /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:645:16
+    #2 0x556fe6f968e0 in main /home/llvm/compiler-rt/test/asan/TestCases/strstr-2.c:17:7
+    #3 0x7fc3c704a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x556fe6e6a2ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Output/strstr-2.c.tmp+0x1d2ed)
+
+Address 0x7fc3c4a00032 is located in stack of thread T0 at offset 50 in frame
+    #0 0x556fe6f967bf in main /home/llvm/compiler-rt/test/asan/TestCases/strstr-2.c:12
+
+  This frame has 2 object(s):
+    [32, 35) 's1' (line 14)
+    [48, 52) 's2' (line 15) <== Memory access at offset 50 partially overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/llvm/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:629:5 in StrstrCheck(void*, char*, char const*, char const*)
+Shadow bytes around the buggy address:
+  0x7fc3c49ffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc3c49ffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc3c49ffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc3c49fff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc3c49fff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7fc3c4a00000: f1 f1 f1 f1 03 f2[02]f3 00 00 00 00 00 00 00 00
+  0x7fc3c4a00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc3c4a00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc3c4a00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc3c4a00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fc3c4a00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2813132==ABORTING
+==2813508==WARNING: strchr* interceptors are enabled even though replace_str=0. Use intercept_strchr=0 to disable them.==2813508==WARNING: strndup* interceptors are enabled even though replace_str=0. Use intercept_strndup=0 to disable them.
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/strstr-2.c <<TAIL<<

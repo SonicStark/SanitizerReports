@@ -1,0 +1,28 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/malloc-no-intercept.c <<HEAD<<
+
+/usr/bin/ld: /usr/bin/ld: DWARF error: invalid or unhandled FORM value: 0x25
+/tmp/lit-tmp-t19zwn2r/malloc-no-intercept-bcc60c.o: in function `main':
+malloc-no-intercept.c:(.text+0x10): undefined reference to `nonexistent_function'
+clang-16: error: linker command failed with exit code 1 (use -v to see invocation)
+/usr/bin/ld: /usr/bin/ld: DWARF error: invalid or unhandled FORM value: 0x25
+/tmp/lit-tmp-t19zwn2r/malloc-no-intercept-249eb4.o: in function `main':
+malloc-no-intercept.c:(.text+0x10): undefined reference to `nonexistent_function'
+clang-16: error: linker command failed with exit code 1 (use -v to see invocation)
+/usr/bin/ld: /usr/bin/ld: DWARF error: invalid or unhandled FORM value: 0x25
+/tmp/lit-tmp-t19zwn2r/malloc-no-intercept-a8869e.o: in function `main':
+malloc-no-intercept.c:(.text+0x10): undefined reference to `nonexistent_function'
+clang-16: error: linker command failed with exit code 1 (use -v to see invocation)
+/usr/bin/ld: /usr/bin/ld: DWARF error: invalid or unhandled FORM value: 0x25
+/tmp/lit-tmp-t19zwn2r/malloc-no-intercept-c54bde.o: in function `main':
+malloc-no-intercept.c:(.text+0x10): undefined reference to `nonexistent_function'
+clang-16: error: linker command failed with exit code 1 (use -v to see invocation)
+/usr/bin/ld: /usr/bin/ld: DWARF error: invalid or unhandled FORM value: 0x25
+/tmp/lit-tmp-t19zwn2r/malloc-no-intercept-0d9485.o: in function `main':
+malloc-no-intercept.c:(.text+0x10): undefined reference to `nonexistent_function'
+clang-16: error: linker command failed with exit code 1 (use -v to see invocation)
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/malloc-no-intercept.c <<TAIL<<

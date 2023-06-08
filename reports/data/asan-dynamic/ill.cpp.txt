@@ -1,0 +1,19 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/ill.cpp <<HEAD<<
+
+error: Illegal instruction
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2735194==ERROR: AddressSanitizer: ILL on unknown address 0x55b4ceb73595 (pc 0x55b4ceb73595 bp 0x7ffcd1823470 sp 0x7ffcd1823460 T0)
+    #0 0x55b4ceb73595 in main /home/llvm/compiler-rt/test/asan/TestCases/ill.cpp:24:5
+    #1 0x7fdcf723c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55b4ceb7213d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Output/ill.cpp.tmp+0x113d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: ILL /home/llvm/compiler-rt/test/asan/TestCases/ill.cpp:24:5 in main
+==2735194==ABORTING
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/ill.cpp <<TAIL<<

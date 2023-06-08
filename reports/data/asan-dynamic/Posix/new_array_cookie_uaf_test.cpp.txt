@@ -1,0 +1,99 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/new_array_cookie_uaf_test.cpp <<HEAD<<
+
+DTOR 1
+==2727253==AddressSanitizer: loaded array cookie from free-d memory; expect a double-free report
+=================================================================
+==2727253==ERROR: AddressSanitizer: attempting double-free on 0x602000000010 in thread T0:
+    #0 0x7fa7446098d7 in operator delete[](void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:155:3
+    #1 0x556317609794 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/new_array_cookie_uaf_test.cpp:30:3
+    #2 0x7fa743f93082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55631760819d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/new_array_cookie_uaf_test.cpp.tmp+0x119d)
+
+0x602000000010 is located 0 bytes inside of 12-byte region [0x602000000010,0x60200000001c)
+freed by thread T0 here:
+AddressSanitizer: CHECK failed: asan_descriptions.cpp:176 "((res.trace)) != (0)" (0x0, 0x0) (tid=2727253)
+    #0 0x7fa744602599 in __asan::CheckUnwind() /home/llvm/compiler-rt/lib/asan/asan_rtl.cpp:69:3
+    #1 0x7fa7444f6a5f in __sanitizer::CheckFailed(char const*, int, char const*, unsigned long long, unsigned long long) /home/llvm/compiler-rt/lib/sanitizer_common/sanitizer_termination.cpp:86:24
+    #2 0x7fa744521cfc in GetStackTraceFromId /home/llvm/compiler-rt/lib/asan/asan_descriptions.cpp:176:3
+    #3 0x7fa744521cfc in __asan::HeapAddressDescription::Print() const /home/llvm/compiler-rt/lib/asan/asan_descriptions.cpp:417:62
+    #4 0x7fa744522b99 in __asan::ErrorDoubleFree::Print() /home/llvm/compiler-rt/lib/asan/asan_errors.cpp:57:25
+    #5 0x7fa7445fe371 in __asan::ErrorDescription::Print() /home/llvm/compiler-rt/lib/asan/asan_errors.h:463:7
+    #6 0x7fa7445fe371 in __asan::ScopedInErrorReport::~ScopedInErrorReport() /home/llvm/compiler-rt/lib/asan/asan_report.cpp:143:55
+    #7 0x7fa7445fef14 in __asan::ReportDoubleFree(unsigned long, __sanitizer::BufferedStackTrace*) /home/llvm/compiler-rt/lib/asan/asan_report.cpp:223:23
+    #8 0x7fa7446098a7 in operator delete[](void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:155:3
+    #9 0x556317609794 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/new_array_cookie_uaf_test.cpp:30:3
+    #10 0x7fa743f93082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #11 0x55631760819d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/new_array_cookie_uaf_test.cpp.tmp+0x119d)
+
+DTOR 1
+DTOR 2
+DTOR 3
+DTOR 4
+DTOR 5
+DTOR 6
+DTOR 7
+DTOR 8
+DTOR 9
+DTOR 10
+DTOR 11
+DTOR 12
+DTOR 13
+DTOR 14
+DTOR 15
+DTOR 16
+DTOR 17
+DTOR 18
+DTOR 19
+DTOR 20
+DTOR 21
+DTOR 22
+DTOR 23
+DTOR 24
+DTOR 25
+DTOR 26
+DTOR 27
+DTOR 28
+DTOR 29
+DTOR 30
+DTOR 31
+DTOR 32
+DTOR 33
+DTOR 34
+DTOR 35
+DTOR 36
+DTOR 37
+DTOR 38
+DTOR 39
+DTOR 40
+DTOR 41
+DTOR 42
+DTOR 43
+=================================================================
+==2727823==ERROR: AddressSanitizer: attempting double-free on 0x602000000010 in thread T0:
+    #0 0x7fe7dee098d7 in operator delete[](void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:155:3
+    #1 0x5597a29d7794 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/new_array_cookie_uaf_test.cpp:30:3
+    #2 0x7fe7de793082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5597a29d619d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/new_array_cookie_uaf_test.cpp.tmp+0x119d)
+
+0x602000000010 is located 0 bytes inside of 12-byte region [0x602000000010,0x60200000001c)
+freed by thread T0 here:
+AddressSanitizer: CHECK failed: asan_descriptions.cpp:176 "((res.trace)) != (0)" (0x0, 0x0) (tid=2727823)
+    #0 0x7fe7dee02599 in __asan::CheckUnwind() /home/llvm/compiler-rt/lib/asan/asan_rtl.cpp:69:3
+    #1 0x7fe7decf6a5f in __sanitizer::CheckFailed(char const*, int, char const*, unsigned long long, unsigned long long) /home/llvm/compiler-rt/lib/sanitizer_common/sanitizer_termination.cpp:86:24
+    #2 0x7fe7ded21cfc in GetStackTraceFromId /home/llvm/compiler-rt/lib/asan/asan_descriptions.cpp:176:3
+    #3 0x7fe7ded21cfc in __asan::HeapAddressDescription::Print() const /home/llvm/compiler-rt/lib/asan/asan_descriptions.cpp:417:62
+    #4 0x7fe7ded22b99 in __asan::ErrorDoubleFree::Print() /home/llvm/compiler-rt/lib/asan/asan_errors.cpp:57:25
+    #5 0x7fe7dedfe371 in __asan::ErrorDescription::Print() /home/llvm/compiler-rt/lib/asan/asan_errors.h:463:7
+    #6 0x7fe7dedfe371 in __asan::ScopedInErrorReport::~ScopedInErrorReport() /home/llvm/compiler-rt/lib/asan/asan_report.cpp:143:55
+    #7 0x7fe7dedfef14 in __asan::ReportDoubleFree(unsigned long, __sanitizer::BufferedStackTrace*) /home/llvm/compiler-rt/lib/asan/asan_report.cpp:223:23
+    #8 0x7fe7dee098a7 in operator delete[](void*) /home/llvm/compiler-rt/lib/asan/asan_new_delete.cpp:155:3
+    #9 0x5597a29d7794 in main /home/llvm/compiler-rt/test/asan/TestCases/Posix/new_array_cookie_uaf_test.cpp:30:3
+    #10 0x7fe7de793082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #11 0x5597a29d619d in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxDynamicConfig/TestCases/Posix/Output/new_array_cookie_uaf_test.cpp.tmp+0x119d)
+
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Posix/new_array_cookie_uaf_test.cpp <<TAIL<<

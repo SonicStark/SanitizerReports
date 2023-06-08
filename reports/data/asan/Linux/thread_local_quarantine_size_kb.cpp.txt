@@ -1,0 +1,73 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/thread_local_quarantine_size_kb.cpp <<HEAD<<
+
+==2792473==Registered root region at 0x7fa673e007a0 of size 32
+==2792473==Registered root region at 0x7fa673a03190 of size 208
+==2792473==Unregistered root region at 0x7fa673a03190 of size 208
+==2792473==AddressSanitizer: failed to intercept '__isoc99_printf'
+==2792473==Registered root region at 0x7fa673a03190 of size 208
+==2792473==Unregistered root region at 0x7fa673a03190 of size 208
+==2792473==AddressSanitizer: failed to intercept '__isoc99_sprintf'
+==2792473==Registered root region at 0x7fa673a03190 of size 208
+==2792473==Unregistered root region at 0x7fa673a03190 of size 208
+==2792473==AddressSanitizer: failed to intercept '__isoc99_snprintf'
+==2792473==Registered root region at 0x7fa673a03190 of size 208
+==2792473==Unregistered root region at 0x7fa673a03190 of size 208
+==2792473==AddressSanitizer: failed to intercept '__isoc99_fprintf'
+==2792473==Registered root region at 0x7fa673a03190 of size 208
+==2792473==Unregistered root region at 0x7fa673a03190 of size 208
+==2792473==AddressSanitizer: failed to intercept '__isoc99_vprintf'
+==2792473==Registered root region at 0x7fa673a03190 of size 208
+==2792473==Unregistered root region at 0x7fa673a03190 of size 208
+==2792473==AddressSanitizer: failed to intercept '__isoc99_vsprintf'
+==2792473==Registered root region at 0x7fa673a03190 of size 208
+==2792473==Unregistered root region at 0x7fa673a03190 of size 208
+==2792473==AddressSanitizer: failed to intercept '__isoc99_vsnprintf'
+==2792473==Registered root region at 0x7fa673a03190 of size 208
+==2792473==Unregistered root region at 0x7fa673a03190 of size 208
+==2792473==AddressSanitizer: failed to intercept '__isoc99_vfprintf'
+==2792473==Registered root region at 0x7fa673a03190 of size 208
+==2792473==Unregistered root region at 0x7fa673a03190 of size 208
+==2792473==AddressSanitizer: failed to intercept 'xdr_destroy'
+==2792473==Registered root region at 0x7fa673a03190 of size 208
+==2792473==Unregistered root region at 0x7fa673a03190 of size 208
+==2792473==AddressSanitizer: failed to intercept 'crypt'
+==2792473==Registered root region at 0x7fa673a03190 of size 208
+==2792473==Unregistered root region at 0x7fa673a03190 of size 208
+==2792473==AddressSanitizer: failed to intercept 'crypt_r'
+==2792473==Registered root region at 0x7fa673803560 of size 224
+==2792473==Unregistered root region at 0x7fa673803560 of size 224
+==2792473==AddressSanitizer: failed to intercept '__cxa_rethrow_primary_exception'
+==2792473==AddressSanitizer: libc interceptors initialized
+|| `[0x10007fff8000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x02008fff7000, 0x10007fff7fff]` || HighShadow ||
+|| `[0x00008fff7000, 0x02008fff6fff]` || ShadowGap  ||
+|| `[0x00007fff8000, 0x00008fff6fff]` || LowShadow  ||
+|| `[0x000000000000, 0x00007fff7fff]` || LowMem     ||
+MemToShadow(shadow): 0x00008fff7000 0x000091ff6dff 0x004091ff6e00 0x02008fff6fff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=64M
+thread_local_quarantine_size_kb=64K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x7fff8000
+==2792473==Installed the sigaction for signal 11
+==2792473==Installed the sigaction for signal 7
+==2792473==Installed the sigaction for signal 8
+==2792473==T0: FakeStack created: 0x7fa671cf7000 -- 0x7fa672800000 stack_size_log: 20; mmapped 11300K, noreserve=0 
+==2792473==T0: stack [0x7ffc8572c000,0x7ffc85f2c000) size 0x800000; local=0x7ffc85f29dcc
+==2792473==AddressSanitizer Init done
+Heap size: 466944
+New heap size: 7610368
+Heap growth is within limits
+==2792473==LeakSanitizer: checking for leaksHeap size: 335872
+New heap size: 335872
+Heap growth is within limits
+==2792853==AddressSanitizer: thread_local_quarantine_size_kb can be set to 0 only when quarantine_size_mb is set to 0
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/thread_local_quarantine_size_kb.cpp <<TAIL<<

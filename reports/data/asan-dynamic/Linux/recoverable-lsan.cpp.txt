@@ -1,0 +1,59 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/recoverable-lsan.cpp <<HEAD<<
+
+
+=================================================================
+==2721530==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 20 byte(s) in 1 object(s) allocated from:
+    #0 0x7f9e1f414427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x5645e4fdc581 in f() /home/llvm/compiler-rt/test/asan/TestCases/Linux/recoverable-lsan.cpp:12:28
+    #2 0x5645e4fdc62d in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/recoverable-lsan.cpp:19:3
+    #3 0x7f9e1edaf082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Direct leak of 20 byte(s) in 1 object(s) allocated from:
+    #0 0x7f9e1f414427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x5645e4fdc581 in f() /home/llvm/compiler-rt/test/asan/TestCases/Linux/recoverable-lsan.cpp:12:28
+    #2 0x5645e4fdc628 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/recoverable-lsan.cpp:18:3
+    #3 0x7f9e1edaf082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: 40 byte(s) leaked in 2 allocation(s).
+
+=================================================================
+==2721801==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 20 byte(s) in 1 object(s) allocated from:
+    #0 0x7ff8a9ef9427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55b72d362581 in f() /home/llvm/compiler-rt/test/asan/TestCases/Linux/recoverable-lsan.cpp:12:28
+    #2 0x55b72d36262d in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/recoverable-lsan.cpp:19:3
+    #3 0x7ff8a9894082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Direct leak of 20 byte(s) in 1 object(s) allocated from:
+    #0 0x7ff8a9ef9427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x55b72d362581 in f() /home/llvm/compiler-rt/test/asan/TestCases/Linux/recoverable-lsan.cpp:12:28
+    #2 0x55b72d362628 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/recoverable-lsan.cpp:18:3
+    #3 0x7ff8a9894082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: 40 byte(s) leaked in 2 allocation(s).
+
+=================================================================
+==2722021==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 20 byte(s) in 1 object(s) allocated from:
+    #0 0x7f8aedd80427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x560b4b4d5581 in f() /home/llvm/compiler-rt/test/asan/TestCases/Linux/recoverable-lsan.cpp:12:28
+    #2 0x560b4b4d562d in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/recoverable-lsan.cpp:19:3
+    #3 0x7f8aed71b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Direct leak of 20 byte(s) in 1 object(s) allocated from:
+    #0 0x7f8aedd80427 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x560b4b4d5581 in f() /home/llvm/compiler-rt/test/asan/TestCases/Linux/recoverable-lsan.cpp:12:28
+    #2 0x560b4b4d5628 in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/recoverable-lsan.cpp:18:3
+    #3 0x7f8aed71b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: 40 byte(s) leaked in 2 allocation(s).
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux-dynamic :: TestCases/Linux/recoverable-lsan.cpp <<TAIL<<

@@ -1,0 +1,79 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/Linux/dlopen-mixed-c-cxx.c <<HEAD<<
+
+==2791179==Registered root region at 0x7f7ab14007a0 of size 32
+==2791179==Registered root region at 0x7f7ab1003190 of size 208
+==2791179==Unregistered root region at 0x7f7ab1003190 of size 208
+==2791179==AddressSanitizer: failed to intercept '__isoc99_printf'
+==2791179==Registered root region at 0x7f7ab1003190 of size 208
+==2791179==Unregistered root region at 0x7f7ab1003190 of size 208
+==2791179==AddressSanitizer: failed to intercept '__isoc99_sprintf'
+==2791179==Registered root region at 0x7f7ab1003190 of size 208
+==2791179==Unregistered root region at 0x7f7ab1003190 of size 208
+==2791179==AddressSanitizer: failed to intercept '__isoc99_snprintf'
+==2791179==Registered root region at 0x7f7ab1003190 of size 208
+==2791179==Unregistered root region at 0x7f7ab1003190 of size 208
+==2791179==AddressSanitizer: failed to intercept '__isoc99_fprintf'
+==2791179==Registered root region at 0x7f7ab1003190 of size 208
+==2791179==Unregistered root region at 0x7f7ab1003190 of size 208
+==2791179==AddressSanitizer: failed to intercept '__isoc99_vprintf'
+==2791179==Registered root region at 0x7f7ab1003190 of size 208
+==2791179==Unregistered root region at 0x7f7ab1003190 of size 208
+==2791179==AddressSanitizer: failed to intercept '__isoc99_vsprintf'
+==2791179==Registered root region at 0x7f7ab1003190 of size 208
+==2791179==Unregistered root region at 0x7f7ab1003190 of size 208
+==2791179==AddressSanitizer: failed to intercept '__isoc99_vsnprintf'
+==2791179==Registered root region at 0x7f7ab1003190 of size 208
+==2791179==Unregistered root region at 0x7f7ab1003190 of size 208
+==2791179==AddressSanitizer: failed to intercept '__isoc99_vfprintf'
+==2791179==Registered root region at 0x7f7ab0e02dc0 of size 192
+==2791179==Unregistered root region at 0x7f7ab0e02dc0 of size 192
+==2791179==AddressSanitizer: failed to intercept 'xdr_destroy'
+==2791179==Registered root region at 0x7f7ab0e02dc0 of size 192
+==2791179==Unregistered root region at 0x7f7ab0e02dc0 of size 192
+==2791179==AddressSanitizer: failed to intercept 'crypt'
+==2791179==Registered root region at 0x7f7ab0e02dc0 of size 192
+==2791179==Unregistered root region at 0x7f7ab0e02dc0 of size 192
+==2791179==AddressSanitizer: failed to intercept 'crypt_r'
+==2791179==Registered root region at 0x7f7ab0e02dc0 of size 192
+==2791179==Unregistered root region at 0x7f7ab0e02dc0 of size 192
+==2791179==AddressSanitizer: failed to intercept '__cxa_throw'
+==2791179==Registered root region at 0x7f7ab0c03560 of size 224
+==2791179==Unregistered root region at 0x7f7ab0c03560 of size 224
+==2791179==AddressSanitizer: failed to intercept '__cxa_rethrow_primary_exception'
+==2791179==AddressSanitizer: libc interceptors initialized
+|| `[0x10007fff8000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x02008fff7000, 0x10007fff7fff]` || HighShadow ||
+|| `[0x00008fff7000, 0x02008fff6fff]` || ShadowGap  ||
+|| `[0x00007fff8000, 0x00008fff6fff]` || LowShadow  ||
+|| `[0x000000000000, 0x00007fff7fff]` || LowMem     ||
+MemToShadow(shadow): 0x00008fff7000 0x000091ff6dff 0x004091ff6e00 0x02008fff6fff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=256M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x7fff8000
+==2791179==Installed the sigaction for signal 11
+==2791179==Installed the sigaction for signal 7
+==2791179==Installed the sigaction for signal 8
+==2791179==T0: FakeStack created: 0x7f7aaf0f7000 -- 0x7f7aafc00000 stack_size_log: 20; mmapped 11300K, noreserve=0 
+==2791179==T0: stack [0x7ffc9bd66000,0x7ffc9c566000) size 0x800000; local=0x7ffc9c56533c
+==2791179==AddressSanitizer Init done
+AddressSanitizer: CHECK failed: asan_interceptors.cpp:335 "((__interception::real___cxa_throw)) != (0)" (0x0, 0x0) (tid=2791179)
+    #0 0x559d06bf80e9 in __asan::CheckUnwind() /home/llvm/compiler-rt/lib/asan/asan_rtl.cpp:69:3
+    #1 0x559d06c172cf in __sanitizer::CheckFailed(char const*, int, char const*, unsigned long long, unsigned long long) /home/llvm/compiler-rt/lib/sanitizer_common/sanitizer_termination.cpp:86:24
+    #2 0x559d06b25254 in __interceptor___cxa_throw /home/llvm/compiler-rt/lib/asan/asan_interceptors.cpp:335:3
+    #3 0x7f7ab157a6b9 in foo() /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/<stdin>:15:3
+    #4 0x7f7ab157a59c in bar /home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/<stdin>:23:5
+    #5 0x559d06c3587f in main /home/llvm/compiler-rt/test/asan/TestCases/Linux/dlopen-mixed-c-cxx.c:41:10
+    #6 0x7f7ab1964082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #7 0x559d06b092ed in _start (/home/llvm/mybuild/projects/compiler-rt/test/asan/X86_64LinuxConfig/TestCases/Linux/Output/dlopen-mixed-c-cxx.c.tmp.out+0x1d2ed)
+
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/Linux/dlopen-mixed-c-cxx.c <<TAIL<<

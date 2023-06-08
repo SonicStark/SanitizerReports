@@ -1,0 +1,19 @@
+
+
+>>HEAD>> AddressSanitizer-x86_64-linux :: TestCases/malloc-size-too-big.cpp <<HEAD<<
+
+=================================================================
+==2811200==ERROR: AddressSanitizer: requested allocation size 0x10000000001 (0x10000001008 after adjustments for alignment, red zones etc.) exceeds maximum supported size of 0x10000000000 (thread T0)
+    #0 0x557efd306f67 in malloc /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3
+    #1 0x557efd35159d in main /home/llvm/compiler-rt/test/asan/TestCases/malloc-size-too-big.cpp:18:13
+    #2 0x7f7ba744f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+==2811200==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: allocation-size-too-big /home/llvm/compiler-rt/lib/asan/asan_malloc_linux.cpp:69:3 in malloc
+==2811200==ABORTING
+==2811274==WARNING: AddressSanitizer failed to allocate 0x10000000001 bytes
+malloc returned: 0
+
+
+
+>>TAIL>> AddressSanitizer-x86_64-linux :: TestCases/malloc-size-too-big.cpp <<TAIL<<
