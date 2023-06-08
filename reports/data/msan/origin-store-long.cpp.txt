@@ -1,0 +1,72 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: origin-store-long.cpp <<HEAD<<
+
+==182723==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55cce84898f6 in main /home/llvm/compiler-rt/test/msan/origin-store-long.cpp:14:3
+    #1 0x7f386b940082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55cce83f72ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/origin-store-long.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x55cce8489770 in main /home/llvm/compiler-rt/test/msan/origin-store-long.cpp:12:6
+    #1 0x7f386b940082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by a heap allocation
+    #0 0x55cce84876fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x55cce848965c in main /home/llvm/compiler-rt/test/msan/origin-store-long.cpp:11:26
+    #2 0x7f386b940082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/origin-store-long.cpp:14:3 in main
+Exiting
+==182723==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55cce84898f6 in main /home/llvm/compiler-rt/test/msan/origin-store-long.cpp:14:3
+    #1 0x7f386b940082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55cce83f72ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/origin-store-long.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x55cce8489770 in main /home/llvm/compiler-rt/test/msan/origin-store-long.cpp:12:6
+    #1 0x7f386b940082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by a heap allocation
+    #0 0x55cce84876fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x55cce848965c in main /home/llvm/compiler-rt/test/msan/origin-store-long.cpp:11:26
+    #2 0x7f386b940082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/origin-store-long.cpp:14:3 in main
+Exiting
+==182954==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55e40d7346b5 in main /home/llvm/compiler-rt/test/msan/origin-store-long.cpp:14:3
+    #1 0x7f247ab39082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55e40d6a22ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/origin-store-long.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x55e40d734653 in main /home/llvm/compiler-rt/test/msan/origin-store-long.cpp:12:6
+    #1 0x7f247ab39082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by a heap allocation
+    #0 0x55e40d7326fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x55e40d7345e6 in main /home/llvm/compiler-rt/test/msan/origin-store-long.cpp:11:26
+    #2 0x7f247ab39082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/origin-store-long.cpp:14:3 in main
+Exiting
+==182954==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55e40d7346b5 in main /home/llvm/compiler-rt/test/msan/origin-store-long.cpp:14:3
+    #1 0x7f247ab39082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55e40d6a22ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/origin-store-long.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x55e40d734653 in main /home/llvm/compiler-rt/test/msan/origin-store-long.cpp:12:6
+    #1 0x7f247ab39082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by a heap allocation
+    #0 0x55e40d7326fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x55e40d7345e6 in main /home/llvm/compiler-rt/test/msan/origin-store-long.cpp:11:26
+    #2 0x7f247ab39082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/origin-store-long.cpp:14:3 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: origin-store-long.cpp <<TAIL<<

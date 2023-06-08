@@ -1,0 +1,149 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: coverage-levels.cpp <<HEAD<<
+
+==181522==MemorySanitizer: failed to intercept '__isoc99_printf'
+==181522==MemorySanitizer: failed to intercept '__isoc99_sprintf'
+==181522==MemorySanitizer: failed to intercept '__isoc99_snprintf'
+==181522==MemorySanitizer: failed to intercept '__isoc99_fprintf'
+==181522==MemorySanitizer: failed to intercept '__isoc99_vprintf'
+==181522==MemorySanitizer: failed to intercept '__isoc99_vsprintf'
+==181522==MemorySanitizer: failed to intercept '__isoc99_vsnprintf'
+==181522==MemorySanitizer: failed to intercept '__isoc99_vfprintf'
+==181522==MemorySanitizer: failed to intercept 'xdr_destroy'
+==181522==MemorySanitizer: failed to intercept 'crypt'
+==181522==MemorySanitizer: failed to intercept 'crypt_r'
+==181522==Installed the sigaction for signal 11
+==181522==Installed the sigaction for signal 7
+==181522==Installed the sigaction for signal 8
+__msan_init 0x557c7362dbc0
+app-1: 0 - ffffffffff
+shadow-2: 10000000000 - fffffffffff
+invalid: 100000000000 - 10ffffffffff
+origin-2: 110000000000 - 1fffffffffff
+shadow-3: 200000000000 - 2fffffffffff
+origin-3: 300000000000 - 3fffffffffff
+invalid: 400000000000 - 4fffffffffff
+shadow-1: 500000000000 - 50ffffffffff
+app-2: 510000000000 - 5fffffffffff
+origin-1: 600000000000 - 60ffffffffff
+invalid: 610000000000 - 6fffffffffff
+app-3: 700000000000 - 7fffffffffff
+MemorySanitizer init done
+SANCOV_OPTIONS: <empty>
+SanitizerCoverage: /home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/coverage-levels.cpp.tmp-dir/coverage-levels.cpp.tmp.181522.sancov: 1 PCs written
+==181693==MemorySanitizer: failed to intercept '__isoc99_printf'
+==181693==MemorySanitizer: failed to intercept '__isoc99_sprintf'
+==181693==MemorySanitizer: failed to intercept '__isoc99_snprintf'
+==181693==MemorySanitizer: failed to intercept '__isoc99_fprintf'
+==181693==MemorySanitizer: failed to intercept '__isoc99_vprintf'
+==181693==MemorySanitizer: failed to intercept '__isoc99_vsprintf'
+==181693==MemorySanitizer: failed to intercept '__isoc99_vsnprintf'
+==181693==MemorySanitizer: failed to intercept '__isoc99_vfprintf'
+==181693==MemorySanitizer: failed to intercept 'xdr_destroy'
+==181693==MemorySanitizer: failed to intercept 'crypt'
+==181693==MemorySanitizer: failed to intercept 'crypt_r'
+==181693==Installed the sigaction for signal 11
+==181693==Installed the sigaction for signal 7
+==181693==Installed the sigaction for signal 8
+__msan_init 0x559a38886bc0
+app-1: 0 - ffffffffff
+shadow-2: 10000000000 - fffffffffff
+invalid: 100000000000 - 10ffffffffff
+origin-2: 110000000000 - 1fffffffffff
+shadow-3: 200000000000 - 2fffffffffff
+origin-3: 300000000000 - 3fffffffffff
+invalid: 400000000000 - 4fffffffffff
+shadow-1: 500000000000 - 50ffffffffff
+app-2: 510000000000 - 5fffffffffff
+origin-1: 600000000000 - 60ffffffffff
+invalid: 610000000000 - 6fffffffffff
+app-3: 700000000000 - 7fffffffffff
+MemorySanitizer init done
+SANCOV_OPTIONS: <empty>
+==181693==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x559a389165be in main /home/llvm/compiler-rt/test/msan/coverage-levels.cpp:21:3
+    #1 0x7f9d87256082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x559a388842ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/coverage-levels.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/coverage-levels.cpp:21:3 in main
+Exiting
+SanitizerCoverage: /home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/coverage-levels.cpp.tmp-dir/coverage-levels.cpp.tmp.181693.sancov: 1 PCs written
+==181938==MemorySanitizer: failed to intercept '__isoc99_printf'
+==181938==MemorySanitizer: failed to intercept '__isoc99_sprintf'
+==181938==MemorySanitizer: failed to intercept '__isoc99_snprintf'
+==181938==MemorySanitizer: failed to intercept '__isoc99_fprintf'
+==181938==MemorySanitizer: failed to intercept '__isoc99_vprintf'
+==181938==MemorySanitizer: failed to intercept '__isoc99_vsprintf'
+==181938==MemorySanitizer: failed to intercept '__isoc99_vsnprintf'
+==181938==MemorySanitizer: failed to intercept '__isoc99_vfprintf'
+==181938==MemorySanitizer: failed to intercept 'xdr_destroy'
+==181938==MemorySanitizer: failed to intercept 'crypt'
+==181938==MemorySanitizer: failed to intercept 'crypt_r'
+==181938==Installed the sigaction for signal 11
+==181938==Installed the sigaction for signal 7
+==181938==Installed the sigaction for signal 8
+__msan_init 0x56065c0c5bc0
+app-1: 0 - ffffffffff
+shadow-2: 10000000000 - fffffffffff
+invalid: 100000000000 - 10ffffffffff
+origin-2: 110000000000 - 1fffffffffff
+shadow-3: 200000000000 - 2fffffffffff
+origin-3: 300000000000 - 3fffffffffff
+invalid: 400000000000 - 4fffffffffff
+shadow-1: 500000000000 - 50ffffffffff
+app-2: 510000000000 - 5fffffffffff
+origin-1: 600000000000 - 60ffffffffff
+invalid: 610000000000 - 6fffffffffff
+app-3: 700000000000 - 7fffffffffff
+MemorySanitizer init done
+SANCOV_OPTIONS: <empty>
+==181938==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x56065c1555e5 in main /home/llvm/compiler-rt/test/msan/coverage-levels.cpp:21:3
+    #1 0x7f04921c2082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x56065c0c32ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/coverage-levels.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/coverage-levels.cpp:21:3 in main
+Exiting
+SanitizerCoverage: /home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/coverage-levels.cpp.tmp-dir/coverage-levels.cpp.tmp.181938.sancov: 1 PCs written
+==182348==MemorySanitizer: failed to intercept '__isoc99_printf'
+==182348==MemorySanitizer: failed to intercept '__isoc99_sprintf'
+==182348==MemorySanitizer: failed to intercept '__isoc99_snprintf'
+==182348==MemorySanitizer: failed to intercept '__isoc99_fprintf'
+==182348==MemorySanitizer: failed to intercept '__isoc99_vprintf'
+==182348==MemorySanitizer: failed to intercept '__isoc99_vsprintf'
+==182348==MemorySanitizer: failed to intercept '__isoc99_vsnprintf'
+==182348==MemorySanitizer: failed to intercept '__isoc99_vfprintf'
+==182348==MemorySanitizer: failed to intercept 'xdr_destroy'
+==182348==MemorySanitizer: failed to intercept 'crypt'
+==182348==MemorySanitizer: failed to intercept 'crypt_r'
+==182348==Installed the sigaction for signal 11
+==182348==Installed the sigaction for signal 7
+==182348==Installed the sigaction for signal 8
+__msan_init 0x55da8fe0fbc0
+app-1: 0 - ffffffffff
+shadow-2: 10000000000 - fffffffffff
+invalid: 100000000000 - 10ffffffffff
+origin-2: 110000000000 - 1fffffffffff
+shadow-3: 200000000000 - 2fffffffffff
+origin-3: 300000000000 - 3fffffffffff
+invalid: 400000000000 - 4fffffffffff
+shadow-1: 500000000000 - 50ffffffffff
+app-2: 510000000000 - 5fffffffffff
+origin-1: 600000000000 - 60ffffffffff
+invalid: 610000000000 - 6fffffffffff
+app-3: 700000000000 - 7fffffffffff
+MemorySanitizer init done
+SANCOV_OPTIONS: <empty>
+==182348==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55da8fe9f5f6 in main /home/llvm/compiler-rt/test/msan/coverage-levels.cpp:21:3
+    #1 0x7f3a4b8b9082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55da8fe0d2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/coverage-levels.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/coverage-levels.cpp:21:3 in main
+Exiting
+SanitizerCoverage: /home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/coverage-levels.cpp.tmp-dir/coverage-levels.cpp.tmp.182348.sancov: 2 PCs written
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: coverage-levels.cpp <<TAIL<<

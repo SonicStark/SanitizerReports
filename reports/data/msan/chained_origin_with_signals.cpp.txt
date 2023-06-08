@@ -1,0 +1,36 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: chained_origin_with_signals.cpp <<HEAD<<
+
+==181515==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x561e401346b5 in main /home/llvm/compiler-rt/test/msan/chained_origin_with_signals.cpp:35:3
+    #1 0x7f3f107b1082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x561e400a22cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/chained_origin_with_signals.cpp.tmp+0x1e2cd)
+
+  Uninitialized value was stored to memory at
+    #0 0x561e401346a6 in main /home/llvm/compiler-rt/test/msan/chained_origin_with_signals.cpp:29:5
+    #1 0x7f3f107b1082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'z' in the stack frame
+    #0 0x561e40134622 in main /home/llvm/compiler-rt/test/msan/chained_origin_with_signals.cpp:28:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/chained_origin_with_signals.cpp:35:3 in main
+Exiting
+==181742==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x555b2543c678 in main /home/llvm/compiler-rt/test/msan/chained_origin_with_signals.cpp:35:3
+    #1 0x7ff3ffc0c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x555b253aa2cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/chained_origin_with_signals.cpp.tmp+0x1e2cd)
+
+  Uninitialized value was stored to memory at
+    #0 0x555b2543c628 in main /home/llvm/compiler-rt/test/msan/chained_origin_with_signals.cpp:29:5
+    #1 0x7ff3ffc0c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'z' in the stack frame
+    #0 0x555b2543c600 in main /home/llvm/compiler-rt/test/msan/chained_origin_with_signals.cpp:28:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/chained_origin_with_signals.cpp:35:3 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: chained_origin_with_signals.cpp <<TAIL<<

@@ -1,0 +1,50 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: vararg.cpp <<HEAD<<
+
+==183696==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5631cc00daf5 in main /home/llvm/compiler-rt/test/msan/vararg.cpp:55:1
+    #1 0x7f9dacd82082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5631cbf7b2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/vararg.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/vararg.cpp:55:1 in main
+Exiting
+==183785==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x557c1b495af5 in main /home/llvm/compiler-rt/test/msan/vararg.cpp:55:1
+    #1 0x7f89f2d3e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x557c1b4032ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/vararg.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/vararg.cpp:55:1 in main
+Exiting
+==183897==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55b291b2a073 in main /home/llvm/compiler-rt/test/msan/vararg.cpp:55:1
+    #1 0x7f6b098d9082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55b291a972ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/vararg.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x55b291b2a06c in main /home/llvm/compiler-rt/test/msan/vararg.cpp
+    #1 0x7f6b098d9082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'uninit' in the stack frame
+    #0 0x55b291b29cc4 in main /home/llvm/compiler-rt/test/msan/vararg.cpp:40:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/vararg.cpp:55:1 in main
+Exiting
+==183942==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55d5a49c4073 in main /home/llvm/compiler-rt/test/msan/vararg.cpp:55:1
+    #1 0x7fc5a3002082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55d5a49312ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/vararg.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x55d5a49c406c in main /home/llvm/compiler-rt/test/msan/vararg.cpp
+    #1 0x7fc5a3002082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'uninit' in the stack frame
+    #0 0x55d5a49c3cc4 in main /home/llvm/compiler-rt/test/msan/vararg.cpp:40:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/vararg.cpp:55:1 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: vararg.cpp <<TAIL<<

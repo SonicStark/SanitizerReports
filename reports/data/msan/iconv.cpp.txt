@@ -1,0 +1,16 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: iconv.cpp <<HEAD<<
+
+Uninitialized bytes in __interceptor_iconv at offset 5 inside [0x7ffd59458270, 11)
+==182533==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55ee49900b71 in main /home/llvm/compiler-rt/test/msan/iconv.cpp:52:9
+    #1 0x7fdcb2194082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55ee4986e2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/iconv.cpp.tmp+0x1e2dd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/iconv.cpp:52:9 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: iconv.cpp <<TAIL<<

@@ -1,0 +1,16 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: Linux/obstack.cpp <<HEAD<<
+
+Uninitialized bytes in __msan_check_mem_is_initialized at offset 40 inside [0x721000001410, 41)
+==181387==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x560da34dbaec in main /home/llvm/compiler-rt/test/msan/Linux/obstack.cpp:30:7
+    #1 0x7f4a905be082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x560da34472bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Linux/Output/obstack.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/Linux/obstack.cpp:30:7 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: Linux/obstack.cpp <<TAIL<<

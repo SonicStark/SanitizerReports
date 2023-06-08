@@ -1,0 +1,9 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: sigwaitinfo.cpp <<HEAD<<
+
+sigwaitinfo.cpp.tmp: /home/llvm/compiler-rt/test/msan/sigwaitinfo.cpp:21: void test_sigwaitinfo(): Assertion `!res' failed.
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: sigwaitinfo.cpp <<TAIL<<

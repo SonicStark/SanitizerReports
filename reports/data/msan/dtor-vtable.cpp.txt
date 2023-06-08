@@ -1,0 +1,36 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: dtor-vtable.cpp <<HEAD<<
+
+==182397==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55717fd5b65e in main /home/llvm/compiler-rt/test/msan/dtor-vtable.cpp:49:6
+    #1 0x7f49d3827082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55717fcc92ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/dtor-vtable.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/dtor-vtable.cpp:49:6 in main
+Exiting
+==182627==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55719fa3e65a in main /home/llvm/compiler-rt/test/msan/dtor-vtable.cpp:56:6
+    #1 0x7f5221b60082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55719f9ac2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/dtor-vtable.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/dtor-vtable.cpp:56:6 in main
+Exiting
+==182847==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55746d0b365a in main /home/llvm/compiler-rt/test/msan/dtor-vtable.cpp:60:6
+    #1 0x7f6ec2eda082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55746d0212ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/dtor-vtable.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/dtor-vtable.cpp:60:6 in main
+Exiting
+==183049==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5651fda5665b in main /home/llvm/compiler-rt/test/msan/dtor-vtable.cpp:64:6
+    #1 0x7f91af20b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5651fd9c42ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/dtor-vtable.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/dtor-vtable.cpp:64:6 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: dtor-vtable.cpp <<TAIL<<

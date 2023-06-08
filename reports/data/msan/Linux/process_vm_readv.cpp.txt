@@ -1,0 +1,18 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: Linux/process_vm_readv.cpp <<HEAD<<
+
+Uninitialized bytes in read_iovec at offset 2 inside [0x7ffc5a430bde, 20)
+==181398==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x556563745b8f in __interceptor_process_vm_writev /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:6794:15
+    #1 0x556563745b8f in __interceptor_process_vm_writev /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:6785:1
+    #2 0x5565637c4dfd in main /home/llvm/compiler-rt/test/msan/Linux/process_vm_readv.cpp:66:9
+    #3 0x7fe62af0d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x5565637322cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Linux/Output/process_vm_readv.cpp.tmp+0x1e2cd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:6794:15 in __interceptor_process_vm_writev
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: Linux/process_vm_readv.cpp <<TAIL<<

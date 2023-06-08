@@ -1,0 +1,18 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: memcmp_test.cpp <<HEAD<<
+
+Uninitialized bytes in MemcmpInterceptorCommon at offset 3 inside [0x7fff45c314fc, 4)
+==182519==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55b2c130cdf4 in __interceptor_memcmp /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:940:33
+    #1 0x55b2c130cdf4 in __interceptor_memcmp /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:935:1
+    #2 0x55b2c136782b in main /home/llvm/compiler-rt/test/msan/memcmp_test.cpp:12:13
+    #3 0x7f5d8b04b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55b2c12d52ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/memcmp_test.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:940:33 in __interceptor_memcmp
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: memcmp_test.cpp <<TAIL<<

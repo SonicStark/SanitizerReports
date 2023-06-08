@@ -1,0 +1,15 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: noundef_analysis.cpp <<HEAD<<
+
+==182885==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55ef8fbe56b6 in main /home/llvm/compiler-rt/test/msan/noundef_analysis.cpp:16:3
+    #1 0x7f93dff48082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55ef8fb532ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/noundef_analysis.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/noundef_analysis.cpp:16:3 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: noundef_analysis.cpp <<TAIL<<

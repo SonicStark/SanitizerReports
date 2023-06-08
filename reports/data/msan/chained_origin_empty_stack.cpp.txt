@@ -1,0 +1,21 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: chained_origin_empty_stack.cpp <<HEAD<<
+
+==181414==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55a7eaa7d660 in main /home/llvm/compiler-rt/test/msan/chained_origin_empty_stack.cpp:33:3
+    #1 0x7f7ab3065082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55a7ea9eb2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/chained_origin_empty_stack.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x55a7eaa7d597 in fn_g(int) /home/llvm/compiler-rt/test/msan/chained_origin_empty_stack.cpp:22:5
+
+  Uninitialized value was created by an allocation of 'z' in the stack frame
+    #0 0x55a7eaa7d5fc in main /home/llvm/compiler-rt/test/msan/chained_origin_empty_stack.cpp:31:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/chained_origin_empty_stack.cpp:33:3 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: chained_origin_empty_stack.cpp <<TAIL<<

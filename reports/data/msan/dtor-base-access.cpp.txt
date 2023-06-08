@@ -1,0 +1,110 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: dtor-base-access.cpp <<HEAD<<
+
+Shadow map [0x201000000000, 0x201000000004) of [0x701000000000, 0x701000000004), 4 bytes:
+0x201000000000[0x701000000000]: ffffffff ........ ........ ........  |A . . .|
+
+Origin A (origin_id 6):
+  Member fields were destroyed
+    #0 0x558a2b69b32d in __sanitizer_dtor_callback_fields /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:961:5
+    #1 0x558a2b6f7eb4 in ~Derived /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:15:7
+    #2 0x558a2b6f7eb4 in Derived::~Derived() /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:51:1
+    #3 0x558a2b6f83f5 in main /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:61:6
+    #4 0x7f405908a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow map [0x201000000004, 0x201000000008) of [0x701000000004, 0x701000000008), 4 bytes:
+0x201000000004[0x701000000004]: ffffffff ........ ........ ........  |A . . .|
+
+Origin A (origin_id 5):
+  Member fields were destroyed
+    #0 0x558a2b69b32d in __sanitizer_dtor_callback_fields /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:961:5
+    #1 0x558a2b6f79d6 in ~Base /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:10:8
+    #2 0x558a2b6f79d6 in Base::~Base() /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:43:1
+    #3 0x558a2b6f7ea6 in Derived::~Derived() /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:51:1
+    #4 0x558a2b6f83f5 in main /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:61:6
+    #5 0x7f405908a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow map [0x201000000008, 0x20100000000c) of [0x701000000008, 0x70100000000c), 4 bytes:
+0x201000000008[0x701000000008]: ffffffff ........ ........ ........  |A . . .|
+
+Origin A (origin_id 4):
+  Member fields were destroyed
+    #0 0x558a2b69b32d in __sanitizer_dtor_callback_fields /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:961:5
+    #1 0x558a2b6f7e71 in ~Derived /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:21:7
+    #2 0x558a2b6f7e71 in Derived::~Derived() /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:51:1
+    #3 0x558a2b6f83f5 in main /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:61:6
+    #4 0x7f405908a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow map [0x201000000000, 0x201000000004) of [0x701000000000, 0x701000000004), 4 bytes:
+0x201000000000[0x701000000000]: ffffffff ........ ........ ........  |A . . .|
+
+Origin A (origin_id 6):
+  Member fields were destroyed
+    #0 0x560331e0431d in __sanitizer_dtor_callback_fields /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:961:5
+    #1 0x560331e607ff in ~Derived /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:15:7
+    #2 0x560331e607ff in Derived::~Derived() /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:51:1
+    #3 0x560331e60a07 in main /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:61:6
+    #4 0x7f5bbd62a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow map [0x201000000004, 0x201000000008) of [0x701000000004, 0x701000000008), 4 bytes:
+0x201000000004[0x701000000004]: ffffffff ........ ........ ........  |A . . .|
+
+Origin A (origin_id 5):
+  Member fields were destroyed
+    #0 0x560331e0431d in __sanitizer_dtor_callback_fields /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:961:5
+    #1 0x560331e60638 in ~Base /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:10:8
+    #2 0x560331e60638 in Base::~Base() /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:43:1
+    #3 0x560331e607f2 in Derived::~Derived() /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:51:1
+    #4 0x560331e60a07 in main /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:61:6
+    #5 0x7f5bbd62a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow map [0x201000000008, 0x20100000000c) of [0x701000000008, 0x70100000000c), 4 bytes:
+0x201000000008[0x701000000008]: ffffffff ........ ........ ........  |A . . .|
+
+Origin A (origin_id 4):
+  Member fields were destroyed
+    #0 0x560331e0431d in __sanitizer_dtor_callback_fields /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:961:5
+    #1 0x560331e607e9 in ~Derived /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:21:7
+    #2 0x560331e607e9 in Derived::~Derived() /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:51:1
+    #3 0x560331e60a07 in main /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:61:6
+    #4 0x7f5bbd62a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow map [0x201000000000, 0x201000000004) of [0x701000000000, 0x701000000004), 4 bytes:
+0x201000000000[0x701000000000]: ffffffff ........ ........ ........  |A . . .|
+
+Origin A (origin_id 6):
+  Member fields were destroyed
+    #0 0x56516bbc731d in __sanitizer_dtor_callback_fields /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:961:5
+    #1 0x56516bc237ff in ~Derived /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:15:7
+    #2 0x56516bc237ff in Derived::~Derived() /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:51:1
+    #3 0x56516bc239cf in main /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:61:6
+    #4 0x7f80ecade082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow map [0x201000000004, 0x201000000008) of [0x701000000004, 0x701000000008), 4 bytes:
+0x201000000004[0x701000000004]: ffffffff ........ ........ ........  |A . . .|
+
+Origin A (origin_id 5):
+  Member fields were destroyed
+    #0 0x56516bbc731d in __sanitizer_dtor_callback_fields /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:961:5
+    #1 0x56516bc23638 in ~Base /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:10:8
+    #2 0x56516bc23638 in Base::~Base() /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:43:1
+    #3 0x56516bc237f2 in Derived::~Derived() /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:51:1
+    #4 0x56516bc239cf in main /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:61:6
+    #5 0x7f80ecade082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow map [0x201000000008, 0x20100000000c) of [0x701000000008, 0x70100000000c), 4 bytes:
+0x201000000008[0x701000000008]: ffffffff ........ ........ ........  |A . . .|
+
+Origin A (origin_id 4):
+  Member fields were destroyed
+    #0 0x56516bbc731d in __sanitizer_dtor_callback_fields /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:961:5
+    #1 0x56516bc237e9 in ~Derived /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:21:7
+    #2 0x56516bc237e9 in Derived::~Derived() /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:51:1
+    #3 0x56516bc239cf in main /home/llvm/compiler-rt/test/msan/dtor-base-access.cpp:61:6
+    #4 0x7f80ecade082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: dtor-base-access.cpp <<TAIL<<

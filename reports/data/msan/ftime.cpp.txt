@@ -1,0 +1,18 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: ftime.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/msan/ftime.cpp:13:13: warning: 'ftime' is deprecated [-Wdeprecated-declarations]
+  int res = ftime(&tb);
+            ^
+/usr/include/x86_64-linux-gnu/sys/timeb.h:40:19: note: 'ftime' has been explicitly marked deprecated here
+  __nonnull ((1)) __attribute_deprecated__;
+                  ^
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:251:51: note: expanded from macro '__attribute_deprecated__'
+# define __attribute_deprecated__ __attribute__ ((__deprecated__))
+                                                  ^
+1 warning generated.
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: ftime.cpp <<TAIL<<

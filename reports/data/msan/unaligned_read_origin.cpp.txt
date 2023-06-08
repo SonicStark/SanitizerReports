@@ -1,0 +1,48 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: unaligned_read_origin.cpp <<HEAD<<
+
+==183493==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55dee7cc0715 in main /home/llvm/compiler-rt/test/msan/unaligned_read_origin.cpp:11:3
+    #1 0x7fb1d69a3082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55dee7c2e2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/unaligned_read_origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x55dee7cc0668 in main /home/llvm/compiler-rt/test/msan/unaligned_read_origin.cpp:9:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/unaligned_read_origin.cpp:11:3 in main
+Exiting
+==183493==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55dee7cc0715 in main /home/llvm/compiler-rt/test/msan/unaligned_read_origin.cpp:11:3
+    #1 0x7fb1d69a3082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55dee7c2e2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/unaligned_read_origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x55dee7cc0668 in main /home/llvm/compiler-rt/test/msan/unaligned_read_origin.cpp:9:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/unaligned_read_origin.cpp:11:3 in main
+Exiting
+==183751==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55b68eda061b in main /home/llvm/compiler-rt/test/msan/unaligned_read_origin.cpp:11:3
+    #1 0x7fbce4ec1082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55b68ed0e2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/unaligned_read_origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x55b68eda058f in main /home/llvm/compiler-rt/test/msan/unaligned_read_origin.cpp:9:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/unaligned_read_origin.cpp:11:3 in main
+Exiting
+==183751==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55b68eda061b in main /home/llvm/compiler-rt/test/msan/unaligned_read_origin.cpp:11:3
+    #1 0x7fbce4ec1082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55b68ed0e2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/unaligned_read_origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x55b68eda058f in main /home/llvm/compiler-rt/test/msan/unaligned_read_origin.cpp:9:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/unaligned_read_origin.cpp:11:3 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: unaligned_read_origin.cpp <<TAIL<<

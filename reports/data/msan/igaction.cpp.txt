@@ -1,0 +1,56 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: sigaction.cpp <<HEAD<<
+
+Uninitialized bytes in read_sigaction at offset 0 inside [0x7ffd62dde820, 8)
+==183218==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x56455140ac1f in main /home/llvm/compiler-rt/test/msan/sigaction.cpp:44:13
+    #1 0x7f6cd40be082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5645513782bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/sigaction.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/sigaction.cpp:44:13 in main
+Exiting
+Uninitialized bytes in read_sigaction at offset 0 inside [0x7ffcdbddde90, 8)
+==183276==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x555b3014cc1f in main /home/llvm/compiler-rt/test/msan/sigaction.cpp:44:13
+    #1 0x7f5e04d52082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x555b300ba2bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/sigaction.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/sigaction.cpp:44:13 in main
+Exiting
+Uninitialized bytes in read_sigaction at offset 0 inside [0x7fff2ea514e8, 4)
+==183354==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5643d7929c1f in main /home/llvm/compiler-rt/test/msan/sigaction.cpp:44:13
+    #1 0x7fb635df3082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5643d78972bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/sigaction.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/sigaction.cpp:44:13 in main
+Exiting
+Uninitialized bytes in read_sigaction at offset 0 inside [0x7ffd673a5dd8, 4)
+==183422==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55aa2a209c1f in main /home/llvm/compiler-rt/test/msan/sigaction.cpp:44:13
+    #1 0x7f3e76c5f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55aa2a1772bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/sigaction.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/sigaction.cpp:44:13 in main
+Exiting
+Uninitialized bytes in read_sigaction at offset 0 inside [0x7fff400908c8, 128)
+==183511==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55c32ec1bc1f in main /home/llvm/compiler-rt/test/msan/sigaction.cpp:44:13
+    #1 0x7febb11d5082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55c32eb892bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/sigaction.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/sigaction.cpp:44:13 in main
+Exiting
+Uninitialized bytes in read_sigaction at offset 0 inside [0x7ffec84a74c8, 128)
+==183624==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55ec488bbc1f in main /home/llvm/compiler-rt/test/msan/sigaction.cpp:44:13
+    #1 0x7f6adb608082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55ec488292bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/sigaction.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/sigaction.cpp:44:13 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: sigaction.cpp <<TAIL<<

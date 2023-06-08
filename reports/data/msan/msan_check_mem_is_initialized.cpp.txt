@@ -1,0 +1,56 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: msan_check_mem_is_initialized.cpp <<HEAD<<
+
+Uninitialized bytes in __msan_check_mem_is_initialized at offset 5 inside [0x7ffde57b03a5, 20)
+==182567==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x557427331609 in main /home/llvm/compiler-rt/test/msan/msan_check_mem_is_initialized.cpp:17:3
+    #1 0x7ff9e31c3082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55742729f2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/msan_check_mem_is_initialized.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/msan_check_mem_is_initialized.cpp:17:3 in main
+Exiting
+==182615==MemorySanitizer: failed to intercept '__isoc99_printf'
+==182615==MemorySanitizer: failed to intercept '__isoc99_sprintf'
+==182615==MemorySanitizer: failed to intercept '__isoc99_snprintf'
+==182615==MemorySanitizer: failed to intercept '__isoc99_fprintf'
+==182615==MemorySanitizer: failed to intercept '__isoc99_vprintf'
+==182615==MemorySanitizer: failed to intercept '__isoc99_vsprintf'
+==182615==MemorySanitizer: failed to intercept '__isoc99_vsnprintf'
+==182615==MemorySanitizer: failed to intercept '__isoc99_vfprintf'
+==182615==MemorySanitizer: failed to intercept 'xdr_destroy'
+==182615==MemorySanitizer: failed to intercept 'crypt'
+==182615==MemorySanitizer: failed to intercept 'crypt_r'
+==182615==Installed the sigaction for signal 11
+==182615==Installed the sigaction for signal 7
+==182615==Installed the sigaction for signal 8
+__msan_init 0x55772c045bc0
+app-1: 0 - ffffffffff
+shadow-2: 10000000000 - fffffffffff
+invalid: 100000000000 - 10ffffffffff
+origin-2: 110000000000 - 1fffffffffff
+shadow-3: 200000000000 - 2fffffffffff
+origin-3: 300000000000 - 3fffffffffff
+invalid: 400000000000 - 4fffffffffff
+shadow-1: 500000000000 - 50ffffffffff
+app-2: 510000000000 - 5fffffffffff
+origin-1: 600000000000 - 60ffffffffff
+invalid: 610000000000 - 6fffffffffff
+app-3: 700000000000 - 7fffffffffff
+MemorySanitizer init done
+Uninitialized bytes in __msan_check_mem_is_initialized at offset 5 inside [0x7fff189e2915, 20)
+Shadow map [0x2fff189e2915, 0x2fff189e2929) of [0x7fff189e2915, 0x7fff189e2929), 20 bytes:
+0x2fff189e2914[0x7fff189e2914]: ..000000 0000ffff 00000000 00000000
+0x2fff189e2924[0x7fff189e2924]: 00000000 00...... ........ ........
+
+==182615==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55772c0d5609 in main /home/llvm/compiler-rt/test/msan/msan_check_mem_is_initialized.cpp:17:3
+    #1 0x7fa1671a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55772c0432ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/msan_check_mem_is_initialized.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/msan_check_mem_is_initialized.cpp:17:3 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: msan_check_mem_is_initialized.cpp <<TAIL<<

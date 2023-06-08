@@ -1,0 +1,14 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: getloadavg.cpp <<HEAD<<
+
+In file included from /home/llvm/compiler-rt/test/msan/getloadavg.cpp:4:
+In file included from /usr/include/assert.h:35:
+/usr/include/features.h:187:3: warning: "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE" [-W#warnings]
+# warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE"
+  ^
+1 warning generated.
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: getloadavg.cpp <<TAIL<<

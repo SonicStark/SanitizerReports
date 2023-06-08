@@ -1,0 +1,38 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: bsearch.cpp <<HEAD<<
+
+==181594==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55e824588c9d in main /home/llvm/compiler-rt/test/msan/bsearch.cpp:45:3
+    #1 0x7f5bd4cf6082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55e8244f62bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/bsearch.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/bsearch.cpp:45:3 in main
+Exiting
+==181824==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5646b74efc9b in main /home/llvm/compiler-rt/test/msan/bsearch.cpp:45:3
+    #1 0x7f066c63b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5646b745d2bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/bsearch.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/bsearch.cpp:45:3 in main
+Exiting
+==182437==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5649693c8d67 in bsearch /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:34:11
+    #1 0x5649693c8d67 in main /home/llvm/compiler-rt/test/msan/bsearch.cpp:42:33
+    #2 0x7f3037cd4082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x5649693362bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/bsearch.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:34:11 in bsearch
+Exiting
+==182682==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x564b345d8d67 in bsearch /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:34:11
+    #1 0x564b345d8d67 in main /home/llvm/compiler-rt/test/msan/bsearch.cpp:42:33
+    #2 0x7f566e04c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x564b345462bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/bsearch.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:34:11 in bsearch
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: bsearch.cpp <<TAIL<<

@@ -1,0 +1,132 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: use-after-free.cpp <<HEAD<<
+
+==183690==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55b11f23d75b in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7
+    #1 0x7ff954234082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55b11f1ab2bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/use-after-free.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7 in main
+Exiting
+==183795==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x564611b40607 in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7
+    #1 0x7fb234758082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x564611aae2bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/use-after-free.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7 in main
+Exiting
+==183904==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5639d3658607 in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7
+    #1 0x7f3464231082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5639d35c62bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/use-after-free.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7 in main
+Exiting
+==183957==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5635963b3607 in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7
+    #1 0x7f4968ace082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5635963212bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/use-after-free.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7 in main
+Exiting
+==183995==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x562dfc083834 in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7
+    #1 0x7fcc103cd082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x562dfbff12bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/use-after-free.cpp.tmp+0x1e2bd)
+
+  Uninitialized value was created by a heap deallocation
+    #0 0x562dfbff94a2 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:216:3
+    #1 0x562dfc08378e in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:23:3
+    #2 0x7fcc103cd082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7 in main
+Exiting
+==183995==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x562dfc083834 in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7
+    #1 0x7fcc103cd082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x562dfbff12bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/use-after-free.cpp.tmp+0x1e2bd)
+
+  Uninitialized value was created by a heap deallocation
+    #0 0x562dfbff94a2 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:216:3
+    #1 0x562dfc08378e in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:23:3
+    #2 0x7fcc103cd082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7 in main
+Exiting
+==184027==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x558562cb163e in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7
+    #1 0x7fe8b81a6082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x558562c1f2bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/use-after-free.cpp.tmp+0x1e2bd)
+
+  Uninitialized value was created by a heap deallocation
+    #0 0x558562c274a2 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:216:3
+    #1 0x558562cb15e6 in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:23:3
+    #2 0x7fe8b81a6082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7 in main
+Exiting
+==184027==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x558562cb163e in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7
+    #1 0x7fe8b81a6082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x558562c1f2bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/use-after-free.cpp.tmp+0x1e2bd)
+
+  Uninitialized value was created by a heap deallocation
+    #0 0x558562c274a2 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:216:3
+    #1 0x558562cb15e6 in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:23:3
+    #2 0x7fe8b81a6082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7 in main
+Exiting
+==184054==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x56550d0c863e in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7
+    #1 0x7f06151ce082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x56550d0362bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/use-after-free.cpp.tmp+0x1e2bd)
+
+  Uninitialized value was created by a heap deallocation
+    #0 0x56550d03e4a2 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:216:3
+    #1 0x56550d0c85e6 in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:23:3
+    #2 0x7f06151ce082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7 in main
+Exiting
+==184054==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x56550d0c863e in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7
+    #1 0x7f06151ce082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x56550d0362bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/use-after-free.cpp.tmp+0x1e2bd)
+
+  Uninitialized value was created by a heap deallocation
+    #0 0x56550d03e4a2 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:216:3
+    #1 0x56550d0c85e6 in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:23:3
+    #2 0x7f06151ce082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7 in main
+Exiting
+==184062==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55edd7e4163e in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7
+    #1 0x7fed23d8d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55edd7daf2bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/use-after-free.cpp.tmp+0x1e2bd)
+
+  Uninitialized value was created by a heap deallocation
+    #0 0x55edd7db74a2 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:216:3
+    #1 0x55edd7e415e6 in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:23:3
+    #2 0x7fed23d8d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7 in main
+Exiting
+==184062==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55edd7e4163e in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7
+    #1 0x7fed23d8d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55edd7daf2bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/use-after-free.cpp.tmp+0x1e2bd)
+
+  Uninitialized value was created by a heap deallocation
+    #0 0x55edd7db74a2 in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:216:3
+    #1 0x55edd7e415e6 in main /home/llvm/compiler-rt/test/msan/use-after-free.cpp:23:3
+    #2 0x7fed23d8d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/use-after-free.cpp:25:7 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: use-after-free.cpp <<TAIL<<

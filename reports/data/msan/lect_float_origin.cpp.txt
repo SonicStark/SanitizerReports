@@ -1,0 +1,32 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: select_float_origin.cpp <<HEAD<<
+
+==183199==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55a4e8c776a5 in main /home/llvm/compiler-rt/test/msan/select_float_origin.cpp:19:7
+    #1 0x7faac7761082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55a4e8be52ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/select_float_origin.cpp.tmp+0x1e2ad)
+
+  Memory was marked as uninitialized
+    #0 0x55a4e8c1affd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55a4e8c775fc in main /home/llvm/compiler-rt/test/msan/select_float_origin.cpp:16:3
+    #2 0x7faac7761082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/select_float_origin.cpp:19:7 in main
+Exiting
+==183442==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x564977fb56a5 in main /home/llvm/compiler-rt/test/msan/select_float_origin.cpp:19:7
+    #1 0x7f88113be082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x564977f232ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/select_float_origin.cpp.tmp+0x1e2ad)
+
+  Memory was marked as uninitialized
+    #0 0x564977f58ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x564977fb55fc in main /home/llvm/compiler-rt/test/msan/select_float_origin.cpp:16:3
+    #2 0x7f88113be082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/select_float_origin.cpp:19:7 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: select_float_origin.cpp <<TAIL<<

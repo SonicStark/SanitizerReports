@@ -1,0 +1,48 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: use-after-dtor.cpp <<HEAD<<
+
+
+==183671==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x561f6ff826d6 in main /home/llvm/compiler-rt/test/msan/use-after-dtor.cpp:30:3
+    #1 0x7f06de621082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x561f6fef02ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/use-after-dtor.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/use-after-dtor.cpp:30:3 in main
+Exiting
+
+==183779==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x56224ab8a5d8 in main /home/llvm/compiler-rt/test/msan/use-after-dtor.cpp:30:3
+    #1 0x7fc7e4bf1082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x56224aaf82bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/use-after-dtor.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/use-after-dtor.cpp:30:3 in main
+Exiting
+
+==183893==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x557d6422c5d8 in main /home/llvm/compiler-rt/test/msan/use-after-dtor.cpp:30:3
+    #1 0x7f837a7f8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x557d6419a2bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/use-after-dtor.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/use-after-dtor.cpp:30:3 in main
+Exiting
+
+==183950==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55c0795cd615 in main /home/llvm/compiler-rt/test/msan/use-after-dtor.cpp:30:3
+    #1 0x7fba6aa93082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55c07953b2bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/use-after-dtor.cpp.tmp+0x1e2bd)
+
+  Member fields were destroyed
+    #0 0x55c0795712fd in __sanitizer_dtor_callback_fields /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:961:5
+    #1 0x55c0795cd5ba in ~Simple /home/llvm/compiler-rt/test/msan/use-after-dtor.cpp:13:7
+    #2 0x55c0795cd5ba in ~Simple /home/llvm/compiler-rt/test/msan/use-after-dtor.cpp:19:3
+    #3 0x55c0795cd5ba in main /home/llvm/compiler-rt/test/msan/use-after-dtor.cpp:27:6
+    #4 0x7fba6aa93082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/use-after-dtor.cpp:30:3 in main
+Exiting
+
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: use-after-dtor.cpp <<TAIL<<

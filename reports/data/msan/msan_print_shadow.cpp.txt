@@ -1,0 +1,387 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: msan_print_shadow.cpp <<HEAD<<
+
+Shadow map [0x211000000005, 0x21100000012e) of [0x711000000005, 0x71100000012e), 297 bytes:
+0x211000000004[0x711000000004]: ..00ffff 00000000 ffffffff ffffffff
+0x211000000014[0x711000000014]: ffffffff ffffffff ffffffff ffffffff
+0x211000000024[0x711000000024]: ffffffff ffffffff ffffffff ffffffff
+0x211000000034[0x711000000034]: ffffffff ffffffff ffffffff ffffffff
+0x211000000044[0x711000000044]: ffffffff ffffffff ffffffff ffffffff
+0x211000000054[0x711000000054]: ffffffff ffffffff ffffffff ffffffff
+0x211000000064[0x711000000064]: ffffffff ffffffff ffffffff ffffffff
+0x211000000074[0x711000000074]: ffffffff ffffffff ffffffff ffffffff
+0x211000000084[0x711000000084]: ffffffff ffffffff ffffffff ffffffff
+0x211000000094[0x711000000094]: ffffffff ffffffff ffffffff ffffffff
+0x2110000000a4[0x7110000000a4]: ffffffff ffffffff ffffffff ffffffff
+0x2110000000b4[0x7110000000b4]: ffffffff ffffffff ffffffff ffffffff
+0x2110000000c4[0x7110000000c4]: ffffffff ffffffff ffffffff ffffffff
+0x2110000000d4[0x7110000000d4]: ffffffff ffffffff ffffffff ffffffff
+0x2110000000e4[0x7110000000e4]: ffffffff ffffffff ffffffff ffffffff
+0x2110000000f4[0x7110000000f4]: ffffffff ffffffff ffffffff ffffffff
+0x211000000104[0x711000000104]: ffffffff ffffffff ffffffff ffffffff
+0x211000000114[0x711000000114]: ffffffff ffffffff ffffffff ffffffff
+0x211000000124[0x711000000124]: ffffffff ffffffff ffff.... ........
+
+Shadow map [0x211000000005, 0x21100000012e) of [0x711000000005, 0x71100000012e), 297 bytes:
+0x211000000004[0x711000000004]: ..00ffff 00000000 ffffffff ffffffff  |A . B C|
+0x211000000014[0x711000000014]: ffffffff ffffffff ffffffff ffffffff  |D E F G|
+0x211000000024[0x711000000024]: ffffffff ffffffff ffffffff ffffffff  |H I J K|
+0x211000000034[0x711000000034]: ffffffff ffffffff ffffffff ffffffff  |L M N O|
+0x211000000044[0x711000000044]: ffffffff ffffffff ffffffff ffffffff  |P Q R S|
+0x211000000054[0x711000000054]: ffffffff ffffffff ffffffff ffffffff  |T U V W|
+0x211000000064[0x711000000064]: ffffffff ffffffff ffffffff ffffffff  |X Y Z *|
+0x211000000074[0x711000000074]: ffffffff ffffffff ffffffff ffffffff  |* * * A|
+0x211000000084[0x711000000084]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x211000000094[0x711000000094]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x2110000000a4[0x7110000000a4]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x2110000000b4[0x7110000000b4]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x2110000000c4[0x7110000000c4]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x2110000000d4[0x7110000000d4]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x2110000000e4[0x7110000000e4]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x2110000000f4[0x7110000000f4]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x211000000104[0x711000000104]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x211000000114[0x711000000114]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x211000000124[0x711000000124]: ffffffff ffffffff ffff.... ........  |A A A .|
+
+Origin A (origin_id 2):
+  Uninitialized value was created by a heap allocation
+    #0 0x557ce04376fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x557ce0439636 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:14:13
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin B (origin_id 3):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce043997a in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:18:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin C (origin_id 90000001):
+  Uninitialized value was stored to memory at
+    #0 0x557ce043a562 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:48:9
+    #1 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x557ce04395f0 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:13:3
+
+Origin D (origin_id 5):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce0439a44 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:20:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin E (origin_id 6):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce0439aa9 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:21:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin F (origin_id 7):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce0439b0e in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:22:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin G (origin_id 8):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce0439b73 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:23:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin H (origin_id 9):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce0439bd8 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:24:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin I (origin_id a):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce0439c3d in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:25:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin J (origin_id b):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce0439ca2 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:26:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin K (origin_id c):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce0439d07 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:27:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin L (origin_id d):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce0439d6c in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:28:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin M (origin_id e):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce0439dd1 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:29:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin N (origin_id f):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce0439e36 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:30:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin O (origin_id 10):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce0439e9b in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:31:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin P (origin_id 11):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce0439f00 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:32:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin Q (origin_id 12):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce0439f65 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:33:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin R (origin_id 13):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce0439fca in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:34:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin S (origin_id 14):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce043a02f in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:35:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin T (origin_id 15):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce043a094 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:36:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin U (origin_id 16):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce043a0f9 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:37:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin V (origin_id 17):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce043a15e in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:38:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin W (origin_id 18):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce043a1c3 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:39:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin X (origin_id 19):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce043a228 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:40:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin Y (origin_id 1a):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce043a28d in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:41:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin Z (origin_id 1b):
+  Memory was marked as uninitialized
+    #0 0x557ce03dcffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x557ce043a2f2 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:42:3
+    #2 0x7f57e365b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow map [0x211000000005, 0x21100000012e) of [0x711000000005, 0x71100000012e), 297 bytes:
+0x211000000004[0x711000000004]: ..00ffff 00000000 ffffffff ffffffff  |A . B C|
+0x211000000014[0x711000000014]: ffffffff ffffffff ffffffff ffffffff  |D E F G|
+0x211000000024[0x711000000024]: ffffffff ffffffff ffffffff ffffffff  |H I J K|
+0x211000000034[0x711000000034]: ffffffff ffffffff ffffffff ffffffff  |L M N O|
+0x211000000044[0x711000000044]: ffffffff ffffffff ffffffff ffffffff  |P Q R S|
+0x211000000054[0x711000000054]: ffffffff ffffffff ffffffff ffffffff  |T U V W|
+0x211000000064[0x711000000064]: ffffffff ffffffff ffffffff ffffffff  |X Y Z *|
+0x211000000074[0x711000000074]: ffffffff ffffffff ffffffff ffffffff  |* * * A|
+0x211000000084[0x711000000084]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x211000000094[0x711000000094]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x2110000000a4[0x7110000000a4]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x2110000000b4[0x7110000000b4]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x2110000000c4[0x7110000000c4]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x2110000000d4[0x7110000000d4]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x2110000000e4[0x7110000000e4]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x2110000000f4[0x7110000000f4]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x211000000104[0x711000000104]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x211000000114[0x711000000114]: ffffffff ffffffff ffffffff ffffffff  |A A A A|
+0x211000000124[0x711000000124]: ffffffff ffffffff ffff.... ........  |A A A .|
+
+Origin A (origin_id 2):
+  Uninitialized value was created by a heap allocation
+    #0 0x55edf6c4f6fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x55edf6c51636 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:14:13
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin B (origin_id 3):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c5197a in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:18:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin C (origin_id 90000001):
+  Uninitialized value was stored to memory at
+    #0 0x55edf6c52562 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:48:9
+    #1 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x55edf6c515f0 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:13:3
+
+Origin D (origin_id 5):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c51a44 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:20:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin E (origin_id 6):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c51aa9 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:21:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin F (origin_id 7):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c51b0e in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:22:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin G (origin_id 8):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c51b73 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:23:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin H (origin_id 9):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c51bd8 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:24:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin I (origin_id a):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c51c3d in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:25:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin J (origin_id b):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c51ca2 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:26:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin K (origin_id c):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c51d07 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:27:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin L (origin_id d):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c51d6c in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:28:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin M (origin_id e):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c51dd1 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:29:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin N (origin_id f):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c51e36 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:30:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin O (origin_id 10):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c51e9b in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:31:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin P (origin_id 11):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c51f00 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:32:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin Q (origin_id 12):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c51f65 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:33:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin R (origin_id 13):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c51fca in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:34:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin S (origin_id 14):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c5202f in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:35:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin T (origin_id 15):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c52094 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:36:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin U (origin_id 16):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c520f9 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:37:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin V (origin_id 17):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c5215e in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:38:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin W (origin_id 18):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c521c3 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:39:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin X (origin_id 19):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c52228 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:40:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin Y (origin_id 1a):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c5228d in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:41:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Origin Z (origin_id 1b):
+  Memory was marked as uninitialized
+    #0 0x55edf6bf4ffd in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55edf6c522f2 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow.cpp:42:3
+    #2 0x7fa095b61082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: msan_print_shadow.cpp <<TAIL<<

@@ -1,0 +1,74 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: insertvalue_origin.cpp <<HEAD<<
+
+==182373==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x562b5c556a6e in main /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:26:6
+    #1 0x7f001075d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x562b5c4c42ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/insertvalue_origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x562b5c55697d in main /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:25:13
+    #1 0x7f001075d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was stored to memory at
+    #0 0x562b5c556700 in my_make_pair(long&, int) /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:18:6
+    #1 0x562b5c556919 in main /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:25:13
+    #2 0x7f001075d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by a heap allocation
+    #0 0x562b5c5546fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x562b5c556883 in main /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:24:25
+    #2 0x7f001075d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:26:6 in main
+Exiting
+==182373==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x562b5c556a6e in main /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:26:6
+    #1 0x7f001075d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x562b5c4c42ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/insertvalue_origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x562b5c55697d in main /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:25:13
+    #1 0x7f001075d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was stored to memory at
+    #0 0x562b5c556700 in my_make_pair(long&, int) /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:18:6
+    #1 0x562b5c556919 in main /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:25:13
+    #2 0x7f001075d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by a heap allocation
+    #0 0x562b5c5546fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x562b5c556883 in main /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:24:25
+    #2 0x7f001075d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:26:6 in main
+Exiting
+==182621==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55f7bee9d689 in main /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:26:6
+    #1 0x7f2d1277f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55f7bee0b2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/insertvalue_origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x55f7bee9b6fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x55f7bee9d5f0 in main /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:24:25
+    #2 0x7f2d1277f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:26:6 in main
+Exiting
+==182621==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55f7bee9d689 in main /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:26:6
+    #1 0x7f2d1277f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55f7bee0b2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/insertvalue_origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x55f7bee9b6fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x55f7bee9d5f0 in main /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:24:25
+    #2 0x7f2d1277f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/insertvalue_origin.cpp:26:6 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: insertvalue_origin.cpp <<TAIL<<

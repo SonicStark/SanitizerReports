@@ -1,0 +1,46 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: realloc-large-origin.cpp <<HEAD<<
+
+==182979==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55c1006c68d2 in main /home/llvm/compiler-rt/test/msan/realloc-large-origin.cpp:18:3
+    #1 0x7fd7e034b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55c1006342ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/realloc-large-origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x55c1006c682f in main /home/llvm/compiler-rt/test/msan/realloc-large-origin.cpp:16:8
+    #1 0x7fd7e034b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was stored to memory at
+    #0 0x55c10063c7ea in __interceptor_realloc.part.0 /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:922:3
+    #1 0x55c1006c6720 in main /home/llvm/compiler-rt/test/msan/realloc-large-origin.cpp:15:15
+    #2 0x7fd7e034b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by a heap allocation
+    #0 0x55c10068ed74 in malloc /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:934:3
+    #1 0x55c1006c66b3 in main /home/llvm/compiler-rt/test/msan/realloc-large-origin.cpp:14:21
+    #2 0x7fd7e034b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/realloc-large-origin.cpp:18:3 in main
+Exiting
+==183266==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5626205235bd in main /home/llvm/compiler-rt/test/msan/realloc-large-origin.cpp:18:3
+    #1 0x7f74053d3082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5626204912ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/realloc-large-origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x5626204997ea in __interceptor_realloc.part.0 /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:922:3
+    #1 0x562620523570 in main /home/llvm/compiler-rt/test/msan/realloc-large-origin.cpp:15:15
+    #2 0x7f74053d3082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by a heap allocation
+    #0 0x5626204ebd74 in malloc /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:934:3
+    #1 0x562620523563 in main /home/llvm/compiler-rt/test/msan/realloc-large-origin.cpp:14:21
+    #2 0x7f74053d3082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/realloc-large-origin.cpp:18:3 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: realloc-large-origin.cpp <<TAIL<<

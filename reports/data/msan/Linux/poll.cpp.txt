@@ -1,0 +1,27 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: Linux/poll.cpp <<HEAD<<
+
+==1
+==2
+Uninitialized bytes in __interceptor_ppoll at offset 0 inside [0x7ffde140ba68, 16)
+==181273==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55c4a79bf8ae in main /home/llvm/compiler-rt/test/msan/Linux/poll.cpp:24:5
+    #1 0x7f10b8623082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55c4a792d2bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Linux/Output/poll.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/Linux/poll.cpp:24:5 in main
+Exiting
+==1
+Uninitialized bytes in __interceptor_ppoll at offset 0 inside [0x7ffd1b7e29e0, 128)
+==181320==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55beed0c59ae in main /home/llvm/compiler-rt/test/msan/Linux/poll.cpp:35:3
+    #1 0x7f598efd0082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55beed0332bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Linux/Output/poll.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/Linux/poll.cpp:35:3 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: Linux/poll.cpp <<TAIL<<

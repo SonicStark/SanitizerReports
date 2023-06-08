@@ -1,0 +1,16 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: mktime.cpp <<HEAD<<
+
+Uninitialized bytes in __interceptor_mktime at offset 0 inside [0x7ffd5133fa18, 4)
+==182663==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x562b9fd706b6 in main /home/llvm/compiler-rt/test/msan/mktime.cpp:20:14
+    #1 0x7fa22218d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x562b9fcde2bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/mktime.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/mktime.cpp:20:14 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: mktime.cpp <<TAIL<<

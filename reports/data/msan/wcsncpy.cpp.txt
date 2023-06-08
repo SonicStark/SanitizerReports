@@ -1,0 +1,44 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: wcsncpy.cpp <<HEAD<<
+
+Uninitialized bytes in __msan_check_mem_is_initialized at offset 4 inside [0x7fff5782e430, 20)
+==183687==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55cc0a202c4c in main /home/llvm/compiler-rt/test/msan/wcsncpy.cpp:28:3
+    #1 0x7f9056afe082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55cc0a1702bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/wcsncpy.cpp.tmp+0x1e2bd)
+
+  Uninitialized value was stored to memory at
+    #0 0x55cc0a186d6a in __interceptor_wcsncpy /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:1596:3
+    #1 0x55cc0a202bcd in main /home/llvm/compiler-rt/test/msan/wcsncpy.cpp:27:3
+    #2 0x7f9056afe082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Memory was marked as uninitialized
+    #0 0x55cc0a1a600d in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55cc0a202b7f in main /home/llvm/compiler-rt/test/msan/wcsncpy.cpp:25:3
+    #2 0x7f9056afe082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/wcsncpy.cpp:28:3 in main
+Exiting
+Uninitialized bytes in __msan_check_mem_is_initialized at offset 4 inside [0x7fff5782e430, 20)
+==183687==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55cc0a202c4c in main /home/llvm/compiler-rt/test/msan/wcsncpy.cpp:28:3
+    #1 0x7f9056afe082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55cc0a1702bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/wcsncpy.cpp.tmp+0x1e2bd)
+
+  Uninitialized value was stored to memory at
+    #0 0x55cc0a186d6a in __interceptor_wcsncpy /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:1596:3
+    #1 0x55cc0a202bcd in main /home/llvm/compiler-rt/test/msan/wcsncpy.cpp:27:3
+    #2 0x7f9056afe082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Memory was marked as uninitialized
+    #0 0x55cc0a1a600d in __msan_allocated_memory /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:940:5
+    #1 0x55cc0a202b7f in main /home/llvm/compiler-rt/test/msan/wcsncpy.cpp:25:3
+    #2 0x7f9056afe082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/wcsncpy.cpp:28:3 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: wcsncpy.cpp <<TAIL<<

@@ -1,0 +1,132 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: heap-origin.cpp <<HEAD<<
+
+==182199==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55a5420f16b1 in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3
+    #1 0x7f9b4a185082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55a54205f2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/heap-origin.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3 in main
+Exiting
+==182472==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x56116db9f5af in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3
+    #1 0x7ff80c1c4082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x56116db0d2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/heap-origin.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3 in main
+Exiting
+==182687==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x558c6b29d5af in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3
+    #1 0x7fc3d79b8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x558c6b20b2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/heap-origin.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3 in main
+Exiting
+==182898==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5624fd77f5af in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3
+    #1 0x7fa81d661082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5624fd6ed2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/heap-origin.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3 in main
+Exiting
+==183177==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x557c5fd4775a in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3
+    #1 0x7fc33908c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x557c5fcb52ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/heap-origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x557c5fd0fd74 in malloc /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:934:3
+    #1 0x557c5fd476b3 in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:21:29
+    #2 0x7fc33908c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3 in main
+Exiting
+==183177==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x557c5fd4775a in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3
+    #1 0x7fc33908c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x557c5fcb52ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/heap-origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x557c5fd0fd74 in malloc /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:934:3
+    #1 0x557c5fd476b3 in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:21:29
+    #2 0x7fc33908c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3 in main
+Exiting
+==183437==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5629f4eb55e2 in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3
+    #1 0x7f4f0a987082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5629f4e232ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/heap-origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x5629f4e7dd74 in malloc /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:934:3
+    #1 0x5629f4eb55a0 in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:21:29
+    #2 0x7f4f0a987082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3 in main
+Exiting
+==183437==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5629f4eb55e2 in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3
+    #1 0x7f4f0a987082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5629f4e232ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/heap-origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x5629f4e7dd74 in malloc /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:934:3
+    #1 0x5629f4eb55a0 in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:21:29
+    #2 0x7f4f0a987082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3 in main
+Exiting
+==183692==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55ee6e7cb5e2 in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3
+    #1 0x7f114c3a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55ee6e7392ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/heap-origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x55ee6e793d74 in malloc /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:934:3
+    #1 0x55ee6e7cb5a0 in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:21:29
+    #2 0x7f114c3a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3 in main
+Exiting
+==183692==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55ee6e7cb5e2 in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3
+    #1 0x7f114c3a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55ee6e7392ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/heap-origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x55ee6e793d74 in malloc /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:934:3
+    #1 0x55ee6e7cb5a0 in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:21:29
+    #2 0x7f114c3a7082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3 in main
+Exiting
+==183789==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x556371bcf5e2 in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3
+    #1 0x7f302b855082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x556371b3d2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/heap-origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x556371b97d74 in malloc /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:934:3
+    #1 0x556371bcf5a0 in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:21:29
+    #2 0x7f302b855082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3 in main
+Exiting
+==183789==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x556371bcf5e2 in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3
+    #1 0x7f302b855082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x556371b3d2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/heap-origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x556371b97d74 in malloc /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:934:3
+    #1 0x556371bcf5a0 in main /home/llvm/compiler-rt/test/msan/heap-origin.cpp:21:29
+    #2 0x7f302b855082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/heap-origin.cpp:22:3 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: heap-origin.cpp <<TAIL<<

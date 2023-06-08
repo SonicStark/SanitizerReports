@@ -1,0 +1,20 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: Linux/glob.cpp <<HEAD<<
+
+0 Success
+96
+96
+PASS
+0 Success
+96
+96
+PASS
+0 Success
+96
+96
+PASS
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: Linux/glob.cpp <<TAIL<<

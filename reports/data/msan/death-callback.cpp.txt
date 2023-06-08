@@ -1,0 +1,31 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: death-callback.cpp <<HEAD<<
+
+==181541==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x56141b74b7bb in main /home/llvm/compiler-rt/test/msan/death-callback.cpp:32:7
+    #1 0x7f46797d6082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x56141b6b92bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/death-callback.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/death-callback.cpp:32:7 in main
+Exiting
+==181757==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x560b48a067c7 in main /home/llvm/compiler-rt/test/msan/death-callback.cpp:32:7
+    #1 0x7f8132efd082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x560b489742bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/death-callback.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/death-callback.cpp:32:7 in main
+Exiting
+msan-death-callback
+==182105==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5631c40957d0 in main /home/llvm/compiler-rt/test/msan/death-callback.cpp:32:7
+    #1 0x7fce6c358082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5631c40032bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/death-callback.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/death-callback.cpp:32:7 in main
+Exiting
+done
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: death-callback.cpp <<TAIL<<

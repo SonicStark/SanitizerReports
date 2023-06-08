@@ -1,0 +1,15 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: dlopen_executable.cpp <<HEAD<<
+
+==181603==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55752675a78c in main /home/llvm/compiler-rt/test/msan/dlopen_executable.cpp:14:3
+    #1 0x7f6819f3a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5575266c82bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/dlopen_executable.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/dlopen_executable.cpp:14:3 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: dlopen_executable.cpp <<TAIL<<

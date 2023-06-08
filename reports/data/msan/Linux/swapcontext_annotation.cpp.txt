@@ -1,0 +1,12 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: Linux/swapcontext_annotation.cpp <<HEAD<<
+
+main: swapcontext to fiber
+fiber: entering fiber
+fiber: implicitly swapcontext to main
+main: exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: Linux/swapcontext_annotation.cpp <<TAIL<<

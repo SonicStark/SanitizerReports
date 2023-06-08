@@ -1,0 +1,12 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: cxa_atexit.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/msan/cxa_atexit.cpp:11:9: warning: 'this' pointer cannot be null in well-defined C++ code; pointer may be assumed to always convert to true [-Wundefined-bool-conversion]
+    if (this)
+    ~~  ^~~~
+1 warning generated.
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: cxa_atexit.cpp <<TAIL<<

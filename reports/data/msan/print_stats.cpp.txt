@@ -1,0 +1,67 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: print_stats.cpp <<HEAD<<
+
+TEST
+TEST
+TEST
+Unique heap origins: 1
+Stack depot allocated bytes: 9502736
+Unique origin histories: 0
+History depot allocated bytes: 0
+TEST
+==183095==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5612653db79c in main /home/llvm/compiler-rt/test/msan/print_stats.cpp:27:3
+    #1 0x7fd589d24082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5612653492ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/print_stats.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x5612653db668 in main /home/llvm/compiler-rt/test/msan/print_stats.cpp:23:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/print_stats.cpp:27:3 in main
+Exiting
+TEST
+==183170==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x560b385ea79c in main /home/llvm/compiler-rt/test/msan/print_stats.cpp:27:3
+    #1 0x7f39b59a4082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x560b385582ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/print_stats.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x560b385ea668 in main /home/llvm/compiler-rt/test/msan/print_stats.cpp:23:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/print_stats.cpp:27:3 in main
+Unique heap origins: 1
+Stack depot allocated bytes: 9502736
+Unique origin histories: 0
+History depot allocated bytes: 0
+Exiting
+TEST
+==183385==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5568e6dc479c in main /home/llvm/compiler-rt/test/msan/print_stats.cpp:27:3
+    #1 0x7f4585927082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5568e6d322ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/print_stats.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x5568e6dc4668 in main /home/llvm/compiler-rt/test/msan/print_stats.cpp:23:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/print_stats.cpp:27:3 in main
+MemorySanitizer: 1 warnings reported.
+TEST
+==183446==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x560146dc279c in main /home/llvm/compiler-rt/test/msan/print_stats.cpp:27:3
+    #1 0x7fa2f9fed082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x560146d302ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/print_stats.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x560146dc2668 in main /home/llvm/compiler-rt/test/msan/print_stats.cpp:23:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/print_stats.cpp:27:3 in main
+Unique heap origins: 1
+Stack depot allocated bytes: 9502736
+Unique origin histories: 0
+History depot allocated bytes: 0
+MemorySanitizer: 1 warnings reported.
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: print_stats.cpp <<TAIL<<

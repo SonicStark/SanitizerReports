@@ -1,0 +1,30 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: report-demangling.cpp <<HEAD<<
+
+==183056==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x559900d6b670 in f() /home/llvm/compiler-rt/test/msan/report-demangling.cpp:11:3
+    #1 0x559900d6b7a2 in main /home/llvm/compiler-rt/test/msan/report-demangling.cpp:15:10
+    #2 0x7f55517c2082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x559900cd92ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/report-demangling.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x559900d6b593 in f() /home/llvm/compiler-rt/test/msan/report-demangling.cpp:9:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/report-demangling.cpp:11:3 in f()
+Exiting
+==183056==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x559900d6b670 in f() /home/llvm/compiler-rt/test/msan/report-demangling.cpp:11:3
+    #1 0x559900d6b7a2 in main /home/llvm/compiler-rt/test/msan/report-demangling.cpp:15:10
+    #2 0x7f55517c2082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x559900cd92ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/report-demangling.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x559900d6b593 in f() /home/llvm/compiler-rt/test/msan/report-demangling.cpp:9:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/report-demangling.cpp:11:3 in f()
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: report-demangling.cpp <<TAIL<<

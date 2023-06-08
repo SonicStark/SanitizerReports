@@ -1,0 +1,15 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: loop-scope.cpp <<HEAD<<
+
+==182478==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5637de7545a5 in main /home/llvm/compiler-rt/test/msan/loop-scope.cpp:15:3
+    #1 0x7f997e1fb082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5637de6c22ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/loop-scope.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/loop-scope.cpp:15:3 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: loop-scope.cpp <<TAIL<<

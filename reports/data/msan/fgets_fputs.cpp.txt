@@ -1,0 +1,26 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: fgets_fputs.cpp <<HEAD<<
+
+Uninitialized bytes in __interceptor_fputs at offset 0 inside [0x7ffe9c895256, 1)
+==181773==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x56039b05e8c3 in test_fputs() /home/llvm/compiler-rt/test/msan/fgets_fputs.cpp:27:3
+    #1 0x56039b05ead0 in main /home/llvm/compiler-rt/test/msan/fgets_fputs.cpp:40:5
+    #2 0x7f21fec6b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x56039afcc2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/fgets_fputs.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/fgets_fputs.cpp:27:3 in test_fputs()
+Exiting
+Uninitialized bytes in __interceptor_puts at offset 0 inside [0x7ffe13381e3e, 1)
+==181842==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55b963ea5930 in test_puts() /home/llvm/compiler-rt/test/msan/fgets_fputs.cpp:33:3
+    #1 0x55b963ea5ada in main /home/llvm/compiler-rt/test/msan/fgets_fputs.cpp:42:5
+    #2 0x7f19e2472082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55b963e132ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/fgets_fputs.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/fgets_fputs.cpp:33:3 in test_puts()
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: fgets_fputs.cpp <<TAIL<<

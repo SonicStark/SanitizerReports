@@ -1,0 +1,13 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: dtor-member.cpp <<HEAD<<
+
+s is poisoned
+s is poisoned
+s is poisoned
+s is not poisoned
+s is not poisoned
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: dtor-member.cpp <<TAIL<<

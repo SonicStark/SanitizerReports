@@ -1,0 +1,21 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: Linux/signal_mcontext2.cpp <<HEAD<<
+
+Uninitialized bytes in SignalAction at offset 1024 inside [0x7fff5d0618c0, 3148)
+==181243==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x7f673e99e41f  (/lib/x86_64-linux-gnu/libpthread.so.0+0x1441f) (BuildId: 7b4536f41cdaa5888408e82d0836e33dcf436466)
+    #1 0x7f673e99af67 in pthread_kill /build/glibc-SzIz7B/glibc-2.31/nptl/../sysdeps/unix/sysv/linux/pthread_kill.c:55:13
+    #2 0x56382ac9178d in main /home/llvm/compiler-rt/test/msan/Linux/signal_mcontext2.cpp:31:3
+    #3 0x7f673e773082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x56382abff2bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Linux/Output/signal_mcontext2.cpp.tmp+0x1e2bd)
+
+  Uninitialized value was created by an allocation of 'uninit' in the stack frame
+    #0 0x56382ac915ad in handler(int, siginfo_t*, void*) /home/llvm/compiler-rt/test/msan/Linux/signal_mcontext2.cpp:12:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value (/lib/x86_64-linux-gnu/libpthread.so.0+0x1441f) (BuildId: 7b4536f41cdaa5888408e82d0836e33dcf436466) 
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: Linux/signal_mcontext2.cpp <<TAIL<<

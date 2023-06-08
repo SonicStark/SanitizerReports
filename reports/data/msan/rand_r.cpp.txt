@@ -1,0 +1,17 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: rand_r.cpp <<HEAD<<
+
+.
+Uninitialized bytes in __interceptor_rand_r at offset 0 inside [0x7ffd5e5739e8, 4)
+==183072==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55cf68d0d5de in main /home/llvm/compiler-rt/test/msan/rand_r.cpp:13:11
+    #1 0x7f0668ad5082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55cf68c7b2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/rand_r.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/rand_r.cpp:13:11 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: rand_r.cpp <<TAIL<<

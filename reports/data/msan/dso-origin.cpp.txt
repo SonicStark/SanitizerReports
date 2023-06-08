@@ -1,0 +1,22 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: dso-origin.cpp <<HEAD<<
+
+==181658==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x7f7f1e96a299 in my_access /home/llvm/compiler-rt/test/msan/dso-origin.cpp:14:7
+    #1 0x561ef40d56b0 in main /home/llvm/compiler-rt/test/msan/dso-origin.cpp:34:3
+    #2 0x7f7f1e3f2082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x561ef40432cd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/dso-origin.cpp.tmp+0x1e2cd)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x561ef409dd94 in malloc /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:934:3
+    #1 0x7f7f1e96a381 in my_alloc /home/llvm/compiler-rt/test/msan/dso-origin.cpp:19:10
+    #2 0x561ef40d5663 in main /home/llvm/compiler-rt/test/msan/dso-origin.cpp:33:19
+    #3 0x7f7f1e3f2082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/dso-origin.cpp:14:7 in my_access
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: dso-origin.cpp <<TAIL<<

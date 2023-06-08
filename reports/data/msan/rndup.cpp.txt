@@ -1,0 +1,24 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: strndup.cpp <<HEAD<<
+
+Uninitialized bytes in __interceptor_strndup at offset 2 inside [0x7ffda97ccdbc, 4)
+==183348==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5623bc1a669e in main /home/llvm/compiler-rt/test/msan/strndup.cpp:17:16
+    #1 0x7f5369cb5082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5623bc1142bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/strndup.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/strndup.cpp:17:16 in main
+Exiting
+Uninitialized bytes in __interceptor_strndup at offset 2 inside [0x7ffe246aee14, 4)
+==183767==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55e77c4e259e in main /home/llvm/compiler-rt/test/msan/strndup.cpp:17:16
+    #1 0x7f6325c6c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55e77c4502bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/strndup.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/strndup.cpp:17:16 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: strndup.cpp <<TAIL<<

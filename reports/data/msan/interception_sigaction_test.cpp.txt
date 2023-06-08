@@ -1,0 +1,10 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: interception_sigaction_test.cpp <<HEAD<<
+
+sigaction call
+oldact filled
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: interception_sigaction_test.cpp <<TAIL<<

@@ -1,0 +1,20 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: check-handler.cpp <<HEAD<<
+
+MemorySanitizer: bad pointer 0x7f1b52800001
+MemorySanitizer: CHECK failed: sanitizer_allocator_secondary.h:177 "((IsAligned(reinterpret_cast<uptr>(p), page_size_))) != (0)" (0x0, 0x0) (tid=181504)
+    #0 0x561e74b08f5b in CheckUnwind() /home/llvm/compiler-rt/lib/msan/msan.cpp:437:3
+    #1 0x561e74b7f87f in __sanitizer::CheckFailed(char const*, int, char const*, unsigned long long, unsigned long long) /home/llvm/compiler-rt/lib/sanitizer_common/sanitizer_termination.cpp:86:24
+    #2 0x561e74b0e6dc in __sanitizer::LargeMmapAllocator<__msan::MsanMapUnmapCallback, __sanitizer::LargeMmapAllocatorPtrArrayDynamic, __sanitizer::LocalAddressSpaceView>::GetMetaData(void const*) /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_allocator_secondary.h:177:7
+    #3 0x561e74b0e6dc in __sanitizer::CombinedAllocator<__sanitizer::SizeClassAllocator64<__msan::AP64>, __sanitizer::LargeMmapAllocatorPtrArrayDynamic>::GetMetaData(void const*) /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_allocator_combined.h:126:36
+    #4 0x561e74b0e6dc in __msan::MsanDeallocate(__sanitizer::StackTrace*, void*) /home/llvm/compiler-rt/lib/msan/msan_allocator.cpp:205:70
+    #5 0x561e74b1046a in __interceptor_cfree.part.0 /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:217:17
+    #6 0x561e74b9a617 in main /home/llvm/compiler-rt/test/msan/check-handler.cpp:11:3
+    #7 0x7f1b54ab8082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #8 0x561e74b082ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/check-handler.cpp.tmp+0x1e2ad)
+
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: check-handler.cpp <<TAIL<<

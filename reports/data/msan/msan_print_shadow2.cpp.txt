@@ -1,0 +1,107 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: msan_print_shadow2.cpp <<HEAD<<
+
+Shadow map [0x201000000000, 0x201000000001) of [0x701000000000, 0x701000000001), 1 bytes:
+0x201000000000[0x701000000000]: ff...... ........ ........ ........
+
+Shadow map [0x201000000001, 0x201000000002) of [0x701000000001, 0x701000000002), 1 bytes:
+0x201000000000[0x701000000000]: ..ff.... ........ ........ ........
+
+Shadow map [0x201000000003, 0x201000000004) of [0x701000000003, 0x701000000004), 1 bytes:
+0x201000000000[0x701000000000]: ......ff ........ ........ ........
+
+Shadow map [0x20100000000f, 0x201000000010) of [0x70100000000f, 0x701000000010), 1 bytes:
+0x20100000000c[0x70100000000c]: ......ff ........ ........ ........
+
+Shadow map [0x201000000000, 0x201000000000) of [0x701000000000, 0x701000000000), 0 bytes:
+
+Shadow map [0x2ffdeb45adbc, 0x2ffdeb45adbf) of [0x7ffdeb45adbc, 0x7ffdeb45adbf), 3 bytes:
+0x2ffdeb45adbc[0x7ffdeb45adbc]: 000000.. ........ ........ ........
+
+Shadow map [0x201000000000, 0x201000000001) of [0x701000000000, 0x701000000001), 1 bytes:
+0x201000000000[0x701000000000]: ff...... ........ ........ ........  |A . . .|
+
+Origin A (origin_id 2):
+  Uninitialized value was created by a heap allocation
+    #0 0x55fbf8ca86fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x55fbf8caa5f7 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow2.cpp:13:13
+    #2 0x7fa304052082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow map [0x201000000001, 0x201000000002) of [0x701000000001, 0x701000000002), 1 bytes:
+0x201000000000[0x701000000000]: ..ff.... ........ ........ ........  |A . . .|
+
+Origin A (origin_id 2):
+  Uninitialized value was created by a heap allocation
+    #0 0x55fbf8ca86fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x55fbf8caa5f7 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow2.cpp:13:13
+    #2 0x7fa304052082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow map [0x201000000003, 0x201000000004) of [0x701000000003, 0x701000000004), 1 bytes:
+0x201000000000[0x701000000000]: ......ff ........ ........ ........  |A . . .|
+
+Origin A (origin_id 2):
+  Uninitialized value was created by a heap allocation
+    #0 0x55fbf8ca86fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x55fbf8caa5f7 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow2.cpp:13:13
+    #2 0x7fa304052082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow map [0x20100000000f, 0x201000000010) of [0x70100000000f, 0x701000000010), 1 bytes:
+0x20100000000c[0x70100000000c]: ......ff ........ ........ ........  |A . . .|
+
+Origin A (origin_id 2):
+  Uninitialized value was created by a heap allocation
+    #0 0x55fbf8ca86fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x55fbf8caa5f7 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow2.cpp:13:13
+    #2 0x7fa304052082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow map [0x201000000000, 0x201000000000) of [0x701000000000, 0x701000000000), 0 bytes:
+
+Shadow map [0x2ffc283ca7bc, 0x2ffc283ca7bf) of [0x7ffc283ca7bc, 0x7ffc283ca7bf), 3 bytes:
+0x2ffc283ca7bc[0x7ffc283ca7bc]: 000000.. ........ ........ ........  |. . . .|
+
+Shadow map [0x201000000000, 0x201000000001) of [0x701000000000, 0x701000000001), 1 bytes:
+0x201000000000[0x701000000000]: ff...... ........ ........ ........  |A . . .|
+
+Origin A (origin_id 2):
+  Uninitialized value was created by a heap allocation
+    #0 0x555bd2cc36fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x555bd2cc55f7 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow2.cpp:13:13
+    #2 0x7f9eb9128082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow map [0x201000000001, 0x201000000002) of [0x701000000001, 0x701000000002), 1 bytes:
+0x201000000000[0x701000000000]: ..ff.... ........ ........ ........  |A . . .|
+
+Origin A (origin_id 2):
+  Uninitialized value was created by a heap allocation
+    #0 0x555bd2cc36fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x555bd2cc55f7 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow2.cpp:13:13
+    #2 0x7f9eb9128082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow map [0x201000000003, 0x201000000004) of [0x701000000003, 0x701000000004), 1 bytes:
+0x201000000000[0x701000000000]: ......ff ........ ........ ........  |A . . .|
+
+Origin A (origin_id 2):
+  Uninitialized value was created by a heap allocation
+    #0 0x555bd2cc36fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x555bd2cc55f7 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow2.cpp:13:13
+    #2 0x7f9eb9128082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow map [0x20100000000f, 0x201000000010) of [0x70100000000f, 0x701000000010), 1 bytes:
+0x20100000000c[0x70100000000c]: ......ff ........ ........ ........  |A . . .|
+
+Origin A (origin_id 2):
+  Uninitialized value was created by a heap allocation
+    #0 0x555bd2cc36fa in operator new(unsigned long) /home/llvm/compiler-rt/lib/msan/msan_new_delete.cpp:45:35
+    #1 0x555bd2cc55f7 in main /home/llvm/compiler-rt/test/msan/msan_print_shadow2.cpp:13:13
+    #2 0x7f9eb9128082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+Shadow map [0x201000000000, 0x201000000000) of [0x701000000000, 0x701000000000), 0 bytes:
+
+Shadow map [0x2ffe9e79fb1c, 0x2ffe9e79fb1f) of [0x7ffe9e79fb1c, 0x7ffe9e79fb1f), 3 bytes:
+0x2ffe9e79fb1c[0x7ffe9e79fb1c]: 000000.. ........ ........ ........  |. . . .|
+
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: msan_print_shadow2.cpp <<TAIL<<

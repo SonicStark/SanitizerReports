@@ -1,0 +1,9 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: dtor-trivial.cpp <<HEAD<<
+
+/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/dtor-trivial.cpp.script: line 3: 181723 Aborted                 (core dumped) /home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/dtor-trivial.cpp.tmp > /home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/dtor-trivial.cpp.tmp.out 2>&1
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: dtor-trivial.cpp <<TAIL<<

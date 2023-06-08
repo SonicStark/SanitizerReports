@@ -1,0 +1,12 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: icmp_slt_allones.cpp <<HEAD<<
+
+/home/llvm/compiler-rt/test/msan/icmp_slt_allones.cpp:13:36: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 [-Wsingle-bit-bitfield-constant-conversion]
+__attribute__((noinline)) A::A() : c8(1) {}
+                                   ^  ~
+1 warning generated.
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: icmp_slt_allones.cpp <<TAIL<<

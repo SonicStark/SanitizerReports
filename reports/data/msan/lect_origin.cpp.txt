@@ -1,0 +1,41 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: select_origin.cpp <<HEAD<<
+
+==183184==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x559e9605e728 in max_by_ptr(int*, int*) /home/llvm/compiler-rt/test/msan/select_origin.cpp:12:10
+    #1 0x559e9605e9bf in main /home/llvm/compiler-rt/test/msan/select_origin.cpp:19:12
+    #2 0x7fbd35098082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x559e95fcc2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/select_origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x559e9605e87d in main /home/llvm/compiler-rt/test/msan/select_origin.cpp:16:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/select_origin.cpp:12:10 in max_by_ptr(int*, int*)
+Exiting
+==183410==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55b07281b59a in max_by_ptr(int*, int*) /home/llvm/compiler-rt/test/msan/select_origin.cpp:12:3
+    #1 0x55b07281b66c in main /home/llvm/compiler-rt/test/msan/select_origin.cpp:19:12
+    #2 0x7f0c76a02082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55b0727892ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/select_origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x55b07281b5ed in main /home/llvm/compiler-rt/test/msan/select_origin.cpp:16:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/select_origin.cpp:12:3 in max_by_ptr(int*, int*)
+Exiting
+==183657==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x564a9f5a259a in max_by_ptr(int*, int*) /home/llvm/compiler-rt/test/msan/select_origin.cpp:12:3
+    #1 0x564a9f5a266c in main /home/llvm/compiler-rt/test/msan/select_origin.cpp:19:12
+    #2 0x7f20e122c082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x564a9f5102ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/select_origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x564a9f5a25ed in main /home/llvm/compiler-rt/test/msan/select_origin.cpp:16:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/select_origin.cpp:12:3 in max_by_ptr(int*, int*)
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: select_origin.cpp <<TAIL<<

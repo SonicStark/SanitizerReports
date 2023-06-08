@@ -1,0 +1,16 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: vector_cvt.cpp <<HEAD<<
+
+==183773==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55b27b8106db in to_int(double&) /home/llvm/compiler-rt/test/msan/vector_cvt.cpp:9:11
+    #1 0x55b27b810836 in main /home/llvm/compiler-rt/test/msan/vector_cvt.cpp:22:11
+    #2 0x7fa3428da082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #3 0x55b27b77e2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/vector_cvt.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/vector_cvt.cpp:9:11 in to_int(double&)
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: vector_cvt.cpp <<TAIL<<

@@ -1,0 +1,24 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: strcmp.c <<HEAD<<
+
+Uninitialized bytes in __interceptor_strcmp at offset 0 inside [0x7ffe4eae6d65, 1)
+==183295==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x556c27b12846 in main /home/llvm/compiler-rt/test/msan/strcmp.c:16:3
+    #1 0x7f7bcd16e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x556c27a822bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/strcmp.c.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/strcmp.c:16:3 in main
+Exiting
+Uninitialized bytes in __interceptor_strcmp at offset 0 inside [0x7ffec83c81d5, 1)
+==183357==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55b21db46846 in main /home/llvm/compiler-rt/test/msan/strcmp.c:16:3
+    #1 0x7f4fd36c3082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55b21dab62bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/strcmp.c.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/strcmp.c:16:3 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: strcmp.c <<TAIL<<

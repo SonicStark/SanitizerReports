@@ -1,0 +1,14 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: getline.cpp <<HEAD<<
+
+/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/getline.cpp.tmp-testdata
+/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/getline.cpp.tmp-testdata
+/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/getline.cpp.tmp-testdata
+/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/getline.cpp.tmp-testdata
+/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/getline.cpp.tmp-testdata
+/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/getline.cpp.tmp-testdata
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: getline.cpp <<TAIL<<

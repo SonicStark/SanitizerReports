@@ -1,0 +1,17 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: Linux/xattr.cpp <<HEAD<<
+
+*xattr test could not access any attributes.
+*xattr test could not access any attributes.
+*xattr test could not access any attributes.
+*xattr test could not access any attributes.
+*xattr test could not access any attributes.
+*xattr test could not access any attributes.
+*xattr test could not access any attributes.
+*xattr test could not access any attributes.
+*xattr test could not access any attributes.
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: Linux/xattr.cpp <<TAIL<<

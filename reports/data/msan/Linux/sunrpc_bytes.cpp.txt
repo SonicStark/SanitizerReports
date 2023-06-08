@@ -1,0 +1,16 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: Linux/sunrpc_bytes.cpp <<HEAD<<
+
+Uninitialized bytes in __interceptor_xdr_bytes at offset 0 inside [0x7fffb1843ba0, 6)
+==181422==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55a4c0e81787 in main /home/llvm/compiler-rt/test/msan/Linux/sunrpc_bytes.cpp:24:16
+    #1 0x7ff673b4b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55a4c0def2bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Linux/Output/sunrpc_bytes.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/Linux/sunrpc_bytes.cpp:24:16 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: Linux/sunrpc_bytes.cpp <<TAIL<<

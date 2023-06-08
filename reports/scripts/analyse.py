@@ -5,7 +5,7 @@ import os
 REPORT_ENV_NAME = "SANREPORT"
 OUTPUT_ENV_NAME = "SANOUTPUT"
 
-def asan_lsan_go():
+def main():
     report_path = os.getenv(REPORT_ENV_NAME)
     if report_path and os.path.isfile(report_path):
         report_path = os.path.abspath(report_path)
@@ -59,4 +59,5 @@ def asan_lsan_go():
         print("[*] Write %s"%out_dst)
 
 if __name__ == "__main__":
-    asan_lsan_go()
+    main()
+

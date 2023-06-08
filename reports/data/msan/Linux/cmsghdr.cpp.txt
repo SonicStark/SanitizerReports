@@ -1,0 +1,89 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: Linux/cmsghdr.cpp <<HEAD<<
+
+Uninitialized bytes in read_msghdr_control at offset 4 inside [0x7ffecdf39720, 12)
+==181200==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x560568b6430f in __interceptor_sendmsg /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3300:16
+    #1 0x560568b6430f in sendmsg /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3290:1
+    #2 0x560568be6173 in main /home/llvm/compiler-rt/test/msan/Linux/cmsghdr.cpp:93:9
+    #3 0x7fe052575082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x560568b532dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Linux/Output/cmsghdr.cpp.tmp+0x1e2dd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3300:16 in __interceptor_sendmsg
+Exiting
+Uninitialized bytes in read_msghdr_control at offset 4 inside [0x7ffd961c3120, 12)
+==181458==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x56347699330f in __interceptor_sendmsg /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3300:16
+    #1 0x56347699330f in sendmsg /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3290:1
+    #2 0x563476a15173 in main /home/llvm/compiler-rt/test/msan/Linux/cmsghdr.cpp:93:9
+    #3 0x7fb803b0a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x5634769822dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Linux/Output/cmsghdr.cpp.tmp+0x1e2dd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3300:16 in __interceptor_sendmsg
+Exiting
+Uninitialized bytes in read_msghdr_control at offset 0 inside [0x7ffd507567c0, 8)
+==181666==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55af59fb130f in __interceptor_sendmsg /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3300:16
+    #1 0x55af59fb130f in sendmsg /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3290:1
+    #2 0x55af5a0331ab in main /home/llvm/compiler-rt/test/msan/Linux/cmsghdr.cpp:93:9
+    #3 0x7f91072e4082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55af59fa02dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Linux/Output/cmsghdr.cpp.tmp+0x1e2dd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3300:16 in __interceptor_sendmsg
+Exiting
+Uninitialized bytes in read_msghdr_control at offset 0 inside [0x7ffdd38cd3a8, 4)
+==182082==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x555d230d930f in __interceptor_sendmsg /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3300:16
+    #1 0x555d230d930f in sendmsg /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3290:1
+    #2 0x555d2315b1af in main /home/llvm/compiler-rt/test/msan/Linux/cmsghdr.cpp:93:9
+    #3 0x7f5348f45082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x555d230c82dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Linux/Output/cmsghdr.cpp.tmp+0x1e2dd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3300:16 in __interceptor_sendmsg
+Exiting
+Uninitialized bytes in read_msghdr_control at offset 0 inside [0x7ffdb3dccccc, 4)
+==182419==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55651213a30f in __interceptor_sendmsg /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3300:16
+    #1 0x55651213a30f in sendmsg /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3290:1
+    #2 0x5565121bc1af in main /home/llvm/compiler-rt/test/msan/Linux/cmsghdr.cpp:93:9
+    #3 0x7fc1e74e0082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x5565121292dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Linux/Output/cmsghdr.cpp.tmp+0x1e2dd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3300:16 in __interceptor_sendmsg
+Exiting
+Uninitialized bytes in read_msghdr_control at offset 0 inside [0x7ffcb77caae0, 8)
+==182646==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55ac3d4d330f in __interceptor_sendmsg /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3300:16
+    #1 0x55ac3d4d330f in sendmsg /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3290:1
+    #2 0x55ac3d5551ab in main /home/llvm/compiler-rt/test/msan/Linux/cmsghdr.cpp:93:9
+    #3 0x7fc2571aa082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55ac3d4c22dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Linux/Output/cmsghdr.cpp.tmp+0x1e2dd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3300:16 in __interceptor_sendmsg
+Exiting
+Uninitialized bytes in read_msghdr_control at offset 0 inside [0x7ffe66021108, 4)
+==182867==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55fec7cd630f in __interceptor_sendmsg /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3300:16
+    #1 0x55fec7cd630f in sendmsg /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3290:1
+    #2 0x55fec7d581af in main /home/llvm/compiler-rt/test/msan/Linux/cmsghdr.cpp:93:9
+    #3 0x7f8c8e8da082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x55fec7cc52dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Linux/Output/cmsghdr.cpp.tmp+0x1e2dd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3300:16 in __interceptor_sendmsg
+Exiting
+Uninitialized bytes in read_msghdr_control at offset 0 inside [0x7ffd8f6f47ec, 4)
+==183094==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x562d9398b30f in __interceptor_sendmsg /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3300:16
+    #1 0x562d9398b30f in sendmsg /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3290:1
+    #2 0x562d93a0d1af in main /home/llvm/compiler-rt/test/msan/Linux/cmsghdr.cpp:93:9
+    #3 0x7f8f6edf4082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #4 0x562d9397a2dd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Linux/Output/cmsghdr.cpp.tmp+0x1e2dd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/lib/msan/../sanitizer_common/sanitizer_common_interceptors.inc:3300:16 in __interceptor_sendmsg
+Exiting
+== done
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: Linux/cmsghdr.cpp <<TAIL<<

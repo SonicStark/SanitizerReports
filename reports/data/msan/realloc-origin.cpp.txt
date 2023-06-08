@@ -1,0 +1,36 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: realloc-origin.cpp <<HEAD<<
+
+==182989==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x56072584d8d2 in main /home/llvm/compiler-rt/test/msan/realloc-origin.cpp:14:3
+    #1 0x7f449426e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5607257bb2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/realloc-origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x56072584d82f in main /home/llvm/compiler-rt/test/msan/realloc-origin.cpp:12:8
+    #1 0x7f449426e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by a heap allocation
+    #0 0x5607257c37ea in __interceptor_realloc.part.0 /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:922:3
+    #1 0x56072584d720 in main /home/llvm/compiler-rt/test/msan/realloc-origin.cpp:11:15
+    #2 0x7f449426e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/realloc-origin.cpp:14:3 in main
+Exiting
+==183260==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x562a0e3fc5bd in main /home/llvm/compiler-rt/test/msan/realloc-origin.cpp:14:3
+    #1 0x7fc987e60082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x562a0e36a2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/realloc-origin.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x562a0e3727ea in __interceptor_realloc.part.0 /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:922:3
+    #1 0x562a0e3fc570 in main /home/llvm/compiler-rt/test/msan/realloc-origin.cpp:11:15
+    #2 0x7fc987e60082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/realloc-origin.cpp:14:3 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: realloc-origin.cpp <<TAIL<<

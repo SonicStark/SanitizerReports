@@ -1,0 +1,32 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: Linux/syscalls_sigaction.cpp <<HEAD<<
+
+Uninitialized bytes in __sanitizer_syscall_pre_impl_rt_sigaction at offset 0 inside [0x7ffee589f058, 8)
+==181283==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x56123dd9a5f4 in main /home/llvm/compiler-rt/test/msan/Linux/syscalls_sigaction.cpp:27:3
+    #1 0x7f5f1a3fb082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x56123dd082ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Linux/Output/syscalls_sigaction.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/Linux/syscalls_sigaction.cpp:27:3 in main
+Exiting
+Uninitialized bytes in __sanitizer_syscall_pre_impl_rt_sigaction at offset 0 inside [0x7ffe29f556e0, 8)
+==181452==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55d063afa5f8 in main /home/llvm/compiler-rt/test/msan/Linux/syscalls_sigaction.cpp:30:3
+    #1 0x7f37ca34b082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55d063a682ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Linux/Output/syscalls_sigaction.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/Linux/syscalls_sigaction.cpp:30:3 in main
+Exiting
+Uninitialized bytes in __sanitizer_syscall_pre_impl_rt_sigaction at offset 0 inside [0x7ffee8700e70, 160)
+==181640==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x563fb94e25f8 in main /home/llvm/compiler-rt/test/msan/Linux/syscalls_sigaction.cpp:33:3
+    #1 0x7efef174e082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x563fb94502ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Linux/Output/syscalls_sigaction.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/Linux/syscalls_sigaction.cpp:33:3 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: Linux/syscalls_sigaction.cpp <<TAIL<<

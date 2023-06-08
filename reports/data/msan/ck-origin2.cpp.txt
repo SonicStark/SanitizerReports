@@ -1,0 +1,164 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: stack-origin2.cpp <<HEAD<<
+
+==183310==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55ec82b5178e in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3
+    #1 0x7fa230e32082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55ec82abf2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/stack-origin2.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3 in main
+Exiting
+==183584==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55ffed2ed5d3 in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3
+    #1 0x7faebcc47082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55ffed25b2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/stack-origin2.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3 in main
+Exiting
+==183762==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55f509eb75d3 in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3
+    #1 0x7fecb7bd1082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55f509e252ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/stack-origin2.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3 in main
+Exiting
+==183864==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5636451bc5d3 in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3
+    #1 0x7fbdb9268082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x56364512a2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/stack-origin2.cpp.tmp+0x1e2ad)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3 in main
+Exiting
+==183924==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5654e2fe68bd in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3
+    #1 0x7fd5924de082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5654e2f542ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/stack-origin2.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x5654e2fe670a in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:30:5
+    #1 0x5654e2fe6674 in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:27:12
+    #2 0x5654e2fe6867 in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:34:3
+    #3 0x7fd5924de082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x5654e2fe66b5 in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:29:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3 in main
+Exiting
+==183924==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5654e2fe68bd in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3
+    #1 0x7fd5924de082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5654e2f542ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/stack-origin2.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x5654e2fe670a in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:30:5
+    #1 0x5654e2fe6674 in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:27:12
+    #2 0x5654e2fe6867 in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:34:3
+    #3 0x7fd5924de082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x5654e2fe66b5 in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:29:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3 in main
+Exiting
+==183969==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x563a2664b630 in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3
+    #1 0x7f59bba57082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x563a265b92ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/stack-origin2.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x563a2664b5db in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:30:5
+    #1 0x563a2664b569 in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:27:12
+    #2 0x563a2664b5fd in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:34:3
+    #3 0x7f59bba57082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x563a2664b59e in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:29:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3 in main
+Exiting
+==183969==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x563a2664b630 in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3
+    #1 0x7f59bba57082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x563a265b92ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/stack-origin2.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x563a2664b5db in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:30:5
+    #1 0x563a2664b569 in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:27:12
+    #2 0x563a2664b5fd in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:34:3
+    #3 0x7f59bba57082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x563a2664b59e in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:29:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3 in main
+Exiting
+==184002==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55f0f29b2630 in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3
+    #1 0x7f55ae82f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55f0f29202ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/stack-origin2.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x55f0f29b25db in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:30:5
+    #1 0x55f0f29b2569 in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:27:12
+    #2 0x55f0f29b25fd in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:34:3
+    #3 0x7f55ae82f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x55f0f29b259e in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:29:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3 in main
+Exiting
+==184002==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55f0f29b2630 in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3
+    #1 0x7f55ae82f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55f0f29202ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/stack-origin2.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x55f0f29b25db in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:30:5
+    #1 0x55f0f29b2569 in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:27:12
+    #2 0x55f0f29b25fd in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:34:3
+    #3 0x7f55ae82f082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x55f0f29b259e in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:29:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3 in main
+Exiting
+==184032==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x564df34f0630 in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3
+    #1 0x7f51960b0082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x564df345e2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/stack-origin2.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x564df34f05db in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:30:5
+    #1 0x564df34f0569 in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:27:12
+    #2 0x564df34f05fd in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:34:3
+    #3 0x7f51960b0082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x564df34f059e in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:29:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3 in main
+Exiting
+==184032==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x564df34f0630 in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3
+    #1 0x7f51960b0082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x564df345e2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/stack-origin2.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x564df34f05db in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:30:5
+    #1 0x564df34f0569 in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:27:12
+    #2 0x564df34f05fd in main /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:34:3
+    #3 0x7f51960b0082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'x' in the stack frame
+    #0 0x564df34f059e in f /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:29:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/stack-origin2.cpp:35:3 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: stack-origin2.cpp <<TAIL<<

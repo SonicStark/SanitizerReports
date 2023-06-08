@@ -1,0 +1,96 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: chained_origin_memcpy.cpp <<HEAD<<
+
+==181403==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5581e36ee7ba in main /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:44:3
+    #1 0x7f52f77dd082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5581e365c2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/chained_origin_memcpy.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x5581e3664c4a in __msan_memcpy.part.0 /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:1634:3
+    #1 0x5581e36ee6ab in fn_h() /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:36:3
+    #2 0x5581e36ee763 in main /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:43:3
+    #3 0x7f52f77dd082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was stored to memory at
+    #0 0x5581e36ee600 in fn_g(int, int) /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:26:11
+    #1 0x5581e36ee688 in fn_f(int, int) /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:31:3
+    #2 0x5581e36ee75e in main /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:42:3
+    #3 0x7f52f77dd082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'z1' in the stack frame
+    #0 0x5581e36ee6fb in main /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:40:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:44:3 in main
+Exiting
+==181636==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5627c2e2e7bf in main /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:44:3
+    #1 0x7f3fd3097082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5627c2d9c2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/chained_origin_memcpy.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x5627c2da4c4a in __msan_memcpy.part.0 /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:1634:3
+    #1 0x5627c2e2e6ab in fn_h() /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:36:3
+    #2 0x5627c2e2e763 in main /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:43:3
+    #3 0x7f3fd3097082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was stored to memory at
+    #0 0x5627c2e2e64b in fn_g(int, int) /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:26:29
+    #1 0x5627c2e2e688 in fn_f(int, int) /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:31:3
+    #2 0x5627c2e2e75e in main /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:42:3
+    #3 0x7f3fd3097082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'z2' in the stack frame
+    #0 0x5627c2e2e725 in main /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:41:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:44:3 in main
+Exiting
+==181900==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55a4feda6792 in main /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:44:3
+    #1 0x7fb3b6442082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55a4fed142ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/chained_origin_memcpy.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x55a4fed1cc4a in __msan_memcpy.part.0 /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:1634:3
+    #1 0x55a4feda668b in fn_h() /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:36:3
+    #2 0x55a4feda6740 in main /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:43:3
+    #3 0x7fb3b6442082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was stored to memory at
+    #0 0x55a4feda65e6 in fn_g(int, int) /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:26:11
+    #1 0x55a4feda6668 in fn_f(int, int) /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:31:3
+    #2 0x55a4feda673b in main /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:42:3
+    #3 0x7fb3b6442082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'z1' in the stack frame
+    #0 0x55a4feda66cf in main /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:40:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:44:3 in main
+Exiting
+==182335==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55c1feca7797 in main /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:44:3
+    #1 0x7fcb6a0ac082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55c1fec152ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/chained_origin_memcpy.cpp.tmp+0x1e2ad)
+
+  Uninitialized value was stored to memory at
+    #0 0x55c1fec1dc4a in __msan_memcpy.part.0 /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:1634:3
+    #1 0x55c1feca768b in fn_h() /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:36:3
+    #2 0x55c1feca7740 in main /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:43:3
+    #3 0x7fcb6a0ac082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was stored to memory at
+    #0 0x55c1feca763d in fn_g(int, int) /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:26:29
+    #1 0x55c1feca7668 in fn_f(int, int) /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:31:3
+    #2 0x55c1feca773b in main /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:42:3
+    #3 0x7fcb6a0ac082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+  Uninitialized value was created by an allocation of 'z2' in the stack frame
+    #0 0x55c1feca76f9 in main /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:41:3
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/chained_origin_memcpy.cpp:44:3 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: chained_origin_memcpy.cpp <<TAIL<<

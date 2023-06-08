@@ -1,0 +1,47 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: dtor-vtable-multiple-inheritance.cpp <<HEAD<<
+
+==182467==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5592b38c66f8 in main /home/llvm/compiler-rt/test/msan/dtor-vtable-multiple-inheritance.cpp:53:6
+    #1 0x7f9d655a0082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5592b38342ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/dtor-vtable-multiple-inheritance.cpp.tmp+0x1e2ad)
+
+  Virtual table ptr was destroyed
+    #0 0x5592b386a3e5 in __sanitizer_dtor_callback_vptr /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:969:5
+    #1 0x5592b38c6604 in ~C /home/llvm/compiler-rt/test/msan/dtor-vtable-multiple-inheritance.cpp:28:7
+    #2 0x5592b38c6604 in main /home/llvm/compiler-rt/test/msan/dtor-vtable-multiple-inheritance.cpp:50:6
+    #3 0x7f9d655a0082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/dtor-vtable-multiple-inheritance.cpp:53:6 in main
+Exiting
+==182708==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x559ef475e6f7 in main /home/llvm/compiler-rt/test/msan/dtor-vtable-multiple-inheritance.cpp:65:6
+    #1 0x7f7489368082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x559ef46cc2ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/dtor-vtable-multiple-inheritance.cpp.tmp+0x1e2ad)
+
+  Virtual table ptr was destroyed
+    #0 0x559ef47023e5 in __sanitizer_dtor_callback_vptr /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:969:5
+    #1 0x559ef475e6c2 in ~E /home/llvm/compiler-rt/test/msan/dtor-vtable-multiple-inheritance.cpp:43:8
+    #2 0x559ef475e6c2 in main /home/llvm/compiler-rt/test/msan/dtor-vtable-multiple-inheritance.cpp:62:6
+    #3 0x7f7489368082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/dtor-vtable-multiple-inheritance.cpp:65:6 in main
+Exiting
+==182929==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5622c2dfa716 in main /home/llvm/compiler-rt/test/msan/dtor-vtable-multiple-inheritance.cpp:73:6
+    #1 0x7f3fe554d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5622c2d682ad in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/dtor-vtable-multiple-inheritance.cpp.tmp+0x1e2ad)
+
+  Virtual table ptr was destroyed
+    #0 0x5622c2d9e3e5 in __sanitizer_dtor_callback_vptr /home/llvm/compiler-rt/lib/msan/msan_interceptors.cpp:969:5
+    #1 0x5622c2dfa6c4 in ~E /home/llvm/compiler-rt/test/msan/dtor-vtable-multiple-inheritance.cpp:43:8
+    #2 0x5622c2dfa6c4 in main /home/llvm/compiler-rt/test/msan/dtor-vtable-multiple-inheritance.cpp:62:6
+    #3 0x7f3fe554d082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/dtor-vtable-multiple-inheritance.cpp:73:6 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: dtor-vtable-multiple-inheritance.cpp <<TAIL<<

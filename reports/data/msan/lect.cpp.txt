@@ -1,0 +1,36 @@
+
+
+>>HEAD>> MemorySanitizer-X86_64 :: select.cpp <<HEAD<<
+
+==183149==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x564ad5dc6783 in main /home/llvm/compiler-rt/test/msan/select.cpp:15:7
+    #1 0x7f4e2453a082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x564ad5d342bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/select.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/select.cpp:15:7 in main
+Exiting
+==183444==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5578d13325cb in main /home/llvm/compiler-rt/test/msan/select.cpp:15:7
+    #1 0x7fbbce079082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5578d12a02bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/select.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/select.cpp:15:7 in main
+Exiting
+==183716==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5590c08ce5cb in main /home/llvm/compiler-rt/test/msan/select.cpp:15:7
+    #1 0x7fe166284082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x5590c083c2bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/select.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/select.cpp:15:7 in main
+Exiting
+==183810==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55fc0a67d5cb in main /home/llvm/compiler-rt/test/msan/select.cpp:15:7
+    #1 0x7fa3f7022082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #2 0x55fc0a5eb2bd in _start (/home/llvm/mybuild/projects/compiler-rt/test/msan/X86_64/Output/select.cpp.tmp+0x1e2bd)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/llvm/compiler-rt/test/msan/select.cpp:15:7 in main
+Exiting
+
+
+
+>>TAIL>> MemorySanitizer-X86_64 :: select.cpp <<TAIL<<
